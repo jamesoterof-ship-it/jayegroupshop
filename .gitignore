@@ -1,0 +1,5 @@
+﻿_crudas/
+design-system/
+node_modules/
+.claude/
+_*.js
