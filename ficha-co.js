@@ -617,6 +617,17 @@
 
     var total = precioAhora(elegido);
     var eventId = window.jayePixel ? window.jayePixel.id() : 'co-' + Date.now();
+    /* 30-09: datos del comprador al píxel (Meta los cifra en el navegador). Con esto la
+       compra del navegador se cruza con la persona que vio el anuncio, igual que la del servidor. */
+    try {
+      if (window.fbq) {
+        var _n = g('fNombre').toLowerCase().split(/\s+/), _am = { ph: '57' + limpiarTel(g('fTel')), fn: _n[0] || '', ln: _n.slice(1).join(' '),
+          ct: g('fCiudad').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z]/g, ''),
+          st: g('fDepto').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z]/g, ''), country: 'co' };
+        if (g('fCorreo')) _am.em = g('fCorreo').toLowerCase();
+        fbq('init', '4451697161762536', _am);
+      }
+    } catch (e) {}
     var datos = {
       pagina: PAGINA, producto: p.nombre, pais: 'CO',
       cantidad: k.cant, total: total, pago: formaPago,
