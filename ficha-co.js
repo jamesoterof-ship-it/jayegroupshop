@@ -582,9 +582,9 @@
     var k = p.packs[elegido] || {};
     try {
       fetch(URL_ABANDONO, { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
-        body: JSON.stringify({ sid: SID, tel: tel, ind: '+57', nom: g('fNombre'), prod: p.nombre, cant: k.cant || 1,
-          tot: precioAhora(elegido), dir: g('fDir'), com: g('fCiudad'), reg: g('fDepto'), ref: g('fRef'),
-          cor: g('fCorreo').toLowerCase(), fec: new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' }), est: estado }) }).catch(function () {});
+        body: JSON.stringify({ sid: SID, telefono: tel, indicativo: '+57', nombre: g('fNombre'), producto: p.nombre, cantidad: k.cant || 1,
+          total: precioAhora(elegido), direccion: g('fDir'), comuna: g('fCiudad'), region: g('fDepto'), referencia: g('fRef'),
+          correo: g('fCorreo').toLowerCase(), fecha: new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' }), estado: estado }) }).catch(function () {});
     } catch (e) {}
   }
   ['fTel', 'fNombre', 'fDir', 'fRef', 'fCiudad', 'fCorreo'].forEach(function (id) {
