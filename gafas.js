@@ -8,12 +8,14 @@
      contra entrega: 1 par $59.900 · 2 pares $89.900
    El pedido va a n8n (pedido-tienda-co). Si es pago anticipado, n8n crea el
    link de pago de Wompi y la página manda al cliente a pagar.
+   Encabezado, pie y reseñas: iguales a la página de la máscara (nadplus).
    ============================================================ */
 (function () {
   var URL_PEDIDO = 'https://n8n-production-8a42.up.railway.app/webhook/pedido-tienda-co';
   var URL_ESTADO = 'https://n8n-production-8a42.up.railway.app/webhook/pago-estado-co';
   var PAGINA = 'co-gafas';
   var PRODUCTO = 'Gafas de Aumento TR90';
+  var WA = '573145021958';
 
   var PRECIOS = {
     pre: [
@@ -25,7 +27,7 @@
       { qty: 2, price: 89900, was: 119800, label: '2 pares', sub: 'Uno para la casa y otro para llevar', tag: 'Más vendido' }
     ]
   };
-  /* Graduaciones que tiene el proveedor (Dropi 2229646). La +2.50 tenía poco stock el 29-09. */
+  /* Graduaciones que tiene el proveedor (Dropi 2229646). */
   var GRADS = ['+1.00', '+1.50', '+2.00', '+2.50', '+3.00', '+3.50', '+4.00'];
 
   var DEPTOS = ['Amazonas', 'Antioquia', 'Arauca', 'Atlántico', 'Bogotá D.C.', 'Bolívar', 'Boyacá', 'Caldas', 'Caquetá', 'Casanare',
@@ -40,8 +42,8 @@
   var $ = function (id) { return document.getElementById(id); };
   var cop = function (n) { return '$' + Math.round(n).toLocaleString('es-CO'); };
   var pack = function () { return PRECIOS[modo].filter(function (p) { return p.qty === qty; })[0]; };
-  var ico = function (id) { return '<svg aria-hidden="true" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"><use href="#' + id + '"/></svg>'; };
-  var esc = function (s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var ico = function (id) { return '<svg aria-hidden="true"><use href="#' + id + '"/></svg>'; };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
   /* ---------- píxel (si no cargó, no rompe nada) ---------- */
   function px(ev, data, id) {
@@ -60,6 +62,10 @@
       b.classList.toggle('on', on);
       b.setAttribute('aria-selected', on ? 'true' : 'false');
     });
+    document.querySelector('.switch').setAttribute('data-m', modo);
+    $('modoDice').innerHTML = modo === 'pre'
+      ? 'Tarjeta, PSE o Nequi · <b>pagas menos y tu pedido sale primero</b>'
+      : 'Pagas en efectivo cuando te llegue el pedido';
   }
   function pintarPacks() {
     $('packs').innerHTML = PRECIOS[modo].map(function (p) {
@@ -69,7 +75,7 @@
         '<span class="rad"></span>' +
         '<div class="pn"><b>' + p.label + '</b><small>' + p.sub + '</small></div>' +
         '<div class="pp"><b>' + cop(p.price) + '</b>' +
-        (ahorro ? '<s>' + cop(p.was) + '</s><span class="ahorro">Ahorras ' + cop(ahorro) + '</span>' : '') +
+        (ahorro ? '<s>' + cop(p.was) + '</s> <span class="ahorro">Ahorras ' + cop(ahorro) + '</span>' : '') +
         '</div></div>';
     }).join('');
     $('irPedido').textContent = 'Continuar · ' + pack().label + ' ' + cop(pack().price);
@@ -88,14 +94,13 @@
     var p = pack();
     var ahorroModo = PRECIOS.cod.filter(function (x) { return x.qty === qty; })[0].price - p.price;
     $('resumen').innerHTML =
-      '<div class="fila2"><span>' + PRODUCTO + ' · ' + p.label + '</span><b>' + cop(p.price) + '</b></div>' +
-      '<div class="fila2"><span>Graduación</span><span>' + (grads.slice(0, qty).filter(Boolean).join(' y ') || 'Elígela abajo') + '</span></div>' +
-      '<div class="fila2"><span>Envío</span><span>' + (modo === 'pre' ? '<span class="pri">' + ico('i-bolt') + 'Prioritario, incluido</span>' : 'Incluido') + '</span></div>' +
-      '<div class="fila2"><span>Forma de pago</span><span>' + (modo === 'pre' ? ico('i-card') + 'Pago anticipado' : ico('i-cash') + 'Pago contra entrega') + '</span></div>' +
-      '<div class="fila2 tot"><span>Total</span><span>' + cop(p.price) + '</span></div>' +
-      (modo === 'pre' && ahorroModo > 0 ? '<div class="fila2 pri"><span>Ahorras con el pago anticipado</span><span>' + cop(ahorroModo) + '</span></div>' : '');
-    var btn = $('enviar');
-    btn.textContent = modo === 'pre' ? 'Pagar ' + cop(p.price) + ' de forma segura' : 'Confirmar pedido · pago contra entrega';
+      '<div class="f2"><span>' + PRODUCTO + ' · ' + p.label + '</span><b>' + cop(p.price) + '</b></div>' +
+      '<div class="f2"><span>Graduación</span><span>' + (grads.slice(0, qty).filter(Boolean).join(' y ') || 'Elígela abajo') + '</span></div>' +
+      '<div class="f2"><span>Envío</span><span>' + (modo === 'pre' ? '<span class="pri">' + ico('i-bolt') + 'Prioritario, incluido</span>' : 'Incluido') + '</span></div>' +
+      '<div class="f2"><span>Forma de pago</span><span>' + (modo === 'pre' ? ico('i-card') + 'Pago anticipado' : ico('i-cash') + 'Contra entrega') + '</span></div>' +
+      '<div class="f2 tot"><span>Total</span><span>' + cop(p.price) + '</span></div>' +
+      (modo === 'pre' && ahorroModo > 0 ? '<div class="f2 pri"><span>Ahorras con el pago anticipado</span><span>' + cop(ahorroModo) + '</span></div>' : '');
+    $('enviar').textContent = modo === 'pre' ? 'Pagar ' + cop(p.price) + ' de forma segura' : 'Confirmar pedido · pago contra entrega';
     $('notaPago').textContent = modo === 'pre'
       ? 'Te llevamos a Wompi (Bancolombia) para pagar con tarjeta, PSE o Nequi. Tu pedido sale con prioridad.'
       : 'Pagas en efectivo cuando te llegue el pedido.';
@@ -121,85 +126,118 @@
   DEPTOS.forEach(function (d) { var o = document.createElement('option'); o.value = d; o.textContent = d; depto.appendChild(o); });
   $('form').addEventListener('focusin', initiateCheckout);
 
-  /* ---------- opiniones (resenas.js: todas reales) ---------- */
-  var R = window.RESENAS || [];
-  var MOSTRAR = 6, visibles = 0;
-  var estrellas = function (n) {
-    var s = ''; for (var i = 1; i <= 5; i++) s += '<svg' + (i > n ? ' class="off"' : '') + '><use href="#i-star"/></svg>';
-    return '<span class="stars" aria-label="' + n + ' de 5 estrellas">' + s + '</span>';
-  };
-  function tarjeta(r) {
-    return '<article class="rc">' +
-      '<div class="rc-top">' + estrellas(r.estrellas) + '<span class="rc-fecha">' + esc(r.fecha) + '</span></div>' +
-      '<p>' + esc(r.texto) + '</p>' +
-      (r.foto ? '<img src="' + r.foto + '" width="120" height="120" loading="lazy" alt="Foto de ' + esc(r.nombre) + ' con su pedido">' : '') +
-      '<div class="rc-quien"><svg><use href="#i-verif"/></svg>' + esc(r.nombre) + ' · Compra verificada</div>' +
-      '</article>';
+  /* ============================================================
+     RESEÑAS · MISMO MOLDE DE LA MÁSCARA (nadplus/ficha.js):
+     puntuación grande, barras por estrella, "Escribir una reseña",
+     tarjetas .rsc con inicial + "✓ Verificado", de a 4, "Ver más reseñas"
+     y el carrusel automático "Más experiencias de nuestros clientes".
+     Las reseñas son las reales de resenas.js (sin tocar el texto).
+     ============================================================ */
+  var PAISES = { CO: 'Colombia', MX: 'México', CL: 'Chile', ES: 'España', BR: 'Brasil', US: 'Estados Unidos', RU: 'Rusia', UA: 'Ucrania', PE: 'Perú',
+    PA: 'Panamá', AU: 'Australia', CA: 'Canadá', PT: 'Portugal', GB: 'Reino Unido', FR: 'Francia', PY: 'Paraguay', DE: 'Alemania', NL: 'Países Bajos',
+    UY: 'Uruguay', IL: 'Israel', LV: 'Letonia', SG: 'Singapur', GP: 'Guadalupe', SC: 'Seychelles' };
+  var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  function fecha(f) { var d = String(f || '').split('-'); return d.length === 3 ? Number(d[2]) + ' ' + MESES[Number(d[1]) - 1] + ' ' + d[0] : esc(f); }
+  var ESTRELLA = '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.6.7-4.9 4.5 1.4 6.5L12 16.7 6 20l1.4-6.5L2.5 9l6.6-.7z"/></svg>';
+  var ESTRELLA_OFF = '<svg viewBox="0 0 24 24" class="off"><path d="M12 2l2.9 6.3 6.6.7-4.9 4.5 1.4 6.5L12 16.7 6 20l1.4-6.5L2.5 9l6.6-.7z"/></svg>';
+  /* en la máscara todas tienen 5; aquí hay de 4 y 3, así que se pinta la nota real */
+  var estrellas = function (n) { var s = ''; for (var i = 0; i < 5; i++) s += i < n ? ESTRELLA : ESTRELLA_OFF; return '<span class="est" aria-label="' + n + ' de 5">' + s + '</span>'; };
+  var mias = window.RESENAS || [];
+  var VER = 4;
+  function tarjetaResena(r) {
+    return '<article class="rsc"><div class="arriba">'
+      + '<span class="ini">' + esc((r.nombre || '?').charAt(0).toUpperCase()) + '</span>'
+      + '<span class="quien">' + esc(r.nombre)
+      + '<i class="verif">✓ Verificado</i>'
+      + '<small>' + esc(PAISES[r.pais] || r.pais || '') + ' · ' + fecha(r.fecha) + '</small></span>'
+      + estrellas(r.estrellas) + '</div>'
+      + '<p>' + esc(r.texto) + '</p>'
+      + (r.foto ? '<img class="rfoto" src="' + esc(r.foto) + '" alt="" loading="lazy" onerror="this.remove()">' : '')
+      + '</article>';
   }
-  function masOpiniones() {
-    var hasta = Math.min(R.length, visibles + MOSTRAR);
-    var html = '';
-    for (var i = visibles; i < hasta; i++) html += tarjeta(R[i]);
-    $('revList').insertAdjacentHTML('beforeend', html);
-    visibles = hasta;
-    $('revMas').style.display = visibles >= R.length ? 'none' : '';
-  }
-  if (R.length) {
-    $('revMedia').textContent = window.RESENAS_MEDIA || '4,8';
-    $('revTotal').textContent = window.RESENAS_TOTAL || R.length;
-    var cuenta = [0, 0, 0, 0, 0, 0];
-    R.forEach(function (r) { cuenta[r.estrellas] = (cuenta[r.estrellas] || 0) + 1; });
-    var bars = '';
-    for (var s = 5; s >= 1; s--) {
-      var pct = Math.round(cuenta[s] * 100 / R.length);
-      bars += '<div class="bar"><span>' + s + ' ★</span><i style="--w:' + pct + '%"></i><span>' + pct + '%</span></div>';
-    }
-    $('revBars').innerHTML = bars;
-    $('revFotos').innerHTML = R.filter(function (r) { return r.foto; }).slice(0, 10).map(function (r) {
-      return '<button type="button" data-foto="' + r.foto + '" aria-label="Ver foto de ' + esc(r.nombre) + '"><img src="' + r.foto + '" width="240" height="240" loading="lazy" alt=""></button>';
+  if (mias.length) {
+    var prom = mias.reduce(function (a, r) { return a + r.estrellas; }, 0) / mias.length;
+    $('revProm').textContent = (Math.round(prom * 10) / 10).toFixed(1);
+    $('revCnt').textContent = mias.length + ' reseñas';
+    $('revBars').innerHTML = [5, 4, 3, 2, 1].map(function (e) {
+      var n = mias.filter(function (r) { return r.estrellas === e; }).length;
+      var pc = Math.round(n / mias.length * 100);
+      return '<div class="bar"><span class="lvl">' + e + ' ★</span>'
+        + '<div class="track"><i style="--p:' + (pc / 100) + '"></i></div><b>' + n + '</b></div>';
     }).join('');
-    masOpiniones();
-    $('revMas').addEventListener('click', masOpiniones);
-  } else {
-    $('revMas').style.display = 'none';
+    var vistas = 0;
+    var masResenas = function () {
+      var trozo = mias.slice(vistas, vistas + VER);
+      $('listaRs').insertAdjacentHTML('beforeend', trozo.map(tarjetaResena).join(''));
+      vistas += trozo.length;
+      if (vistas >= mias.length) $('masRs').style.display = 'none';
+    };
+    masResenas();
+    $('masRs').addEventListener('click', masResenas);
+    /* carrusel automático: igual que la máscara, se duplica para que corra sin cortes */
+    var lote = mias.slice(VER, VER + 14);
+    var uno = lote.map(function (r) {
+      return '<article class="rsc"><div class="arriba"><span class="ini">' + esc((r.nombre || '?').charAt(0).toUpperCase()) + '</span>'
+        + '<span class="quien">' + esc(r.nombre) + '<i class="verif">✓ Verificado</i><small>' + esc(PAISES[r.pais] || r.pais || '') + '</small></span></div>'
+        + '<p>' + esc(r.texto) + '</p></article>';
+    }).join('');
+    $('revAuto').innerHTML = uno + uno;
+    /* las barras se llenan al llegar (.vino, como en la máscara) */
+    var sec = $('resenas');
+    if ('IntersectionObserver' in window) {
+      var ojo = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { sec.classList.add('vino'); ojo.disconnect(); } }, { threshold: 0.15 });
+      ojo.observe(sec);
+    } else sec.classList.add('vino');
+    setTimeout(function () { if (sec.getBoundingClientRect().top < innerHeight) sec.classList.add('vino'); }, 800);
   }
-  /* visor de fotos */
-  var visor = document.createElement('div');
-  visor.className = 'visor'; visor.setAttribute('role', 'dialog'); visor.setAttribute('aria-label', 'Foto de la opinión');
-  visor.innerHTML = '<img alt="Foto de un comprador"><button type="button" aria-label="Cerrar">×</button>';
-  document.body.appendChild(visor);
-  $('revFotos').addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b) return;
-    visor.querySelector('img').src = b.dataset.foto; visor.classList.add('on'); visor.querySelector('button').focus();
+  $('btnWrite').addEventListener('click', function () {
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola, compré las Gafas de Aumento TR90 y quiero dejar mi reseña:'), '_blank', 'noopener');
   });
-  visor.addEventListener('click', function (e) { if (e.target === visor || e.target.tagName === 'BUTTON') visor.classList.remove('on'); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') visor.classList.remove('on'); });
 
-  /* ---------- marquee, menú y CTA fijo: IGUALES al molde de las tiendas Jaye ---------- */
-  (function () {
-    var items = ['Calidad Premium', 'Envío a toda Colombia', 'Pago Contra Entrega', 'Pago anticipado con descuento', 'Satisfacción Garantizada'];
-    $('mq1').innerHTML = items.concat(items).map(function (t) { return '<span><b>✦</b> ' + t + '</span>'; }).join('');
-  })();
-  function goTo(sel) {
-    var el = document.querySelector(sel); if (!el) return;
-    var off = (document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0) + 8;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-scroll]'), function (b) {
-    b.addEventListener('click', function () { goTo(b.dataset.scroll); $('nav').classList.remove('open'); });
-  });
-  $('ham').addEventListener('click', function () { $('nav').classList.toggle('open'); });
-  (function () {
-    var bar = $('stickycta'), zonas = [$('comprar'), $('pedido')];
+  /* ---------- encabezado: al bajar queda negro (efectos.js de la máscara, cabecera()) ---------- */
+  (function cabecera() {
+    var p = $('pegado');
+    if (!p) return;
+    var esperando = false, bajando = false;
     function mirar() {
-      var dentro = zonas.some(function (z) { var r = z.getBoundingClientRect(); return r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.3; });
-      var on = window.scrollY > 520 && !dentro;
-      bar.classList.toggle('show', on); document.body.classList.toggle('cta-on', on);
+      var y = window.scrollY || window.pageYOffset || 0;
+      if (!bajando && y > 90) { bajando = true; p.classList.add('bajando'); }
+      else if (bajando && y < 24) { bajando = false; p.classList.remove('bajando'); }
+      esperando = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (esperando) return;
+      esperando = true;
+      requestAnimationFrame(mirar);
+    }, { passive: true });
+    mirar();
+  })();
+
+  /* ---------- boletín del pie (igual que la máscara) ---------- */
+  (function () {
+    var f = $('fBoletin');
+    if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var c = $('correoBoletin');
+      var ok = $('aceptoBoletin');
+      if (!c.value || c.value.indexOf('@') < 0) { c.focus(); return; }
+      if (ok && !ok.checked) { ok.focus(); return; }
+      f.outerHTML = '<p class=gracias>Listo. Te avisamos cuando haya novedades.</p>';
+    });
+  })();
+
+  /* ---------- CTA fijo abajo: aparece al bajar, se esconde en compra y formulario ---------- */
+  (function () {
+    var bar = $('barraCta'), zonas = [$('inicio'), $('comprar'), $('pedido'), document.querySelector('.pie')];
+    function mirar() {
+      var dentro = zonas.some(function (z) { var r = z.getBoundingClientRect(); return r.top < innerHeight * 0.7 && r.bottom > innerHeight * 0.25; });
+      bar.classList.toggle('on', !dentro);
     }
     window.addEventListener('scroll', mirar, { passive: true }); mirar();
   })();
 
-  $('year').textContent = new Date().getFullYear();
+  var yr = $('year'); if (yr) yr.textContent = new Date().getFullYear();
 
   /* ---------- datos de la campaña (para atar la venta a su anuncio) ---------- */
   var qs = new URLSearchParams(location.search);
@@ -301,7 +339,7 @@
           } else if ((j.estado === 'PENDING' || !j.estado) && intentos++ < 20) {
             setTimeout(mirar, 3000);
           } else if (j.estado === 'DECLINED' || j.estado === 'ERROR' || j.estado === 'VOIDED') {
-            $('err').textContent = 'El pago no se aprobó. Puedes intentarlo de nuevo o elegir "Pago contra entrega".';
+            $('err').textContent = 'El pago no se aprobó. Puedes intentarlo de nuevo o elegir "Contra entrega".';
             $('comprar').scrollIntoView();
           } else {
             $('err').textContent = 'Aún no vemos tu pago confirmado. Si ya pagaste, te escribiremos por WhatsApp.';
