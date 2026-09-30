@@ -281,14 +281,20 @@
   }
   var GRADS = ['+1.00', '+1.50', '+2.00', '+2.50', '+3.00', '+3.50', '+4.00'];
   var grads = ['', ''];
+  /* 30-09 James: el que no sabe su graduación igual compra; se le escribe por WhatsApp para definirla */
+  var NO_SABE = 'POR DEFINIR';
+  var noSabe = false;
   function gradsHTML() {
     var n = p.packs[elegido].cant, h = '';
     for (var i = 0; i < n; i++) {
-      h += '<div class="field"><label>' + (n > 1 ? 'Graduación del par ' + (i + 1) : 'Tu graduación') + '</label>'
+      h += '<div class="field"' + (noSabe ? ' style="opacity:.45"' : '') + '><label>' + (n > 1 ? 'Graduación del par ' + (i + 1) : 'Tu graduación') + '</label>'
         + '<div class="gops" data-i="' + i + '">' + GRADS.map(function (g) {
           return '<button type="button" class="gop' + (grads[i] === g ? ' on' : '') + '" data-g="' + g + '" aria-pressed="' + (grads[i] === g) + '">' + g + '</button>';
         }).join('') + '</div></div>';
     }
+    h += '<button type="button" class="gop gno' + (noSabe ? ' on' : '') + '" aria-pressed="' + noSabe + '" style="width:100%;margin-top:4px;padding:12px">'
+      + '🤔 No sé mi graduación · escríbanme por WhatsApp</button>'
+      + (noSabe ? '<p style="font-size:13px;margin:8px 2px 0;line-height:1.45">Listo: te escribimos por WhatsApp y te ayudamos a elegir el aumento según tu edad <b>antes de enviar</b> tu pedido.</p>' : '');
     return h;
   }
   var DEPTOS = ['Amazonas', 'Antioquia', 'Arauca', 'Atlántico', 'Bogotá D.C.', 'Bolívar', 'Boyacá', 'Caldas', 'Caquetá', 'Casanare',
@@ -485,6 +491,8 @@
   });
   $('gradSel').addEventListener('click', function (e) {
     var g = e.target.closest('.gop'); if (!g) return;
+    if (g.classList.contains('gno')) { noSabe = !noSabe; grads = noSabe ? [NO_SABE, NO_SABE] : ['', '']; $('gradSel').innerHTML = gradsHTML(); return; }
+    if (noSabe) { noSabe = false; grads = ['', '']; }
     grads[Number(g.parentNode.dataset.i)] = g.dataset.g;
     $('gradSel').innerHTML = gradsHTML();
   });
@@ -631,7 +639,7 @@
     var datos = {
       pagina: PAGINA, producto: p.nombre, pais: 'CO',
       cantidad: k.cant, total: total, pago: formaPago,
-      graduaciones: grads.slice(0, k.cant).join(' / '),
+      graduaciones: noSabe ? NO_SABE + ' (escribirle)' : grads.slice(0, k.cant).join(' / '),
       nombre: g('fNombre'), telefono: '57' + limpiarTel(g('fTel')),
       departamento: g('fDepto'), ciudad: g('fCiudad'),
       direccion: g('fDir'), referencia: g('fRef'), correo: g('fCorreo').toLowerCase(),
