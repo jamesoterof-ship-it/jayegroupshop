@@ -568,6 +568,31 @@
   function limpiarTel(t) { var d = String(t || '').replace(/\D/g, ''); if (d.length === 12 && d.indexOf('57') === 0) d = d.slice(2); return d; }
   function marcar(id, mal) { var f = $(id).closest('.field'); if (f) f.classList.toggle('mal', mal); return mal; }
 
+  /* ---------- carrito abandonado (30-09) ----------
+     Apenas escribe un celular válido se guarda en fin_abandonados con indicativo +57.
+     Los flujos de Chile solo toman +56: a este cliente le escribe solo Colombia. */
+  var URL_ABANDONO = 'https://n8n-production-8a42.up.railway.app/webhook/abandonado';
+  var SID = 'CO' + Date.now() + Math.floor(Math.random() * 1e6), abGuardado = false, abReloj;
+  function guardarAbandono(estado) {
+    var g = function (id) { return ($(id).value || '').trim(); };
+    var tel = limpiarTel(g('fTel'));
+    if (!/^3\d{9}$/.test(tel)) return;
+    if (estado === 'COMPLETADO' && !abGuardado) return;
+    abGuardado = true;
+    var k = p.packs[elegido] || {};
+    try {
+      fetch(URL_ABANDONO, { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+        body: JSON.stringify({ sid: SID, tel: tel, ind: '+57', nom: g('fNombre'), prod: p.nombre, cant: k.cant || 1,
+          tot: precioAhora(elegido), dir: g('fDir'), com: g('fCiudad'), reg: g('fDepto'), ref: g('fRef'),
+          cor: g('fCorreo').toLowerCase(), fec: new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' }), est: estado }) }).catch(function () {});
+    } catch (e) {}
+  }
+  ['fTel', 'fNombre', 'fDir', 'fRef', 'fCiudad', 'fCorreo'].forEach(function (id) {
+    $(id).addEventListener('blur', function () { clearTimeout(abReloj); abReloj = setTimeout(function () { guardarAbandono('INCOMPLETO'); }, 300); });
+  });
+  $('fDepto').addEventListener('change', function () { clearTimeout(abReloj); abReloj = setTimeout(function () { guardarAbandono('INCOMPLETO'); }, 300); });
+  $('fTel').addEventListener('input', function () { if (/^3\d{9}$/.test(limpiarTel($('fTel').value))) { clearTimeout(abReloj); abReloj = setTimeout(function () { guardarAbandono('INCOMPLETO'); }, 1200); } });
+
   $('fPedido').addEventListener('submit', function (ev) {
     ev.preventDefault();
     var g = function (id) { return ($(id).value || '').trim(); };
@@ -607,6 +632,7 @@
       .then(function (r) { return r.text().then(function (t) { var j = null; try { j = JSON.parse(t); } catch (e) {} return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         if (!res.ok || !res.j || res.j.ok === false) throw new Error((res.j && res.j.error) || 'revisa tus datos');
+        guardarAbandono('COMPLETADO');
         try { localStorage.setItem('co_ultimo_pedido', JSON.stringify({ id: res.j.id, ref: res.j.referencia, total: total, qty: k.cant, ev: eventId })); } catch (e) {}
         if (formaPago === 'pre') {
           if (!res.j.pago_url) throw new Error('no se generó el link de pago');
