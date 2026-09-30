@@ -1,0 +1,707 @@
+/* ============================================================
+   TIENDA JAYE GROUP · CHILE
+   Molde 5.11 Tactical: negro, gris claro y blanco. Casi sin color
+   a proposito — el color lo pone la FOTO del producto.
+   El dorado de la marca hace el papel del naranja de 5.11: solo
+   en el logo, en Ofertas y en la etiqueta de mas vendido.
+   Pensada para el celular; en pantalla grande se estira.
+   ============================================================ */
+:root{
+  --negro:#0F0E0C;
+  --gris:#E5E4E1;
+  --linea:#D6D4CF;
+  --tinta:#17150F;
+  --suave:#6B665C;
+  --oro:#D8A52E;
+  --oro-osc:#9A7415;
+  --hueso:#F0EDE8;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#fff;color:var(--tinta);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.cond{font-family:'Barlow Condensed','Inter',sans-serif;text-transform:uppercase}
+.envoltorio{max-width:var(--maxw);margin:0 auto}
+
+/* ---------- cabecera pegada ----------
+   Al bajar se esconde la barra blanca y quedan TRES: la marquesina con las
+   letras en movimiento, el header gris con la marca y las categorias. */
+.pegado{position:sticky;top:0;z-index:50;background:#fff}
+/* la cabecera flota sobre el video, en negro translucido con desenfoque */
+body{--altoCab:0px}
+
+
+/* ---------- marquesina ---------- */
+.marq{background:var(--negro);color:#fff;overflow:hidden;padding:9px 0}
+.marq .pista{
+  display:flex;gap:34px;white-space:nowrap;width:max-content;
+  animation:corre 26s linear infinite;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.07em;
+}
+@keyframes corre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marq .pista{animation:none}}
+
+/* ---------- linea blanca del medio: el menu. Se esconde al bajar ---------- */
+.barra{
+  background:#fff;border-bottom:1px solid var(--linea);padding:9px 16px;
+  display:flex;justify-content:center;align-items:center;gap:20px;
+  overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+  max-height:46px;
+  transition:max-height .28s ease,padding .28s ease,opacity .2s ease;
+}
+.barra::-webkit-scrollbar{display:none}
+/* La tienda arma esta barra con <button> y la ficha de producto con <a>
+   (porque alli cada categoria LLEVA a la tienda ya filtrada). El estilo tiene
+   que valer para los dos o la ficha muestra enlaces sueltos, grandes y en
+   minuscula, con un encabezado que no se parece al de la tienda. */
+.barra button,
+.barra a{
+  flex:none;background:none;border:0;padding:0 0 3px;cursor:pointer;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;font-size:14px;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--negro);
+  text-decoration:none;line-height:1.2;
+  border-bottom:2px solid transparent;
+}
+.barra button[aria-pressed="true"],
+.barra a[aria-pressed="true"]{border-bottom-color:var(--negro)}
+.pegado.bajando .barra{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-color:transparent}
+
+/* ---------- header: gris arriba, NEGRO al bajar ---------- */
+.top{background:var(--gris);border-bottom:1px solid var(--linea);
+     transition:background .28s ease,border-color .28s ease}
+/* al bajar: negro translucido con desenfoque, como el de Konecta */
+.pegado.bajando .top{background:rgba(0,0,0,.86);
+                     -webkit-backdrop-filter:blur(18px) saturate(120%);
+                     backdrop-filter:blur(18px) saturate(120%);
+                     border-bottom-color:rgba(255,255,255,.09)}
+.top .fila{
+  max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;flex-wrap:nowrap;gap:14px;padding:12px 16px;
+}
+/* la fila: OFERTAS a un lado, la marca al centro, el carrito al otro */
+.top .fila>.ofertas,.top .fila>.icos{flex:1 1 0;display:flex;align-items:center}
+.top .fila>.icos{justify-content:flex-end;gap:15px}
+.ofertas{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:14px;
+         text-transform:uppercase;letter-spacing:.06em;color:var(--oro-osc);transition:color .28s ease}
+.pegado.bajando .ofertas{color:var(--oro)}
+.top .fila>.logo{flex:0 0 auto;text-align:center}
+@media (max-width:520px){ .logo{font-size:18px} .ofertas{font-size:13px} }
+/* ---------- el logo, como el original ----------
+   JAYE grueso, una linea dorada fina y alta, y GROUP delgado y espaciado.
+   Los dos textos del MISMO color; lo unico dorado es la linea. */
+.logo{font-family:'Inter','Barlow Condensed',sans-serif;font-size:19px;
+      text-transform:uppercase;display:inline-flex;align-items:center;
+      white-space:nowrap;line-height:1;
+      /* no se pinta hasta que la tipografia esta lista: asi no salta de letra */
+      visibility:hidden}
+.fuentesListas .logo{visibility:visible}
+.logo .j{font-weight:800;font-size:1em;letter-spacing:-.005em;
+         color:var(--negro);transition:color .28s ease}
+/* GROUP es mas chico y mas delgado que JAYE, como en el logo */
+.logo .g{font-weight:300;font-size:.76em;letter-spacing:.15em;
+         color:var(--negro);transition:color .28s ease}
+.logo .raya{display:inline-block;width:1.5px;height:1.45em;background:var(--oro);
+            margin:0 11px 0 12px;flex:none}
+/* sobre negro, la marca se lee en blanco; la linea sigue dorada */
+.pegado.bajando .logo .j,.pegado.bajando .logo .g{color:#fff}
+.top .ic,.top .hamb{transition:color .28s ease}
+.pegado.bajando .top .ic,.pegado.bajando .top .hamb{color:#fff}
+.icos{display:flex;gap:15px;align-items:center}
+.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;
+    stroke-linecap:round;stroke-linejoin:round;display:block;color:var(--negro)}
+.hamb{background:none;border:0;padding:0;cursor:pointer;color:var(--negro)}
+
+
+/* ---------- hero ----------
+   En el celular ocupa casi toda la pantalla; en pantalla grande se limita
+   para que no quede desproporcionado. */
+.hero{position:relative;height:calc(100svh - 132px);min-height:520px;max-height:760px;
+      display:flex;align-items:flex-end;overflow:hidden;background:#2A2724}
+@supports not (height:100svh){ .hero{height:calc(100vh - 132px)} }
+@media (min-width:900px){ .hero{height:auto;min-height:560px;max-height:640px} }
+/* El fondo del hero puede ser VIDEO (que caminen de verdad) o foto.
+   El video manda; la foto queda debajo para que se vea algo mientras carga
+   y en los telefonos que no lo reproducen. */
+.hero .foto{position:absolute;inset:0;background-size:cover;background-position:center 38%;
+            background-color:#2A2724}
+.hero .clip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+            object-position:center 38%;opacity:0;transition:opacity .6s ease}
+.hero .clip.listo{opacity:1}
+@media (prefers-reduced-motion:reduce){ .hero .clip{display:none} }
+.hero .capa{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(15,14,12,.74) 0%,rgba(15,14,12,.36) 55%,transparent 100%)}
+.hero .txt{position:relative;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 16px 44px}
+/* El titulo entra EN CASCADA: letra por letra, asomando desde abajo detras
+   de una mascara, una detras de la otra. */
+.hero h1 .linea{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .pal{display:inline-block;white-space:nowrap}
+.hero h1 .ltr{display:inline-block;transform:translateY(115%);
+  animation:asoma 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes asoma{to{transform:translateY(0)}}
+.hero p,.hero .cta{opacity:0;transform:translateY(14px);
+  animation:sube .7s cubic-bezier(.22,.9,.3,1) forwards}
+.hero p{animation-delay:1.55s}.hero .cta{animation-delay:1.75s}
+@keyframes sube{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .ltr{animation:none;transform:none}
+}
+.hero h1{
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:clamp(40px,11vw,72px);line-height:.88;color:var(--hueso);margin:0 0 12px;
+  letter-spacing:.01em;text-shadow:0 2px 26px rgba(0,0,0,.5);max-width:14ch;
+}
+.hero p{margin:0 0 20px;color:#D8D3CA;font-size:15px;max-width:34ch}
+.cta{
+  display:inline-flex;align-items:center;gap:9px;background:rgba(229,228,225,.94);color:var(--negro);
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  letter-spacing:.08em;font-size:16px;padding:14px 30px;
+  transition:background .18s,transform .18s;
+}
+.cta:hover{background:#fff;transform:translateY(-1px)}
+.cta svg{transition:transform .18s}
+.cta:hover svg{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){
+  .hero .foto{animation:none}
+  .hero h1,.hero p,.hero .cta{animation:none;opacity:1;transform:none}
+}
+
+/* ---------- franja de confianza ---------- */
+.conf{background:var(--negro);color:#BEB8AC}
+.conf .fila{
+  max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);text-align:center;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.conf .fila>div{padding:14px 6px;border-right:1px solid #262320}
+.conf .fila>div:last-child{border-right:none}
+.conf .ic{width:21px;height:21px;stroke:var(--oro);margin:0 auto 5px;stroke-width:1.6}
+
+/* ---------- seccion ---------- */
+.sec{max-width:var(--maxw);margin:0 auto;
+     display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:26px 16px 14px}
+.sec h2{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+        font-size:26px;margin:0;letter-spacing:.02em}
+.sec .cuantos{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;font-size:13px;
+              text-transform:uppercase;color:var(--suave);letter-spacing:.05em}
+
+/* ---------- rejilla de productos ---------- */
+.rejilla{
+  max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linea);
+  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+}
+@media (min-width:700px){.rejilla{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1000px){.rejilla{grid-template-columns:repeat(4,1fr)}}
+/* opacity y translate van nombrados aca a proposito: esta ficha tambien entra
+   con efecto (data-rv) y su propia transicion pisaria la de la entrada. */
+.ficha{background:#fff;padding-bottom:15px;display:flex;flex-direction:column;
+  position:relative}
+
+/* TODA la tarjeta lleva al producto: un enlace estirado por encima. Va debajo
+   del boton en la pila (z-index) para que el boton siga siendo el boton. */
+.ficha .tapa{position:absolute;inset:0;z-index:1}
+.ficha .btn{position:relative;z-index:2}
+
+/* En computador la tarjeta se levanta al pasar por encima. En CELULAR no
+   existe el hover, asi que lo que se siente es el toque: se hunde y se
+   oscurece. Se marca bien, porque si no el cliente no sabe si le hizo caso. */
+.ficha{transition:transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease}
+.ficha:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(15,14,12,.16)}
+.ficha:active{transform:scale(.965);box-shadow:0 4px 14px rgba(15,14,12,.18);
+  transition-duration:.1s}
+/* la foto acompaña el toque */
+.ficha:active .im img{transform:scale(1.06)}
+
+/* la nota de las resenas: estrellas arriba, cuantas son abajo. En una sola
+   linea el "187 reseñas" se partia en dos y quedaba desordenado. */
+.ficha .nota{margin:0 0 9px}
+.ficha .nota .linea1{display:flex;align-items:center;gap:6px}
+.ficha .nota .est{display:inline-flex;gap:1px}
+.ficha .nota svg{width:13px;height:13px;fill:#DCD8D0}
+.ficha .nota svg.on{fill:var(--oro)}
+.ficha .nota b{font-size:12.5px;color:var(--negro);font-variant-numeric:tabular-nums}
+.ficha .nota small{display:block;font-size:12px;color:var(--suave);margin-top:2px}
+
+@media (prefers-reduced-motion:reduce){
+  .ficha:hover,.ficha:active{transform:none}
+}
+/* Doble clase a proposito: sin ella gana la regla de [data-rv] (misma fuerza,
+   escrita despues) y se pierde el suavizado del fondo al pasar el mouse.
+   OJO: `transform` TIENE que ir en esta lista. Estaba solo en la regla .ficha
+   de arriba, y como [data-rv] es mas especifica se la comia: la tarjeta se
+   levantaba de golpe, sin animacion, y el efecto no se notaba. */
+.ficha[data-rv]{transition:background .18s,
+                           transform .3s cubic-bezier(.2,.7,.2,1),
+                           box-shadow .3s ease,
+                           opacity .8s ease var(--d,0s),
+                           translate .8s cubic-bezier(.16,1,.3,1) var(--d,0s)}
+.ficha:hover{background:#FCFBFA}
+.ficha .im{aspect-ratio:1/1;background:#F2F1EE;position:relative;overflow:hidden;
+           display:flex;align-items:center;justify-content:center}
+.ficha .im img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.ficha:hover .im img{transform:scale(1.04)}
+.ficha .im .vacio{font-family:'Barlow Condensed','Inter',sans-serif;font-size:56px;font-weight:800;
+                  color:rgba(23,21,15,.13)}
+.et{position:absolute;top:10px;left:10px;background:var(--negro);color:#fff;
+    font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;font-size:10.5px;
+    text-transform:uppercase;letter-spacing:.08em;padding:4px 9px;z-index:2}
+.et.oro{background:var(--oro);color:var(--negro)}
+.ficha .cuerpo{padding:13px 13px 0;flex:1}
+.ficha h3{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;text-transform:uppercase;
+          font-size:18px;line-height:1.05;margin:0 0 4px;letter-spacing:.01em}
+.ficha .sub{font-size:12px;color:var(--suave);margin:0 0 10px;min-height:30px}
+.ficha .precio{display:flex;align-items:baseline;gap:7px;margin-bottom:12px}
+.ficha .precio b{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:22px;
+                 font-variant-numeric:tabular-nums}
+.ficha .precio s{font-size:12px;color:#A29C90}
+.ficha .btn{
+  display:block;margin:0 13px;background:var(--negro);color:#fff;text-align:center;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  letter-spacing:.07em;font-size:14px;padding:12px;transition:background .18s;
+}
+.ficha .btn:hover{background:#2A2724}
+
+/* ---------- quienes somos + sello de calidad ----------
+   Va sobre hueso para que se despegue del blanco de la rejilla de productos. */
+.nos{background:var(--hueso);border-top:1px solid var(--linea);
+     border-bottom:1px solid var(--linea);padding:34px 16px 8px}
+.nos-in{max-width:var(--maxw);margin:0 auto;display:flex;flex-direction:column;
+        align-items:center;gap:22px;text-align:center}
+.nos .ceja{display:block;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;
+           text-transform:uppercase;font-size:12px;letter-spacing:.22em;color:var(--oro-osc);
+           margin:0 0 8px}
+.nos h2{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+        font-size:clamp(27px,7.4vw,40px);line-height:.96;margin:0 0 14px;letter-spacing:.01em;
+        color:var(--negro);text-wrap:balance}
+.nos p{margin:0 auto 11px;max-width:46ch;font-size:14.5px;line-height:1.7;
+       font-weight:300;color:var(--suave)}
+.nos-sello{width:min(178px,46vw);flex:none}
+.nos-sello svg{width:100%;height:auto;display:block}
+
+/* los tres puntos del sello de calidad, como tarjetas */
+.nos-puntos{max-width:var(--maxw);margin:30px auto 0;display:grid;gap:11px}
+/* El MISMO efecto de las tarjetas de NAD+ y de Konecta: la tarjeta se levanta,
+   el borde se enciende en dorado, la sombra se tine del mismo dorado y una
+   linea entra por arriba de izquierda a derecha. El icono sube un poco.
+   Los bordes finos quedan en los cuatro lados, como en NAD+. */
+.nos-puntos>div{background:#fff;border:1px solid var(--linea);padding:20px 16px;
+                text-align:center;position:relative;overflow:hidden;
+                /* OJO: esta tarjeta tiene su propia transicion, y pisa a la de
+                   [data-rv] por ser mas especifica. Si no se nombran aca
+                   opacity y translate, la tarjeta APARECE DE GOLPE al llegar,
+                   sin efecto ninguno. Van las cuatro juntas. */
+                transition:transform .3s cubic-bezier(.2,.7,.2,1),
+                           box-shadow .3s ease,border-color .3s ease,
+                           opacity .8s ease var(--d,0s),
+                           translate .8s cubic-bezier(.16,1,.3,1) var(--d,0s)}
+/* DESTELLO: la misma banda diagonal de NAD+ (.imgcard__ph::after), pero en
+   dorado, porque sobre una tarjeta blanca un destello blanco no se ve.
+   Cruza cuando la tarjeta entra en pantalla y otra vez al pasar el mouse. */
+.nos-puntos>div::before{content:'';position:absolute;top:-12%;bottom:-12%;left:-160%;
+  width:42%;pointer-events:none;z-index:0;transform:skewX(-16deg);
+  background:linear-gradient(100deg,transparent 0%,rgba(216,165,46,.34) 42%,
+             rgba(255,249,229,.72) 52%,rgba(216,165,46,.30) 62%,transparent 100%)}
+.nos-puntos>div>*{position:relative;z-index:1}
+.nos-puntos>div[data-rv].vino::before{
+  animation:destello 1.25s ease-out calc(.34s + var(--d,0s)) backwards}
+.nos-puntos>div:hover::before{animation:destello 1s ease-out}
+@keyframes destello{0%{left:-160%}70%{left:160%}100%{left:160%}}
+
+.nos-puntos>div::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
+                       background:linear-gradient(90deg,var(--oro-osc),var(--oro),#F0D588);
+                       transform:scaleX(0);transform-origin:left;
+                       transition:transform .38s cubic-bezier(.2,.7,.2,1)}
+.nos-puntos>div:hover::after{transform:scaleX(1)}
+.nos-puntos>div:hover{transform:translateY(-6px);border-color:var(--oro);
+                      box-shadow:0 22px 46px rgba(216,165,46,.26)}
+.nos-puntos>div:hover .ic{transform:translateY(-3px) scale(1.07)}
+
+.nos-puntos .ic{width:27px;height:27px;stroke:var(--oro-osc);fill:none;stroke-width:1.5;
+                stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 10px;
+                transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+/* el logo de WhatsApp es macizo, no de trazo */
+.nos-puntos .ic-wa{fill:var(--oro-osc);stroke:none}
+.nos-puntos b{display:block;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;
+              text-transform:uppercase;font-size:15px;letter-spacing:.05em;color:var(--negro);
+              margin:0 0 4px}
+.nos-puntos span{display:block;font-size:13px;line-height:1.6;font-weight:300;
+                 color:var(--suave);max-width:34ch;margin:0 auto}
+
+@media (min-width:760px){
+  .nos{padding:52px 16px 10px}
+  .nos-in{flex-direction:row;text-align:left;gap:44px;align-items:center}
+  .nos-txt{flex:1}
+  .nos p{margin-left:0;margin-right:0}
+  .nos-puntos{grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+  .nos-puntos>div{padding:26px 20px}
+}
+
+/* ---------- entrada de cada seccion ----------
+   Solo opacidad y desplazamiento. NO se anima el letter-spacing ni el ancho:
+   eso re-parte el texto en otros renglones mientras entra y parece parpadeo.
+   La clase la pone tienda.js cuando la pieza llega a la pantalla. */
+/* OJO: la entrada usa `translate` y NO `transform`. Son dos propiedades
+   distintas que se suman, asi que la entrada y el levantar del mouse ya no se
+   pelean por la misma. Con transform, la regla de entrada le ganaba a la del
+   hover y la tarjeta dejaba de levantarse. */
+[data-rv]{opacity:0;translate:0 24px;
+          transition:opacity .75s ease var(--d,0s),
+                     translate .75s cubic-bezier(.16,1,.3,1) var(--d,0s)}
+[data-rv].vino{opacity:1;translate:none}
+/* si el navegador es viejo y no entiende `translate`, nada se esconde */
+@supports not (translate:0 1px){ [data-rv]{opacity:1;translate:none} }
+@media (prefers-reduced-motion:reduce){
+  [data-rv]{opacity:1;translate:none;transition:none}
+}
+
+/* Las tarjetas entran con mas recorrido y, al llegar, la linea dorada se
+   dibuja sola de un lado al otro: el mismo gesto del mouse, pero de estreno.
+   Sin `forwards`, para que despues el hover siga mandando sobre la linea. */
+.nos-puntos>div[data-rv]{translate:0 38px}
+.nos-puntos>div[data-rv].vino{translate:none}
+.nos-puntos>div[data-rv].vino::after{
+  animation:barreOro 1.15s cubic-bezier(.2,.7,.2,1) calc(.30s + var(--d,0s)) backwards}
+@keyframes barreOro{
+  0%  {transform:scaleX(0);transform-origin:left}
+  52% {transform:scaleX(1);transform-origin:left}
+  53% {transform:scaleX(1);transform-origin:right}
+  100%{transform:scaleX(0);transform-origin:right}
+}
+@media (prefers-reduced-motion:reduce){
+  .nos-puntos>div[data-rv].vino::after,
+  .nos-puntos>div[data-rv].vino::before,
+  .nos-puntos>div:hover::before{animation:none}
+  .nos-puntos>div::before{display:none}
+}
+
+/* ---------- reseñas: carrusel de tarjetas chicas ----------
+   Va debajo de los productos, sobre hueso para separarse del blanco de la
+   rejilla. Se arrastra con el dedo; en pantalla grande ademas hay flechas. */
+.rese{background:var(--hueso);border-top:1px solid var(--linea);padding:32px 0 38px}
+.rese-cab{max-width:var(--maxw);margin:0 auto;padding:0 16px 18px;
+          display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.rese .ceja{display:block;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;
+            text-transform:uppercase;font-size:12px;letter-spacing:.22em;color:var(--oro-osc);
+            margin:0 0 6px}
+.rese h2{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+         font-size:clamp(24px,6.4vw,34px);line-height:1;margin:0;letter-spacing:.01em;color:var(--negro)}
+.rese-nota{display:flex;align-items:baseline;gap:9px;margin-top:9px}
+.rese-nota .num{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:30px;
+                line-height:1;color:var(--negro);font-variant-numeric:tabular-nums}
+.rese-nota .est{color:var(--oro);letter-spacing:.09em;font-size:15px}
+.rese-nota .cuantas{font-size:12.5px;color:var(--suave)}
+.rese-flechas{display:flex;gap:8px;flex:none}
+.rese-flechas button{width:34px;height:34px;border:1px solid var(--linea);background:#fff;
+                     cursor:pointer;display:grid;place-items:center;color:var(--negro);
+                     transition:border-color .25s,background .25s,color .25s}
+.rese-flechas button:hover{border-color:var(--negro);background:var(--negro);color:#fff}
+.rese-flechas svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;
+                  stroke-linecap:round;stroke-linejoin:round}
+
+/* ARRIBA: la tira de FOTOS. Siempre se ven y siempre va corriendo sola.
+   Se detiene si el cliente pone el dedo o el mouse encima. */
+.rese-fotos{overflow:hidden;padding:2px 0 16px;
+            -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rese-fotos .tira{display:flex;gap:10px;width:max-content;
+                  animation:correFotos 64s linear infinite}
+.rese-fotos:hover .tira,.rese-fotos:active .tira{animation-play-state:paused}
+@keyframes correFotos{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .rese-fotos .tira{animation:none}
+  .rese-fotos{overflow-x:auto;scrollbar-width:none}
+}
+/* redondas a proposito: la tienda entera son rectangulos, y una fila de
+   circulos con caras le quita la dureza sin salirse del molde */
+.rese-fotos .fo{flex:0 0 auto;width:112px;height:112px;border-radius:50%;overflow:hidden;
+                background:#E4E1DB;position:relative;
+                box-shadow:0 0 0 1px var(--linea), 0 8px 20px rgba(15,14,12,.09);
+                transition:box-shadow .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+.rese-fotos .fo img{width:100%;height:100%;object-fit:cover;display:block;
+                    transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.rese-fotos .fo:hover{transform:translateY(-4px);
+                      box-shadow:0 0 0 2px var(--oro), 0 14px 30px rgba(216,165,46,.30)}
+.rese-fotos .fo:hover img{transform:scale(1.07)}
+/* marco vacio mientras no esten las fotos cargadas */
+.rese-fotos .fo.hueco::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,#EAE7E1,#F4F2EE 45%,#E4E1DB)}
+@media (min-width:900px){ .rese-fotos .fo{width:126px;height:126px} }
+
+/* ABAJO: las tarjetas con lo que escribieron. Chicas y QUIETAS: solo se
+   mueven con las flechas o arrastrando. Lo unico que corre solo son las
+   fotos de arriba; dos cosas moviendose a la vez cansa la vista. */
+.rese-pista{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+            padding:2px 16px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+            scroll-behavior:smooth}
+.rese-pista::-webkit-scrollbar{display:none}
+@media (min-width:1220px){ .rese-pista{padding-left:calc(50vw - var(--maxw)/2 + 16px)} }
+
+/* Tarjetas chicas de verdad: son el coro, no el protagonista. Sin destello. */
+.rsn{flex:0 0 auto;width:186px;background:#fff;
+     border:1px solid var(--linea);padding:11px 12px 10px;position:relative;
+     display:flex;flex-direction:column;
+     transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease}
+.rsn:hover{transform:translateY(-4px);border-color:var(--oro);
+           box-shadow:0 12px 26px rgba(216,165,46,.22)}
+
+.rsn .quien{display:flex;align-items:center;gap:7px;margin:0 0 6px}
+.rsn .av{width:24px;height:24px;flex:none;border-radius:50%;display:grid;place-items:center;
+         background:var(--negro);color:#fff;font-family:'Barlow Condensed','Inter',sans-serif;
+         font-weight:800;font-size:12px}
+.rsn .nom{font-weight:600;font-size:11.5px;color:var(--negro);line-height:1.2;
+          white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+.rsn .lug{font-size:10px;color:var(--suave);line-height:1.3}
+.rsn .est{color:var(--oro);font-size:10.5px;letter-spacing:.06em;margin:0 0 4px}
+.rsn .est i{color:#D6D2C8;font-style:normal}
+.rsn p{margin:0;font-size:11.5px;line-height:1.55;font-weight:300;color:var(--tinta);flex:1}
+.rsn .prod{margin:7px 0 0;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;
+           text-transform:uppercase;font-size:9px;letter-spacing:.06em;color:var(--oro-osc);
+           white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rsn .fec{font-size:9.5px;color:#A29C90;margin-top:3px}
+
+@media (min-width:900px){ .rsn{width:206px} }
+
+/* ---------- garantia ---------- */
+/* ---------- garantia con el video de la pareja de fondo ----------
+   Ocupa TODO el ancho de la pantalla, sin bordes ni lineas. */
+/* OJO: esta seccion cuelga directo del body, o sea que YA ocupa todo el ancho.
+   Tenia width:100vw + margin-left:calc(50% - 50vw) y eso la sacaba 8 px por el
+   lado derecho, porque 100vw cuenta la barra de desplazamiento y el body no.
+   Resultado: TODA la tienda se corria de lado en el celular. */
+.gar.gar-video{position:relative;overflow:hidden;background:var(--negro);
+           min-height:420px;display:flex;align-items:center;justify-content:center;
+           width:auto;max-width:none;margin-left:0;
+           border:0;padding:0}
+.gar.gar-video .clip-gar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+                     object-position:center 30%;opacity:0;transition:opacity 1.2s ease}
+.gar.gar-video .clip-gar.listo{opacity:.72}
+/* el velo tapa fuerte en el centro: ahi va el texto y tiene que leerse */
+.gar.gar-video .velo{position:absolute;inset:0;background:rgba(15,14,12,.42)}
+.gar.gar-video .dentro{position:relative;padding:44px 18px;max-width:56ch;text-align:center}
+.gar.gar-video h2{color:#fff;font-size:clamp(24px,6.5vw,34px);margin:0 0 12px;
+              text-shadow:0 2px 20px rgba(0,0,0,.95),0 0 40px rgba(0,0,0,.7)}
+/* el subtitulo, mas grande y con mas contraste: antes se perdia */
+.gar.gar-video p{color:#fff;font-weight:200;font-size:13.5px;line-height:1.75;
+                 letter-spacing:.02em;margin:16px auto 0;max-width:40ch;
+                 text-shadow:0 2px 14px rgba(0,0,0,.9),0 0 24px rgba(0,0,0,.65)}
+
+/* Entrada: el texto sube y aparece. Nada mas.
+   NO se anima el letter-spacing ni la escala: eso hacia que el titulo cambiara
+   de ancho mientras entraba, se re-partiera en otros renglones y pareciera que
+   parpadeaba. Se anima solo lo que no re-acomoda el texto. */
+.gar.gar-video h2,.gar.gar-video p{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .95s ease,transform .95s cubic-bezier(.16,1,.3,1);
+  will-change:opacity,transform}
+.gar.gar-video.entro h2,.gar.gar-video.entro p{opacity:1;transform:none}
+.gar.gar-video.entro p{transition-delay:.20s}
+@media (prefers-reduced-motion:reduce){
+  .gar.gar-video .clip-gar{display:none}
+  .gar.gar-video h2,.gar.gar-video p{opacity:1;transform:none;transition:none}
+}
+
+.gar{background:var(--gris);padding:28px 16px;text-align:center}
+.gar h2{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+        font-size:24px;margin:0 0 7px;letter-spacing:.02em}
+.gar p{margin:0 auto;max-width:52ch;font-size:14px;color:var(--suave)}
+
+/* ---------- pie: columnas plegables como 5.11 + contacto y redes ---------- */
+.pie{background:var(--negro);color:#9A9384;padding:34px 16px 26px}
+.pie .envoltorio{max-width:var(--maxw);margin:0 auto}
+
+.pie .cols{display:grid;gap:0}
+@media (min-width:760px){ .pie .cols{grid-template-columns:repeat(3,1fr);gap:34px} }
+
+.pie .col{border-bottom:1px solid #23211C}
+@media (min-width:760px){ .pie .col{border-bottom:0} }
+.pie summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 0;color:#fff;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:16px;letter-spacing:.04em;
+}
+.pie summary::-webkit-details-marker{display:none}
+/* el mas que se vuelve menos al abrir, como en 5.11 */
+.pie .mas{position:relative;width:14px;height:14px;flex:none}
+.pie .mas::before,.pie .mas::after{content:'';position:absolute;background:#fff;transition:transform .25s ease}
+.pie .mas::before{left:0;top:6px;width:14px;height:1.6px}
+.pie .mas::after{left:6px;top:0;width:1.6px;height:14px}
+.pie details[open] .mas::after{transform:scaleY(0)}
+@media (min-width:760px){ .pie .mas{display:none} .pie summary{cursor:default;padding:0 0 14px} }
+
+.pie .dentro{display:flex;flex-direction:column;gap:11px;padding:0 0 18px}
+.pie .dentro a,.pie .contacto a{color:#BEB8AC;font-size:14px}
+.pie .dentro a:hover,.pie .contacto a:hover{color:#fff}
+
+.pie .contacto{padding:16px 0 18px}
+.pie .contacto h4{
+  margin:0 0 12px;color:#fff;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:16px;letter-spacing:.04em;
+}
+@media (min-width:760px){ .pie .contacto h4{margin-bottom:14px} }
+.pie .contacto p{margin:0 0 9px;font-size:14px;color:#BEB8AC}
+
+/* suscripcion al correo, como la de 5.11 */
+.pie .boletin{border-top:1px solid #23211C;padding:24px 0 22px;margin-top:8px}
+.pie .boletin h4{
+  margin:0 0 7px;color:#fff;text-align:center;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:17px;letter-spacing:.05em;
+}
+.pie .boletin .dice{margin:0 auto 14px;max-width:44ch;text-align:center;font-size:13px;
+                    color:#9A9384;font-weight:300;line-height:1.6}
+.pie .boletin form{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto}
+.pie .boletin input[type=email]{
+  width:100%;background:#fff;border:1px solid #23211C;color:var(--tinta);
+  padding:13px 14px;font-size:15px;font-family:inherit;border-radius:0;
+}
+.pie .boletin input[type=email]:focus{outline:2px solid var(--oro);outline-offset:-2px}
+.pie .boletin .acepto{display:flex;gap:9px;align-items:flex-start;font-size:12px;
+                      color:#9A9384;font-weight:300;line-height:1.5}
+.pie .boletin .acepto input{margin-top:2px;flex:none;accent-color:var(--oro)}
+.pie .boletin .acepto a{color:#BEB8AC;text-decoration:underline}
+.pie .boletin button{
+  background:var(--oro);color:var(--negro);border:0;padding:13px;cursor:pointer;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  letter-spacing:.08em;font-size:15px;transition:background .18s;
+}
+.pie .boletin button:hover{background:#E8B84A}
+.pie .boletin .gracias{text-align:center;color:var(--oro);font-size:14px;font-weight:600;padding:8px 0}
+
+/* siguenos, centrado como en 5.11 */
+.pie .redes{text-align:center;padding:26px 0 22px;border-top:1px solid #23211C;margin-top:8px}
+.pie .redes .rot{
+  display:block;margin-bottom:14px;color:#fff;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:15px;letter-spacing:.09em;
+}
+.pie .iconos{display:flex;justify-content:center;gap:13px}
+.pie .iconos a{display:block;transition:transform .18s,opacity .18s;opacity:.9}
+.pie .iconos svg{width:26px;height:26px;display:block}
+.pie .iconos a:hover{transform:translateY(-2px);opacity:1}
+
+/* la marca grande al final, como el 5.11 gigante */
+.pie .marca-grande{
+  display:flex;align-items:center;justify-content:center;padding:6px 0 16px;
+  font-family:'Inter','Barlow Condensed',sans-serif;text-transform:uppercase;line-height:1;
+}
+.pie .marca-grande .j{font-weight:800;font-size:22px;color:#fff;letter-spacing:-.005em}
+.pie .marca-grande .g{font-weight:200;font-size:17px;color:#fff;letter-spacing:.15em}
+.pie .marca-grande .raya{
+  display:inline-block;width:1.5px;height:26px;background:var(--oro);
+  margin:0 12px 0 13px;flex:none;
+}
+
+.pie .abajo{
+  border-top:1px solid #23211C;padding-top:16px;text-align:center;
+  display:flex;flex-direction:column;gap:5px;
+}
+.pie .abajo small{font-size:12px;color:#7E7869}
+
+
+/* ---------- paginas legales (terminos, privacidad, envio, reembolso, contacto) ----------
+   Misma paleta que la tienda: negro, hueso y oro. Antes usaban style.css
+   (la landing vieja) y los titulos salian celestes. */
+.legal-head{background:var(--negro);border-bottom:1px solid rgba(255,255,255,.10);position:sticky;top:0;z-index:40}
+.legal-head .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:820px;margin:0 auto;padding:0 20px}
+/* el logo, EXACTAMENTE el del encabezado de la tienda: JAYE y GROUP del mismo
+   color (aqui blanco, porque el fondo es negro) y solo la raya dorada. */
+.legal-head .logo{visibility:visible}
+.legal-head .logo .j,.legal-head .logo .g{color:#fff}
+.legal-head .volver{color:var(--oro);font-weight:700;font-size:14px;text-decoration:none;letter-spacing:.01em}
+.legal-head .volver:hover{color:#fff}
+
+body.legal{background:var(--hueso)}
+.legal-body{max-width:820px;margin:0 auto;padding:44px 20px 72px;background:var(--hueso)}
+.legal-body h1{font-family:'Barlow Condensed','Inter',sans-serif;text-transform:uppercase;font-size:clamp(28px,5vw,38px);color:var(--tinta);
+  margin:0 0 8px;letter-spacing:-.02em;line-height:1.12;text-wrap:balance}
+.legal-body .upd{color:var(--suave);font-size:13.5px;margin-bottom:34px;padding-bottom:22px;
+  border-bottom:1px solid var(--linea)}
+.legal-body h2{font-family:'Barlow Condensed','Inter',sans-serif;font-size:19px;color:var(--tinta);
+  margin:34px 0 10px;letter-spacing:-.01em}
+.legal-body h2::before{content:'';display:inline-block;width:22px;height:2px;background:var(--oro);
+  vertical-align:.28em;margin-right:10px}
+.legal-body p,.legal-body li{font-size:15.5px;color:var(--suave);line-height:1.75;margin-bottom:9px}
+.legal-body ul{padding-left:20px;margin:12px 0;list-style:none}
+.legal-body ul li{position:relative;padding-left:16px}
+.legal-body ul li::before{content:'';position:absolute;left:0;top:.72em;width:5px;height:5px;
+  border-radius:50%;background:var(--oro)}
+.legal-body b,.legal-body strong{color:var(--tinta);font-weight:700}
+.legal-body a{color:var(--oro-osc);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.legal-body a:hover{color:var(--tinta)}
+.legal-body .wai{width:18px;height:18px;vertical-align:-3px;margin-right:5px}
+.legal-body li svg{max-width:20px;max-height:20px}
+@media(max-width:600px){ .legal-body{padding:32px 18px 56px} }
+
+/* pie de las paginas legales. No existia en tienda.css (solo en style.css, la
+   hoja vieja), por eso los enlaces salian pegados y sin estilo. */
+.legal-foot{background:var(--negro);color:#9A9384;padding:30px 20px 34px;text-align:center;
+  font-size:13.5px;margin-top:40px}
+.legal-foot .enlaces{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:10px 22px;margin-top:14px}
+.legal-foot a{color:#fff;text-decoration:none;font-weight:600;font-size:13.5px;white-space:nowrap}
+.legal-foot a:hover{color:var(--oro)}
+
+
+/* ---------- Agregado del Gel Sellador ----------
+   No lleva estilos propios: los botones usan la clase .pack, la misma de los
+   packs, para que se vean identicos. Aqui solo va el titulo y el aire que lo
+   separa de la escalera de precios.                                        */
+.upsell-tit{margin:22px 0 2px;font-weight:800;font-size:16px;color:#0c1526}
+.upsell-sub{font-size:13px;color:#6b7280;line-height:1.45;margin-bottom:10px}
+#upsell{margin-bottom:6px}
+
+/* ============================================================
+   PANTALLA GRANDE (computador) — desde 1024px
+   La portada ya se adapta bien: los productos salen en cuatro
+   columnas y el texto no pasa de 54 letras por linea. Lo unico
+   desproporcionado era el PIE: media 796px de alto, mas que el
+   hero, porque el boletin y las columnas de enlaces iban uno
+   debajo del otro ocupando los 1180px cada uno.
+   Esto NO toca nada por debajo de 1024px.
+   ============================================================ */
+@media (min-width:1024px){
+  .pie .envoltorio{
+    display:grid; grid-template-columns:1fr 360px; gap:6px 46px;
+    align-items:start }
+  .pie .envoltorio > .cols{ grid-column:1; grid-row:1 }
+  .pie .envoltorio > .boletin{ grid-column:2; grid-row:1; margin:0 }
+  .pie .envoltorio > .redes,
+  .pie .envoltorio > .marca-grande,
+  .pie .envoltorio > .abajo{ grid-column:1 / -1 }
+}
+
+/* ============================================================
+   SITIO ENCAJONADO EN PANTALLA GRANDE — desde 1500px
+   Lo pidio el dueno: en un monitor grande la foto del hero y las
+   franjas cruzaban los 1.900px de lado a lado y se veia estirado.
+   El contenido ya iba centrado en 1.180px; lo que sobraba eran
+   los FONDOS. Ahora todo el sitio, fondos incluidos, se queda en
+   1.500px centrados, con el margen a los lados en gris claro.
+   Los flotantes (WhatsApp y la barra de comprar) se dejan fuera:
+   van pegados a la ventana, no a la caja.
+   Por debajo de 1500px NO cambia nada.
+   ============================================================ */
+@media (min-width:1360px){
+  body{ background:#E6E3DE }
+  /* 1.300px: el contenido de adentro va en 1.180, asi queda 60px de aire a
+     cada lado. Mas angosto que esto y el contenido toca los bordes. */
+  /* la rejilla queda FUERA de esta regla: cuelga directo del body y no tiene
+     relleno propio, asi que con el ancho de la caja las tarjetas tocarian el
+     borde. Se excluye aqui y se le pone su ancho aparte; si solo se intentara
+     sobrescribir despues no serviria, porque este selector pesa mas. */
+  body > *:not(.wa):not(.stickycta):not(.rejilla):not(script):not(style){
+    max-width:1300px; margin-left:auto; margin-right:auto }
+  body > .rejilla{ max-width:1180px; margin-left:auto; margin-right:auto }
+  /* la caja se despega del gris con una sombra suave */
+  body > .pegado{ box-shadow:0 1px 0 rgba(0,0,0,.06) }
+}

@@ -1,0 +1,912 @@
+/* COPIADO TAL CUAL del <style> de la ficha de Chile (nadplus/producto.html). No se toca. */
+
+/* ============================================================
+   FICHA DE PRODUCTO
+   El orden lo definio el dueno: galeria, estrellas, precio y nombre,
+   promocion, descripcion, resenas, preguntas, sellos, otros productos y
+   el formulario al final.
+   Aca (y SOLO aca, no en la tienda) se usan rojo y azul para los botones
+   que empujan la venta.
+   ============================================================ */
+:root{ --rojo:#C4122F; --azul:#123C8C; }
+.prod{max-width:var(--maxw);margin:0 auto;padding:0 0 8px}
+
+/* ---- 1. galeria ---- */
+.gal{position:relative;background:#F2F1EE}
+.gal .marco{aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.gal .marco img{width:100%;height:100%;object-fit:cover;display:block}
+.gal .vacio{font-family:'Barlow Condensed','Inter',sans-serif;font-size:110px;font-weight:800;
+            color:rgba(23,21,15,.13)}
+/* 44x44 es el minimo para que un dedo no falle. Estaban en 38. */
+.gal .flecha{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;
+  border:0;background:rgba(255,255,255,.92);cursor:pointer;display:flex;align-items:center;
+  justify-content:center;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.14);color:var(--tinta)}
+.gal .flecha.izq{left:10px} .gal .flecha.der{right:10px}
+.gal .flecha svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round}
+.gal .puntos{display:flex;gap:7px;justify-content:center;padding:12px 0 0}
+/* El punto se VE de 7px y se TOCA en 44. El area grande la pone un ::after
+   invisible encima; con relleno y background-clip quedaban unos circulotes
+   grises, que es justo lo que el dueño vio. */
+.gal .puntos button{width:7px;height:7px;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:var(--linea);transition:.2s;position:relative}
+.gal .puntos button::after{content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:44px;height:44px;border-radius:50%}
+.gal .puntos button[aria-current="true"]{background:var(--tinta);width:20px;border-radius:99px}
+.miniz{display:flex;gap:8px;padding:12px 16px 0;overflow-x:auto;scrollbar-width:none}
+.miniz::-webkit-scrollbar{display:none}
+.miniz button{flex:none;width:58px;height:58px;border:1px solid var(--linea);background:#F2F1EE;
+  padding:0;cursor:pointer;overflow:hidden}
+.miniz button[aria-current="true"]{border-color:var(--tinta);box-shadow:inset 0 0 0 1px var(--tinta)}
+.miniz img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---- 2. estrellas ---- */
+.estrellas{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.estrellas .est{display:inline-flex;gap:2px}
+.estrellas svg{width:15px;height:15px;fill:var(--oro)}
+.estrellas .cuantas{font-size:13px;color:var(--suave)}
+.estrellas .cuantas a{color:var(--suave);text-decoration:underline;text-underline-offset:2px}
+
+/* ---- 3. precio y nombre ---- */
+.prod .datos{padding:16px 16px 0}
+.prod h1{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:clamp(28px,7vw,40px);line-height:.95;margin:0 0 8px;letter-spacing:.01em}
+.prod .sub{color:var(--suave);font-size:15px;margin:0 0 14px}
+.prod .nota{font-size:13px;color:var(--oro-osc);font-weight:700;margin:0 0 16px}
+.precioTop{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 4px}
+.precioTop .ahora{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;
+  font-size:34px;line-height:1;font-variant-numeric:tabular-nums;color:var(--tinta)}
+.precioTop .antes{font-size:15px;color:#A29C90;text-decoration:line-through}
+.precioTop .off{background:var(--rojo);color:#fff;font-family:'Barlow Condensed','Inter',sans-serif;
+  font-weight:700;font-size:12px;letter-spacing:.06em;padding:3px 8px;text-transform:uppercase}
+/* Debajo del precio grande: de que pack es y cuanto sale cada uno.
+   Sin esto el cliente cree que el precio del pack es por una sola unidad. */
+.packDe{margin:6px 0 12px;font-size:13.5px;font-weight:700;color:var(--acento);
+  letter-spacing:.01em;font-variant-numeric:tabular-nums}
+
+/* ---- promocion: el pack que se empuja, con contador ----
+   Arriba se ve el precio de salida; aca la oferta de verdad. */
+/* La promocion es lo que engancha: tiene que ser lo mas llamativo de la
+   pagina. Por eso NO lleva titulo afuera (asi no se notaba): el rotulo va
+   dentro, en una franja de color arriba de la caja. */
+.promo-card{border:2px solid var(--acento);border-radius:18px;overflow:hidden;
+  background:var(--surface,#fff);position:relative;
+  box-shadow:0 14px 34px color-mix(in srgb, var(--acento) 24%, transparent)}
+.promo-banner{background:var(--acento);color:#fff;display:flex;align-items:center;gap:9px;
+  padding:11px 16px;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;
+  text-transform:uppercase;letter-spacing:.10em;font-size:17px}
+.promo-banner .chispa{font-size:14px;line-height:1}
+.promo-banner-sub{margin-left:auto;font-size:12px;letter-spacing:.08em;opacity:.9;font-weight:700}
+.promo-cuerpo{padding:16px 16px 16px}
+.promo-qt{display:block;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;
+  text-transform:uppercase;font-size:22px;letter-spacing:.02em;color:var(--tinta);margin-bottom:2px}
+/* el precio de antes tachado al lado del de hoy: sin eso no se nota la rebaja */
+.promo-precios{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.promo-antes{font-size:17px;color:#A29C90;text-decoration:line-through;
+  font-variant-numeric:tabular-nums}
+.promo-off{background:var(--acento);color:#fff;font-family:'Barlow Condensed','Inter',sans-serif;
+  font-weight:800;font-size:13px;letter-spacing:.05em;padding:3px 9px;border-radius:6px}
+/* el precio queda FIJO, sin latido: solo mas grande. Lo pidio asi el dueno. */
+.promo-precio{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:42px;
+  line-height:.95;color:var(--acento);font-variant-numeric:tabular-nums}
+/* el precio por unidad va pegado al del pack y se lee, no en letra chica */
+.promo-uni{margin:4px 0 0;font-size:15px;font-weight:600;color:var(--tinta);
+  font-variant-numeric:tabular-nums}
+.promo-uni b{color:var(--acento);font-weight:800}
+
+/* ---- contador: cajas BLANCAS con borde de color, no negras ---- */
+.cuenta{display:flex;gap:9px;justify-content:center;margin:16px 0 10px}
+.cuenta > div{min-width:72px;background:var(--surface,#fff);border:2px solid var(--acento);
+  border-radius:12px;padding:9px 6px;text-align:center}
+.cuenta b{display:block;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;
+  font-size:28px;line-height:1;font-variant-numeric:tabular-nums;color:var(--acento)}
+.cuenta span{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--suave);margin-top:3px}
+/* SOLO el cuadrito de los segundos late con la cuenta: si laten los tres, marea */
+.cuenta .seg.late{animation:segCaja .92s ease-out}
+.cuenta .seg.late b,.cuenta .seg.late span{animation:segTexto .92s ease-out}
+@keyframes segCaja{ 0%{background:var(--acento)} 100%{background:var(--surface,#fff)} }
+@keyframes segTexto{ 0%{color:#fff} 100%{color:inherit} }
+@media (prefers-reduced-motion:reduce){
+  .cuenta .seg.late,.cuenta .seg.late b,.cuenta .seg.late span{animation:none}
+}
+.promo-pie{text-align:center;font-size:12.5px;color:var(--suave);margin:0 0 14px}
+.promo-card .cta{max-width:none}
+
+/* ---- 4. promocion / packs ---- */
+.bloque{padding:26px 16px 0}
+.bloque > h2{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:20px;letter-spacing:.03em;margin:0 0 14px;color:var(--tinta);display:flex;align-items:center;gap:10px}
+.bloque > h2::before{content:'';width:22px;height:2px;background:var(--oro);flex:none}
+.packs{display:grid;gap:10px}
+.pack{display:flex;align-items:center;gap:12px;border:1px solid var(--linea);padding:13px 14px;
+  cursor:pointer;background:#fff;text-align:left;width:100%;position:relative;transition:.18s}
+.pack:hover{border-color:var(--suave)}
+.pack[aria-pressed="true"]{border-color:var(--negro);box-shadow:inset 0 0 0 1px var(--negro)}
+.pack .marca{width:18px;height:18px;border:2px solid var(--linea);border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center}
+.pack[aria-pressed="true"] .marca{border-color:var(--negro)}
+.pack[aria-pressed="true"] .marca::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--negro)}
+.pack .qt{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:16px;flex:1;letter-spacing:.02em}
+.pack .pz{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:21px;
+  font-variant-numeric:tabular-nums}
+.pack .an{font-size:12px;color:#A29C90;text-decoration:line-through;margin-left:6px}
+/* el pack mas pedido: el precio late y cambia de color, para que se note */
+.pack.esPopular{border-color:var(--rojo)}
+.pack.esPopular .pz{animation:latir 1.9s ease-in-out infinite}
+@keyframes latir{
+  0%,100%{ transform:scale(1); color:var(--tinta) }
+  50%    { transform:scale(1.08); color:var(--rojo) }
+}
+.cinta{position:absolute;top:-9px;left:12px;background:var(--rojo);color:#fff;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;font-size:12px;
+  text-transform:uppercase;letter-spacing:.09em;padding:3px 9px}
+@media (prefers-reduced-motion:reduce){ .pack.esPopular .pz{animation:none;color:var(--rojo)} }
+
+/* ---- botones que empujan la venta (rojo y azul, solo en esta pagina) ---- */
+/* Todos los botones con la MISMA medida que el flotante de abajo:
+   misma letra, mismo espaciado y el mismo ancho maximo. */
+.cta{display:block;width:100%;max-width:520px;margin-left:auto;margin-right:auto;
+  border:0;cursor:pointer;text-align:center;text-decoration:none;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  letter-spacing:.06em;font-size:15px;line-height:1.15;padding:16px 20px;position:relative;overflow:hidden;
+  transition:transform .16s ease, box-shadow .16s ease}
+.cta:hover{transform:translateY(-2px)}
+.cta:active{transform:translateY(0)}
+.cta.rojo{background:var(--rojo);color:#fff;box-shadow:none}
+.cta.rojo:hover{box-shadow:none}
+/* blanco con reborde del color del producto: el azul sobre negro no se leia.
+   El reborde va por dentro (inset) para no cambiar la medida del boton. */
+.cta.azul{background:#fff;color:var(--cta2,var(--azul));
+  box-shadow:inset 0 0 0 2px var(--cta2,var(--azul))}
+.cta.azul:hover{background:var(--cta2,var(--azul));color:#fff;
+  box-shadow:inset 0 0 0 2px var(--cta2,var(--azul))}
+/* el brillo blanco no se ve sobre blanco: se cambia por uno gris tenue */
+.cta.azul::after{background:linear-gradient(100deg,transparent,rgba(0,0,0,.07),transparent)}
+.cta.negro{background:var(--negro);color:#fff}
+/* un brillo que cruza el boton cada tanto: llama sin marear */
+.cta::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);
+  animation:brillo 3.4s ease-in-out infinite}
+@keyframes brillo{ 0%{left:-60%} 55%,100%{left:130%} }
+@media (prefers-reduced-motion:reduce){ .cta::after{animation:none;display:none} .cta:hover{transform:none} }
+.ctaSub{text-align:center;font-size:12.5px;color:var(--suave);margin-top:9px}
+
+/* ---- 5. descripcion ---- */
+.desc p{font-size:15.5px;line-height:1.75;color:var(--suave);margin:0 0 14px}
+.desc ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.desc li{position:relative;padding-left:26px;font-size:15px;color:var(--tinta);line-height:1.55}
+.desc li::before{content:'';position:absolute;left:0;top:.36em;width:14px;height:14px;
+  border-radius:50%;background:var(--oro);opacity:.22}
+.desc li::after{content:'';position:absolute;left:4.5px;top:.63em;width:5px;height:8px;
+  border-right:2px solid var(--oro-osc);border-bottom:2px solid var(--oro-osc);transform:rotate(42deg)}
+
+/* ---- 6. resenas ---- */
+.rs{display:grid;gap:12px}
+.rsc{border:1px solid var(--linea);background:#fff;padding:14px 15px}
+.rsc .arriba{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.rsc .ini{width:32px;height:32px;border-radius:50%;background:var(--gris);flex:none;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--suave)}
+.rsc .quien{flex:1;font-weight:700;font-size:14px;color:var(--tinta);line-height:1.2}
+.rsc .quien small{display:block;font-weight:400;font-size:12px;color:var(--suave)}
+.rsc .est{display:inline-flex;gap:1px}
+.rsc .est svg{width:13px;height:13px;fill:var(--oro)}
+.rsc p{margin:0;font-size:14.5px;line-height:1.65;color:var(--suave)}
+.masRs{margin-top:12px;background:#fff;border:1px solid var(--linea);color:var(--tinta);
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;font-size:13.5px;padding:12px;width:100%;cursor:pointer}
+.masRs:hover{border-color:var(--tinta)}
+
+/* ---- 7. preguntas ---- */
+.fq{border-top:1px solid var(--linea)}
+.fq details{border-bottom:1px solid var(--linea)}
+.fq summary{list-style:none;cursor:pointer;padding:15px 34px 15px 0;position:relative;
+  font-weight:700;font-size:15px;color:var(--tinta)}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::after{content:'';position:absolute;right:6px;top:50%;width:9px;height:9px;
+  border-right:2px solid var(--suave);border-bottom:2px solid var(--suave);
+  transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.fq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+.fq details p{margin:0;padding:0 0 16px;font-size:14.5px;line-height:1.7;color:var(--suave)}
+
+/* ---- 8. sellos de las transportadoras ---- */
+.sellos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sello{border:1px solid var(--linea);background:#fff;padding:16px 14px;text-align:center}
+.sello img{height:26px;width:auto;max-width:100%;object-fit:contain;margin:0 auto 8px;display:block}
+.sello .nom{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:17px;
+  letter-spacing:.03em;color:var(--tinta);text-transform:uppercase}
+.sello small{display:block;font-size:12px;color:var(--suave);margin-top:3px;line-height:1.4}
+
+/* ---- 9. te puede interesar ---- */
+.otros{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (min-width:700px){ .otros{grid-template-columns:repeat(4,1fr)} }
+.oc{border:1px solid var(--linea);background:#fff;text-decoration:none;display:block}
+.oc .im{aspect-ratio:1/1;background:#F2F1EE;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.oc .im img{width:100%;height:100%;object-fit:cover}
+.oc .im span{font-family:'Barlow Condensed','Inter',sans-serif;font-size:46px;font-weight:800;
+  color:rgba(23,21,15,.13)}
+.oc .tx{padding:10px 11px 12px}
+.oc .n{font-weight:700;font-size:13.5px;color:var(--tinta);line-height:1.25;margin-bottom:4px}
+.oc .p{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:17px;color:var(--tinta)}
+
+/* ---- 10. formulario ---- */
+.form{background:var(--negro);padding:28px 16px 34px;margin-top:30px}
+.form h2{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:23px;color:#fff;margin:0 0 5px;letter-spacing:.02em;text-align:center}
+.form .baj{color:#B5AE9F;font-size:13.5px;text-align:center;margin:0 0 18px}
+.form .resu{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.form .resu .qq{flex:1;color:#fff;font-size:14px;line-height:1.35}
+.form .resu .qq small{display:block;color:#B5AE9F;font-size:12px}
+.form .resu .pp{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:23px;color:#fff}
+/* el mismo selector de packs, pero sobre el fondo negro del formulario */
+.packs.enForm{margin-bottom:16px}
+.packs.enForm .pack{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.packs.enForm .pack:hover{border-color:rgba(255,255,255,.42)}
+.packs.enForm .pack[aria-pressed="true"]{border-color:var(--oro);box-shadow:inset 0 0 0 1px var(--oro);background:rgba(216,165,46,.10)}
+.packs.enForm .pack .qt{color:#fff}
+.packs.enForm .pack .pz{color:#fff}
+.packs.enForm .pack .an{color:#8A8272}
+.packs.enForm .pack .marca{border-color:rgba(255,255,255,.34)}
+.packs.enForm .pack[aria-pressed="true"] .marca{border-color:var(--oro)}
+.packs.enForm .pack[aria-pressed="true"] .marca::after{background:var(--oro)}
+.packs.enForm .pack.esPopular{border-color:var(--rojo)}
+.packs.enForm .pack.esPopular .pz{animation:latirOscuro 1.9s ease-in-out infinite}
+@keyframes latirOscuro{
+  0%,100%{ transform:scale(1); color:#fff }
+  50%    { transform:scale(1.08); color:#FF6B80 }
+}
+@media (prefers-reduced-motion:reduce){ .packs.enForm .pack.esPopular .pz{animation:none;color:#FF6B80} }
+.form label{display:block;color:#B5AE9F;font-size:12px;font-weight:600;margin:0 0 5px;
+  text-transform:uppercase;letter-spacing:.05em}
+.form input,.form select,.form textarea{width:100%;padding:12px 13px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);color:#fff;font-size:15px;font-family:inherit;margin-bottom:13px}
+.form input::placeholder,.form textarea::placeholder{color:#7C7566}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--oro)}
+.form select option{color:#111}
+.form .dos{display:grid;grid-template-columns:1fr 1fr;gap:0 11px}
+.form .mal{border-color:var(--rojo) !important}
+.form .aviso{color:#FF9BA8;font-size:12.5px;margin:-8px 0 12px;display:none}
+.form .listo{background:rgba(255,255,255,.07);border:1px solid var(--oro);padding:22px 18px;text-align:center;color:#fff}
+.form .listo h3{font-family:'Barlow Condensed','Inter',sans-serif;font-size:22px;margin:0 0 7px;
+  text-transform:uppercase;letter-spacing:.02em}
+.form .listo p{color:#B5AE9F;font-size:14px;margin:0;line-height:1.6}
+
+
+/* --- secciones nuevas --- */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:'Barlow Condensed','Inter',sans-serif;
+  font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--oro-osc);margin-bottom:10px}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--oro)}
+/* si la seccion trae eyebrow, el titulo no lleva rayita: salian dos */
+.eyebrow + .tit2::before{content:none}
+.tit2{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:clamp(23px,5.2vw,32px);line-height:1.02;letter-spacing:-.01em;color:var(--tinta);margin:0 0 10px;text-wrap:balance}
+.sub2{font-size:15px;line-height:1.65;color:var(--suave);margin:0 0 20px;max-width:60ch}
+
+/* 5 · la formula */
+.ing-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){ .ing-grid{grid-template-columns:1fr 1fr;gap:18px 26px} }
+.ing{display:flex;gap:13px;align-items:flex-start}
+.ing .cir{flex:0 0 46px;width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(140deg,var(--negro),#2b2823);display:grid;place-items:center;
+  box-shadow:0 6px 16px rgba(23,21,15,.22)}
+.ing .cir svg{width:22px;height:22px;stroke:var(--oro);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ing b{display:block;font-family:'Barlow Condensed','Inter',sans-serif;font-size:16px;
+  text-transform:uppercase;letter-spacing:.02em;color:var(--tinta);margin-bottom:3px}
+.ing p{font-size:13.5px;color:var(--suave);line-height:1.55;margin:0}
+
+/* 6 · el cambio */
+.ba-img{border:1px solid var(--linea);overflow:hidden;margin-bottom:16px}
+.ba-img img{width:100%;display:block}
+
+/* 7 · resultados */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:700px){ .res-grid{grid-template-columns:repeat(4,1fr)} }
+.res{border:1px solid var(--linea);background:var(--surface,#fff);padding:20px 14px;text-align:center}
+.res b{display:block;font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;
+  font-size:38px;line-height:1;color:var(--oro-osc);font-variant-numeric:tabular-nums}
+.res span{display:block;font-size:12.5px;color:var(--suave);margin-top:7px;line-height:1.45}
+
+/* 8 · comparativa */
+.cmp{width:100%;border-collapse:collapse;background:var(--negro);color:#EDE9E1;font-size:14px}
+.cmp th,.cmp td{padding:14px 12px;border-bottom:1px solid rgba(255,255,255,.10);text-align:left;vertical-align:middle}
+.cmp thead th{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;font-size:13px;color:#B5AE9F}
+.cmp thead th.us{color:var(--oro)}
+.cmp td:not(:first-child),.cmp th:not(:first-child){text-align:center;width:74px}
+.cmp .si svg{width:20px;height:20px;stroke:#4ADE80;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.cmp .no svg{width:18px;height:18px;stroke:#FF6B80;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.cmp-sec{overflow-x:auto}
+
+/* 10 · garantia */
+.gar-sec{text-align:center}
+.gseal{width:150px;margin:0 auto 16px}
+.gseal svg{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 20px rgba(201,162,39,.30))}
+.gar-sec .tit2,.gar-sec .sub2{text-align:center;margin-left:auto;margin-right:auto}
+.gar-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:16px}
+.gar-chips span{border:1px solid var(--linea);border-radius:999px;padding:8px 15px;
+  font-size:13px;font-weight:600;color:var(--tinta);background:var(--surface,#fff)}
+
+/* boton flotante: aparece al bajar */
+  padding:11px 14px calc(11px + env(safe-area-inset-bottom));
+  background:linear-gradient(to top,rgba(15,14,12,.92),rgba(15,14,12,0));
+  transform:translateY(120%);transition:transform .3s ease;pointer-events:none
+  display:grid;place-items:center;box-shadow:0 6px 18px rgba(37,211,102,.4)
+
+
+/* --- v2 --- */
+/* entrada de las secciones al bajar */
+[data-rv]{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1)}
+[data-rv].vino{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){ [data-rv]{opacity:1;transform:none;transition:none} }
+
+/* 2 · RESULTADOS: tarjetas que entran escalonadas y se levantan */
+.res-grid{perspective:900px}
+.res{position:relative;overflow:hidden;border-radius:14px;background:var(--surface,#fff);
+  box-shadow:0 1px 2px rgba(23,21,15,.05);transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+  transform:translateY(18px);opacity:0}
+.res-sec.vino .res{transform:none;opacity:1;transition-delay:calc(var(--i) * .09s)}
+.res:hover{transform:translateY(-6px) rotateX(4deg);box-shadow:0 16px 34px rgba(23,21,15,.14)}
+/* alternado: dorado y rojo, para que no sea todo dorado */
+.res::before{content:'';position:absolute;inset:0 0 auto;height:3px;
+  background:linear-gradient(90deg,var(--oro),transparent)}
+.res b{background:linear-gradient(180deg,var(--oro),var(--oro-osc));-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+
+/* 3 · DESCRIPCION: los puntos entran uno tras otro */
+.desc li{opacity:0;transform:translateX(-14px);transition:.5s cubic-bezier(.2,.7,.3,1)}
+.desc.vino li{opacity:1;transform:none;transition-delay:calc(var(--i) * .07s)}
+.desc li:hover::before{transform:scale(1.25);opacity:.35}
+.desc li::before{transition:transform .25s ease, opacity .25s ease}
+.desc p{border-left:3px solid var(--oro);padding-left:16px}
+
+/* 4 · RESENAS como NAD+ */
+.rev-title{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:clamp(23px,5vw,31px);color:var(--tinta);margin:0 0 12px;letter-spacing:-.01em}
+.rev-title .stars{color:var(--oro);letter-spacing:.06em}
+.rev-score{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+.rev-score .big{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:52px;
+  line-height:1;color:var(--tinta)}
+.rev-score .cnt{font-size:14px;color:var(--suave)}
+.rev-bars{display:grid;gap:7px;margin-bottom:18px}
+.rev-bars .bar{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--suave)}
+.rev-bars .lvl{width:34px;flex:none;font-weight:600;color:var(--tinta)}
+.rev-bars .track{flex:1;height:8px;border-radius:999px;background:var(--gris);overflow:hidden}
+/* La barra se llena con transform, no con width: animar el ancho obliga al
+   navegador a recalcular la maqueta en cada cuadro y en celular se traba. */
+.rev-bars .track i{display:block;height:100%;width:100%;border-radius:999px;
+  background:linear-gradient(90deg,var(--oro),var(--oro-osc));
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1s cubic-bezier(.2,.7,.3,1) .2s}
+.rev-sec.vino .rev-bars .track i{transform:scaleX(var(--p,0))}
+.rev-bars b{width:34px;text-align:right;font-weight:700;color:var(--tinta);font-variant-numeric:tabular-nums}
+.btn-write{width:100%;border:1.5px solid var(--linea);background:var(--surface,#fff);color:var(--tinta);
+  border-radius:999px;padding:13px;font-weight:700;font-size:14.5px;cursor:pointer;margin-bottom:16px;transition:.2s}
+.btn-write:hover{border-color:var(--tinta);transform:translateY(-2px)}
+.rsc{border-radius:14px;transition:transform .25s ease, box-shadow .25s ease}
+.rsc:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(23,21,15,.10)}
+.rsc .quien{display:flex;flex-direction:column}
+.rsc .verif{font-style:normal;font-size:12px;font-weight:700;color:var(--green,#137a45);margin:1px 0}
+/* todas las fotos de resena al mismo tamano: cuadradas, recortando lo que sobre */
+/* tarjetas de resena mas compactas */
+.rsc{padding:12px 13px}
+.rsc .arriba{margin-bottom:6px;gap:8px}
+.rsc .ini{width:28px;height:28px;font-size:12px}
+.rsc .quien{font-size:13px}
+.rsc .quien small{font-size:12px}
+.rsc .verif{font-size:12px}
+.rsc p{font-size:13.5px;line-height:1.55}
+.rsc .est svg{width:12px;height:12px}
+.rsc .rfoto{width:100%;max-width:110px;aspect-ratio:1/1;object-fit:cover;
+  border-radius:10px;margin-top:9px;display:block}
+.rs{gap:10px}
+.rev-auto-label{font-size:12.5px;color:var(--suave);margin:20px 0 10px;text-align:center}
+.rev-auto{overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.rev-auto__track{display:flex;gap:12px;width:max-content;animation:corre 42s linear infinite}
+.rev-auto__track:hover{animation-play-state:paused}
+.rev-auto .rsc{flex:0 0 262px}
+@keyframes corre{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@media (prefers-reduced-motion:reduce){ .rev-auto__track{animation:none} }
+
+/* 5 · GARANTIA en 3D */
+.gseal{width:172px;perspective:800px}
+.gseal svg{animation:flota 4.5s ease-in-out infinite;transform-style:preserve-3d;
+  filter:drop-shadow(0 14px 26px rgba(201,162,39,.42))}
+@keyframes flota{
+  0%,100%{ transform:translateY(0) rotateY(-8deg) rotateX(4deg) }
+  50%    { transform:translateY(-9px) rotateY(8deg) rotateX(-2deg) }
+}
+.gar-chips span{position:relative;border-radius:14px;padding:12px 18px;
+  background:linear-gradient(180deg,#fff,#F4F1EA);border:1px solid var(--linea);
+  box-shadow:0 4px 0 var(--linea), 0 10px 22px rgba(23,21,15,.10);
+  transition:transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s ease}
+.gar-chips span:hover{transform:translateY(-4px) rotateX(8deg);
+  box-shadow:0 8px 0 var(--linea), 0 18px 32px rgba(23,21,15,.16)}
+.gar-chips{perspective:700px}
+@media (prefers-reduced-motion:reduce){ .gseal svg{animation:none} }
+
+/* 6 · botones con rebote */
+.cta.rebota{animation:rebote 2.6s cubic-bezier(.28,.84,.42,1) infinite}
+@keyframes rebote{
+  0%,58%,72%,86%,100%{ transform:translateY(0) }
+  64%{ transform:translateY(-7px) }
+  78%{ transform:translateY(-3px) }
+}
+.cta.rebota:hover{animation-play-state:paused;transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){ .cta.rebota{animation:none} }
+
+/* 7 · formulario como NAD+ */
+.formcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;padding:22px 18px;max-width:560px;margin:0 auto;
+  box-shadow:0 18px 42px rgba(0,0,0,.30)}
+/* el dorado sobre negro casi no se leia: fondo claro y letra oscura */
+.cod-badge{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:#F0EDE8;color:var(--negro);border:1px solid rgba(216,165,46,.55);
+  border-radius:12px;padding:11px;text-align:center;font-weight:700;font-size:13px;margin-bottom:16px}
+.cod-badge svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+.form .packs{display:grid;gap:11px;margin-bottom:16px}
+.form .pack{display:flex;align-items:center;gap:12px;border:1.5px solid rgba(255,255,255,.16);
+  border-radius:15px;padding:12px;cursor:pointer;position:relative;transition:.2s;
+  background:rgba(255,255,255,.05);width:100%;text-align:left}
+.form .pack:hover{border-color:rgba(255,255,255,.34)}
+.form .pack.sel{border-color:var(--oro);background:rgba(216,165,46,.10);
+  box-shadow:0 0 0 3px rgba(216,165,46,.14)}
+.form .pack .radio{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.34);flex:0 0 auto}
+.form .pack.sel .radio{border-color:var(--oro);background:radial-gradient(circle,var(--oro) 42%,transparent 46%)}
+.form .pack .thumb{width:46px;height:46px;border-radius:10px;object-fit:cover;flex:none}
+.form .pack .info{flex:1;min-width:0}
+.form .pack .info .t{display:block;font-weight:700;font-size:15px;color:#fff}
+.form .pack .info .s{font-size:12.5px;color:var(--oro);font-weight:600}
+.form .pack .pr{text-align:right;flex:none}
+.form .pack .pr .n{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:18px;color:#fff}
+.form .pack .pr .w{display:block;font-size:12px;color:#8A8272;text-decoration:line-through}
+.form .pack .tag{position:absolute;top:-9px;left:14px;background:var(--oro);color:var(--negro);
+  font-size:12px;font-weight:800;padding:3px 9px;border-radius:7px;letter-spacing:.05em;text-transform:uppercase}
+.summary{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:13px;padding:14px;margin-bottom:16px;font-size:14px;color:#C9C2B4}
+.summary .r{display:flex;justify-content:space-between;padding:5px 0}
+.summary .desc{color:#FF8FA0}
+.summary .free{color:var(--oro);font-weight:700}
+/* forma de pago: dos tarjetas con su circulo, igual que los packs. La elegida
+   queda con borde negro; el -7% va en una pildora para que se lea de un vistazo. */
+.pagosel{display:grid;gap:10px;margin:0 0 20px}
+.pagosel::before{content:'Forma de pago';font-size:13px;font-weight:700;color:#6B665C}
+.pagosel .po{position:relative;display:block;width:100%;text-align:left;cursor:pointer;
+  font-family:inherit;color:#15130F;background:#fff;border:1px solid #D6D4CF;border-radius:13px;
+  padding:14px 14px 14px 46px;min-height:64px;transition:border-color .18s,box-shadow .18s,background .18s;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.pagosel .po::before{content:'';position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-10px;
+  border:2px solid #C9C5BC;border-radius:50%;background:#fff;transition:border-color .18s}
+.pagosel .po::after{content:'';position:absolute;left:20.5px;top:50%;width:9px;height:9px;margin-top:-3.5px;
+  border-radius:50%;background:#15130F;transform:scale(0);transition:transform .18s}
+.pagosel .po:hover{border-color:#8E897E}
+.pagosel .po:focus-visible{outline:2px solid #15130F;outline-offset:2px}
+.pagosel .po.on{border-color:#15130F;box-shadow:inset 0 0 0 1px #15130F;background:#FAF9F7}
+.pagosel .po.on::before{border-color:#15130F}
+.pagosel .po.on::after{transform:scale(1)}
+.pagosel .po b{display:block;font-size:15.5px;font-weight:700;line-height:1.25}
+.pagosel .po b i{font-style:normal;display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;
+  background:#0F7A4A;color:#fff;font-size:12px;font-weight:800;vertical-align:1px}
+.pagosel .po small{display:block;margin-top:3px;font-size:13px;line-height:1.35;color:#6B665C;font-weight:400}
+@media (prefers-reduced-motion:reduce){.pagosel .po,.pagosel .po::before,.pagosel .po::after{transition:none}}
+.summary .tot{font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;font-size:18px;color:#fff;
+  border-top:1px solid rgba(255,255,255,.14);margin-top:7px;padding-top:11px}
+.field{margin-bottom:13px}
+.field label{display:block;font-weight:600;font-size:13px;margin-bottom:6px;color:#C9C2B4;
+  text-transform:none;letter-spacing:0}
+.field .opc{font-weight:400;opacity:.7}
+.field input,.field select{width:100%;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;
+  padding:12px;font-size:15px;background:rgba(255,255,255,.05);color:#fff;font-family:inherit;margin:0}
+.field input:focus,.field select:focus{outline:0;border-color:var(--oro);box-shadow:0 0 0 3px rgba(216,165,46,.18)}
+.field select option{background:#1a1815;color:#fff}
+.field .err{display:none;color:#FF8FA0;font-size:12.5px;margin-top:5px}
+.field.mal input,.field.mal select{border-color:#FF6B80}
+.field.mal .err{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.telrow{display:flex;gap:8px}
+.cc-btn{display:flex;align-items:center;gap:6px;border:1.5px solid rgba(255,255,255,.16);
+  border-radius:12px;padding:0 11px;background:rgba(255,255,255,.05);color:#fff;flex:none}
+.cc-flag{width:22px;border-radius:3px}
+.cc-code{font-weight:600;font-size:14px}
+/* Lista de paises PROPIA. Un <select> del sistema solo pinta texto: las
+   banderas no se ven. Por eso se arma a mano, con la imagen en cada fila. */
+.cc-wrap{position:relative;flex:none}
+.cc-btn{cursor:pointer;height:100%}
+.cc-btn::after{content:'';width:0;height:0;flex:none;margin-left:1px;
+  border-left:4px solid transparent;border-right:4px solid transparent;
+  border-top:5px solid currentColor;opacity:.65}
+.cc-lista{position:absolute;z-index:40;top:calc(100% + 6px);left:0;
+  width:250px;max-height:290px;overflow-y:auto;
+  background:#fff;border:1px solid var(--linea);border-radius:14px;
+  box-shadow:0 18px 40px rgba(15,14,12,.22);padding:6px}
+.cc-lista button{display:flex;align-items:center;gap:10px;width:100%;
+  border:0;background:none;padding:9px 10px;border-radius:9px;cursor:pointer;
+  font-size:15px;color:var(--tinta);text-align:left}
+.cc-lista button:hover{background:#F2F1EE}
+.cc-lista button[aria-selected="true"]{background:color-mix(in srgb, var(--acento) 12%, transparent);font-weight:700}
+.cc-lista img{width:26px;height:19px;object-fit:cover;border-radius:3px;flex:none;
+  box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.cc-lista span{flex:1}
+.cc-lista i{font-style:normal;color:var(--suave);font-variant-numeric:tabular-nums}
+.formnote{text-align:center;color:#8A8272;font-size:12.5px;margin-top:11px}
+/* la salida por WhatsApp para el que se traba llenando el formulario */
+.formnote.ayuda{margin-top:6px}
+.formnote.ayuda a{color:var(--acento);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.carriers{text-align:center;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.10)}
+.carriers .cl{display:block;color:#8A8272;font-size:12.5px;margin-bottom:9px}
+.cbadges{display:flex;gap:16px;justify-content:center;align-items:center}
+/* Blue Express es un PNG con fondo: sin el filtro se veia un cuadro gris */
+.cbadges{background:#fff;border-radius:10px;padding:10px 16px;display:inline-flex;gap:18px}
+.cbadges img{height:24px;opacity:1;filter:none;object-fit:contain}
+
+/* 8 · el flotante: el WhatsApp separado y alineado */
+  transition:transform .2s ease
+
+
+/* --- efectos tabla y formulario --- */
+/* la comparativa: la tarjeta entra en 3D y cada fila aparece una tras otra */
+.cmp-sec{perspective:1100px}
+.cmp{border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(23,21,15,.22);
+  transform:rotateX(7deg) translateY(20px);opacity:0;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1), opacity .6s ease, box-shadow .3s ease}
+.cmp-sec.vino .cmp{transform:none;opacity:1}
+.cmp:hover{box-shadow:0 26px 56px rgba(23,21,15,.32)}
+.cmp tbody tr{opacity:0;transform:translateY(10px);transition:.5s cubic-bezier(.2,.7,.3,1)}
+.cmp-sec.vino tbody tr{opacity:1;transform:none}
+.cmp-sec.vino tbody tr:nth-child(1){transition-delay:.20s}
+.cmp-sec.vino tbody tr:nth-child(2){transition-delay:.32s}
+.cmp-sec.vino tbody tr:nth-child(3){transition-delay:.44s}
+.cmp-sec.vino tbody tr:nth-child(4){transition-delay:.56s}
+.cmp tbody tr{transition-property:opacity,transform,background}
+.cmp tbody tr:hover{background:rgba(255,255,255,.05)}
+/* el visto se dibuja solo */
+.cmp .si svg path{stroke-dasharray:26;stroke-dashoffset:26;transition:stroke-dashoffset .5s ease}
+.cmp-sec.vino .si svg path{stroke-dashoffset:0}
+.cmp-sec.vino tbody tr:nth-child(1) .si svg path{transition-delay:.40s}
+.cmp-sec.vino tbody tr:nth-child(2) .si svg path{transition-delay:.52s}
+.cmp-sec.vino tbody tr:nth-child(3) .si svg path{transition-delay:.64s}
+.cmp .no svg{opacity:0;transition:opacity .4s ease .6s}
+.cmp-sec.vino .no svg{opacity:1}
+
+/* el formulario: la tarjeta entra igual y los campos se encienden al escribir */
+.form{perspective:1100px}
+.formcard{transform:rotateX(6deg) translateY(22px);opacity:0;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1), opacity .6s ease, box-shadow .3s ease}
+.form.vino .formcard{transform:none;opacity:1}
+.formcard:hover{box-shadow:0 26px 60px rgba(0,0,0,.42)}
+.form .pack{transform:translateY(10px);opacity:0;transition:.5s cubic-bezier(.2,.7,.3,1)}
+.form.vino .pack{transform:none;opacity:1}
+.form.vino .pack:nth-child(1){transition-delay:.18s}
+.form.vino .pack:nth-child(2){transition-delay:.28s}
+.form.vino .pack:nth-child(3){transition-delay:.38s}
+.form .pack{transition-property:opacity,transform,border-color,background,box-shadow}
+.form .pack:hover{transform:translateY(-3px)}
+.field input:focus,.field select:focus{transform:translateY(-1px)}
+.field input,.field select{transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease}
+@media (prefers-reduced-motion:reduce){
+  .cmp,.cmp tbody tr,.formcard,.form .pack{transform:none;opacity:1;transition:none}
+  .cmp .si svg path{stroke-dashoffset:0}.cmp .no svg{opacity:1}
+}
+
+
+/* --- flotante y carrusel v3 --- */
+/* El WhatsApp seguia pegado al boton rojo y el degradado lo cortaba. Ahora la
+   barra tiene fondo propio, el boton no se estira hasta el borde y el
+   WhatsApp queda separado y completo. */
+  padding:14px 16px calc(14px + env(safe-area-inset-bottom));gap:14px;align-items:center
+  display:grid;place-items:center;box-shadow:0 6px 20px rgba(37,211,102,.5), 0 0 0 4px rgba(15,14,12,.9);
+  transition:transform .2s ease
+
+/* las tarjetas del carrusel: mas chicas y que no se corten */
+.rev-auto{padding:4px 0 10px}
+.rev-auto .rsc{flex:0 0 216px;padding:11px 12px;border-radius:12px}
+.rev-auto .rsc .ini{width:26px;height:26px;font-size:12px}
+.rev-auto .rsc .quien{font-size:12.5px;line-height:1.2}
+.rev-auto .rsc .verif{font-size:12px}
+.rev-auto .rsc small{font-size:12px}
+.rev-auto .rsc p{font-size:12.5px;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rev-auto .rsc:hover{transform:none;box-shadow:none}
+
+
+/* --- rojo en el formulario ---
+   Estaba TODO dorado: etiquetas, ahorro, borde del elegido y el Gratis.
+   El rojo se queda para lo que empuja (mas vendido, descuento, ahorro) y el
+   dorado para lo que da confianza (mejor precio, envio gratis). */
+.form .pack .tag{background:var(--rojo);color:#fff}
+.form .pack:last-child .tag{background:var(--oro);color:var(--negro)}
+.form .pack.sel{border-color:var(--rojo);background:rgba(196,18,47,.10);
+  box-shadow:0 0 0 3px rgba(196,18,47,.16)}
+.form .pack.sel .radio{border-color:var(--rojo);
+  background:radial-gradient(circle,var(--rojo) 42%,transparent 46%)}
+.form .pack .info .s{color:#FF8FA0}
+.form .pack.sel .info .s{color:#FF6B80}
+.summary .desc{color:#FF6B80;font-weight:700}
+
+
+/* --- formulario en blanco --- */
+.form{background:var(--hueso);padding:34px 16px 44px;margin-top:34px}
+.form h2{color:var(--tinta)}
+.form .baj{color:var(--suave)}
+.formcard{background:#fff;border:1px solid var(--linea);
+  box-shadow:0 18px 46px rgba(23,21,15,.13)}
+.formcard:hover{box-shadow:0 26px 60px rgba(23,21,15,.18)}
+.cod-badge{background:#FBF7EC;color:var(--negro);border:1px solid rgba(216,165,46,.55)}
+
+.form .pack{background:#FAF9F7;border-color:var(--linea)}
+.form .pack:hover{border-color:var(--suave)}
+.form .pack .radio{border-color:var(--linea)}
+.form .pack .info .t{color:var(--tinta)}
+.form .pack .info .s{color:var(--rojo)}
+.form .pack .pr .n{color:var(--tinta)}
+.form .pack .pr .w{color:#A29C90}
+.form .pack.sel{border-color:var(--rojo);background:rgba(196,18,47,.05);
+  box-shadow:0 0 0 3px rgba(196,18,47,.13)}
+.form .pack.sel .info .s{color:var(--rojo)}
+
+.summary{background:#FAF9F7;border:1px solid var(--linea);color:var(--suave)}
+.summary .desc{color:var(--rojo);font-weight:700}
+.summary .free{color:var(--oro-osc);font-weight:700}
+.summary .tot{color:var(--tinta);border-top-color:var(--linea)}
+
+.field label{color:var(--suave)}
+.field input,.field select{background:#fff;border-color:var(--linea);color:var(--tinta)}
+.field input::placeholder{color:#A29C90}
+.field input:focus,.field select:focus{border-color:var(--rojo);
+  box-shadow:0 0 0 3px rgba(196,18,47,.13)}
+.field select option{background:#fff;color:var(--tinta)}
+.field .err{color:var(--rojo)}
+.cc-btn{background:#FAF9F7;border-color:var(--linea);color:var(--tinta)}
+.formnote{color:var(--suave)}
+.carriers{border-top-color:var(--linea)}
+.carriers .cl{color:var(--suave)}
+.cbadges{background:transparent;padding:0}
+.form .listo{background:#fff;border-color:var(--oro);color:var(--tinta)}
+.form .listo h3{color:var(--tinta)}
+.form .listo p{color:var(--suave)}
+.form .ctaSub{color:var(--suave) !important}
+/* el boton del formulario, al ancho de la tarjeta */
+.formcard .cta{max-width:none;width:100%}
+
+
+/* --- v4: whatsapp limpio y resultados sobrios ---
+   El WhatsApp: le puse un aro oscuro que se ve como una mancha, y el
+   degradado de la barra lo ensucia. Fuera el aro y fuera el degradado: barra
+   solida, botones a la misma altura, nada encima del verde.
+   Resultados: la mitad dorada y la mitad roja quedo de circo. Se deja el
+   numero en un solo tono (tinta) y solo el filete de arriba alterna. 
+  padding:12px 14px calc(12px + env(safe-area-inset-bottom));gap:12px;align-items:stretch}
+  display:flex;align-items:center;justify-content:center;min-height:54px;line-height:1.15}
+  background:#25d366;display:grid;place-items:center;box-shadow:none;transition:transform .2s ease}
+
+/* Resultados: un solo tono para el numero; solo el filete alterna */
+.res b{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--tinta)}
+/* Las 4 tarjetas llevan SIEMPRE el color del boton del producto (--acento).
+   Antes una si y una no salian en dorado fijo y quedaban de dos colores. */
+.res::before{background:var(--acento)}
+
+
+
+
+/* --- whatsapp, boton fijo ---
+   El tamano del icono dependia de '.flota .wa svg', y esa barra ya no existe:
+   la regla no aplicaba y el simbolo salia gigante y negro. Aca va solo. */
+.wa{position:fixed;right:14px;bottom:16px;z-index:50;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.wa svg{width:25px;height:25px;fill:#fff}
+.wa:hover{transform:scale(1.07)}
+/* cuando la barra de abajo esta, el boton sube para no quedar tapado */
+body.con-barra .wa{bottom:72px}
+
+/* --- comparativa en blanco --- */
+.cmp{background:#fff;color:var(--tinta);border:1px solid var(--linea)}
+.cmp th,.cmp td{border-bottom:1px solid var(--linea)}
+.cmp thead th{color:var(--suave);background:#FAF9F7}
+.cmp thead th.us{color:var(--oro-osc)}
+.cmp tbody tr:hover{background:#FAF9F7}
+.cmp .si svg{stroke:#137a45}
+.cmp .no svg{stroke:#C4122F}
+
+/* --- comparativa: bordes y ultima fila ---
+   La tarjeta se inclina en 3D y al enderezarse la ultima fila quedaba cortada
+   por el overflow del contenedor. Se le da aire abajo y la ultima fila pierde
+   la linea, para que no parezca cortada. */
+.cmp-sec{padding-bottom:26px}
+.cmp{border-radius:16px}
+.cmp tbody tr:last-child td{border-bottom:0}
+.cmp tbody tr:last-child td:first-child{border-bottom-left-radius:16px}
+.cmp tbody tr:last-child td:last-child{border-bottom-right-radius:16px}
+.cmp td,.cmp th{padding:16px 14px}
+
+/* --- barra flotante como NAD+ ---
+   La barra es TRANSPARENTE: solo flota el boton redondeado. Nada de rectangulo
+   negro. El WhatsApp sube cuando la barra esta, para que no se tapen. */
+.stickycta{position:fixed;left:0;right:0;bottom:0;z-index:45;background:transparent;padding:0 16px 14px;display:flex;justify-content:center;pointer-events:none;transform:translateY(130%);transition:transform .25s}
+.stickycta{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+.stickycta.show{transform:none}
+.btn-flota{pointer-events:auto;width:100%;max-width:520px;border:0;cursor:pointer;
+  background:var(--rojo);color:#fff;border-radius:0;padding:16px 20px;
+  font-family:'Barlow Condensed','Inter',sans-serif;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;font-size:15px;line-height:1.15;
+  box-shadow:none;transition:transform .2s ease}
+.btn-flota{animation:rebote 2.6s cubic-bezier(.28,.84,.42,1) infinite}
+.btn-flota:hover{animation-play-state:paused;transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){ .btn-flota{animation:none} }
+
+
+
+
+@media(min-width:860px){ .stickycta{max-width:var(--maxw);margin:0 auto} }
+
+
+/* --- el color de cada producto ---
+   Lo pone la ficha desde productos.js (campo acento). Si el producto no trae
+   color, queda el rojo de siempre. Solo cambia el COLOR: la estructura y el
+   orden de las secciones son los mismos para todos. */
+:root{ --acento:var(--rojo); --acento2:#8E0D22; --sobreAcento:#fff;
+       --aviso:var(--rojo); --sobreAviso:#fff }
+/* el segundo color, para los avisos: descuento, mas vendido, el mas pedido */
+.precioTop .off{background:var(--aviso);color:var(--sobreAviso)}
+.cinta{background:var(--aviso);color:var(--sobreAviso)}
+.form .pack .tag{background:var(--aviso);color:var(--sobreAviso)}
+/* si el color del producto es claro, la letra va oscura para que se lea */
+.cta.rojo,.btn-flota{color:var(--sobreAcento)}
+.precioTop .off,.cinta,.form .pack .tag{color:var(--sobreAcento)}
+.cta.rojo{background:var(--acento)}
+.btn-flota{background:var(--acento)}
+.precioTop .off{background:var(--acento)}
+.cinta{background:var(--acento)}
+.pack.esPopular{border-color:var(--acento)}
+.form .pack .tag{background:var(--acento)}
+.form .pack:last-child .tag{background:var(--oro);color:var(--negro)}
+.form .pack.sel{border-color:var(--acento);background:color-mix(in srgb, var(--acento) 7%, transparent);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--acento) 16%, transparent)}
+.form .pack.sel .radio{border-color:var(--acento);
+  background:radial-gradient(circle,var(--acento) 42%,transparent 46%)}
+.field input:focus,.field select:focus{border-color:var(--acento);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--acento) 16%, transparent)}
+.formcard::before{background:linear-gradient(90deg,transparent,var(--oro),var(--acento),transparent)}
+.desc p{border-left-color:var(--acento)}
+.cmp thead th.us{color:var(--acento2)}
+
+@media (min-width:860px){
+  .arriba2{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start;
+    max-width:var(--maxw);margin:0 auto;padding:20px 16px 0}
+  .arriba2 .datos{padding:0}
+  .bloque,.form{max-width:var(--maxw);margin-left:auto;margin-right:auto}
+  .sellos{grid-template-columns:repeat(4,1fr)}
+}
+
+/* ============================================================
+   EL DORADO DE LA FICHA PASA A SER EL COLOR DEL PRODUCTO
+
+   Lo pidio el dueno: botones, viñetas, estrellas, barras, lineas de los
+   titulos y el formulario van con el color de cada producto. El ENCABEZADO
+   y el PIE se quedan con el dorado de la marca.
+
+   Se puede hacer limpio porque el encabezado y el pie estan FUERA de
+   <main class="prod">: basta redefinir --oro adentro y todo lo que ya
+   usaba var(--oro) cambia solo, sin tocar regla por regla.
+   Va al final del bloque para ganarle a las reglas de mas arriba.
+   ============================================================ */
+.prod{
+  --oro: var(--acento);
+  --oro-osc: color-mix(in srgb, var(--acento) 72%, #000);
+}
+/* La etiqueta del ultimo pack pinta el fondo con --oro, que aqui ya es el
+   acento del producto. Traia la letra negra fija: sobre el dorado se leia,
+   pero sobre un acento oscuro (el azul de la antena) quedaba negro sobre
+   azul y no se leia. Que siga a --sobreAcento, que ficha.js calcula segun
+   si el color es claro u oscuro. */
+.prod .form .pack:last-child .tag{ color:var(--sobreAcento,#fff) }
+/* Los circulos de la formula eran negros con el icono en --oro, que aqui ya
+   es el color del producto: con el dorado se veia, pero con un acento oscuro
+   no. El azul de la antena quedaba en 2.05 de contraste sobre el negro.
+   Ahora el circulo lleva el color del producto (mismo degradado) y el icono
+   va con la letra que contrasta. */
+.prod .ing .cir{
+  background:linear-gradient(140deg,var(--acento),color-mix(in srgb,var(--acento) 74%,#000)) }
+.prod .ing .cir svg{ stroke:var(--sobreAcento,#fff) }
+
+/* ============================================================
+   PANTALLA GRANDE (computador) — desde 1024px
+   La pagina se hizo para celular y ahi se ve bien: ESTO NO TOCA
+   NADA por debajo de 1024px. Lo unico que hace es aprovechar el
+   ancho que sobra en un computador, donde antes todo salia en
+   una sola columna estirada:
+     - los parrafos llegaban a 148 letras por linea (se lee mal
+       de 75 para arriba: el ojo pierde el renglon al saltar)
+     - las preguntas y las resenas iban una debajo de otra y la
+       pagina medida 8.467px de alto
+   ============================================================ */
+@media (min-width:1024px){
+
+  /* 0 · la portada del producto: foto y miniaturas a la izquierda, y el
+     nombre, la nota y el precio a la derecha.
+     La rejilla tiene dos columnas y tres bloques que se acomodaban solos:
+     las miniaturas (70px de alto) se quedaban con TODA la columna derecha
+     y dejaban 506px de vacio, y los datos del producto se iban a la fila de
+     abajo. En un computador se veia media pantalla en blanco. */
+  /* la primera fila mide lo que mide el bloque de datos, no lo que mide la
+     foto: si no, quedaba un hueco de 171px entre el precio y las miniaturas */
+  .prod .arriba2{ grid-template-columns:557px 1fr;
+    grid-template-rows:max-content 1fr; align-items:start }
+  .prod .arriba2 > .gal  { grid-column:1; grid-row:1 / span 2 }
+  .prod .arriba2 > .datos{ grid-column:2; grid-row:1 }
+  /* las miniaturas van a la derecha, DEBAJO del precio: asi lo pidio el
+     dueno. Antes colgaban de la foto y dejaban la columna derecha a medias. */
+  .prod .arriba2 > .miniz{ grid-column:2; grid-row:2; margin-top:4px; height:auto }
+  /* en el celular miden 58px y ahi estan bien; en un computador se veian
+     como estampillas. La columna tiene 557px, asi que caben holgadas. */
+  .prod .arriba2 > .miniz > *{ width:120px; height:120px; flex:0 0 120px }
+  .prod .arriba2 > .miniz img{ width:100%; height:100%; object-fit:cover }
+
+  /* 1 · ancho de lectura: ningun parrafo pasa de ~70 letras */
+  .prod .desc p,
+  .prod .sub2,
+  .prod .fq details p{ max-width:70ch }
+
+  /* 2 · preguntas frecuentes en dos columnas.
+     Se usa columnas de texto (no grid) para que cada pregunta
+     se quede entera y no se parta a la mitad al abrirla. */
+  .prod .fq{ column-count:2; column-gap:38px }
+  .prod .fq details{ break-inside:avoid; -webkit-column-break-inside:avoid }
+
+  /* 3 · el listado de resenas, en dos columnas.
+     Es el bloque mas alto de la pagina: 903px en una sola fila. */
+  .prod .rev-sec .rs{
+    grid-template-columns:1fr 1fr; gap:14px 30px; align-items:start }
+
+  /* 4 · el formulario de pedido, en dos columnas.
+     Iba todo apilado y medida 1.189px: el cliente tenia que bajar
+     para ver el precio y volver a subir. Ahora a la izquierda lo
+     que ELIGE (pack y resumen) y a la derecha lo que LLENA, con
+     las dos cosas a la vista al mismo tiempo. */
+  .prod .form .formcard{
+    max-width:980px;
+    display:grid; grid-template-columns:392px 1fr; gap:16px 34px;
+    align-items:start }
+  .prod .form .formcard > .cod-badge{ grid-column:1 / -1; justify-self:start }
+  .prod .form .formcard > .packs,
+  .prod .form .formcard > .summary,
+  .prod .form .formcard > .carriers{ grid-column:1 }
+  .prod .form .formcard > form{ grid-column:2; grid-row:2 / span 3 }
+}
+/* estos traian el dorado escrito a mano (rgba 216,165,46) y no seguian a --oro */
+.prod .packs.enForm .pack[aria-pressed="true"],
+.prod .form .pack.sel{ background:color-mix(in srgb, var(--acento) 10%, transparent) }
+.prod .field input:focus,
+.prod .field select:focus{ box-shadow:0 0 0 3px color-mix(in srgb, var(--acento) 18%, transparent) }
+
+/* Los circulos de los iconos van BLANCOS con borde del color del producto.
+   Antes eran negros y el icono tomaba el color: con el azul de la antena
+   (#123C8C) no se veia nada. Blanco con borde funciona con los cinco. */
+.prod .ing .cir{background:#fff;
+  box-shadow:0 0 0 2px var(--acento), 0 6px 16px rgba(23,21,15,.14)}
+.prod .ing .cir svg{stroke:var(--acento)}
+
+/* LAS ESTRELLAS SE QUEDAN DORADAS, en los cinco productos.
+   Son la nota de las resenas, no un adorno del producto: si cambian de color
+   dejan de leerse como estrellas. Se escriben con el dorado de la marca y no
+   con var(--oro), que aca adentro ya es el color del producto. */
+.prod .estrellas svg,
+.prod .rsc .est svg{fill:#D8A52E}
+.prod .rev-title .stars{color:#D8A52E}
+
+/* Los botones y los circulos: el movimiento lo maneja GSAP (efectos-ficha.js).
+   Aca solo va la SOMBRA y el foco del teclado. Si el css tambien moviera el
+   boton, los dos escribirian sobre el mismo transform y se pelearian: el
+   boton se quedaria trabado a medio camino. */
+.prod .cta{will-change:transform}
+.prod .cta:hover{box-shadow:0 10px 24px color-mix(in srgb, var(--acento) 38%, transparent)}
+.prod .cta:focus-visible{outline:3px solid color-mix(in srgb, var(--acento) 55%, transparent);
+  outline-offset:3px}
+.prod .ing .cir{will-change:transform;position:relative}
+/* el anillo que se abre desde el circulo: NO ocupa sitio en la maqueta, asi
+   que no mueve el texto de al lado mientras se expande */
+.prod .ing .cir .aro{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  border:2px solid var(--acento)}
