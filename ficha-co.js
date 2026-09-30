@@ -664,6 +664,7 @@
           return;
         }
         px('Purchase', { content_name: p.nombre, content_ids: [p.id], currency: 'COP', value: total, num_items: k.cant }, eventId);
+        if (res.j.anticipo && res.j.anticipo_url) { anticipo(k, total, res.j); return; }
         listo('cod', k, total);
       })
       .catch(function (e) {
@@ -681,6 +682,45 @@
       + '</p></div>';
     $('pedir').scrollIntoView({ behavior: 'smooth', block: 'center' });
     try { if (window.jayeConfeti) window.jayeConfeti(); } catch (e) {}
+  }
+
+  /* ---------- 30-09 James · ANTICIPO de $20.000 para clientes riesgosos ----------
+     El pedido ya quedó registrado; para despacharlo contra entrega se paga $20.000 por Wompi,
+     que se descuentan del total. El resto se paga al recibir. */
+  function anticipo(k, total, j) {
+    var ant = j.anticipo_valor || 20000, resto = j.resto != null ? j.resto : Math.max(0, total - ant);
+    $('pedir').innerHTML = '<div class="listo"><h3>Tu pedido quedó apartado</h3><p>'
+      + 'Tu pedido de <b>' + esc(k.texto) + '</b> ya está registrado. Para despacharlo <b>contra entrega</b>, la transportadora pide un '
+      + '<b>anticipo de ' + pesos(ant) + '</b>. No es un cobro extra: <b>se descuenta del total</b>.</p>'
+      + '<div style="text-align:left;max-width:340px;margin:12px auto;font-size:15px;line-height:1.7">'
+      + '• Total del pedido: <b>' + pesos(total) + '</b><br>• Anticipo ahora: <b>' + pesos(ant) + '</b><br>• Pagas al recibir: <b>' + pesos(resto) + '</b></div>'
+      + '<a class="cta rojo" style="display:block;text-align:center;text-decoration:none;margin:14px auto 8px;max-width:360px" href="' + j.anticipo_url + '">Pagar anticipo de ' + pesos(ant) + '</a>'
+      + '<p style="font-size:13px;opacity:.8">Pago seguro con Wompi de Bancolombia: tarjeta, PSE o Nequi. Apenas se apruebe, tu pedido sale.</p></div>';
+    $('pedir').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  var antVuelta = qs.get('anticipo');
+  if (antVuelta) {
+    var intA = 0;
+    $('pedir').scrollIntoView();
+    $('fErr').style.display = 'block';
+    $('fErr').textContent = 'Estamos confirmando tu anticipo con Wompi…';
+    (function mirarA() {
+      fetch('https://n8n-production-8a42.up.railway.app/webhook/anticipo-estado-co?venta=' + encodeURIComponent(antVuelta) + '&id=' + encodeURIComponent(qs.get('id') || ''))
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j.estado === 'APPROVED') {
+            $('fErr').style.display = 'none';
+            $('pedir').innerHTML = '<div class="listo"><h3>Anticipo recibido</h3><p>Listo, recibimos tu anticipo. Tu pedido sale y el resto lo pagas cuando te llegue. Te escribimos por WhatsApp con la guía de envío.</p></div>';
+            try { if (window.jayeConfeti) window.jayeConfeti(); } catch (e) {}
+          } else if ((j.estado === 'PENDING' || !j.estado) && intA++ < 20) {
+            setTimeout(mirarA, 3000);
+          } else if (j.estado === 'DECLINED' || j.estado === 'ERROR' || j.estado === 'VOIDED') {
+            $('fErr').textContent = 'El anticipo no se aprobó. Escríbenos por WhatsApp y te mandamos el link otra vez.';
+          } else {
+            $('fErr').textContent = 'Aún no vemos tu anticipo confirmado. Si ya pagaste, te escribimos por WhatsApp.';
+          }
+        }).catch(function () { if (intA++ < 20) setTimeout(mirarA, 3000); });
+    })();
   }
 
   /* ---------- regreso desde Wompi (?pago=ref&id=transaccion) ---------- */
