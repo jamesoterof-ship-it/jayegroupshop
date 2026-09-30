@@ -123,10 +123,26 @@
     if (!conNumero) return;
     var n = el.querySelector && el.querySelector('.gf-num');
     if (n) setTimeout(function () { contar(n, 7, 1200); }, 180);
+    /* CONTEO PROGRESIVO de la tira de datos (James 29-09). El 0 queda en 0. */
+    if (el.classList && el.classList.contains('gf-med')) el.querySelectorAll('b').forEach(function (b, i) {
+      var fin = parseInt(b.textContent, 10) || 0;
+      if (fin > 0) setTimeout(function () { contar(b, fin, 1100); }, 150 + i * 120);
+    });
   }
   var obs = new IntersectionObserver(function (filas) {
     filas.forEach(function (f) { if (f.isIntersecting) { encender(f.target, true); obs.unobserve(f.target); } });
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
   piezas.forEach(function (p) { obs.observe(p[0]); });
   setTimeout(function () { piezas.forEach(function (p) { encender(p[0]); }); }, 2500);
+  /* respaldo del conteo: si el observador no avisa (celular ahorrando batería,
+     pestaña sin pintar), el scroll revisa a mano y arranca el conteo al llegar */
+  var hechos = [], espera;
+  function revisar() {
+    piezas.forEach(function (p, i) {
+      if (hechos[i]) return;
+      var r = p[0].getBoundingClientRect();
+      if (r.top < innerHeight * 0.88 && r.bottom > 0) { hechos[i] = true; encender(p[0], true); }
+    });
+  }
+  window.addEventListener('scroll', function () { clearTimeout(espera); espera = setTimeout(revisar, 120); }, { passive: true });
 })();

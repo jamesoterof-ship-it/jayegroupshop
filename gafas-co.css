@@ -264,15 +264,17 @@ body.p-gafas .gf-bajada {
    la animacion; el js la quita a los 5 s (red de seguridad). */
 body.p-gafas .gf-w { display: inline-block; white-space: nowrap; }
 body.p-gafas .gf-l { display: inline-block; }
+/* CASCADA (James 29-09: "que caigan en cascada"): cada letra CAE desde arriba,
+   rebota al llegar y suelta un destello dorado, una detrás de otra. */
 body.p-gafas .gf-listo .gf-l {
   opacity: 0;
-  animation: gf-letra .62s cubic-bezier(.2,.85,.3,1) both;
-  animation-delay: calc(.25s + var(--k) * 55ms);
+  animation: gf-letra .7s cubic-bezier(.3,1.35,.5,1) both;
+  animation-delay: calc(.2s + var(--k) * 45ms);
 }
 @keyframes gf-letra {
-  0%   { opacity: 0; transform: translateY(-.35em) scale(1.18); filter: blur(3px); }
-  55%  { opacity: 1; transform: none; filter: blur(0); text-shadow: 0 0 16px rgba(241,207,122,.95), 0 0 2px #fff; }
-  100% { opacity: 1; text-shadow: 0 2px 18px rgba(0,0,0,.45); }
+  0%   { opacity: 0; transform: translateY(-1.4em) rotate(-10deg); filter: blur(2px); }
+  60%  { opacity: 1; transform: translateY(.08em) rotate(2deg); filter: blur(0); text-shadow: 0 0 16px rgba(241,207,122,.95), 0 0 2px #fff; }
+  100% { opacity: 1; transform: none; text-shadow: 0 2px 18px rgba(0,0,0,.45); }
 }
 @media (prefers-reduced-motion: reduce) {
   body.p-gafas .gf-listo .gf-l { animation: none; opacity: 1; }
