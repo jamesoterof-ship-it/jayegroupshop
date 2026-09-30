@@ -59,3 +59,74 @@
     }).observe(fondo);
   } catch (e) {}
 })();
+
+/* ============================================================
+   EFECTOS DEL HÉROE · copiados de clorofila.js (jayegroup.com.co)
+   título letra por letra con destello, tarjetas que entran de lado,
+   el número que cuenta, y las redes de seguridad de allá: ningún
+   efecto puede dejar texto invisible ni un dato mal.
+   ============================================================ */
+(function () {
+  var cont = document.getElementById('prod');
+  if (!cont || !cont.querySelector('.gf-hero')) return;
+  document.body.classList.add('p-gafas');
+  var quieto = false;
+  try { quieto = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  var letras = cont.querySelectorAll('.gf-cae');
+  if (quieto) letras.forEach(function (el) { el.classList.remove('gf-cae'); });
+  else setTimeout(function () { letras.forEach(function (el) { el.classList.remove('gf-cae'); }); }, 2500);
+
+  var h1 = cont.querySelector('.gf-h1.gf-listo');
+  if (h1) {
+    var k = 0;
+    h1.querySelectorAll('span, em').forEach(function (linea) {
+      var palabras = linea.textContent.split(' ');
+      linea.textContent = '';
+      palabras.forEach(function (pal, i) {
+        var w = document.createElement('span'); w.className = 'gf-w';
+        Array.prototype.forEach.call(pal, function (ch) {
+          var l = document.createElement('span'); l.className = 'gf-l';
+          l.textContent = ch; l.style.setProperty('--k', k++); w.appendChild(l);
+        });
+        linea.appendChild(w);
+        if (i < palabras.length - 1) linea.appendChild(document.createTextNode(' '));
+      });
+    });
+    if (quieto) h1.classList.remove('gf-listo');
+    else setTimeout(function () { h1.classList.remove('gf-listo'); }, 5000);
+  }
+
+  var piezas = [];
+  cont.querySelectorAll('.gf-fi').forEach(function (el, i) { piezas.push([el, i % 2 ? 'gf-entra-d' : 'gf-entra-i']); });
+  ['.gf-med', '.gf-blq'].forEach(function (s) { cont.querySelectorAll(s).forEach(function (el) { piezas.push([el, 'gf-sec-entra']); }); });
+
+  function contar(el, hasta, ms) {
+    if (el.dataset.contado) return;
+    el.dataset.contado = '1';
+    var listo = false, t0 = null;
+    function paso(t) {
+      if (t0 === null) t0 = t;
+      var q = Math.min(1, (t - t0) / ms);
+      if (listo) return;
+      el.textContent = String(Math.round(hasta * (1 - Math.pow(1 - q, 3))));
+      if (q < 1) requestAnimationFrame(paso); else { listo = true; el.textContent = String(hasta); }
+    }
+    setTimeout(function () { if (!listo) { listo = true; el.textContent = String(hasta); } }, ms + 700);
+    el.textContent = '0';
+    requestAnimationFrame(function (t) { if (!listo) paso(t); });
+  }
+  if (quieto || !('IntersectionObserver' in window)) return;
+  piezas.forEach(function (p) { p[0].classList.add(p[1]); });
+  function encender(el, conNumero) {
+    el.classList.remove('gf-entra-i', 'gf-entra-d', 'gf-sec-entra');
+    if (!conNumero) return;
+    var n = el.querySelector && el.querySelector('.gf-num');
+    if (n) setTimeout(function () { contar(n, 7, 1200); }, 180);
+  }
+  var obs = new IntersectionObserver(function (filas) {
+    filas.forEach(function (f) { if (f.isIntersecting) { encender(f.target, true); obs.unobserve(f.target); } });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+  piezas.forEach(function (p) { obs.observe(p[0]); });
+  setTimeout(function () { piezas.forEach(function (p) { encender(p[0]); }); }, 2500);
+})();

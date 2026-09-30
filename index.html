@@ -1,22 +1,22 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es-CO">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gafas de Aumento TR90 · Jaye Group Colombia</title>
-<meta name="description" content="Gafas de aumento TR90 sin marco, ultralivianas, con estuche rígido y paño. De +1.00 a +4.00. Pago contra entrega o pago anticipado. Envío a toda Colombia.">
+<title>Gafas de Aumento TR90 Â· Jaye Group Colombia</title>
+<meta name="description" content="Gafas de aumento TR90 sin marco, ultralivianas, con estuche rÃ­gido y paÃ±o. De +1.00 a +4.00. Pago contra entrega o pago anticipado. EnvÃ­o a toda Colombia.">
 <meta name="theme-color" content="#0F0E0C">
-<meta property="og:title" content="Gafas de Aumento TR90 · Jaye Group">
+<meta property="og:title" content="Gafas de Aumento TR90 Â· Jaye Group">
 <meta property="og:image" content="https://jayegroupshop.com/img/oferta.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant:wght@500;700&display=swap">
 <link rel="preload" as="image" href="img/hero.webp">
-<!-- diseño de la ficha de Chile (copiado tal cual) + formulario de España + lo propio de las gafas -->
+<!-- diseÃ±o de la ficha de Chile (copiado tal cual) + formulario de EspaÃ±a + lo propio de las gafas -->
 <link rel="stylesheet" href="tienda.css?v=1">
 <link rel="stylesheet" href="ficha.css?v=1">
 <link rel="stylesheet" href="form-espana.css?v=1">
-<link rel="stylesheet" href="gafas-co.css?v=1">
+<link rel="stylesheet" href="gafas-co.css?v=3">
 <style>
   .pegado .marq{transition:max-height .28s cubic-bezier(.2,.8,.2,1),padding .28s ease,opacity .22s ease;max-height:60px;overflow:hidden}
   .pegado.bajando .marq{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
@@ -31,17 +31,17 @@
 <!-- Meta Pixel: el mismo de las landings (Jaye Hogar) -->
 <script>
 /* El pixel SOLO en la tienda de verdad. Cuando la pagina se abre desde otro
-   lado —una copia local, una revision, una vista previa— tambien disparaba
+   lado â€”una copia local, una revision, una vista previaâ€” tambien disparaba
    eventos, y esos entraban a Meta como si fueran clientes: el 28-08 hubo 72
    eventos desde localhost que ensuciaron el conteo de compras y el
-   aprendizaje de las campañas.
+   aprendizaje de las campaÃ±as.
 
    OJO con el orden: el cargador de Meta se llamaba SIEMPRE, incluso fuera
    de la tienda, y bajaba fbevents.js igual. Justo despues se reemplazaba
    `window.fbq` por una funcion vacia, sin la cola que el cargador habia
    dejado. Cuando fbevents.js terminaba de bajar, buscaba esa cola para
    vaciarla, se encontraba con `undefined` e intentaba recorrerla:
-   «undefined is not iterable», un error por cada carga en localhost y en
+   Â«undefined is not iterableÂ», un error por cada carga en localhost y en
    cualquier vista previa. En jayegroup.com.co nunca paso, porque ahi si
    entraba por el `if`. Ahora el cargador vive DENTRO del `if`: fuera de la
    tienda ni siquiera se baja el script de Facebook. En la tienda de verdad
@@ -59,12 +59,12 @@ if (location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jaye
    una parte grande: bloqueadores, Safari, y el que cierra la pagina antes de
    que salga el aviso. Meta reporta bastante menos ventas que el panel.
 
-   Para que el servidor pueda mandar esa misma compra —y que Meta no la
-   cuente dos veces— hacen falta tres cosas:
-     · `event_id`: el MISMO identificador en el aviso del navegador y en el
+   Para que el servidor pueda mandar esa misma compra â€”y que Meta no la
+   cuente dos vecesâ€” hacen falta tres cosas:
+     Â· `event_id`: el MISMO identificador en el aviso del navegador y en el
        del servidor. Con eso Meta entiende que son la misma venta.
-     · `_fbp`: la cookie que el propio pixel deja en el navegador.
-     · `_fbc`: de que anuncio vino. Si la cookie todavia no existe -pasa
+     Â· `_fbp`: la cookie que el propio pixel deja en el navegador.
+     Â· `_fbc`: de que anuncio vino. Si la cookie todavia no existe -pasa
        cuando el cliente entra y compra en la misma visita- se arma con el
        `fbclid` que Meta pega en la URL, que es la forma que la propia
        documentacion indica.
@@ -104,18 +104,18 @@ window.jayePixel = (function () {
 </head>
 <body>
 
-  <!-- ENCABEZADO · igual a todas las páginas Jaye (copiado de la máscara) -->
+  <!-- ENCABEZADO Â· igual a todas las pÃ¡ginas Jaye (copiado de la mÃ¡scara) -->
   <div class="pegado" id="pegado">
 
   <!-- marquesina -->
   <div class="marq" aria-label="Avisos">
     <div class="pista">
-      <span>Envío a toda Colombia</span><span>·</span>
-      <span>Pago anticipado o contra entrega</span><span>·</span>
-      <span>Despacho en 2 a 5 días</span><span>·</span>
-      <span>Envío a toda Colombia</span><span>·</span>
-      <span>Pago anticipado o contra entrega</span><span>·</span>
-      <span>Despacho en 2 a 5 días</span><span>·</span>
+      <span>EnvÃ­o a toda Colombia</span><span>Â·</span>
+      <span>Pago anticipado o contra entrega</span><span>Â·</span>
+      <span>Despacho en 2 a 5 dÃ­as</span><span>Â·</span>
+      <span>EnvÃ­o a toda Colombia</span><span>Â·</span>
+      <span>Pago anticipado o contra entrega</span><span>Â·</span>
+      <span>Despacho en 2 a 5 dÃ­as</span><span>Â·</span>
     </div>
   </div>
 
@@ -132,44 +132,32 @@ window.jayePixel = (function () {
   </header>
   </div>
 
-  <!-- LA LUPA (aprobada por James) -->
-  <section class="lectura" aria-hidden="true">
-    <div class="lectura-in">
-      <div class="lupa-fondo" id="lupaFondo">
-        <div class="lec borroso" id="lecB"></div>
-        <div class="lec nitido" id="lecN"></div>
-        <div class="lente"><i></i></div>
-      </div>
-      <p class="banda-dice">Pasa el dedo por la letra: <b>así lees con las TR90</b></p>
-    </div>
-  </section>
-
-  <!-- LA FICHA · la arma ficha-co.js con el diseño de Chile y el formulario de España -->
+  <!-- LA FICHA Â· la arma ficha-co.js con el diseÃ±o de Chile y el formulario de EspaÃ±a -->
   <main id="prod" class="prod"></main>
 
-  <!-- PIE · igual a todas las páginas Jaye (copiado de la máscara) -->
+  <!-- PIE Â· igual a todas las pÃ¡ginas Jaye (copiado de la mÃ¡scara) -->
   <footer class="pie">
     <div class="envoltorio">
 
       <div class="cols">
         <details class="col">
-          <summary>Atención al cliente<i class="mas"></i></summary>
+          <summary>AtenciÃ³n al cliente<i class="mas"></i></summary>
           <div class="dentro">
-            <a href="envio.html">Envíos y entregas</a>
+            <a href="envio.html">EnvÃ­os y entregas</a>
             <a href="envio.html">Seguir mi pedido</a>
             <a href="reembolso.html">Cambios y devoluciones</a>
-            <a href="contacto.html">Contáctanos</a>
+            <a href="contacto.html">ContÃ¡ctanos</a>
           </div>
         </details>
 
         <details class="col">
-          <summary>Políticas<i class="mas"></i></summary>
+          <summary>PolÃ­ticas<i class="mas"></i></summary>
           <div class="dentro">
-            <a href="terminos.html">Términos y condiciones</a>
-            <a href="privacidad.html">Política de privacidad</a>
-            <a href="reembolso.html">Política de reembolsos</a>
-            <a href="reembolso.html">Política de cambios y garantía</a>
-            <a href="envio.html">Política de envíos</a>
+            <a href="terminos.html">TÃ©rminos y condiciones</a>
+            <a href="privacidad.html">PolÃ­tica de privacidad</a>
+            <a href="reembolso.html">PolÃ­tica de reembolsos</a>
+            <a href="reembolso.html">PolÃ­tica de cambios y garantÃ­a</a>
+            <a href="envio.html">PolÃ­tica de envÃ­os</a>
             <a href="privacidad.html">Tratamiento de datos</a>
           </div>
         </details>
@@ -187,17 +175,17 @@ window.jayePixel = (function () {
         <h4>Recibe nuestras ofertas</h4>
         <p class="dice">Te avisamos cuando entren productos nuevos y cuando haya descuentos. Sin spam.</p>
         <form id="fBoletin" novalidate>
-          <input type="email" id="correoBoletin" placeholder="Tu correo electrónico" autocomplete="email" required>
+          <input type="email" id="correoBoletin" placeholder="Tu correo electrÃ³nico" autocomplete="email" required>
           <label class="acepto">
             <input type="checkbox" id="aceptoBoletin" required>
-            <span>Acepto recibir correos con ofertas y novedades, según la <a href="privacidad.html">política de privacidad</a>.</span>
+            <span>Acepto recibir correos con ofertas y novedades, segÃºn la <a href="privacidad.html">polÃ­tica de privacidad</a>.</span>
           </label>
           <button type="submit">Suscribirme</button>
         </form>
       </div>
 
       <div class="redes">
-        <span class="rot">Síguenos</span>
+        <span class="rot">SÃ­guenos</span>
         <div class="iconos">
           <a href="https://www.instagram.com/jaye.group" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" width="34" height="34"><defs><linearGradient id="jig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset="1" stop-color="#962fbf"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="6.5" fill="url(#jig)"/><rect x="6" y="6" width="12" height="12" rx="4" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.8" cy="7.2" r="1.05" fill="#fff"/></svg>
@@ -219,8 +207,8 @@ window.jayePixel = (function () {
       </div>
 
       <div class="abajo">
-        <small>© 2026 Jaye Group Colombia. Todos los derechos reservados.</small>
-        <small>Envío incluido · Pago anticipado o contra entrega en toda Colombia</small>
+        <small>Â© 2026 Jaye Group Colombia. Todos los derechos reservados.</small>
+        <small>EnvÃ­o incluido Â· Pago anticipado o contra entrega en toda Colombia</small>
       </div>
 
     </div>
@@ -229,13 +217,13 @@ window.jayePixel = (function () {
 <script src="resenas.js?v=1"></script>
 <script src="productos-co.js?v=1"></script>
 <script src="efectos-tienda.js?v=1"></script>
-<script src="ficha-co.js?v=1"></script>
+<script src="ficha-co.js?v=2"></script>
 <script src="lib/gsap.min.js"></script>
 <script src="lib/ScrollTrigger.min.js"></script>
 <script src="lib/countup.umd.js"></script>
 <script src="efectos-ficha.js?v=1"></script>
 <script src="lib/confetti.browser.min.js"></script>
-<script src="efectos.js?v=4"></script>
+<script src="efectos.js?v=5"></script>
 
 <a class="wa" href="https://wa.me/573145021958" aria-label="WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>

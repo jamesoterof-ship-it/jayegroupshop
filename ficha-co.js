@@ -126,9 +126,24 @@
     + '<p class="ctaSub">Envío incluido · Pago contra entrega o pago anticipado</p></section>';
 
   /* ---------- 5 · descripción (Chile) ---------- */
+  /* «Qué es y para qué sirve» = tres tarjetas con foto que entran de lado (clorofila.js) */
+  var FOTOS = [
+    ['img/card1.webp', 'Hombre leyendo el celular cómodo con las gafas de aumento', 'Para leer de cerca', 'El celular sin alejarlo', 'Se acabó estirar el brazo y entrecerrar los ojos: lees los mensajes, el periódico o la cuenta del restaurante con claridad.'],
+    ['img/card2.webp', 'Pareja usando las gafas de aumento en la sala', 'Para los dos', 'Uno para ti y otro para tu pareja', 'Por eso el combo de 2 pares es el más pedido: cada uno con las suyas, o un par para la casa y otro para el bolso.'],
+    ['img/card3.webp', 'Gafas con su estuche rígido abierto y paño de microfibra', 'Qué llega', 'Gafas + estuche rígido + paño', 'Cada par viene con su estuche rígido con cremallera y gancho para colgarlo, y un paño de microfibra para los lentes.'],
+  ];
   var desc = '<section class="bloque desc" data-rv><span class="eyebrow">El producto</span><h2 class="tit2">Qué es y para qué sirve</h2>'
-    + '<p>' + esc(p.desc) + '</p>'
-    + '<ul>' + p.puntos.map(function (x, i) { return '<li style="--i:' + i + '">' + esc(x) + '</li>'; }).join('') + '</ul>'
+    + '<div class="gf-fichas">' + FOTOS.map(function (f) {
+        return '<figure class="gf-fi"><img src="' + f[0] + '" alt="' + esc(f[1]) + '" loading="lazy" width="1000" height="1000">'
+          + '<figcaption><span class="gf-rot2">' + f[2] + '</span><b>' + f[3] + '</b><p>' + f[4] + '</p></figcaption></figure>';
+      }).join('') + '</div>'
+    + '</section>';
+  /* el número gigante que cuenta (clorofila: el 60) */
+  var gigante = '<section class="gf-blq">'
+    + '<span class="gf-rot" style="color:var(--acento)">Tu graduación</span>'
+    + '<h2 class="gf-h2">¿Cuál me sirve?</h2>'
+    + '<p class="gf-sub">Van de +1.00 a +4.00. Si ya usas gafas de lectura, pides el mismo número; si no, te guías por tu edad en el formulario.</p>'
+    + '<div class="gf-gigante"><span class="gf-num">7</span><small>graduaciones para elegir</small></div>'
     + '</section>';
 
   /* ---------- PROMOCIÓN con contador (Chile). El "antes" es el aprobado, no inventado ---------- */
@@ -355,8 +370,30 @@
     + '</div></section>';
 
   /* ---------- se arma la ficha, en el orden de Chile ---------- */
-  cont.innerHTML = '<div class="arriba2">' + galeria + cabecera + '</div>'
+  /* HÉROE como los de la tienda de Chile (jayegroup.com.co: clorofila.js y organizador.js):
+     franja del título ARRIBA de la foto, el título entra letra por letra con destello,
+     la foto de borde a borde con su efecto (aquí la LUPA, que James aprobó), la bajada
+     debajo y la tira de tres datos. La galería se va; la cabecera (estrellas, nombre
+     y precio) se queda debajo, como allá. */
+  var hero = '<div class="gf-hero">'
+    + '<div class="gf-sobre">'
+    + '<span class="gf-rot gf-cae" style="--i:0">Gafas de aumento TR90 · sin marco</span>'
+    + '<h1 class="gf-h1 gf-listo"><span>Vuelve a leer de cerca,</span><em>sin esfuerzo.</em></h1>'
+    + '</div>'
+    + '<div class="lupa-fondo" id="lupaFondo" aria-hidden="true"><div class="lec borroso" id="lecB"></div><div class="lec nitido" id="lecN"></div><div class="lente"><i></i></div></div>'
+    + '<p class="banda-dice">Pasa el dedo por la letra: <b>así lees con las TR90</b></p>'
+    + '<div class="gf-foto"><img src="img/hero.webp" width="1024" height="1536" alt="Gafas de aumento TR90 sin marco sobre su estuche rígido con paño" fetchpriority="high">'
+    + '<div class="gf-brillo"></div></div>'
+    + '</div>'
+    + '<p class="gf-bajada">El celular, el periódico, la letra pequeña de los medicamentos: te las pones y lees tranquilo. Ultralivianas, sin marco y con su estuche rígido.</p>'
+    + '<div class="gf-med">'
+    + '<div><b>7</b><span>graduaciones de +1.00 a +4.00</span></div>'
+    + '<div><b>0</b><span>marco: casi no se sienten</span></div>'
+    + '<div><b>1</b><span>estuche rígido y paño por par</span></div>'
+    + '</div>';
+  cont.innerHTML = hero + '<div class="arriba2">' + cabecera + '</div>'
     + promo
+    + gigante
     + desc
     + seccionPromo()
     + seccionFormula()
@@ -376,14 +413,14 @@
   sb.appendChild(bt); document.body.appendChild(sb);
 
   /* ---------- comportamiento de la galería (Chile) ---------- */
-  pintarGaleria();
+  /* sin galería: el héroe lleva la foto */
   var izq = document.querySelector('.gal .flecha.izq'), der = document.querySelector('.gal .flecha.der');
   if (izq) izq.addEventListener('click', function () { mover(-1); });
   if (der) der.addEventListener('click', function () { mover(1); });
   document.querySelectorAll('.gal .puntos button, .miniz button').forEach(function (b) {
     b.addEventListener('click', function () { iFoto = Array.prototype.indexOf.call(b.parentNode.children, b); pintarGaleria(); });
   });
-  (function girar() {
+  (function girar() { return;
     if (fotos.length < 2 || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
     var gal = document.querySelector('.gal'); if (!gal) return;
     var reloj = null, parado = false, siesta = null;
