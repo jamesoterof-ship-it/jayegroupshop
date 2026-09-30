@@ -606,7 +606,8 @@
     var g = function (id) { return ($(id).value || '').trim(); };
     var k = p.packs[elegido];
     var errs = [];
-    for (var i = 0; i < k.cant; i++) if (!grads[i]) { errs.push('Elige la graduación' + (k.cant > 1 ? ' de los 2 pares' : '')); break; }
+    /* 30-09 James: la graduación NUNCA frena la compra. Lo que no eligió queda "POR DEFINIR"
+       y se le escribe por WhatsApp para confirmar el aumento. */
     if (marcar('fNombre', g('fNombre').split(/\s+/).length < 2)) errs.push('nombre');
     if (marcar('fTel', !/^3\d{9}$/.test(limpiarTel(g('fTel'))))) errs.push('celular');
     /* candado: sin calle y número no se registra (regla de James) */
@@ -639,7 +640,10 @@
     var datos = {
       pagina: PAGINA, producto: p.nombre, pais: 'CO',
       cantidad: k.cant, total: total, pago: formaPago,
-      graduaciones: noSabe ? NO_SABE + ' (escribirle)' : grads.slice(0, k.cant).join(' / '),
+      graduaciones: (function () {
+        var gs = []; for (var i = 0; i < k.cant; i++) gs.push(grads[i] && grads[i] !== NO_SABE ? grads[i] : NO_SABE);
+        return gs.every(function (x) { return x === NO_SABE; }) ? NO_SABE + ' (escribirle)' : gs.join(' / ');
+      })(),
       nombre: g('fNombre'), telefono: '57' + limpiarTel(g('fTel')),
       departamento: g('fDepto'), ciudad: g('fCiudad'),
       direccion: g('fDir'), referencia: g('fRef'), correo: g('fCorreo').toLowerCase(),
