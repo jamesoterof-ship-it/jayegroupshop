@@ -175,16 +175,29 @@
   visor.addEventListener('click', function (e) { if (e.target === visor || e.target.tagName === 'BUTTON') visor.classList.remove('on'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') visor.classList.remove('on'); });
 
-  /* ---------- botón fijo: se esconde cuando ya está en compra o formulario ---------- */
-  if ('IntersectionObserver' in window) {
-    var enZona = {};
-    var io = new IntersectionObserver(function (ents) {
-      ents.forEach(function (en) { enZona[en.target.id || 'hero'] = en.isIntersecting; });
-      var ocultar = enZona.comprar || enZona.pedido || enZona.hero;
-      $('flot').classList.toggle('oculto', !!ocultar);
-    });
-    io.observe(document.querySelector('.hero')); io.observe($('comprar')); io.observe($('pedido'));
+  /* ---------- marquee, menú y CTA fijo: IGUALES al molde de las tiendas Jaye ---------- */
+  (function () {
+    var items = ['Calidad Premium', 'Envío a toda Colombia', 'Pago Contra Entrega', 'Pago anticipado con descuento', 'Satisfacción Garantizada'];
+    $('mq1').innerHTML = items.concat(items).map(function (t) { return '<span><b>✦</b> ' + t + '</span>'; }).join('');
+  })();
+  function goTo(sel) {
+    var el = document.querySelector(sel); if (!el) return;
+    var off = (document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0) + 8;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
   }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-scroll]'), function (b) {
+    b.addEventListener('click', function () { goTo(b.dataset.scroll); $('nav').classList.remove('open'); });
+  });
+  $('ham').addEventListener('click', function () { $('nav').classList.toggle('open'); });
+  (function () {
+    var bar = $('stickycta'), zonas = [$('comprar'), $('pedido')];
+    function mirar() {
+      var dentro = zonas.some(function (z) { var r = z.getBoundingClientRect(); return r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.3; });
+      var on = window.scrollY > 520 && !dentro;
+      bar.classList.toggle('show', on); document.body.classList.toggle('cta-on', on);
+    }
+    window.addEventListener('scroll', mirar, { passive: true }); mirar();
+  })();
 
   $('year').textContent = new Date().getFullYear();
 
@@ -265,6 +278,7 @@
         : 'Recibimos tu pago. Tu pedido sale con <b>despacho prioritario</b> y te escribiremos por WhatsApp con la guía de envío.') +
       '</p></div>';
     $('pedido').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try { if (window.jayeConfeti) window.jayeConfeti(); } catch (e) {}
   }
 
   /* ---------- regreso desde Wompi (?pago=ref&id=transaccion) ---------- */

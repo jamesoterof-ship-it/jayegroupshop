@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es-CO">
 <head>
 <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero.webp">
-<link rel="stylesheet" href="estilo.css?v=1">
+<link rel="stylesheet" href="estilo.css?v=2">
 <!-- Píxel de Meta · Colombia -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -43,23 +43,38 @@ fbq('init','963855752775059');fbq('track','PageView');fbq('track','ViewContent',
   </defs>
 </svg>
 
-<div class="topbar"><span>Pago anticipado con descuento</span><span class="dot">•</span><span>Pago contra entrega</span><span class="dot">•</span><span>Envío a toda Colombia</span></div>
+<!-- MARQUEE (igual a todas las tiendas Jaye) -->
+<div class="marquee"><div class="mq__t" id="mq1"></div></div>
 
-<header class="head">
-  <a href="#inicio" class="brand" aria-label="Jaye Group"><span class="bj">JAYE</span><span class="bsep"></span><span class="bgold">GROUP</span></a>
+<!-- HEADER (igual a todas las tiendas Jaye: menú · logo centrado · íconos) -->
+<header class="header">
+  <div class="wrap">
+    <button class="ham" id="ham" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="brand" data-scroll="#inicio"><span class="bj">JAYE</span><span class="bsep"></span><span class="bgold">GROUP</span></a>
+    <div class="hicons">
+      <span class="ico" data-scroll="#opiniones" role="button" aria-label="Reseñas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.6" y1="15.6" x2="21" y2="21"/></svg></span>
+      <span class="ico cart" data-scroll="#comprar" role="button" aria-label="Ver pedido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span>
+    </div>
+  </div>
+  <nav class="nav" id="nav">
+    <a data-scroll="#comprar"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>Comprar ahora</a>
+    <a data-scroll="#opiniones"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3.5l2.6 5.2 5.8.9-4.2 4 1 5.7-5.2-2.7-5.2 2.7 1-5.7-4.2-4 5.8-.9z"/></svg>Reseñas</a>
+    <a data-scroll="#faq"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.2a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.1-2.7 4"/></svg>Preguntas frecuentes</a>
+    <a href="https://wa.me/573145021958" target="_blank" rel="noopener"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3.5z"/></svg>WhatsApp</a>
+  </nav>
 </header>
 
 <main id="inicio">
 
   <!-- 1 · HERO -->
   <section class="hero">
-    <div class="hero-img"><img src="img/hero.webp" width="1024" height="1536" alt="Gafas de aumento TR90 sin marco sobre su estuche rígido con paño de microfibra" fetchpriority="high"></div>
+    <div class="hero-img"><canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas><img src="img/hero.webp" width="1024" height="1536" alt="Gafas de aumento TR90 sin marco sobre su estuche rígido con paño de microfibra" fetchpriority="high"></div>
     <div class="hero-txt glass">
       <a href="#opiniones" class="rating" aria-label="Calificación 4,8 de 5 con 200 opiniones">
         <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
         <b>4,8</b><span>· 200 opiniones</span>
       </a>
-      <h1>Vuelve a leer de cerca <em>sin esfuerzo</em></h1>
+      <h1 id="heroTitle">Vuelve a leer de cerca <em>sin esfuerzo</em></h1>
       <p class="lead">Gafas de aumento TR90 sin marco: ultralivianas, flexibles y con filtro de luz azul. Traen <b>estuche rígido y paño</b>. De <b>+1.00 a +4.00</b>.</p>
       <div class="dospagos">
         <div class="dp dp-pre"><svg><use href="#i-card"/></svg><div><small>Pago anticipado</small><b>2 pares $77.000</b></div></div>
@@ -220,7 +235,7 @@ fbq('init','963855752775059');fbq('track','PageView');fbq('track','ViewContent',
   </section>
 
   <!-- 10 · PREGUNTAS -->
-  <section class="sec faq">
+  <section class="sec faq" id="faq">
     <div class="wrap">
       <h2>Preguntas frecuentes</h2>
       <details><summary>¿Cómo sé qué graduación elegir?</summary><p>Usa la guía por edad del formulario. Si ya usas gafas de lectura, elige el mismo número que tienen.</p></details>
@@ -245,7 +260,12 @@ fbq('init','963855752775059');fbq('track','PageView');fbq('track','ViewContent',
       <a href="https://tiktok.com/@jaye.group" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path fill="#25F4EE" d="M15.5 1.8c.3 1.9 1.3 3.3 3.4 3.5v2.7c-1.2 0-2.2-.3-3.2-.9v5.3c0 4-2.9 6.3-6.2 5.5-2.5-.6-3.9-2.7-3.7-5.1.2-2.5 2.4-4.3 5.3-3.9v2.8c-.4-.1-.8-.1-1.2 0-1.1.2-1.9 1-1.9 2.1 0 1.3 1 2.3 2.3 2.3s2.3-1 2.3-2.5V1.8h2.6z"/><path fill="#FE2C55" d="M17.5 3.8c.3 1.9 1.3 3.3 3.4 3.5v2.7c-1.2 0-2.2-.3-3.2-.9v5.3c0 4-2.9 6.3-6.2 5.5-2.5-.6-3.9-2.7-3.7-5.1.2-2.5 2.4-4.3 5.3-3.9v2.8c-.4-.1-.8-.1-1.2 0-1.1.2-1.9 1-1.9 2.1 0 1.3 1 2.3 2.3 2.3s2.3-1 2.3-2.5V3.8h2.6z"/><path fill="#fff" d="M16.5 2.8c.3 1.9 1.3 3.3 3.4 3.5v2.7c-1.2 0-2.2-.3-3.2-.9v5.3c0 4-2.9 6.3-6.2 5.5-2.5-.6-3.9-2.7-3.7-5.1.2-2.5 2.4-4.3 5.3-3.9v2.8c-.4-.1-.8-.1-1.2 0-1.1.2-1.9 1-1.9 2.1 0 1.3 1 2.3 2.3 2.3s2.3-1 2.3-2.5V2.8h2.6z"/></svg></a>
     </div>
     <div class="paylabel">Formas de pago</div>
-    <div class="paycards"><span>PSE</span><span>Nequi</span><span>VISA</span><span>Mastercard</span><span>Contra entrega</span></div>
+    <div class="paycards">
+      <span class="pc pc-mc"><i class="c1"></i><i class="c2"></i></span>
+      <span class="pc pc-visa">VISA</span>
+      <span class="pc pc-pse">PSE</span>
+      <span class="pc pc-nequi">Nequi</span>
+    </div>
     <div class="links">
       <a href="privacidad.html">Política de privacidad</a> ·
       <a href="reembolso.html">Política de reembolso</a> ·
@@ -257,9 +277,19 @@ fbq('init','963855752775059');fbq('track','PageView');fbq('track','ViewContent',
   </div>
 </footer>
 
-<a href="#comprar" class="flot" id="flot">Elegir mi combo</a>
+<!-- FLOAT WA (igual a todas las tiendas Jaye) -->
+<a class="wa" href="https://wa.me/573145021958" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg></a>
+
+<!-- STICKY CTA (igual a todas las tiendas Jaye) -->
+<div class="stickycta" id="stickycta"><button type="button" class="btn btn-full" data-scroll="#comprar">Elegir mi combo · 2 formas de pago</button></div>
 
 <script src="resenas.js?v=1"></script>
-<script src="gafas.js?v=3"></script>
+<script src="gafas.js?v=4"></script>
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="lib/SplitText.min.js"></script>
+<script defer src="lib/vanilla-tilt.min.js"></script>
+<script defer src="lib/confetti.browser.min.js"></script>
+<script defer src="efectos.js?v=1"></script>
 </body>
 </html>
