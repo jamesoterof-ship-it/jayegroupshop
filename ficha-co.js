@@ -22,6 +22,9 @@
   var URL_VISITA = 'https://n8n-production-8a42.up.railway.app/webhook/track-visita';
   var PAGINA = 'co-gafas';
   var WA = '573145021958';
+  /* 01-10 · botón de WhatsApp con texto (igual que España): abre el chat de James con el producto */
+  var ICO_WA = '<svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z"/></svg>';
+  function waPedir() { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola James, me interesan las ' + p.nombre + '. Tengo una pregunta'); }
 
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (m) {
@@ -123,6 +126,8 @@
   /* ---------- 4 · el botón que baja al pedido (Chile) ---------- */
   var promo = '<section class="bloque">'
     + '<button class="cta rojo rebota" id="btnArriba">Lo quiero</button>'
+    /* 01-10 (James): WhatsApp con texto debajo del botón de compra, igual que España */
+    + '<a class="waBoton waArriba" href="' + waPedir() + '" target="_blank" rel="noopener">' + ICO_WA + '<span>¿Dudas? Pídelo por WhatsApp</span></a>'
     + '<p class="ctaSub">Envío incluido · Pago contra entrega o pago anticipado</p></section>';
 
   /* ---------- 5 · descripción (Chile) ---------- */
@@ -414,9 +419,16 @@
   var sb = document.createElement('div');
   sb.className = 'stickycta'; sb.id = 'stickycta';
   var bt = document.createElement('button');
-  bt.className = 'btn-flota'; bt.textContent = 'Pedir ahora';
+  bt.className = 'btn-flota'; bt.textContent = 'Lo quiero';   /* 01-10: comparte la barra con WhatsApp, como España */
   bt.addEventListener('click', function () { $('pedir').scrollIntoView({ behavior: 'smooth' }); });
-  sb.appendChild(bt); document.body.appendChild(sb);
+  sb.appendChild(bt);
+  /* 01-10 (James): el que duda habla con James (+57) y James le cierra la venta */
+  var wb = document.createElement('a');
+  wb.className = 'waBoton waFlota'; wb.href = waPedir(); wb.target = '_blank'; wb.rel = 'noopener';
+  wb.innerHTML = ICO_WA + '<span>WhatsApp</span>';
+  wb.addEventListener('click', function () { px('Contact', { content_name: p.nombre }); });
+  sb.appendChild(wb);
+  document.body.appendChild(sb);
 
   /* ---------- comportamiento de la galería (Chile) ---------- */
   /* sin galería: el héroe lleva la foto */

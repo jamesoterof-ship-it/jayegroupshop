@@ -307,3 +307,20 @@ body.p-gafas .gf-med{padding:0 16px}
 
 /* sin scroll lateral (clip no rompe el encabezado pegado, hidden sí) */
 html,body{overflow-x:clip}
+
+/* ============================================================
+   01-10 · BOTÓN DE WHATSAPP CON TEXTO (igual que España): debajo de "Lo quiero"
+   y en la barra de abajo al lado de "Lo quiero". Abre el chat de James (+57).
+   Verde oscuro de WhatsApp: el blanco sobre #08783A da 5,6:1 (sobre #25D366 no se lee).
+   ============================================================ */
+.waBoton{display:flex;align-items:center;justify-content:center;gap:8px;background:#08783A;color:#fff !important;
+  font-weight:800;font-size:15.5px;border-radius:14px;text-decoration:none;min-height:48px;padding:0 16px;
+  box-shadow:0 8px 18px rgba(8,120,58,.25);-webkit-tap-highlight-color:transparent}
+.waBoton:active{transform:scale(.97)}
+.waBoton svg{flex:0 0 auto}
+.waArriba{margin:10px auto 0;width:100%;max-width:420px}
+.stickycta{gap:8px;align-items:stretch}
+.stickycta .btn-flota{flex:1 1 auto;min-width:0;width:auto !important}
+.stickycta .waFlota{pointer-events:auto;flex:0 0 auto;min-height:56px;padding:0 14px;border-radius:14px}
+/* con la barra a la vista, el círculo verde suelto sobra: se esconde para que no se monten */
+body:has(.stickycta.show) .wa{opacity:0;pointer-events:none}
