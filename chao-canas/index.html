@@ -17,7 +17,7 @@
 <link rel="preload" as="image" href="/chao-canas/img/hero.webp">
 <!-- encabezado y pie: los de la tienda (tienda.css). Todo lo demás es propio de esta página (chao.css) -->
 <link rel="stylesheet" href="/tienda.css?v=1">
-<link rel="stylesheet" href="/chao-canas/chao.css?v=3">
+<link rel="stylesheet" href="/chao-canas/chao.css?v=4">
 <style>
   .pegado .marq{transition:max-height .28s cubic-bezier(.2,.8,.2,1),padding .28s ease,opacity .22s ease;max-height:60px;overflow:hidden}
   .pegado.bajando .marq{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
@@ -99,11 +99,12 @@ window.jayePixel = (function () {
          franja oscura con rótulo y título en dos líneas · foto de borde a borde LIMPIA (sin texto encima)
          con parallax suave, grano y hojas de romero cayendo · bajada debajo · tira de 3 datos -->
     <section class="cc-hero2">
-      <div class="cc-hero2__franja">
-        <span class="cc-hero2__rot">Kit 3 en 1 · Shampoo + Color</span>
-        <h1 class="cc-hero2__h1"><span class="cc-hero2__l1">Chao a las canas,</span> <em class="cc-hero2__l2">desde tu casa.</em></h1>
-      </div>
       <div class="cc-hero2__foto" id="ccHeroFoto">
+        <!-- 01-10 James: el título va DENTRO de la foto (zona clara de arriba), sin franja verde, en cascada -->
+        <div class="cc-hero2__franja">
+          <span class="cc-hero2__rot">Kit 3 en 1 · Shampoo + Color</span>
+          <h1 class="cc-hero2__h1"><span class="cc-hero2__l1">Chao a las canas,</span> <em class="cc-hero2__l2">desde tu casa.</em></h1>
+        </div>
         <img class="cc-hero2__img" id="ccHeroImg" src="/chao-canas/img/hero.webp" width="1080" height="1610" alt="Mujer sonriente de cabello negro junto a los dos frascos del Kit Chao Canas: shampoo de 500 ml y color de 120 ml" fetchpriority="high">
         <div class="cc-hero2__grano" aria-hidden="true"></div>
         <div class="cc-hero2__hojas" id="ccHojas" aria-hidden="true"></div>
