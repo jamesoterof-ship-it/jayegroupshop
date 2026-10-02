@@ -3,3 +3,4 @@ design-system/
 node_modules/
 .claude/
 _*.js
+_capturas/

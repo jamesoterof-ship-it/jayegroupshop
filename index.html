@@ -1,129 +1,97 @@
 <!DOCTYPE html>
 <html lang="es-CO">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<script>
+/* NO MOVER: va antes que todo. Los anuncios de Meta llevan a
+   https://jayegroupshop.com/?cmp=gafas-co-meta (y pueden traer fbclid y utm_*).
+   Desde que la portada es la tienda, la ficha de las gafas vive en /gafas/.
+   Aquí esas visitas se mandan DIRECTO a su ficha, con TODOS sus parámetros:
+   el cmp es lo que ata la venta a su campaña en el panel.
+   También vuelven a las gafas los regresos de Wompi (?pago= y ?anticipo=),
+   porque el link de pago apunta a https://jayegroupshop.com/?pago=<venta>. */
+(function () {
+  try {
+    var q = new URLSearchParams(location.search);
+    var c = (q.get('cmp') || q.get('utm_campaign') || '').toLowerCase();
+    var p = (q.get('p') || '').toLowerCase();
+    var ir = '';
+    if (c.indexOf('gafas') === 0 || p === 'gafas') ir = '/gafas/';
+    else if (c.indexOf('chao') === 0 || p.indexOf('chao') === 0) ir = '/chao-canas/';
+    else if (p && /^[a-z0-9-]+$/.test(p)) ir = '/' + p + '/';
+    else if (q.get('pago') || q.get('anticipo')) ir = '/gafas/';
+    if (ir) { window.__jayeVa = ir; location.replace(ir + location.search + location.hash); }
+  } catch (e) {}
+})();
+</script>
 <meta name="facebook-domain-verification" content="k5ow7eqv1klyo3wyc2poxwvi2e7rxc" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gafas de Aumento TR90 · Jaye Group Colombia</title>
-<meta name="description" content="Gafas de aumento TR90 sin marco, ultralivianas, con estuche rígido y paño. De +1.00 a +4.00. Pago contra entrega o pago anticipado. Envío a toda Colombia.">
+<title>Jaye Group Colombia · Envío gratis y pago contra entrega</title>
+<meta name="description" content="Tienda Jaye Group Colombia. Envío gratis a toda Colombia, pago contra entrega o pago anticipado y despacho en 2 a 5 días.">
+<link rel="canonical" href="https://jayegroupshop.com/">
 <meta name="theme-color" content="#0F0E0C">
-<meta property="og:title" content="Gafas de Aumento TR90 · Jaye Group">
+<meta property="og:title" content="Jaye Group Colombia · Envío gratis y pago contra entrega">
+<meta property="og:description" content="Elige tu producto, te lo enviamos gratis y pagas contra entrega o por anticipado.">
+<meta property="og:type" content="website">
 <meta property="og:image" content="https://jayegroupshop.com/img/oferta.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant:wght@500;700&display=swap">
-<link rel="preload" as="image" href="img/hero.webp">
-<!-- diseño de la ficha de Chile (copiado tal cual) + formulario de España + lo propio de las gafas -->
-<link rel="stylesheet" href="tienda.css?v=1">
-<link rel="stylesheet" href="ficha.css?v=1">
-<link rel="stylesheet" href="form-espana.css?v=1">
-<link rel="stylesheet" href="gafas-co.css?v=5">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/tienda.css?v=1">
 <style>
-  .pegado .marq{transition:max-height .28s cubic-bezier(.2,.8,.2,1),padding .28s ease,opacity .22s ease;max-height:60px;overflow:hidden}
-  .pegado.bajando .marq{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
-  @media (prefers-reduced-motion:reduce){.pegado .marq{transition:none}}
+  /* botón flotante de WhatsApp: el mismo de la ficha (ficha.css) */
+  .wa{position:fixed;right:14px;bottom:16px;z-index:50;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s ease}
+  .wa svg{width:25px;height:25px;fill:#fff}
+  .wa:hover{transform:scale(1.07)}
+  .wa:focus-visible{outline:3px solid #d8a52e;outline-offset:3px}
 </style>
 <script>
+/* Evita el parpadeo del logo: se muestra cuando la tipografía ya cargó,
+   y si tarda demasiado se muestra igual a los 400 ms. */
 (function(){var d=document.documentElement;
  var ya=function(){d.classList.add("fuentesListas")};
  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(ya)}else{ya()}
  setTimeout(ya,400);})();
 </script>
-<!-- Meta Pixel: el mismo de las landings (Jaye Hogar) -->
+<!-- Meta Pixel: el mismo de la ficha de las gafas (4451697161762536) -->
 <script>
-/* El pixel SOLO en la tienda de verdad. Cuando la pagina se abre desde otro
-   lado —una copia local, una revision, una vista previa— tambien disparaba
-   eventos, y esos entraban a Meta como si fueran clientes: el 28-08 hubo 72
-   eventos desde localhost que ensuciaron el conteo de compras y el
-   aprendizaje de las campañas.
-
-   OJO con el orden: el cargador de Meta se llamaba SIEMPRE, incluso fuera
-   de la tienda, y bajaba fbevents.js igual. Justo despues se reemplazaba
-   `window.fbq` por una funcion vacia, sin la cola que el cargador habia
-   dejado. Cuando fbevents.js terminaba de bajar, buscaba esa cola para
-   vaciarla, se encontraba con `undefined` e intentaba recorrerla:
-   «undefined is not iterable», un error por cada carga en localhost y en
-   cualquier vista previa. En jayegroup.com.co nunca paso, porque ahi si
-   entraba por el `if`. Ahora el cargador vive DENTRO del `if`: fuera de la
-   tienda ni siquiera se baja el script de Facebook. En la tienda de verdad
-   se comporta exactamente igual que antes. */
-if (location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jayegroupshop.com') {
+/* El píxel SOLO en la tienda de verdad (jayegroupshop.com). Fuera de ahí
+   (copia local, revisión, vista previa) no se baja ni se manda nada.
+   Si la visita se está yendo a una ficha (arriba), no se cuenta aquí:
+   la ficha manda su propio PageView. */
+if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jayegroupshop.com')) {
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init','4451697161762536');
   fbq('track','PageView');
 } else {
   window.fbq = function () {};   // fuera de la tienda no se manda nada
 }
-
-/* ---- LOS DATOS QUE PIDE LA API DE CONVERSIONES ----
-   Hoy la compra se le avisa a Meta SOLO desde el navegador, y ahi se pierde
-   una parte grande: bloqueadores, Safari, y el que cierra la pagina antes de
-   que salga el aviso. Meta reporta bastante menos ventas que el panel.
-
-   Para que el servidor pueda mandar esa misma compra —y que Meta no la
-   cuente dos veces— hacen falta tres cosas:
-     · `event_id`: el MISMO identificador en el aviso del navegador y en el
-       del servidor. Con eso Meta entiende que son la misma venta.
-     · `_fbp`: la cookie que el propio pixel deja en el navegador.
-     · `_fbc`: de que anuncio vino. Si la cookie todavia no existe -pasa
-       cuando el cliente entra y compra en la misma visita- se arma con el
-       `fbclid` que Meta pega en la URL, que es la forma que la propia
-       documentacion indica.
-   Aca solo se RECOGEN y se mandan con el pedido. Quien los usa es el flujo
-   del servidor. Si algo de esto falla, se manda vacio y todo sigue igual. */
-window.jayePixel = (function () {
-  function galleta(n) {
-    try { var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; }
-    catch (e) { return ''; }
-  }
-  function nuevoId() {
-    return 'jg.' + Date.now().toString(36) + '.' + Math.random().toString(36).slice(2, 10);
-  }
-  function fbc() {
-    var c = galleta('_fbc');
-    if (c) return c;
-    try {
-      var q = new URLSearchParams(location.search).get('fbclid');
-      if (q) return 'fb.1.' + Date.now() + '.' + q;
-    } catch (e) {}
-    return '';
-  }
-  return {
-    id: nuevoId,
-    fbp: function () { return galleta('_fbp'); },
-    fbc: fbc,
-    /* manda el evento con su identificador y lo devuelve, por si hay que
-       repetirlo desde el servidor */
-    track: function (ev, obj, idFijo) {
-      var e = idFijo || nuevoId();
-      try { if (window.fbq) window.fbq('track', ev, obj || {}, { eventID: e }); } catch (x) {}
-      return e;
-    },
-  };
-})();
 </script>
 </head>
 <body>
 
-  <!-- ENCABEZADO · igual a todas las páginas Jaye (copiado de la máscara) -->
+  <!-- cabecera: al bajar se esconde la blanca y las otras quedan fijas -->
   <div class="pegado" id="pegado">
 
   <!-- marquesina -->
   <div class="marq" aria-label="Avisos">
     <div class="pista">
-      <span>Envío a toda Colombia</span><span>·</span>
-      <span>Pago anticipado o contra entrega</span><span>·</span>
+      <span>Envío gratis a toda Colombia</span><span>·</span>
+      <span>Pago contra entrega o pago anticipado</span><span>·</span>
       <span>Despacho en 2 a 5 días</span><span>·</span>
-      <span>Envío a toda Colombia</span><span>·</span>
-      <span>Pago anticipado o contra entrega</span><span>·</span>
+      <span>Envío gratis a toda Colombia</span><span>·</span>
+      <span>Pago contra entrega o pago anticipado</span><span>·</span>
       <span>Despacho en 2 a 5 días</span><span>·</span>
     </div>
   </div>
 
+  <!-- línea blanca al medio: aquí vive el menú. Se esconde al bajar -->
+  <nav class="barra" id="cats" aria-label="Categorías"></nav>
+
   <!-- la marca: OFERTAS a la izquierda, JAYE GROUP al centro, carrito a la derecha -->
   <header class="top">
     <div class="fila">
-      <a class="ofertas" href="#pedir">Ofertas</a>
+      <a class="ofertas" href="#productos">Ofertas</a>
       <a class="logo" href="/"><span class="j">JAYE</span><i class="raya"></i><span class="g">GROUP</span></a>
       <div class="icos">
         <svg class="ic" viewBox="0 0 24 24" aria-label="Buscar"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -131,12 +99,205 @@ window.jayePixel = (function () {
       </div>
     </div>
   </header>
+
+  </div><!-- /pegado -->
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="foto" style="background-image:url('/img/hero-tienda.webp')"></div>
+    <!-- si existe el video, se pone encima de la foto y se ve caminando (igual que Chile) -->
+    <video class="clip" id="clipHero" muted loop playsinline preload="metadata"
+           poster="/img/hero-tienda.webp" aria-hidden="true">
+      <source src="/img/hero-tienda.mp4" type="video/mp4">
+    </video>
+    <div class="capa"></div>
+    <div class="txt">
+      <h1>Pídelo hoy,<br>paga al recibir</h1>
+      <p>Envío gratis a toda Colombia. Pagas cuando lo tienes en la mano, o por anticipado si prefieres.</p>
+      <a class="cta" href="#productos">Ver productos
+        <svg class="ic" viewBox="0 0 24 24" style="width:17px;height:17px;stroke-width:2.4"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- confianza -->
+  <div class="conf">
+    <div class="fila">
+      <div data-rv>
+        <svg class="ic" viewBox="0 0 24 24"><path d="M2 7h11v9H2zM13 10h4.5l2.5 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+        Envío gratis
+      </div>
+      <div data-rv style="--d:.07s">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1.6"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/></svg>
+        Pagas al recibir
+      </div>
+      <div data-rv style="--d:.14s">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 2.7l8.5 4.4v9.8L12 21.3 3.5 16.9V7.1z"/><path d="M3.5 7.1L12 11.5l8.5-4.4M12 11.5v9.8"/></svg>
+        2 a 5 días
+      </div>
+    </div>
   </div>
 
-  <!-- LA FICHA · la arma ficha-co.js con el diseño de Chile y el formulario de España -->
-  <main id="prod" class="prod"></main>
+  <!-- quiénes somos + sello (sin garantía de días: en Colombia no aplica) -->
+  <section class="nos" id="nosotros">
+    <div class="nos-in">
+      <div class="nos-txt">
+        <span class="ceja" data-rv>Sello de calidad</span>
+        <h2 data-rv style="--d:.06s">Compra<br>respaldada</h2>
+      </div>
 
-  <!-- PIE · igual a todas las páginas Jaye (copiado de la máscara) -->
+      <div class="nos-sello" data-rv style="--d:.10s">
+        <svg viewBox="0 0 240 250" role="img" aria-label="Sello Jaye Group Colombia: paga al recibir">
+          <defs>
+            <linearGradient id="oroMetal" x1="0.12" y1="0" x2="0.72" y2="1">
+              <stop offset="0"    stop-color="#FFF7DC"/>
+              <stop offset=".10"  stop-color="#F0D588"/>
+              <stop offset=".24"  stop-color="#D8A52E"/>
+              <stop offset=".38"  stop-color="#F7E8B4"/>
+              <stop offset=".52"  stop-color="#C99A28"/>
+              <stop offset=".66"  stop-color="#A2761A"/>
+              <stop offset=".80"  stop-color="#E7C976"/>
+              <stop offset=".92"  stop-color="#B08222"/>
+              <stop offset="1"    stop-color="#775810"/>
+            </linearGradient>
+            <linearGradient id="oroSurco" x1="0.72" y1="1" x2="0.12" y2="0">
+              <stop offset="0"    stop-color="#FFF3CE"/>
+              <stop offset=".30"  stop-color="#C1902A"/>
+              <stop offset=".62"  stop-color="#7A5A11"/>
+              <stop offset="1"    stop-color="#5C430B"/>
+            </linearGradient>
+            <linearGradient id="oroCanto" x1="0" y1="0" x2="0.4" y2="1">
+              <stop offset="0"   stop-color="#FFF8E2"/>
+              <stop offset=".45" stop-color="#CB9C2C"/>
+              <stop offset="1"   stop-color="#6E4F0D"/>
+            </linearGradient>
+            <radialGradient id="domo" cx=".36" cy=".28" r=".92">
+              <stop offset="0"   stop-color="#FFFFFF"/>
+              <stop offset=".62" stop-color="#FBFAF7"/>
+              <stop offset="1"   stop-color="#DFDBD2"/>
+            </radialGradient>
+            <radialGradient id="brilloAlto" cx=".5" cy=".5" r=".5">
+              <stop offset="0"   stop-color="#fff" stop-opacity=".85"/>
+              <stop offset="1"   stop-color="#fff" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="sombraSello" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#3A2B06" flood-opacity=".34"/>
+            </filter>
+            <filter id="hundido" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#8A7A5A" flood-opacity=".55"/>
+            </filter>
+            <path id="arcoArr" fill="none" d="M32 122a88 88 0 0 1 176 0"/>
+            <path id="arcoAba" fill="none" d="M40 126a80 80 0 0 0 160 0"/>
+          </defs>
+
+          <g filter="url(#sombraSello)">
+            <circle cx="120" cy="122" r="112" fill="url(#oroCanto)"/>
+            <circle cx="120" cy="122" r="112" fill="none" stroke="#6E4F0D" stroke-opacity=".55"
+                    stroke-width="7" stroke-dasharray="2.6 5.2"/>
+            <circle cx="120" cy="122" r="108" fill="url(#oroMetal)"/>
+            <circle cx="120" cy="122" r="107" fill="none" stroke="#FFF6D8" stroke-opacity=".55"
+                    stroke-width="2" stroke-dasharray="150 400" stroke-dashoffset="330"/>
+            <circle cx="120" cy="122" r="107" fill="none" stroke="#5C430B" stroke-opacity=".45"
+                    stroke-width="2.4" stroke-dasharray="150 400" stroke-dashoffset="90"/>
+            <circle cx="120" cy="122" r="97" fill="none" stroke="url(#oroSurco)" stroke-width="4.5"/>
+            <circle cx="120" cy="122" r="66" fill="none" stroke="url(#oroSurco)" stroke-width="4"/>
+            <circle cx="120" cy="122" r="88" fill="none" stroke="#FFF3CE" stroke-opacity=".5"
+                    stroke-width="2.2" stroke-dasharray="1.6 7" stroke-linecap="round"/>
+
+            <circle cx="120" cy="122" r="62" fill="#8A6714" opacity=".35"/>
+            <circle cx="120" cy="122" r="60" fill="url(#domo)" filter="url(#hundido)"/>
+            <circle cx="120" cy="122" r="60" fill="none" stroke="#B08222" stroke-opacity=".45" stroke-width="1.4"/>
+
+            <g font-family="'Barlow Condensed','Inter',sans-serif" font-weight="700">
+              <text font-size="17.5" letter-spacing="1.7" fill="#5C430B" fill-opacity=".55">
+                <textPath href="#arcoArr" startOffset="50%" text-anchor="middle" dy="1.4">COMPRA SEGURA</textPath></text>
+              <text font-size="17.5" letter-spacing="1.7" fill="#FFFBEF">
+                <textPath href="#arcoArr" startOffset="50%" text-anchor="middle">COMPRA SEGURA</textPath></text>
+              <text font-size="15" letter-spacing="2.6" fill="#5C430B" fill-opacity=".55">
+                <textPath href="#arcoAba" startOffset="50%" text-anchor="middle" dy="1.4">JAYE GROUP COLOMBIA</textPath></text>
+              <text font-size="15" letter-spacing="2.6" fill="#FFFBEF">
+                <textPath href="#arcoAba" startOffset="50%" text-anchor="middle">JAYE GROUP COLOMBIA</textPath></text>
+            </g>
+
+            <text x="120" y="120" text-anchor="middle" font-family="'Barlow Condensed','Inter',sans-serif"
+                  font-weight="800" font-size="40" fill="#17150F">PAGA</text>
+            <path d="M92 128h56" stroke="#D8A52E" stroke-width="1.6" opacity=".75"/>
+            <text x="120" y="150" text-anchor="middle" font-family="'Barlow Condensed','Inter',sans-serif"
+                  font-weight="700" font-size="15" letter-spacing="2.4" fill="#17150F" dx="1.2">AL RECIBIR</text>
+
+            <ellipse cx="88" cy="66" rx="52" ry="27" fill="url(#brilloAlto)" opacity=".55"
+                     transform="rotate(-22 88 66)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="nos-puntos">
+      <div data-rv>
+        <svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1.6"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/></svg>
+        <b>Contra entrega o anticipado</b>
+        <span>Pagas cuando te llega, o antes con Wompi: tarjeta, PSE o Nequi.</span>
+      </div>
+      <div data-rv style="--d:.08s">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M2 7h11v9H2zM13 10h4.5l2.5 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+        <b>Despacho a toda Colombia</b>
+        <span>Envío gratis y despacho en 2 a 5 días a tu ciudad.</span>
+      </div>
+      <div data-rv style="--d:.16s">
+        <svg class="ic ic-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.510-5.260c.001-5.450 4.436-9.884 9.888-9.884a9.820 9.820 0 0 1 6.988 2.896 9.825 9.825 0 0 1 2.893 6.994c-.003 5.450-4.437 9.886-9.885 9.886m8.413-18.297A11.815 11.815 0 0 0 12.050 0C5.495 0 .160 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.480-8.413"/></svg>
+        <b>Te respondemos por WhatsApp</b>
+        <span>Antes de comprar y después de que te llegue el pedido.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- productos: los pinta tienda-co.js desde productos-co.js -->
+  <div class="sec" id="productos">
+    <h2 data-rv>Lo más vendido</h2>
+    <span class="cuantos" id="cuantos"></span>
+  </div>
+  <div class="rejilla" id="rejilla"></div>
+
+  <!-- opiniones del producto (resenas.js): arriba la tira de fotos, abajo las tarjetas -->
+  <section class="rese" id="resenas">
+    <div class="rese-cab">
+      <div>
+        <span class="ceja" data-rv>Reseñas</span>
+        <h2 data-rv style="--d:.06s">Opiniones<br>del producto</h2>
+        <div class="rese-nota" data-rv style="--d:.12s">
+          <span class="num" id="reseNota"></span>
+          <span class="est">★★★★★</span>
+          <span class="cuantas" id="reseCuantas"></span>
+        </div>
+      </div>
+      <div class="rese-flechas">
+        <button type="button" id="reseIzq" aria-label="Ver opiniones anteriores">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" id="reseDer" aria-label="Ver más opiniones">
+          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <div class="rese-fotos" aria-label="Fotos de las opiniones">
+      <div class="tira" id="reseTira"></div>
+    </div>
+
+    <div class="rese-pista" id="resePista" aria-label="Opiniones"></div>
+  </section>
+
+  <!-- video de marca (el mismo de Chile), con texto de Colombia y sin garantía de días -->
+  <section class="gar gar-video">
+    <video class="clip-gar" id="clipGar" muted loop playsinline preload="none" aria-hidden="true">
+      <source src="/img/pareja-compras.mp4" type="video/mp4">
+    </video>
+    <div class="velo"></div>
+    <div class="dentro">
+      <h2>Clientes felices en toda Colombia</h2>
+      <p>Elegimos uno a uno los productos que vendemos.</p>
+    </div>
+  </section>
+
+  <!-- PIE · el mismo de la ficha de las gafas (datos de Colombia) -->
   <footer class="pie">
     <div class="envoltorio">
 
@@ -144,22 +305,22 @@ window.jayePixel = (function () {
         <details class="col">
           <summary>Atención al cliente<i class="mas"></i></summary>
           <div class="dentro">
-            <a href="envio.html">Envíos y entregas</a>
-            <a href="envio.html">Seguir mi pedido</a>
-            <a href="reembolso.html">Cambios y devoluciones</a>
-            <a href="contacto.html">Contáctanos</a>
+            <a href="/envio.html">Envíos y entregas</a>
+            <a href="/envio.html">Seguir mi pedido</a>
+            <a href="/reembolso.html">Cambios y devoluciones</a>
+            <a href="/contacto.html">Contáctanos</a>
           </div>
         </details>
 
         <details class="col">
           <summary>Políticas<i class="mas"></i></summary>
           <div class="dentro">
-            <a href="terminos.html">Términos y condiciones</a>
-            <a href="privacidad.html">Política de privacidad</a>
-            <a href="reembolso.html">Política de reembolsos</a>
-            <a href="reembolso.html">Política de cambios y garantía</a>
-            <a href="envio.html">Política de envíos</a>
-            <a href="privacidad.html">Tratamiento de datos</a>
+            <a href="/terminos.html">Términos y condiciones</a>
+            <a href="/privacidad.html">Política de privacidad</a>
+            <a href="/reembolso.html">Política de reembolsos</a>
+            <a href="/reembolso.html">Política de cambios y garantía</a>
+            <a href="/envio.html">Política de envíos</a>
+            <a href="/privacidad.html">Tratamiento de datos</a>
           </div>
         </details>
 
@@ -171,15 +332,15 @@ window.jayePixel = (function () {
         </div>
       </div>
 
-      <!-- suscripcion al correo -->
+      <!-- suscripción al correo -->
       <div class="boletin">
         <h4>Recibe nuestras ofertas</h4>
         <p class="dice">Te avisamos cuando entren productos nuevos y cuando haya descuentos. Sin spam.</p>
         <form id="fBoletin" novalidate>
-          <input type="email" id="correoBoletin" placeholder="Tu correo electrónico" autocomplete="email" required>
+          <input type="email" id="correoBoletin" placeholder="Tu correo electrónico" autocomplete="email" required aria-label="Tu correo electrónico">
           <label class="acepto">
             <input type="checkbox" id="aceptoBoletin" required>
-            <span>Acepto recibir correos con ofertas y novedades, según la <a href="privacidad.html">política de privacidad</a>.</span>
+            <span>Acepto recibir correos con ofertas y novedades, según la <a href="/privacidad.html">política de privacidad</a>.</span>
           </label>
           <button type="submit">Suscribirme</button>
         </form>
@@ -192,13 +353,13 @@ window.jayePixel = (function () {
             <svg viewBox="0 0 24 24" width="34" height="34"><defs><linearGradient id="jig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset="1" stop-color="#962fbf"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="6.5" fill="url(#jig)"/><rect x="6" y="6" width="12" height="12" rx="4" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.8" cy="7.2" r="1.05" fill="#fff"/></svg>
           </a>
           <a href="https://www.facebook.com/1021271641058424" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.4 21v-7.1h2.4l.4-2.8h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.4V21h3z"/></svg>
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.4 21v-7.1h2.4l.4-2.8h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.300-3.7 3.8v2H8v2.8h2.4V21h3z"/></svg>
           </a>
           <a href="https://wa.me/573145021958" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M17 14.4c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.6.9-.8 1-.1.2-.3.2-.5.1a7.3 7.3 0 0 1-3.6-3.2c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/><path fill="#fff" d="M12 3.5A8.4 8.4 0 0 0 4.7 16l-1.2 4.5 4.6-1.2A8.4 8.4 0 1 0 12 3.5zm0 15.3c-1.3 0-2.5-.3-3.5-1l-.3-.1-2.6.7.7-2.6-.2-.3a6.9 6.9 0 1 1 5.9 3.3z"/></svg>
           </a>
           <a href="https://www.tiktok.com/@jaye.group" target="_blank" rel="noopener" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#010101"/><g transform="translate(12,12) scale(0.6) translate(-12,-12)"><path fill="#25F4EE" d="M15.8 5.1a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V8.94a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.18a7.35 7.35 0 0 0 4.29 1.37V6.46A4.28 4.28 0 0 1 15.8 5.1z"/><path fill="#FE2C55" d="M17.4 6.54a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08v-3.16a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V9.62a7.35 7.35 0 0 0 4.29 1.37V7.9a4.28 4.28 0 0 1-3.22-1.36z"/><path fill="#fff" d="M16.6 5.82A4.28 4.28 0 0 1 15.53 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V9.66a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.9a7.35 7.35 0 0 0 4.29 1.37V7.18a4.28 4.28 0 0 1-3.22-1.36z"/></g></svg>
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#010101"/><g transform="translate(12,12) scale(0.6) translate(-12,-12)"><path fill="#25F4EE" d="M15.8 5.1a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.590 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V8.94a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.18a7.35 7.35 0 0 0 4.29 1.37V6.46A4.28 4.28 0 0 1 15.8 5.1z"/><path fill="#FE2C55" d="M17.4 6.54a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08v-3.16a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V9.62a7.35 7.35 0 0 0 4.29 1.37V7.9a4.28 4.28 0 0 1-3.22-1.36z"/><path fill="#fff" d="M16.6 5.82A4.28 4.28 0 0 1 15.53 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V9.66a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.9a7.35 7.35 0 0 0 4.29 1.37V7.18a4.28 4.28 0 0 1-3.22-1.36z"/></g></svg>
           </a>
         </div>
       </div>
@@ -215,19 +376,12 @@ window.jayePixel = (function () {
     </div>
   </footer>
 
-<script src="resenas.js?v=1"></script>
-<script src="productos-co.js?v=1"></script>
-<script src="efectos-tienda.js?v=1"></script>
-<script src="ficha-co.js?v=9"></script>
-<script src="lib/gsap.min.js"></script>
-<script src="lib/ScrollTrigger.min.js"></script>
-<script src="lib/countup.umd.js"></script>
-<script src="efectos-ficha.js?v=1"></script>
-<script src="lib/confetti.browser.min.js"></script>
-<script src="efectos.js?v=7"></script>
+<script src="/productos-co.js?v=1"></script>
+<script src="/resenas.js?v=1"></script>
+<script src="/tienda-co.js?v=2"></script>
 
 <a class="wa" href="https://wa.me/573145021958" aria-label="WhatsApp" target="_blank" rel="noopener">
-  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
+  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.900-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
 </a>
 </body>
 </html>

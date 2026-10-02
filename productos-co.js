@@ -7,6 +7,11 @@
      anticipado:     1 par $50.000 · 2 pares $77.000
    Solo se dice lo que es verdad del producto (proveedor Dropi 2229646).
    ============================================================ */
+/* Kit Chao Canas · PAGO ANTICIPADO (1 / 2 / 3 kits).
+   APROBADOS por James el 01-10-2026. Este es el ÚNICO lugar donde se cambian
+   (la ficha, la tienda y el candado de precios los leen de aquí). */
+var CHAO_ANTICIPADO = [59900, 86900, 112900];
+
 window.PRODUCTOS = [
   {
     id: 'gafas', unidad: 'par', promo: 2,
@@ -59,6 +64,30 @@ window.PRODUCTOS = [
     anticipado: { precios: [50000, 77000], titulo: 'Pago anticipado', envio: 'Despacho prioritario · Tarjeta, PSE o Nequi' },
     popular: 1,
   },
+  /* ------------------------------------------------------------
+     Kit Chao Canas (Matuyal, 3 en 1) · proveedor Dropi 2152776
+     Contra entrega APROBADO por James: 1 kit $69.900 · 2 kits $99.900 · 3 kits $129.900
+     La página propia vive en /chao-canas/ (chao.js). Sin precio "antes":
+     no se inventa; el ahorro que se muestra es contra comprar los kits por separado.
+     ------------------------------------------------------------ */
+  {
+    id: 'chao-canas', unidad: 'kit', promo: 2,
+    nombre: 'Kit Chao Canas',
+    sub: 'Shampoo + color para cubrir las canas en casa',
+    categoria: 'Cuidado personal',
+    foto: '/chao-canas/img/producto.webp',
+    fotos: ['/chao-canas/img/hero.webp', '/chao-canas/img/producto.webp', '/chao-canas/img/tonos.webp'],
+    acento: '#059669',
+    botonAlt: '#EA580C',
+    packs: [
+      { cant: 1, precio: 69900, antes: 0, texto: '1 kit' },
+      { cant: 2, precio: 99900, antes: 0, texto: '2 kits' },
+      { cant: 3, precio: 129900, antes: 0, texto: '3 kits' },
+    ],
+    /* pago anticipado aprobado por James el 01-10-2026 (ver CHAO_ANTICIPADO arriba) */
+    anticipado: { precios: CHAO_ANTICIPADO, titulo: 'Pago anticipado', envio: 'Despacho prioritario · Tarjeta, PSE o Nequi' },
+    popular: 1,
+  },
 ];
 
 /* preguntas de despacho y pago, iguales para todos (como en Chile) */
@@ -70,4 +99,6 @@ window.PREGUNTAS = [
 ];
 
 /* candado de Chile: si un precio no está aprobado, la ficha no vende */
-window.PRECIOS_APROBADOS = [59900, 89900, 50000, 77000];
+window.PRECIOS_APROBADOS = [59900, 89900, 50000, 77000,
+  69900, 99900, 129900]            /* Kit Chao Canas contra entrega (aprobados por James) */
+  .concat(CHAO_ANTICIPADO);        /* Kit Chao Canas anticipado: aprobado 01-10 */
