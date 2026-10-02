@@ -44,12 +44,13 @@
   }
 
   /* 3 · parallax suave: la foto se mueve un poco más lento que la página */
-  var img = document.getElementById('ccHeroImg'), foto = document.getElementById('ccHeroFoto'), visible = true, pedido = false;
+  /* 01-10: la foto queda quieta y completa; lo que se mueve es la capa de hojas (decorativa) */
+  var img = document.getElementById('ccHojas'), foto = document.getElementById('ccHeroFoto'), visible = true, pedido = false;
   function mover() {
     pedido = false; if (!visible || !img || !foto) return;
     var r = foto.getBoundingClientRect();
     var avance = Math.max(-1, Math.min(1, (r.top + r.height / 2 - innerHeight / 2) / innerHeight));
-    img.style.transform = 'translate3d(0,' + (avance * -5).toFixed(2) + '%,0)';
+    img.style.transform = 'translate3d(0,' + (avance * -12).toFixed(2) + '%,0)';
   }
   addEventListener('scroll', function () { if (!pedido) { pedido = true; requestAnimationFrame(mover); } }, { passive: true });
   mover();

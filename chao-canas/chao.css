@@ -400,3 +400,12 @@ body.con-barra .wa{bottom:86px}
   .cc-hoja{display:none}
   .cc-hero2__img{will-change:auto}
 }
+
+/* 01-10 · la foto del hero nunca se recorta (regla: producto siempre completo) */
+.cc-hero2__foto{aspect-ratio:1080/1610;max-height:none}
+.cc-hero2__img{position:absolute;inset:0;top:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;will-change:auto;transform:none !important}
+.cc-hero2__hojas{will-change:transform}
+@media (min-width:900px){
+  .cc-hero2__foto{aspect-ratio:auto;height:min(78vh,760px)}
+  .cc-hero2__img{object-fit:contain}
+}
