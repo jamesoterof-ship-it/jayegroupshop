@@ -76,6 +76,32 @@
   function irPedir() { var f = $('pedir'); if (f) f.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
   document.querySelectorAll('[data-ir="pedir"]').forEach(function (b) { b.addEventListener('click', irPedir); });
 
+  /* 4b · video "Así se usa" (01-10): arranca solo y SIN sonido al llegar a la sección, se pausa al salir
+     o al cambiar de pestaña; botón para activar el sonido. Con "reducir movimiento" no arranca solo:
+     queda la portada con un botón de reproducir. */
+  (function () {
+    var v = $('ccVideo'), bs = $('ccVideoSonido'), bp = $('ccVideoPlay');
+    if (!v) return;
+    var visible = false, quiere = !reduce;
+    function tocar() { var p = v.play(); if (p && p.catch) p.catch(function () { bp.hidden = false; }); }
+    function revisar() {
+      if (visible && quiere && !document.hidden) { if (v.preload === 'none') v.preload = 'auto'; tocar(); bp.hidden = true; }
+      else if (!v.paused) v.pause();
+    }
+    if (reduce) bp.hidden = false;
+    bp.addEventListener('click', function () { quiere = true; bp.hidden = true; tocar(); });
+    bs.addEventListener('click', function () {
+      v.muted = !v.muted;
+      bs.setAttribute('aria-pressed', String(!v.muted));
+      bs.querySelector('span').textContent = v.muted ? 'Activar sonido' : 'Silenciar';
+      if (!v.muted) { quiere = true; bp.hidden = true; tocar(); }
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { visible = e[0].isIntersecting; revisar(); }, { threshold: 0.45 }).observe(v);
+    } else { visible = true; revisar(); }
+    document.addEventListener('visibilitychange', revisar);
+  })();
+
   if (!vende) {
     $('btnArriba').textContent = 'No disponible por ahora';
     $('btnArriba').disabled = true;
