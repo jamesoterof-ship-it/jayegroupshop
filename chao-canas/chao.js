@@ -375,7 +375,8 @@
   (function () {
     var esperando = false;
     function mirar() {
-      var enForm = _form.getBoundingClientRect().top < innerHeight * 0.92 && _form.getBoundingClientRect().bottom > 0;
+      /* 01-10 James: igual que gafas y Chile: al llegar al formulario la barra se va y no vuelve (ni en el pie) */
+      var enForm = _form.getBoundingClientRect().top < innerHeight * 0.92;
       var ver = (window.scrollY || 0) > 420 && !enForm;
       sb.classList.toggle('show', ver); document.body.classList.toggle('con-barra', ver);
       esperando = false;

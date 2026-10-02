@@ -17,7 +17,7 @@
 <link rel="preload" as="image" href="/chao-canas/img/hero.webp">
 <!-- encabezado y pie: los de la tienda (tienda.css). Todo lo demás es propio de esta página (chao.css) -->
 <link rel="stylesheet" href="/tienda.css?v=1">
-<link rel="stylesheet" href="/chao-canas/chao.css?v=1">
+<link rel="stylesheet" href="/chao-canas/chao.css?v=2">
 <style>
   .pegado .marq{transition:max-height .28s cubic-bezier(.2,.8,.2,1),padding .28s ease,opacity .22s ease;max-height:60px;overflow:hidden}
   .pegado.bajando .marq{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
@@ -95,16 +95,25 @@ window.jayePixel = (function () {
   <!-- ===================== LA PÁGINA DEL KIT CHAO CANAS ===================== -->
   <main id="prod" class="prod cc">
 
-    <!-- 1 · HERO: título arriba, la foto LIMPIA (sin texto encima, regla de James) -->
-    <section class="cc-hero">
-      <div class="cc-hero__txt">
-        <span class="cc-rot">Kit 3 en 1 · Matuyal</span>
-        <h1 class="cc-h1">Dile chao a las canas, <em>desde tu casa.</em></h1>
-        <p class="cc-bajada">Shampoo + color en un solo kit, en 9 tonos. Con extractos de romero, argán y biotina, y libre de parabenos y sulfatos. Para hombre y mujer.</p>
+    <!-- 1 · HERO (01-10, ui-ux-pro-max "Hero-Centric" + forma del hero de clorofila de Chile):
+         franja oscura con rótulo y título en dos líneas · foto de borde a borde LIMPIA (sin texto encima)
+         con parallax suave, grano y hojas de romero cayendo · bajada debajo · tira de 3 datos -->
+    <section class="cc-hero2">
+      <div class="cc-hero2__franja">
+        <span class="cc-hero2__rot">Kit 3 en 1 · Shampoo + Color</span>
+        <h1 class="cc-hero2__h1"><span class="cc-hero2__l1">Chao a las canas,</span> <em class="cc-hero2__l2">desde tu casa.</em></h1>
       </div>
-      <figure class="cc-hero__foto">
-        <img src="/chao-canas/img/hero.webp" width="1080" height="1610" alt="Mujer sonriente de cabello negro junto a los dos frascos del Kit Chao Canas: shampoo de 500 ml y color de 120 ml" fetchpriority="high">
-      </figure>
+      <div class="cc-hero2__foto" id="ccHeroFoto">
+        <img class="cc-hero2__img" id="ccHeroImg" src="/chao-canas/img/hero.webp" width="1080" height="1610" alt="Mujer sonriente de cabello negro junto a los dos frascos del Kit Chao Canas: shampoo de 500 ml y color de 120 ml" fetchpriority="high">
+        <div class="cc-hero2__grano" aria-hidden="true"></div>
+        <div class="cc-hero2__hojas" id="ccHojas" aria-hidden="true"></div>
+      </div>
+      <p class="cc-hero2__bajada">Shampoo + color en un solo kit, en 9 tonos. Te lo aplicas en casa, a tu hora. Con extractos de romero, argán y biotina, sin parabenos ni sulfatos.</p>
+      <div class="cc-hero2__med">
+        <div><b>9</b><span>tonos para elegir</span></div>
+        <div><b>2</b><span>frascos por kit</span></div>
+        <div><b>0</b><span>parabenos y sulfatos</span></div>
+      </div>
     </section>
 
     <!-- 2 · nombre, precio, Lo quiero y WhatsApp -->
@@ -322,7 +331,8 @@ window.jayePixel = (function () {
 <script src="/chao-canas/resenas-chao.js?v=2"></script>
 <script src="/efectos-tienda.js?v=1"></script>
 <script src="/lib/confetti.browser.min.js"></script>
-<script src="/chao-canas/chao.js?v=2"></script>
+<script src="/chao-canas/chao.js?v=4"></script>
+<script src="/chao-canas/chao-hero.js?v=2"></script>
 
 <a class="wa" href="https://wa.me/573145021958" aria-label="WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
