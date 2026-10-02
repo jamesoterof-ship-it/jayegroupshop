@@ -1,1209 +1,936 @@
-/* OPINIONES DEL PRODUCTO · Kit Chao Canas (01-10-2026) — TODAS REALES, NINGUNA ESCRITA POR NOSOTROS.
-   Kit Matuyal no tiene opiniones publicadas; James autorizó el 01-10 usar las de productos PARECIDOS
-   (shampoo tinte 3 en 1 para cubrir canas) en AliExpress: 1005010776133649, 1005010487347440,
-   1005008630320914, 1005008696043318, 1005009153610019. Texto SIN retocar (traducción de la plataforma).
-   Se quitaron: las que nombran la marca, la tienda o el envío, y tonos o tamaños que no vendemos.
-   Fotos: solo 6 de cabello teñido; ninguna de cajas de otras marcas. 150 opiniones, promedio 4.8.
+/* OPINIONES DEL PRODUCTO · Kit Chao Canas — TODAS REALES, NINGUNA ESCRITA POR NOSOTROS.
+   02-10-2026 · James: "aparecen personas de afuera, Italia… pon solo latinos". Ahora son SOLO de compradores
+   de Latinoamérica (Chile 64, Perú 6, Brasil 31, Costa Rica 1, México 18, Venezuela 3, Colombia 8, Uruguay 1), 132 opiniones, promedio real 4.67.
+   Fuente: AliExpress, 25 productos PARECIDOS (shampoo tinte 3 en 1), uso autorizado por James el 01-10.
+   NO se cambió ningún país, nombre ni texto (traducción de la plataforma). Se quitaron las que nombran marca,
+   tienda o envío, tonos/tamaños que no vendemos, barba, "aún no lo uso" y duplicados. Fotos: 3, todas de cabello.
    Regla: "opiniones del producto", NUNCA "nuestros clientes". */
 window.RESENAS_CHAO = [
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "12 MAR 2026",
-  "estrellas": 5,
-  "texto": "¡Súper! Eliminó todas mis canas. ¡Volveré a comprar al 120%!",
-  "foto": "/chao-canas/img/rev/r09.webp"
- },
- {
-  "nombre": "r***v",
-  "ciudad": "Italia",
-  "fecha": "26 FEB 2026",
-  "estrellas": 5,
-  "texto": "Producto excelente",
-  "foto": "/chao-canas/img/rev/r13.webp"
- },
- {
-  "nombre": "e***n",
-  "ciudad": "Israel",
-  "fecha": "09 NOV 2025",
-  "estrellas": 5,
-  "texto": "Ansha hace el trabajo y tiñe tu cabello. Deja actuar durante una hora, luego enjuaga con el cabello mojado. Recomendar",
-  "foto": "/chao-canas/img/rev/r17.webp"
- },
  {
   "nombre": "Anónimo",
   "ciudad": "Chile",
   "fecha": "21 JUL 2026",
   "estrellas": 5,
   "texto": "realizo su trabajo aunque no supe mesclarlo bien tube que realizarlo 2 veces el cual no lo recomiendo ya que mi cuero cabelludo se volvió muy sensible y ardía ,recomiendo su buena utilización dejare pasar unos 3 dias y me are un retoque en los lados del cabello pero el resutado es exelente lo recomiendo 10 de 10",
-  "foto": "/chao-canas/img/rev/r26.webp"
- },
- {
-  "nombre": "J***r",
-  "ciudad": "Israel",
-  "fecha": "01 JUL 2026",
-  "estrellas": 5,
-  "texto": "Primera vez usando un champú en lugar de un tinte de cabello regular, definitivamente menos estresante, pero aún así hace un poco de desorden. No es tan sencillo como un champú, pero mucho más fácil que un tinte de cabello tradicional. Mi cabello no quedó de un rojo brillante. Mi cabello se ve normal, lo recomiendo mucho. Además, cubrió la mayor parte de las canas, aunque no todas. Podría haber aplicado mejor y haber dejado actuar más tiempo, ya que era la primera vez y tenía miedo. Pero en general, el resultado y la consistencia fueron buenos, definitivamente lo volveré a hacer.",
-  "foto": "/chao-canas/img/rev/r27.webp"
- },
- {
-  "nombre": "f***r",
-  "ciudad": "Australia",
-  "fecha": "24 JUL 2026",
-  "estrellas": 5,
-  "texto": "No los cubre como en las fotos, pero evita que los canas sean un contraste total como blanco y negro… Voy a comprar otro, es una solución rápida y excelente de 10 minutos… Puedes ver en la parte trasera de mi cabeza que todavía hay algunos canas visibles; no trabajé esa zona, me concentré en la parte delantera donde está mi raya, el flequillo y alrededor del rostro…",
-  "foto": "/chao-canas/img/rev/r33.webp"
- },
- {
-  "nombre": "G***I",
-  "ciudad": "Italia",
-  "fecha": "30 JUL 2026",
-  "estrellas": 5,
-  "texto": "Esta es mi segunda compra, lo recomiendo para quienes no pueden teñirse el cabello. Incluye 2 pares de guantes como regalo gratis.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "15 JUL 2026",
-  "estrellas": 5,
-  "texto": "¿Qué puedo decir? Una convección verdaderamente perfecta. Ya lo he probado; un producto excelente, fabricado con gran profesionalismo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Noruega",
-  "fecha": "11 AGO 2026",
-  "estrellas": 5,
-  "texto": "Ya hemos comprado varios. Son muy buenos. Los volveré a comprar en unos meses.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Portugal",
-  "fecha": "21 JUN 2026",
-  "estrellas": 5,
-  "texto": "Lo usé una vez y me gustó mucho, así que compré otro.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "20 AGO 2026",
-  "estrellas": 5,
-  "texto": "para hacer el champú perfecto, bueno para el cabello.",
-  "foto": ""
- },
- {
-  "nombre": "P***l",
-  "ciudad": "Australia",
-  "fecha": "17 MAY 2026",
-  "estrellas": 5,
-  "texto": "Se ve bien. Daré mi opinión después de usarlo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Brasil",
-  "fecha": "03 SEP 2026",
-  "estrellas": 5,
-  "texto": "Exprimiré un poco más y luego volveré aquí para comentar.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "18 JUN 2026",
-  "estrellas": 5,
-  "texto": "recibido en 10 días realmente funciona y es súper rápido y cómodo de usar es el segundo que pido de otro color ,lo recomiendo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "07 ABR 2026",
-  "estrellas": 5,
-  "texto": "no lo e probado pero tiene buena pinta un bote muy grande para un montón de veces",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Francia",
-  "fecha": "13 JUN 2026",
-  "estrellas": 5,
-  "texto": "Es grande y muy eficiente, lo recomiendo ampliamente.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "09 MAR 2026",
-  "estrellas": 5,
-  "texto": "super bien es la segunda vez que compro",
-  "foto": ""
- },
- {
-  "nombre": "n***t",
-  "ciudad": "Israel",
-  "fecha": "01 FEB 2026",
-  "estrellas": 5,
-  "texto": "Un color muy hermoso.",
-  "foto": ""
- },
- {
-  "nombre": "R***k",
-  "ciudad": "República Checa",
-  "fecha": "11 OCT 2025",
-  "estrellas": 5,
-  "texto": "El champú es de buena calidad y fácil de usar; después de una aplicación, se nota un cambio en el color del cabello, y creo que es mejor que otros productos de coloración capilar.",
-  "foto": ""
- },
- {
-  "nombre": "K***e",
-  "ciudad": "Italia",
-  "fecha": "04 OCT 2025",
-  "estrellas": 5,
-  "texto": "¡Me encanta! El color es natural. Cubre los grises y deja el cabello suave.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Reino Unido",
-  "fecha": "15 ABR 2026",
-  "estrellas": 5,
-  "texto": "Es un morado con base roja, no uno con base azul, así que tenlo en cuenta. Me encanta el color, lo compré de inmediato y he recibido muchos cumplidos.",
-  "foto": ""
- },
- {
-  "nombre": "I***n",
-  "ciudad": "Israel",
-  "fecha": "24 DIC 2025",
-  "estrellas": 5,
-  "texto": "Vale mucho la pena, ya he comprado varias veces.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Canadá",
-  "fecha": "12 OCT 2025",
-  "estrellas": 5,
-  "texto": "Bastante bien en general",
-  "foto": ""
- },
- {
-  "nombre": "s***r",
-  "ciudad": "RS",
-  "fecha": "12 FEB 2026",
-  "estrellas": 5,
-  "texto": "Súper, me gusta. 👌🏻 🙌🏻 Recomiendo que",
-  "foto": ""
- },
- {
-  "nombre": "B***p",
-  "ciudad": "Bélgica",
-  "fecha": "22 DIC 2025",
-  "estrellas": 5,
-  "texto": "Ya conocía el producto, así que lo recomendé.",
-  "foto": ""
- },
- {
-  "nombre": "M***d",
-  "ciudad": "NZ",
-  "fecha": "21 NOV 2025",
-  "estrellas": 5,
-  "texto": "Tal y como se describe en el anuncio.",
-  "foto": ""
+  "foto": "/chao-canas/img/rev/lat01.webp"
  },
  {
   "nombre": "Anónimo",
   "ciudad": "Chile",
-  "fecha": "24 JUL 2026",
-  "estrellas": 5,
-  "texto": "Es para regalo , se ve como la descripcion",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "NZ",
-  "fecha": "06 JUL 2026",
-  "estrellas": 5,
-  "texto": "Tal como se describe en el anuncio",
-  "foto": ""
- },
- {
-  "nombre": "D***n",
-  "ciudad": "Reino Unido",
   "fecha": "09 DIC 2025",
   "estrellas": 5,
-  "texto": "Me encanta este champú, dura varias semanas y ofrece una cobertura del 100% de las canas.",
-  "foto": ""
+  "texto": "me gustó el champú, hay que nutrirlo e hidratarlo luego porque queda reseco, pero a cambio de la pigmentación y el brillo, Yo FeliZ..el único detalle que el color que me aplique es DarKBrown y me quedó casi negro...las canas las tapó las cubre todas, lo aplique al seco y lo deje 30min",
+  "foto": "/chao-canas/img/rev/lat02.webp"
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Canadá",
-  "fecha": "25 ENE 2026",
-  "estrellas": 5,
-  "texto": "Excelente producto lo he comprado en dos ocasiones",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Australia",
-  "fecha": "11 MAR 2026",
-  "estrellas": 5,
-  "texto": "Recíbelo hoy mismo",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Suecia",
-  "fecha": "21 ABR 2026",
-  "estrellas": 5,
-  "texto": "Acabo de recibirlo, pero aún no lo he usado. Espero que funcione con el cabello.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "08 OCT 2025",
-  "estrellas": 5,
-  "texto": "Desde el principio hasta el final, desde el principio hasta el final. Jajaja2z2hmmmm",
-  "foto": ""
- },
- {
-  "nombre": "A***a",
-  "ciudad": "Chile",
-  "fecha": "21 OCT 2025",
-  "estrellas": 5,
-  "texto": "llegaron en perfecto estado! son muy buenos, seguiré comprando",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "RS",
-  "fecha": "30 JUL 2026",
-  "estrellas": 5,
-  "texto": "¡Excelente! ¡Encantado con el resultado!",
-  "foto": ""
- },
- {
-  "nombre": "R***o",
-  "ciudad": "Chile",
-  "fecha": "05 NOV 2025",
-  "estrellas": 5,
-  "texto": "todo bien solo falta probarlo",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "PS",
-  "fecha": "20 JUL 2026",
-  "estrellas": 5,
-  "texto": "Buena calidad, probado y comprobado 🇵🇸🙏🇨🇳💐🇵🇸🙏🇨🇳",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "17 ABR 2026",
-  "estrellas": 5,
-  "texto": "El champú es genial cubre las canas muy bien en solo quince minutos y el color es castaño oscuro como yo quería porque había probado otro antes que tenía tonos cobrizos.Muy contenta con el producto, seguro que repito.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Bélgica",
-  "fecha": "17 MAY 2026",
-  "estrellas": 5,
-  "texto": "Llevo un año comprándolo y estoy muy satisfecho; no reseca mi cabello y ofrece una buena cobertura de color.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Portugal",
-  "fecha": "13 JUL 2026",
-  "estrellas": 5,
-  "texto": "Perfecto, cómodo de usar y con resultados rápidos. No puedo prescindir de este champú en casa. Me encanta. Esta ya es mi quinta compra.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Brasil",
-  "fecha": "14 JUL 2026",
-  "estrellas": 5,
-  "texto": "Este champú es realmente excelente, me gustó mucho. La diferencia entre el cabello oscuro y el cabello blanco que ya está creciendo es un poco visible, pero solo necesitas lavarlo con el champú y teñir el cabello de manera uniforme, y se ve realmente, realmente hermoso. Cubre muy bien el cabello blanco y es muy efectivo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Chile",
-  "fecha": "01 SEP 2026",
-  "estrellas": 5,
-  "texto": "wow,quedé sorprendida,muy rápido el tinte,lo dejé 20 minutos y me quedo negro, creo que eran 5 minutos, pero mis canas desaparecieron,muy buen producto",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "18 JUN 2026",
-  "estrellas": 5,
-  "texto": "Antes lo pedí en un tamaño pequeño y me ha gustado tanto el resultado en mí cabello, que lo he pedido en la presentación más grande",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Brasil",
-  "fecha": "25 MAY 2026",
-  "estrellas": 5,
-  "texto": "Me gustó mucho el producto; es fácil de manejar, el color es excelente y no se desvanece rápidamente. Seguiré comprándolo, de hecho, ya he hecho otro pedido.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "19 JUN 2026",
-  "estrellas": 5,
-  "texto": "Excelente, gran producto, tal como se describe en el anuncio. Altamente recomendado.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Brasil",
-  "fecha": "09 JUN 2026",
-  "estrellas": 5,
-  "texto": "Es un producto excelente y funciona perfectamente, puedes comprarlo sin preocupaciones, esta es mi segunda compra.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Alemania",
-  "fecha": "20 SEP 2026",
-  "estrellas": 5,
-  "texto": "Lo probé, muy bueno, pero tarda 15 minutos.",
-  "foto": ""
- },
- {
-  "nombre": "f***r",
-  "ciudad": "España",
-  "fecha": "06 SEP 2026",
-  "estrellas": 5,
-  "texto": "Esto es lo mejor qeu me he comorado para mi cabello para tinturarlo esto no es bueno es espectacular",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "03 MAY 2026",
-  "estrellas": 5,
-  "texto": "totalmente recomendable buena calidad",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "19 JUL 2026",
-  "estrellas": 5,
-  "texto": "Cubre muy bien las canas y lo puedes aplicar muy fácil lo único es que el tono es muy negro yo solicite el Dark Brown y me quedo super ocura de resto todo bien",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "13 ABR 2026",
-  "estrellas": 5,
-  "texto": "Ya he pedido el color negro, este lo compré para un amigo mío, espero que funcione tan bien como lo hizo para mí.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Portugal",
-  "fecha": "01 SEP 2026",
-  "estrellas": 5,
-  "texto": "Perfecto, como siempre. Llevo casi un año usando este champú y no puedo imaginar mi vida sin este producto. ¡Me encanta!",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "15 JUN 2026",
-  "estrellas": 5,
-  "texto": "Hace su función totalmente recomendable aunque los colores o tonos no son como se dice yo los veo muy oscuros.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "22 MAR 2026",
-  "estrellas": 5,
-  "texto": "Excelente producto, me gusta mucho.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "25 JUN 2026",
-  "estrellas": 5,
-  "texto": "es la segunda vez que lo compro me encanta",
-  "foto": ""
- },
- {
-  "nombre": "R***o",
-  "ciudad": "Italia",
-  "fecha": "11 ABR 2026",
-  "estrellas": 5,
-  "texto": "Perfecto, cubre muy bien.",
-  "foto": ""
- },
- {
-  "nombre": "J***z",
-  "ciudad": "España",
-  "fecha": "30 JUN 2026",
-  "estrellas": 5,
-  "texto": "Buen articulo, todo ok",
-  "foto": ""
- },
- {
-  "nombre": "J***r",
-  "ciudad": "República Checa",
-  "fecha": "16 JUN 2026",
-  "estrellas": 5,
-  "texto": "Estoy muy satisfecho.",
-  "foto": ""
- },
- {
-  "nombre": "s***h",
-  "ciudad": "Australia",
-  "fecha": "21 AGO 2026",
-  "estrellas": 5,
-  "texto": "Funcionando correctamente",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Chile",
-  "fecha": "08 JUN 2026",
-  "estrellas": 5,
-  "texto": "Aún no lo he probado, pero tiene buena pinta.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Brasil",
-  "fecha": "02 AGO 2026",
-  "estrellas": 5,
-  "texto": "Aún no lo he usado.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Francia",
-  "fecha": "13 SEP 2026",
-  "estrellas": 5,
-  "texto": "No parece original; mi ex lo compró y venía con un sello holográfico y un código QR. Aún no lo he usado, pero espero que funcione.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Brasil",
-  "fecha": "05 SEP 2026",
-  "estrellas": 5,
-  "texto": "Lo compré porque la mayoría de la gente decía que es excelente, pero aún necesito comprobar si realmente es bueno. NOTA: para aquellos que son impacientes, recomiendo no hacer pedidos a través de esta aplicación, ya que tarda demasiado... los pedidos tardan 1 mes en llegar.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Uruguay",
-  "fecha": "02 SEP 2026",
-  "estrellas": 5,
-  "texto": "Tardó mucho en llegar.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "29 AGO 2026",
-  "estrellas": 5,
-  "texto": "me encanta ami me ba bien",
-  "foto": ""
- },
- {
-  "nombre": "A***a",
-  "ciudad": "España",
-  "fecha": "18 FEB 2026",
-  "estrellas": 5,
-  "texto": "Simplemente he flipado. Lo aplicas y en 10 minutos (aunque en el bote pone 5 minutos, que yo lo dejé 10 por si acaso) y fuera las canas de la barba. El resultado es brutal.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "20 DIC 2025",
-  "estrellas": 5,
-  "texto": "No hay un tinte mas comodo práctico y rapido. En 10 minutos de espera, tenía una raíz de 2 cm, me cibrio toda las canas. Encantadisima. Tener en cuenta que tiene los mismos componentes de un tine con amoniaco y agua oxigenada.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Francia",
-  "fecha": "22 JUN 2026",
-  "estrellas": 5,
-  "texto": "Funciona muy bien, lo dejé actuar durante 30 minutos, lo enjuagué y ya no había más cabello blanco.",
-  "foto": ""
- },
- {
-  "nombre": "E***a",
-  "ciudad": "España",
-  "fecha": "20 FEB 2026",
-  "estrellas": 5,
-  "texto": "Una aplicación y adiós canas. Va perfecto",
-  "foto": ""
- },
- {
-  "nombre": "b***r",
-  "ciudad": "Austria",
-  "fecha": "17 FEB 2026",
-  "estrellas": 5,
-  "texto": "Buen champú negro y fácil de usar para todos. Altamente recomendado.",
-  "foto": ""
- },
- {
-  "nombre": "C***s",
-  "ciudad": "Francia",
-  "fecha": "26 OCT 2025",
-  "estrellas": 5,
-  "texto": "Muy buen producto, muy claro, no un rubio oscuro loco, un color muy bonito, buen aroma y brillo, un producto genial.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Chile",
-  "fecha": "24 OCT 2025",
-  "estrellas": 5,
-  "texto": "Es un buen producto. Mi pelo queda sedoso",
-  "foto": ""
- },
- {
-  "nombre": "M***v",
-  "ciudad": "Ucrania",
-  "fecha": "22 OCT 2025",
-  "estrellas": 5,
-  "texto": "Todo es tal como se describe. Todo fue rápido y confiable. Satisfecho con la compra.",
-  "foto": ""
- },
- {
-  "nombre": "L***a",
-  "ciudad": "Chile",
-  "fecha": "02 MAY 2026",
-  "estrellas": 5,
-  "texto": "Muy bueno, no es primera vez que compro, lo recomiendo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Francia",
-  "fecha": "12 MAY 2026",
-  "estrellas": 5,
-  "texto": "Gracias, genial como siempre.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Alemania",
-  "fecha": "20 FEB 2026",
-  "estrellas": 5,
-  "texto": "Gran producto, solo puedo recomendarlo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "07 DIC 2025",
-  "estrellas": 5,
-  "texto": "Producto excelente. Compré más de 10.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Alemania",
-  "fecha": "14 NOV 2025",
-  "estrellas": 5,
-  "texto": "Súper champú, altamente recomendado.",
-  "foto": ""
- },
- {
-  "nombre": "E***r",
-  "ciudad": "España",
-  "fecha": "18 JUN 2026",
-  "estrellas": 5,
-  "texto": "Siempre me pido este champú, me encanta",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "20 MAY 2026",
-  "estrellas": 5,
-  "texto": "Ya estoy pidiendo la tercera botella. Me gusta.",
-  "foto": ""
- },
- {
-  "nombre": "U***w",
-  "ciudad": "Ucrania",
-  "fecha": "11 DIC 2025",
-  "estrellas": 5,
-  "texto": "Qué genial, realmente disimula muy bien las canas.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Alemania",
-  "fecha": "02 DIC 2025",
-  "estrellas": 5,
-  "texto": "¡El mejor producto para las canas!",
-  "foto": ""
- },
- {
-  "nombre": "S***a",
-  "ciudad": "Japón",
-  "fecha": "09 NOV 2025",
-  "estrellas": 5,
-  "texto": "Me gustó mucho el producto; cubre las canas de manera efectiva.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Venezuela",
-  "fecha": "06 MAY 2026",
-  "estrellas": 5,
-  "texto": "Excelente, siempre lo uso.",
-  "foto": ""
- },
- {
-  "nombre": "V***s",
-  "ciudad": "Brasil",
-  "fecha": "21 MAY 2026",
-  "estrellas": 5,
-  "texto": "Me encantó el producto.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "31 MAR 2026",
-  "estrellas": 5,
-  "texto": "muy bien como siempre",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "27 NOV 2025",
-  "estrellas": 5,
-  "texto": "Perfecto como siempre 👌♾️",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "24 JUN 2026",
-  "estrellas": 5,
-  "texto": "Excelente, cambio rápido",
-  "foto": ""
- },
- {
-  "nombre": "g***r",
-  "ciudad": "Israel",
-  "fecha": "14 SEP 2026",
-  "estrellas": 5,
-  "texto": "¡Perfecto! Cubre el cabello blanco sin complicaciones. Fácil de usar.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Austria",
-  "fecha": "17 NOV 2025",
-  "estrellas": 5,
-  "texto": "Estoy muy feliz 😊",
-  "foto": ""
- },
- {
-  "nombre": "v***v",
-  "ciudad": "Australia",
-  "fecha": "04 MAY 2026",
-  "estrellas": 5,
-  "texto": "Producto fantástico, definitivamente voy a seguir utilizando este producto. La cobertura es fenomenal.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "09 MAR 2026",
-  "estrellas": 5,
-  "texto": "fácil de usar le dejo 30 min",
-  "foto": ""
- },
- {
-  "nombre": "M***a",
-  "ciudad": "Reino Unido",
-  "fecha": "15 FEB 2026",
-  "estrellas": 5,
-  "texto": "Estoy muy satisfecho con el champú para teñir el cabello, es muy bueno. Muchas gracias, que tengas un buen día.",
-  "foto": ""
- },
- {
-  "nombre": "M***a",
-  "ciudad": "DZ",
-  "fecha": "26 MAR 2026",
-  "estrellas": 5,
-  "texto": "Estoy preparando una gran botella de un hermoso champú, el color es berenjena. ¡Gracias! 🤩",
-  "foto": ""
- },
- {
-  "nombre": "I***r",
-  "ciudad": "Francia",
-  "fecha": "12 FEB 2026",
-  "estrellas": 5,
-  "texto": "👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻 👍🏻",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "07 ABR 2026",
-  "estrellas": 5,
-  "texto": "hdhdhehehehehdhdududududu",
-  "foto": ""
- },
- {
-  "nombre": "m***n",
-  "ciudad": "Israel",
-  "fecha": "21 ENE 2026",
-  "estrellas": 5,
-  "texto": "Yo llamo a este color \"color champú\" porque es como poner champú en la cabeza y luego lavarlo después de unos minutos. No es la primera vez que lo compro, y no será la última. Es una excelente solución para el cabello blanco. Te pones guantes y aplicas el producto en las raíces con la mano, como si estuvieras masajeando tu cuero cabelludo o aplicando champú. Después de 20 minutos, lo enjuagas, así que es fácil y rápido de usar. Es más cómodo que cualquier otro color de cabello que haya usado hasta ahora. Mi cabello sigue siendo suave porque tengo dermatitis seborreica, y no todos los colores funcionan bien para mí. Pero este \"color champú\" es simplemente excelente para pieles sensibles también. Al menos, ese es mi caso. ¡Muy recomendado!",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "05 MAR 2026",
-  "estrellas": 5,
-  "texto": "Un excelente champú que se utiliza como tinte para el cabello. El color se mantiene bien y cubre el cabello blanco de manera efectiva. Encontré una gran solución para teñir el cabello. Las instrucciones dicen que se aplique sobre el cabello mojado, y lo aplico como si fuera un tinte: pongo el producto en un pequeño recipiente desechable y aplico una capa fina con un pincel en las raíces del cabello, como si estuviera aplicando tinte, ahorrándome la molestia de mezclar el color y hacer un desastre. Espero el tiempo recomendado según las instrucciones, luego enjuago a fondo con un champú normal. ¡Los resultados son excelentes!",
-  "foto": ""
+  "ciudad": "Perú",
+  "fecha": "29 JUN 2026",
+  "estrellas": 5,
+  "texto": "Primera prueba. Resultados fascinantes. Veamos como se comporta en el tiempo.",
+  "foto": "/chao-canas/img/rev/lat03.webp"
  },
  {
   "nombre": "Anónimo",
   "ciudad": "Chile",
   "fecha": "23 OCT 2025",
   "estrellas": 5,
-  "texto": "Si cubre las canas... no al 100% pero casi. Totalmente conforme. Vi un video explicando cómo usarlo: en pelo seco (previo al lavado). Usar guantes. En la mano aplicar una cantidad de producto presionando el dispensador hasta que comience a salir el shampu (líquido transparente) y el colorante. Mezclar con las manos y aplicar en la cabeza, principalmente en las zonas con más canas. dejar actuar de 15 a 25 mn (yo lo dejé 15 mn y encontré que era suficiente para cubrir las mias) luego lavar el pelo normalmente.",
-  "foto": ""
- },
- {
-  "nombre": "G***r",
-  "ciudad": "Australia",
-  "fecha": "03 DIC 2025",
-  "estrellas": 5,
-  "texto": "Tinte para el cabello de alta calidad, fácil de usar y con una duración excepcional. Se ve natural después de la aplicación.",
-  "foto": ""
+  "texto": "Si cubre las canas... no al 100% pero casi. Totalmente conforme. Vi un video explicando cómo usarlo: en pelo seco (previo al lavado). Usar guantes. En la mano aplicar una cantidad de producto presionando el dispensador hasta que comience a salir el shampu (líquido transparente) y el colorante. Mezclar con las manos y aplicar en la cabeza, principalmente en las zonas con más canas. dejar actuar de 15 a 25 mn (yo lo dejé 15 mn y encontré que era suficiente para cubrir las mias) luego lavar el pelo normalmente."
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "30 OCT 2025",
+  "ciudad": "Brasil",
+  "fecha": "14 JUL 2026",
   "estrellas": 5,
-  "texto": "Excelente color negro Se adhiere al cabello y dura al menos 3 semanas. Fácil de usar",
-  "foto": ""
- },
- {
-  "nombre": "P***r",
-  "ciudad": "Alemania",
-  "fecha": "17 OCT 2025",
-  "estrellas": 5,
-  "texto": "Mega Haare se volvió negro después de 15 minutos y hasta dura.",
-  "foto": ""
+  "texto": "Este champú es realmente excelente, me gustó mucho. La diferencia entre el cabello oscuro y el cabello blanco que ya está creciendo es un poco visible, pero solo necesitas lavarlo con el champú y teñir el cabello de manera uniforme, y se ve realmente, realmente hermoso. Cubre muy bien el cabello blanco y es muy efectivo."
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "17 JUN 2026",
+  "ciudad": "Costa Rica",
+  "fecha": "12 JUN 2026",
   "estrellas": 5,
-  "texto": "Excelente Haciendo un pedido por segunda vez. Se adhiere bien al cabello y dura entre dos y tres semanas.",
-  "foto": ""
+  "texto": "El producto es bueno, no me causa irritación y su olor es agradable. En cuanto a la coloración, es muy buena, dejando mis canas con el color indicado y con brillo. Solo hay que cuidar las puntas del cabello porque se resecan un poco, creo que es cuestión de hidratar con algún aceite o mascarilla."
+ },
+ {
+  "nombre": "A***o",
+  "ciudad": "México",
+  "fecha": "13 ABR 2026",
+  "estrellas": 5,
+  "texto": "Buen shampoo/tinte, si te preguntas si quita o no las canas, sí, sí las oculta, pero recomiendo dejar el producto actuar por mínimo 20 minutos antes de lavar. No deja de ser un tinte en teoría “natural” aunque desconozco que tan natural sea. Fuera de eso cumple su función, lo recomiendo!"
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "05 NOV 2025",
+  "ciudad": "Chile",
+  "fecha": "16 NOV 2025",
   "estrellas": 5,
-  "texto": "Me ha gustado bastante, para teñir las canas de la barba va perfecto.",
-  "foto": ""
- },
- {
-  "nombre": "S***e",
-  "ciudad": "NG",
-  "fecha": "04 OCT 2025",
-  "estrellas": 5,
-  "texto": "Este champú tiene efectos inmediatos en mi cabello después de 15 minutos de aplicación.",
-  "foto": ""
- },
- {
-  "nombre": "R***v",
-  "ciudad": "Israel",
-  "fecha": "22 DIC 2025",
-  "estrellas": 5,
-  "texto": "Muy bien, colores en 10 minutos realmente.",
-  "foto": ""
+  "texto": "quisiera recomendar este producto yo lo uso desde más de 3 años el cabello no se daña y tiene cobertura,no tiene mal olor yo tengo muy sensible mi piel y no me a dañado, puedes usar como retoque lo puede aplicar sola espera 25 minutos y si tus canas son muy rebeldes un poco más."
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "24 ENE 2026",
+  "ciudad": "Brasil",
+  "fecha": "06 DIC 2025",
   "estrellas": 5,
-  "texto": "Excelente producto, este es mi tercer pedido.",
-  "foto": ""
+  "texto": "Muy buen producto, cumplió con mis expectativas en cuanto a cubrir las canas. He comprado varias veces y seguiré comprando siempre que lo necesite. Siempre lo recomiendo a mis amigos, es sensacional y no es necesario usarlo todo el tiempo. Yo solo lo uso una vez cada 2 meses."
  },
  {
-  "nombre": "m***k",
-  "ciudad": "Israel",
+  "nombre": "r***s",
+  "ciudad": "Perú",
+  "fecha": "28 NOV 2025",
+  "estrellas": 5,
+  "texto": "compré el tono dark brown y es mas oscuro de lo que pensé, cosa que me parece bien. lo dejo en el pelo unos 20 minutos para que agarre las canas, y solo lo uso es esos sitios específicos. es muy caro como para pintarse todo el pelo. estoy muy conforme con el producto"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "27 ABR 2026",
+  "estrellas": 5,
+  "texto": "genial me hecho el champú espero 20 minutos me lo enjuago yera. lo repito dos veces cada mes y no tengo canas. y lo mejor cuando pasa el efecto las canas se van aclarando de a poco como si fuera un envejecimiento natural"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "03 ABR 2026",
+  "estrellas": 5,
+  "texto": "me encanta, llevo 6 meses usándolo y me encanta como me queda el color en el cabello, se recomienda usar una crema o aceite hidratante después de usar ya que tiende a secar un poco el cabello, es poco, no se arruina."
+ },
+ {
+  "nombre": "E***a",
+  "ciudad": "Chile",
+  "fecha": "28 DIC 2025",
+  "estrellas": 5,
+  "texto": "PRODUCTO FUNCIONA... MÁS. QUE NADA MATISA LAS. CANAS CON EL COLOR QUE UNO TIENE... NO ES MÁGICO PERO. CUMPLE. SU FUNCIÓN LE DOY UN 9 DE 10... ASÍ. QUE LO RECOMIENDO.... SOY DE MAIPÚ. SANTIAGO DE CHILE"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "10 OCT 2025",
+  "estrellas": 5,
+  "texto": "Recomiendo encarecidamente usar este champú. Tiene una gran durabilidad, reduce la apariencia de cabello blanco y deja tu cabello hidratado y brillante. Puedes comprarlo sin preocupaciones."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "02 NOV 2025",
+  "estrellas": 5,
+  "texto": "Buen producto. Dura aproximadamente 2 meses y el tiempo de secado en el cabello es de solo 5 minutos. Un vaso como este dura más de un año para una persona de cabello gris."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Venezuela",
+  "fecha": "10 MAY 2026",
+  "estrellas": 5,
+  "texto": "excelente producto ya es 3 que he comprado. es fabuloso. dura 1 mes aproximadamente el efecto. .atiza las canas perfecto como si fuera natural. genial. Gracias."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "11 JUL 2026",
+  "estrellas": 5,
+  "texto": "Excelente, realmente funciona, hace que todo el cabello blanco se vuelva negro, no mancha la piel, el efecto es rápido y dura una semana para el cabello negro."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "23 FEB 2026",
+  "estrellas": 5,
+  "texto": "excelente producto, siguiendo bien las instrucciones tiene una muy buena cobertura en el cabello, no lo maltrata, el olor no es molesto, es facil de aplicar"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "17 NOV 2025",
+  "estrellas": 5,
+  "texto": "El champú realmente deja el cabello muy negro, me gustó, es fácil de usar, lo recomiendo, solo hay que observar cuántos días el cabello mantiene el tinte."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "01 SEP 2026",
+  "estrellas": 5,
+  "texto": "wow,quedé sorprendida,muy rápido el tinte,lo dejé 20 minutos y me quedo negro, creo que eran 5 minutos, pero mis canas desaparecieron,muy buen producto"
+ },
+ {
+  "nombre": "Z***e",
+  "ciudad": "Chile",
+  "fecha": "05 OCT 2025",
+  "estrellas": 5,
+  "texto": "maravilloso, cumplió 100%, solo hay que aplicar crema por alrededor de la cara antes de poner el producto para que no quede manchada la piel ."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
   "fecha": "27 OCT 2025",
   "estrellas": 5,
-  "texto": "Excelente, es la tercera vez que hago un pedido.",
-  "foto": ""
+  "texto": "Buen producto solo lo dejo 15 minutos para que no se cubran tanto las canas y verme más natural. aunque creo que se terminará muy rápido"
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "NZ",
-  "fecha": "08 DIC 2025",
+  "ciudad": "Chile",
+  "fecha": "22 NOV 2025",
   "estrellas": 5,
-  "texto": "Funciona perfectamente incluso en los grises más persistentes.",
-  "foto": ""
- },
- {
-  "nombre": "j***z",
-  "ciudad": "España",
-  "fecha": "28 FEB 2026",
-  "estrellas": 5,
-  "texto": "perfecto , lo compré para la barba y de lujo",
-  "foto": ""
+  "texto": "excelente producto está es la 4ta vez que lo pido me encanta. deja el cabello con un hermoso brillo y el tinte cubre al 100% las canas"
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Francia",
-  "fecha": "06 MAY 2026",
+  "ciudad": "Brasil",
+  "fecha": "26 ENE 2026",
   "estrellas": 5,
-  "texto": "tengo el pelo casi negro y me lo ha dejado rojizo, no me lo ha dejado rojo pero tampoco lo esperaba, muy buen producto!",
-  "foto": ""
+  "texto": "Muy bien. Debes frotarlo bien en la mano hasta que se convierta en espuma, y luego puedes aplicarlo sin preocuparte, ya que no mancha."
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "25 MAR 2026",
-  "estrellas": 5,
-  "texto": "Gran producto, cumple su función a la perfección. Lo compro con regularidad, es fácil y rápido de usar, me gusta mucho.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "26 DIC 2025",
-  "estrellas": 5,
-  "texto": "Colores realmente buenos, cubre todo el cabello blanco y dura mucho tiempo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Australia",
-  "fecha": "11 FEB 2026",
-  "estrellas": 5,
-  "texto": "Gran producto, funciona de maravilla.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Bélgica",
+  "ciudad": "Chile",
   "fecha": "08 OCT 2025",
   "estrellas": 5,
-  "texto": "Perfecto. Estoy muy contento. Gracias.",
-  "foto": ""
+  "texto": "es excelente, tenía el cabello blanco y cuando me lo apliqué quedó un hermoso violeta, además perdura mucho más que la tintura normal."
  },
  {
-  "nombre": "B***r",
-  "ciudad": "Canadá",
-  "fecha": "01 DIC 2025",
+  "nombre": "C***y",
+  "ciudad": "Chile",
+  "fecha": "04 NOV 2025",
   "estrellas": 5,
-  "texto": "Me encanta este producto, es muy fácil de usar.",
-  "foto": ""
+  "texto": "El producto es bueno, cumple con lo que promete, pero no es un champoo más bien es una tintura, en la forma que se aplica."
+ },
+ {
+  "nombre": "D***s",
+  "ciudad": "Chile",
+  "fecha": "25 JUN 2026",
+  "estrellas": 5,
+  "texto": "me encanta, yo lo uso en pelo seco y lo dejo harto rato. funciona excelente. no huele a nada, no pica, no irrita es genial"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "09 JUN 2026",
+  "estrellas": 5,
+  "texto": "Es un producto excelente y funciona perfectamente, puedes comprarlo sin preocupaciones, esta es mi segunda compra."
+ },
+ {
+  "nombre": "M***s",
+  "ciudad": "Brasil",
+  "fecha": "31 JUL 2026",
+  "estrellas": 5,
+  "texto": "¡Gran calidad! Cumple su función de tinte de manera excelente. Definitivamente volveré a comprar este champú."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "15 JUL 2026",
+  "estrellas": 5,
+  "texto": "ya es segunda vez que compramos este shampoo, a mi mamá le gustó y pidió otro. le duró bastante. Muy útil 👍"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "02 JUL 2026",
+  "estrellas": 5,
+  "texto": "Lo recomiendo lo pobre es excelente la pigmentación lo único malo me equivoque en el color, pero maravilloso"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "07 AGO 2026",
+  "estrellas": 5,
+  "texto": "El champú tinte es muy bueno, puedes comprarlo sin preocupaciones; cumple con lo que promete, lo recomiendo."
+ },
+ {
+  "nombre": "v***a",
+  "ciudad": "Brasil",
+  "fecha": "19 JUL 2026",
+  "estrellas": 5,
+  "texto": "El mejor champú que he usado, no mancha la piel, es increíble y no cambia de color después de su uso."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "16 NOV 2025",
+  "estrellas": 5,
+  "texto": "El producto funciona bien, huele agradable y la tinta se adhiere perfectamente. ¡Excelente producto!"
+ },
+ {
+  "nombre": "R***z",
+  "ciudad": "Perú",
+  "fecha": "25 JUN 2026",
+  "estrellas": 5,
+  "texto": "Es la segunda vez que lo compro me encanta no maltrata mi cabello y me lo deja súper natural"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "02 JUN 2026",
+  "estrellas": 5,
+  "texto": "Es bueno, no cubre todas las canas pero sí la mayoría, ésta es la tercera vez que lo compro."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "04 DIC 2025",
+  "estrellas": 5,
+  "texto": "Es un producto muy bueno lo llevo usando mas de 1 año y estoy feliz, muy recomendado..."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "03 MAY 2026",
+  "estrellas": 5,
+  "texto": "buen producto ya lo he usado es bueno para las canas te deja el pelo negro un buen rato"
+ },
+ {
+  "nombre": "C***c",
+  "ciudad": "Chile",
+  "fecha": "03 DIC 2025",
+  "estrellas": 5,
+  "texto": "excelente calidad me sorprendió tiñe super bien y dura bastante y queda el pelo suave"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "20 MAY 2026",
+  "estrellas": 5,
+  "texto": "El producto es tal como se describe, no mancha y cubre bien las superficies blancas."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "11 NOV 2025",
+  "estrellas": 5,
+  "texto": "Buenísimo, excelente producto cubre al 100 % las canas, mejor que cualquier tintura."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Colombia",
+  "fecha": "10 MAR 2026",
+  "estrellas": 5,
+  "texto": "Muy bueno, cumple su función y es duradero, aproximadamente 15 días entre cada uso."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "26 ABR 2026",
+  "estrellas": 5,
+  "texto": "buen producto lo recomiendo Ampliamente igual a la descripción funciona excelente"
+ },
+ {
+  "nombre": "6***r",
+  "ciudad": "México",
+  "fecha": "01 MAR 2026",
+  "estrellas": 5,
+  "texto": "Había comprado uno muy claro pero creo este es el color deja el cabello muy bien"
+ },
+ {
+  "nombre": "P***a",
+  "ciudad": "Chile",
+  "fecha": "28 NOV 2025",
+  "estrellas": 5,
+  "texto": "Buen producto. Vale la pena comprarlo ya que tiñe muy bien las canas. Usarlo con"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "07 ABR 2026",
+  "estrellas": 5,
+  "texto": "Excelente, funciona muy bien, hace que todo el cabello blanco parezca negro."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "15 FEB 2026",
+  "estrellas": 5,
+  "texto": "se lo compré a mi madre, según le a servido bien ya que es el 2do que pido"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "01 AGO 2026",
+  "estrellas": 5,
+  "texto": "Deja el pelo suave, me imagino que con los siguientes lavados teñira más"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "13 MAR 2026",
+  "estrellas": 5,
+  "texto": "excelente producto ya llevo un año comprando este shampoo, recomendable"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "13 ABR 2026",
+  "estrellas": 5,
+  "texto": "Me encanta ya lo llevo usando mucho tiempo, el cabello queda muy bien."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "06 ABR 2026",
+  "estrellas": 5,
+  "texto": "cumple con su función, sin quejas hasta 3 semanas después de usarlo."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "30 DIC 2025",
+  "estrellas": 5,
+  "texto": "Es buenisimo lo he conprado varias veces , lo recomiendo totalmente"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "28 AGO 2026",
+  "estrellas": 5,
+  "texto": "Excelente producto, lo he estado comprando durante mucho tiempo."
+ },
+ {
+  "nombre": "E***n",
+  "ciudad": "Chile",
+  "fecha": "22 OCT 2025",
+  "estrellas": 5,
+  "texto": "Me lo aplicación cada 3 semanas , tengo canas reveldes 😂😂😂"
+ },
+ {
+  "nombre": "G***a",
+  "ciudad": "Brasil",
+  "fecha": "08 ENE 2026",
+  "estrellas": 5,
+  "texto": "Excelente, funciona muy bien, dejando el cabello 100% negro."
+ },
+ {
+  "nombre": "M***A",
+  "ciudad": "Brasil",
+  "fecha": "04 NOV 2025",
+  "estrellas": 5,
+  "texto": "Fácil de usar... comprando por segunda vez. ¡Lo recomiendo!"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "17 ENE 2026",
+  "estrellas": 5,
+  "texto": "Excelente producto... ahora mi cabello está libre de canas."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Uruguay",
+  "fecha": "07 JUL 2026",
+  "estrellas": 5,
+  "texto": "Producto original, de alta calidad, con un aroma excelente"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "16 ABR 2026",
+  "estrellas": 5,
+  "texto": "Me gustó, cubrió el 80% del cabello blanco en mi cabello."
+ },
+ {
+  "nombre": "D***g",
+  "ciudad": "Brasil",
+  "fecha": "06 OCT 2025",
+  "estrellas": 5,
+  "texto": "¡¡¡La tercera vez que lo compro!!!! ¡Excelente producto!"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "02 JUL 2026",
+  "estrellas": 5,
+  "texto": "Excelente producto, puedes comprar sin preocupaciones..."
+ },
+ {
+  "nombre": "L***a",
+  "ciudad": "Chile",
+  "fecha": "02 MAY 2026",
+  "estrellas": 5,
+  "texto": "Muy bueno, no es primera vez que compro, lo recomiendo."
+ },
+ {
+  "nombre": "P***a",
+  "ciudad": "Chile",
+  "fecha": "29 NOV 2025",
+  "estrellas": 5,
+  "texto": "Se lo compre a mi pareja y quedo contenta y hermosa"
+ },
+ {
+  "nombre": "J***e",
+  "ciudad": "Perú",
+  "fecha": "27 ENE 2026",
+  "estrellas": 5,
+  "texto": "Excelente producto. Altamente recomendado al 100%."
+ },
+ {
+  "nombre": "J***z",
+  "ciudad": "Colombia",
+  "fecha": "25 NOV 2025",
+  "estrellas": 5,
+  "texto": "excelente champú para canas fácil y rápido de usar"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "21 JUL 2026",
+  "estrellas": 5,
+  "texto": "muy buen producto, este es el cuarto que me pido"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "19 FEB 2026",
+  "estrellas": 5,
+  "texto": "muy bueno ,cabertura de canas ,suave lindo color"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "03 DIC 2025",
+  "estrellas": 5,
+  "texto": "ya e comprado varios y me gustan mucho. gracias"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "16 SEP 2026",
+  "estrellas": 5,
+  "texto": "Excelente, las uso hace tiempo y funcionan bien"
+ },
+ {
+  "nombre": "G***z",
+  "ciudad": "Colombia",
+  "fecha": "23 NOV 2025",
+  "estrellas": 5,
+  "texto": "Buen producto, volveré a comprar, gracias 🙂"
+ },
+ {
+  "nombre": "P***a",
+  "ciudad": "Chile",
+  "fecha": "14 NOV 2025",
+  "estrellas": 5,
+  "texto": "Lo mejor de lo mejor segunda vez q lo compro"
  },
  {
   "nombre": "S***z",
   "ciudad": "Brasil",
   "fecha": "11 ENE 2026",
   "estrellas": 5,
-  "texto": "Este es el segundo que compro, muy práctico.",
-  "foto": ""
+  "texto": "Este es el segundo que compro, muy práctico."
  },
  {
-  "nombre": "J***o",
-  "ciudad": "México",
-  "fecha": "17 DIC 2025",
+  "nombre": "F***a",
+  "ciudad": "Perú",
+  "fecha": "01 ENE 2026",
   "estrellas": 5,
-  "texto": "¡Producto excelente, realmente funciona!",
-  "foto": ""
+  "texto": "Muy buen producto, cumple con lo que ofrece"
+ },
+ {
+  "nombre": "L***z",
+  "ciudad": "Colombia",
+  "fecha": "02 JUN 2026",
+  "estrellas": 5,
+  "texto": "Lo usë por primera vez y funcionó muy bien."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "12 ABR 2026",
+  "estrellas": 5,
+  "texto": "Muy buen producto tiñe muy bien el cabello."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "06 DIC 2025",
+  "estrellas": 5,
+  "texto": "Excelente producto. Lo volvería a comprar."
  },
  {
   "nombre": "N***l",
   "ciudad": "Chile",
   "fecha": "09 DIC 2025",
   "estrellas": 5,
-  "texto": "Excelente producto, lo recomiendo al 100%.",
-  "foto": ""
+  "texto": "Excelente producto, lo recomiendo al 100%."
  },
  {
-  "nombre": "Anónimo",
-  "ciudad": "Australia",
-  "fecha": "11 FEB 2026",
+  "nombre": "L***a",
+  "ciudad": "Chile",
+  "fecha": "07 NOV 2025",
   "estrellas": 5,
-  "texto": "Gran producto, funciona y es eficaz.",
-  "foto": ""
+  "texto": "¡Me encantó! El champú es muy natural 👍🏻"
+ },
+ {
+  "nombre": "J***e",
+  "ciudad": "Perú",
+  "fecha": "27 ENE 2026",
+  "estrellas": 5,
+  "texto": "Gran producto. Cumple con lo que promete."
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "17 NOV 2025",
-  "estrellas": 4,
-  "texto": "bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏 bien 👌 👏",
-  "foto": ""
+  "ciudad": "Chile",
+  "fecha": "24 OCT 2025",
+  "estrellas": 5,
+  "texto": "Es un buen producto. Mi pelo queda sedoso"
  },
  {
-  "nombre": "A***o",
-  "ciudad": "Alemania",
-  "fecha": "10 ABR 2026",
-  "estrellas": 4,
-  "texto": "Todo bien, lo pido con frecuencia.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Ucrania",
-  "fecha": "17 JUN 2026",
-  "estrellas": 4,
-  "texto": "Quizás sea necesario aplicarlo sobre el cabello seco. Yo lo apliqué sobre el cabello húmedo, como si fuera un champú, y lo dejé actuar durante unos 7 minutos. No cubrió el cabello gris.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "18 ABR 2026",
-  "estrellas": 4,
-  "texto": "Todavía tengo que probarlo.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "11 JUN 2026",
-  "estrellas": 4,
-  "texto": "espero que sea bueno",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "27 NOV 2025",
-  "estrellas": 4,
-  "texto": "me encantó pero tengo el pelo tan negro q apenas se me ven unos reflejos pero bueno por lo demás es estupendo",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "30 MAR 2026",
-  "estrellas": 4,
-  "texto": "es perfecto me cubre bien las canas.satistecha",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Alemania",
-  "fecha": "23 DIC 2025",
-  "estrellas": 4,
-  "texto": "Excelente producto, dura dos semanas.",
-  "foto": ""
- },
- {
-  "nombre": "J***s",
-  "ciudad": "España",
-  "fecha": "27 FEB 2026",
-  "estrellas": 4,
-  "texto": "El producto tiñe perfectamente, todo correcto,",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "España",
-  "fecha": "03 MAR 2026",
-  "estrellas": 4,
-  "texto": "Aún no lo he probado, espero que funcione.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "23 ENE 2026",
-  "estrellas": 4,
-  "texto": "Aún no lo he usado, pero volví a comprar el mismo producto. Muy satisfecho.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "28 ENE 2026",
-  "estrellas": 4,
-  "texto": "¡Realmente funciona y funciona de maravilla! El resultado dura mucho tiempo. Además, ten en cuenta que debe aplicarse sobre el cabello seco, no mojado, y solo debe enjuagarse después de 20 minutos.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Reino Unido",
-  "fecha": "06 DIC 2025",
-  "estrellas": 4,
-  "texto": "Artículo recibido, altamente recomendado.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "NG",
-  "fecha": "15 FEB 2026",
-  "estrellas": 4,
-  "texto": "Recibí el producto. Se ve exactamente como aparece en la aplicación. Sin embargo, aún no lo he utilizado.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "SG",
-  "fecha": "29 OCT 2025",
-  "estrellas": 4,
-  "texto": "Recibido en buenas condiciones, pero aún no probado.",
-  "foto": ""
- },
- {
-  "nombre": "m***t",
-  "ciudad": "Israel",
-  "fecha": "08 ENE 2026",
-  "estrellas": 4,
-  "texto": "Buen tinte, pero solo dura unos pocos días.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "23 ENE 2026",
-  "estrellas": 4,
-  "texto": "Aún no lo he probado.",
-  "foto": ""
- },
- {
-  "nombre": "S***n",
-  "ciudad": "NG",
-  "fecha": "21 ENE 2026",
-  "estrellas": 4,
-  "texto": "Bien recibido, gracias.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "23 ENE 2026",
-  "estrellas": 4,
-  "texto": "Aún no lo has probado.",
-  "foto": ""
- },
- {
-  "nombre": "m***m",
-  "ciudad": "Francia",
-  "fecha": "09 NOV 2025",
-  "estrellas": 4,
-  "texto": "Producto que cumple su función a la perfección, la coloración es excelente y es muy fácil de usar.",
-  "foto": ""
- },
- {
-  "nombre": "m***m",
-  "ciudad": "Francia",
-  "fecha": "04 NOV 2025",
-  "estrellas": 4,
-  "texto": "Realmente es un champú de coloración muy fácil de aplicar y no reseca el cabello como lo hacen otras tintas.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Israel",
-  "fecha": "05 MAY 2026",
-  "estrellas": 4,
-  "texto": "Tardó un poco en llegar, pero estaba bien embalado y sin ningún daño.",
-  "foto": ""
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Australia",
-  "fecha": "14 MAY 2026",
-  "estrellas": 4,
-  "texto": "Creo que está bien.",
-  "foto": ""
- },
- {
-  "nombre": "s***r",
-  "ciudad": "Estados Unidos",
-  "fecha": "31 MAR 2026",
-  "estrellas": 4,
-  "texto": "Aún no lo he probado, espero que me ayude con mis pocos canos.",
-  "foto": ""
- },
- {
-  "nombre": "G***a",
-  "ciudad": "Alemania",
+  "nombre": "M***z",
+  "ciudad": "Chile",
   "fecha": "13 NOV 2025",
+  "estrellas": 5,
+  "texto": "Es la segunda vez que lo pido, muy bueno."
+ },
+ {
+  "nombre": "J***o",
+  "ciudad": "México",
+  "fecha": "17 DIC 2025",
+  "estrellas": 5,
+  "texto": "¡Producto excelente, realmente funciona!"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "07 MAR 2026",
+  "estrellas": 5,
+  "texto": "es de buena calidad y me gusta usarlo"
+ },
+ {
+  "nombre": "c***s",
+  "ciudad": "Chile",
+  "fecha": "04 DIC 2025",
+  "estrellas": 5,
+  "texto": "exelente tinta muy bien fácil de usar"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "28 NOV 2025",
+  "estrellas": 5,
+  "texto": "muy buen shampoo, un cliente feliz"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "10 JUN 2026",
+  "estrellas": 5,
+  "texto": "Muy buen producto, lo recomiendo."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "04 NOV 2025",
+  "estrellas": 5,
+  "texto": "¡El mejor producto del mercado!"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "02 JUL 2026",
+  "estrellas": 5,
+  "texto": "Buen producto, lo recomiendo."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "07 SEP 2026",
+  "estrellas": 5,
+  "texto": "excelente funciona perfecto"
+ },
+ {
+  "nombre": "L***a",
+  "ciudad": "Colombia",
+  "fecha": "22 ENE 2026",
+  "estrellas": 5,
+  "texto": "exelente gracias me encantó"
+ },
+ {
+  "nombre": "m***a",
+  "ciudad": "Chile",
+  "fecha": "30 OCT 2025",
+  "estrellas": 5,
+  "texto": "lo probé muy buen producto"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Venezuela",
+  "fecha": "06 MAY 2026",
+  "estrellas": 5,
+  "texto": "Excelente, siempre lo uso."
+ },
+ {
+  "nombre": "m***a",
+  "ciudad": "Brasil",
+  "fecha": "12 ENE 2026",
+  "estrellas": 5,
+  "texto": "Funciona bien, excelente."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "25 OCT 2025",
+  "estrellas": 5,
+  "texto": "Cumple con lo prometido."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "26 JUN 2026",
+  "estrellas": 5,
+  "texto": "Deja el cabello hermoso."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "12 JUL 2026",
+  "estrellas": 5,
+  "texto": "Excelente para mi mamá."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "27 AGO 2026",
+  "estrellas": 5,
+  "texto": "Funcionó perfectamente."
+ },
+ {
+  "nombre": "C***r",
+  "ciudad": "Chile",
+  "fecha": "26 OCT 2025",
+  "estrellas": 5,
+  "texto": "Segunda vez que compro."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "08 MAY 2026",
+  "estrellas": 5,
+  "texto": "ampliamente recomendado"
+ },
+ {
+  "nombre": "V***s",
+  "ciudad": "Brasil",
+  "fecha": "21 MAY 2026",
+  "estrellas": 5,
+  "texto": "Me encantó el producto."
+ },
+ {
+  "nombre": "J***a",
+  "ciudad": "Chile",
+  "fecha": "28 FEB 2026",
+  "estrellas": 5,
+  "texto": "¡Producto excelente!"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Colombia",
+  "fecha": "26 NOV 2025",
+  "estrellas": 5,
+  "texto": "El producto funciona"
+ },
+ {
+  "nombre": "C***a",
+  "ciudad": "Chile",
+  "fecha": "04 DIC 2025",
+  "estrellas": 5,
+  "texto": "es muy buena calidad"
+ },
+ {
+  "nombre": "M***i",
+  "ciudad": "Brasil",
+  "fecha": "05 DIC 2025",
+  "estrellas": 5,
+  "texto": "Realmente funciona"
+ },
+ {
+  "nombre": "J***u",
+  "ciudad": "Chile",
+  "fecha": "29 NOV 2025",
+  "estrellas": 5,
+  "texto": "Excelente fijación"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "México",
+  "fecha": "17 AGO 2026",
+  "estrellas": 5,
+  "texto": "me encanta gracias"
+ },
+ {
+  "nombre": "d***a",
+  "ciudad": "Chile",
+  "fecha": "28 NOV 2025",
+  "estrellas": 5,
+  "texto": "todo bien gracias"
+ },
+ {
+  "nombre": "J***u",
+  "ciudad": "Chile",
+  "fecha": "29 NOV 2025",
+  "estrellas": 5,
+  "texto": "Ame muy efectivo"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "08 ABR 2026",
+  "estrellas": 5,
+  "texto": "excelente efecto"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "04 OCT 2025",
   "estrellas": 4,
-  "texto": "Aún necesitas probarlo.",
-  "foto": ""
+  "texto": "No cubre 100% las canas, pero las atenúa y lo mejor es que es fácil y rápido de usar., no tiene olor fuerte. Recomiendo usar guantes"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Colombia",
+  "fecha": "23 OCT 2025",
+  "estrellas": 4,
+  "texto": "Cumple lo que promete, en el primer uso funcionó bien. Deja el pelo un poco seco pero me imagino que es relativo."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Venezuela",
+  "fecha": "07 ABR 2026",
+  "estrellas": 4,
+  "texto": "hoy lo empecé a usar. tiene pinta de que si matiza las canas. espero que vaya todo bien."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Colombia",
+  "fecha": "02 ABR 2026",
+  "estrellas": 4,
+  "texto": "Tiñe bien toca es mezclar bien el producto y tener cuidado con la piel porq mancha"
  },
  {
   "nombre": "e***a",
   "ciudad": "Chile",
   "fecha": "18 OCT 2025",
   "estrellas": 4,
-  "texto": "me gusto mucho,aunque hay que tenerla no por 10 min ssino mas",
-  "foto": ""
- },
- {
-  "nombre": "n***a",
-  "ciudad": "Chile",
-  "fecha": "12 DIC 2025",
-  "estrellas": 4,
-  "texto": "exelente, buena presentación y buen efecto.",
-  "foto": ""
+  "texto": "me gusto mucho,aunque hay que tenerla no por 10 min ssino mas"
  },
  {
   "nombre": "Anónimo",
   "ciudad": "Chile",
   "fecha": "24 FEB 2026",
   "estrellas": 4,
-  "texto": "El producto cumple con lo descrito en forma satisfactoria.",
-  "foto": ""
+  "texto": "El producto cumple con lo descrito en forma satisfactoria."
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "España",
+  "ciudad": "Chile",
+  "fecha": "20 ABR 2026",
+  "estrellas": 4,
+  "texto": "cumple su función al primer aplicado, tapa bien las canas"
+ },
+ {
+  "nombre": "N***a",
+  "ciudad": "México",
+  "fecha": "29 JUL 2026",
+  "estrellas": 4,
+  "texto": "No me está pintando mucho como otros shampoo pero bien"
+ },
+ {
+  "nombre": "Z***i",
+  "ciudad": "Chile",
+  "fecha": "30 OCT 2025",
+  "estrellas": 4,
+  "texto": "Lo he usado con resultados bastante aceptables"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "24 MAR 2026",
+  "estrellas": 4,
+  "texto": "me gusto... gracias de aquí de Chile ✌️👌👌👌"
+ },
+ {
+  "nombre": "n***a",
+  "ciudad": "Chile",
+  "fecha": "12 DIC 2025",
+  "estrellas": 4,
+  "texto": "exelente, buena presentación y buen efecto."
+ },
+ {
+  "nombre": "V***l",
+  "ciudad": "México",
+  "fecha": "26 OCT 2025",
+  "estrellas": 4,
+  "texto": "Si funciona, contento con el resultado."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "13 MAY 2026",
+  "estrellas": 4,
+  "texto": "¡Súper bueno, lo recomiendo al 100%!"
+ },
+ {
+  "nombre": "J***o",
+  "ciudad": "México",
+  "fecha": "30 MAR 2026",
+  "estrellas": 3,
+  "texto": "Si pinta, no es un tono morado firme, se ve bien pero morado morado no es, por otra parte revolví súper bien por muchísimo tiempo, y aún así nunca salió uniforme la mezcla, sale transparente y el color pero tarda mucho tiempo y mucha mezcla desperdiciada."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "03 MAR 2026",
+  "estrellas": 3,
+  "texto": "era para mi mamá, lo usó y a los 2 días ya se le veían canas, no es muy eficiente pero al menos cumple su función de teñir, solo sería mejor si durase más el efecto."
+ },
+ {
+  "nombre": "J***o",
+  "ciudad": "Chile",
   "fecha": "09 FEB 2026",
-  "estrellas": 4,
-  "texto": "pues no está mal, queda un color bonito y cubre",
-  "foto": ""
+  "estrellas": 3,
+  "texto": "el producto oscure el pelo, pero cubre solo en un 70% las canas, oscure el resto del pelo y pocs las canas, no funciona como shampoo, no generacewpuma"
  },
  {
   "nombre": "Anónimo",
-  "ciudad": "Francia",
-  "fecha": "11 FEB 2026",
-  "estrellas": 4,
-  "texto": "El color negro se mantiene en muy buen estado.",
-  "foto": ""
+  "ciudad": "México",
+  "fecha": "02 SEP 2026",
+  "estrellas": 3,
+  "texto": "lo use por 20 minutos y solo tapo un 30 %"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "28 AGO 2026",
+  "estrellas": 3,
+  "texto": "pica mucho la cabeza después de usarlo."
+ },
+ {
+  "nombre": "P***e",
+  "ciudad": "Brasil",
+  "fecha": "17 FEB 2026",
+  "estrellas": 1,
+  "texto": "El producto no cumple con el propósito para el que fue diseñado. Es lo mismo que usar un champú normal; el efecto es exactamente el mismo. Quisiera un reembolso por esta compra."
+ },
+ {
+  "nombre": "M***a",
+  "ciudad": "Chile",
+  "fecha": "28 SEP 2026",
+  "estrellas": 1,
+  "texto": "Me compré el productor lo he usado 3 veces en la semana no hay caso que tome las canas tiene un olor muy feo y está como hecho agua escurre de las manos."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "18 NOV 2025",
+  "estrellas": 1,
+  "texto": "teñido débil No se adhirió bien a los hilos blancos. Cumplí con todas las instrucciones. No lo recomiendo. champú ineficaz"
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Brasil",
+  "fecha": "30 AGO 2026",
+  "estrellas": 1,
+  "texto": "No funcionó, el cabello sigue siendo completamente blanco."
+ },
+ {
+  "nombre": "Anónimo",
+  "ciudad": "Chile",
+  "fecha": "10 NOV 2025",
+  "estrellas": 1,
+  "texto": "el producto no me funcionó me dejó igual las canas"
  }
 ];
