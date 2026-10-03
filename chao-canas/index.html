@@ -34,7 +34,7 @@
 if (location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jayegroupshop.com') {
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init','4451697161762536');
-  fbq('track','PageView');
+  /* el PageView sale más abajo con jayePixel.track: así lleva event_id y también va por servidor (03-10) */
 } else {
   window.fbq = function () {};   // fuera de la tienda no se manda nada
 }
@@ -54,13 +54,28 @@ window.jayePixel = (function () {
     id: nuevoId,
     fbp: function () { return galleta('_fbp'); },
     fbc: fbc,
+    /* 03-10 · igual que Chile y España: cada evento (menos la compra, que la manda el flujo de ventas) va
+       TAMBIÉN por servidor al flujo n8n FhTtCcsyCRN7hBAa con el MISMO event_id; Meta se queda con uno.
+       Colombia solo mandaba la compra por servidor (calidad 3,4 vs 7,3 de Chile). */
     track: function (ev, obj, idFijo) {
       var e = idFijo || nuevoId();
       try { if (window.fbq) window.fbq('track', ev, obj || {}, { eventID: e }); } catch (x) {}
+      if (ev !== 'Purchase' && /(^|\.)jayegroupshop\.com$/.test(location.hostname)) {
+        var ir = function () {
+          try {
+            var U = 'https://n8n-production-8a42.up.railway.app/webhook/capi-co-evento';
+            var d = JSON.stringify({ event_name: ev, event_id: e, url: location.href, fbp: galleta('_fbp'), fbc: fbc(), ua: navigator.userAgent, datos: obj || {} });
+            if (!(navigator.sendBeacon && navigator.sendBeacon(U, d))) fetch(U, { method: 'POST', body: d, keepalive: true, mode: 'no-cors' });
+          } catch (x) {}
+        };
+        /* la cookie _fbp la crea el píxel al cargar: si aún no está, se espera un poco */
+        if (galleta('_fbp')) ir(); else setTimeout(ir, 1500);
+      }
       return e;
     },
   };
 })();
+window.jayePixel.track('PageView', {});
 </script>
 </head>
 <body>
