@@ -1,0 +1,352 @@
+/* ============================================================
+   SPRAY SELLADOR IMPERMEABLE · ESPAÑA · estilos propios (02-10-2026).
+   Solo con <body class="p-sellador">. ui-ux-pro-max opción B (James):
+   Minimalism & Swiss, pizarra + verde de obra, Outfit / Work Sans.
+   Contrastes (WCAG): #0F172A sobre #F8FAFC 17,8:1 · #475569 7,2:1 ·
+   blanco sobre #047857 5,5:1 (botón) · #065F46 sobre #ECFDF5 7,9:1.
+   ============================================================ */
+body.p-sellador {
+  --s-pri:    #334155;
+  --s-pri2:   #475569;
+  --s-osc:    #0F172A;
+  --s-fondo:  #F8FAFC;
+  --s-gris:   #F2F3F4;
+  --s-borde:  #E6E8EA;
+  --s-verde:  #059669;
+  --s-verde2: #047857;
+  --s-verdeC: #ECFDF5;
+  --s-rojo:   #DC2626;
+  --s-tit:    'Outfit', 'Segoe UI', system-ui, sans-serif;
+  --s-txt:    'Work Sans', 'Segoe UI', system-ui, sans-serif;
+  --s-curva:  cubic-bezier(.22,.8,.24,1);
+  background: var(--s-fondo);
+}
+body.p-sellador #prod { background: var(--s-fondo); font-family: var(--s-txt); color: var(--s-osc); }
+body.p-sellador #prod p { color: var(--s-pri2); }
+
+/* ---------- títulos: grandes, rectos, con la línea de sellador ---------- */
+body.p-sellador #prod h1, body.p-sellador #prod h2, body.p-sellador #prod h3 { text-transform: none; font-family: var(--s-tit); letter-spacing: -.015em; }
+body.p-sellador #prod h2.tit2,
+body.p-sellador .se-h2 {
+  display: block;
+  font-family: var(--s-tit);
+  font-weight: 800;
+  font-size: clamp(28px, 7.6vw, 36px);
+  line-height: 1.08;
+  color: var(--s-osc);
+  text-wrap: balance;
+  margin: 10px 0 14px;
+}
+body.p-sellador #prod h2 em, body.p-sellador .se-h2 em { font-style: normal; color: var(--s-verde2); display: inline; }
+body.p-sellador #prod .eyebrow, body.p-sellador .se-rot {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--s-tit); font-weight: 700; font-size: 12px;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--s-pri);
+  background: none; padding: 0;
+}
+body.p-sellador #prod .eyebrow::before, body.p-sellador .se-rot::before {
+  content: ''; width: 22px; height: 3px; border-radius: 2px; background: var(--s-verde);
+}
+body.p-sellador #prod .sub2, body.p-sellador .se-lead { font-size: 16.5px; line-height: 1.6; color: var(--s-pri2); margin: 0 0 18px; }
+
+/* la línea de sellador bajo el título: se dibuja al leerlo (sellador.js) */
+body.p-sellador #prod h2.se-tit { position: relative; padding-bottom: 14px; }
+body.p-sellador #prod h2.se-tit::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  width: 84px; height: 7px; border-radius: 4px;
+  background: #fff; box-shadow: inset 0 0 0 2px var(--s-verde), 0 2px 6px rgba(5,150,105,.25);
+  transform: scaleX(0); transform-origin: left center;
+}
+body.p-sellador #prod h2.se-tit.se-sellado::after { animation: seLinea .7s var(--s-curva) forwards; }
+@keyframes seLinea { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---------- HÉROE: la foto de estudio manda; texto en tarjeta pizarra ---------- */
+body.p-sellador .heroP {
+  --crema: #0F172A; --rosa: #1E293B; --rosaF: #059669;
+  --tinta: #F8FAFC; --tinta2: #CBD5E1;
+  --oro: #047857; --oroOsc: #065F46;
+  background: var(--s-osc);
+}
+body.p-sellador .heroP__marco, body.p-sellador .heroP__img { background: #0B1220; }
+body.p-sellador .heroP__marco { overflow: hidden; }
+body.p-sellador .heroP__fundido { background: linear-gradient(to top, #0F172A 10%, rgba(15,23,42,.6) 45%, rgba(15,23,42,0) 100%); z-index: 2; }
+body.p-sellador .heroP__luces { display: none; }
+body.p-sellador .se-lluvia { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+body.p-sellador .heroP__txt {
+  position: relative; z-index: 3; margin: 0 12px; padding: 22px 18px 18px;
+  background: #fff; border-radius: 6px 6px 22px 22px;
+  border-top: 6px solid var(--s-verde);
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+body.p-sellador .heroP .heroP__h1 {
+  font-family: var(--s-tit); font-weight: 800; font-style: normal;
+  font-size: clamp(34px, 9.4vw, 46px); line-height: 1.02; letter-spacing: -.025em;
+  color: var(--s-osc);
+}
+body.p-sellador .heroP .heroP__h1 b, body.p-sellador .hCas__w.es-oro .hCas__l { color: var(--s-verde2); font-weight: 800; font-style: normal; }
+body.p-sellador .heroP__sub { font-family: var(--s-txt); font-size: 16px; line-height: 1.55; color: var(--s-pri2); }
+body.p-sellador .heroP__kicker { font-family: var(--s-tit); color: var(--s-pri); background: var(--s-gris); border-color: var(--s-borde); }
+body.p-sellador .heroP__kicker i { background: var(--s-verde); }
+body.p-sellador .heroP__nota { font-family: var(--s-tit); color: var(--s-osc); }
+body.p-sellador .heroP__dato { font-family: var(--s-txt); font-weight: 600; color: var(--s-osc); background: var(--s-gris); border-color: var(--s-borde); }
+body.p-sellador .heroP__dato svg { color: var(--s-verde2); }
+body.p-sellador .heroP__dato--oro { background: var(--s-verdeC); border-color: #A7F3D0; }
+body.p-sellador .heroP__ahorra { background: var(--s-verdeC); border-color: #A7F3D0; color: #065F46; }
+body.p-sellador .heroP__ahorra svg { color: var(--s-verde2); }
+body.p-sellador .heroP__precio span { color: var(--s-pri2); }
+body.p-sellador .heroP__precio b { font-family: var(--s-tit); font-weight: 800; color: var(--s-osc); font-variant-numeric: tabular-nums; }
+
+/* la foto se descubre de izquierda a derecha, como una pasada de spray */
+html.ba-lista body.p-sellador .heroP__img:not(.se-pasa) { clip-path: inset(0 100% 0 0); }
+html.ba-visto body.p-sellador .heroP__img { clip-path: none; }
+html.ba-lista body.p-sellador .heroP__img.se-pasa { animation: sePasada 1.1s cubic-bezier(.65,0,.35,1) both, seEnfoca 1.8s var(--s-curva) both; }
+@keyframes sePasada { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes seEnfoca { from { filter: blur(6px) brightness(1.3); transform: scale(1.06); } to { filter: none; transform: scale(1); } }
+/* la tarjeta entra desde abajo y el titular sube palabra a palabra */
+html.ba-lista body.p-sellador .heroP__txt { animation: seTarjeta .55s var(--s-curva) .5s both; }
+@keyframes seTarjeta { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+html.ba-lista body.p-sellador .hCas__l {
+  animation: seLetra .45s var(--s-curva) both !important;
+  animation-delay: calc(.6s + var(--k) * .022s) !important;
+}
+@keyframes seLetra { from { opacity: 0; transform: translateY(.55em); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); } }
+html.ba-lista body.p-sellador .heroP__txt > *:not(:nth-child(2)) { animation: seSube .4s var(--s-curva) both; }
+html.ba-lista body.p-sellador .heroP__txt > *:nth-child(1) { animation-delay: .55s; }
+html.ba-lista body.p-sellador .heroP__txt > *:nth-child(3) { animation-delay: 1.15s; }
+html.ba-lista body.p-sellador .heroP__txt > *:nth-child(4) { animation-delay: 1.25s; }
+html.ba-lista body.p-sellador .heroP__txt > *:nth-child(5) { animation-delay: 1.35s; }
+html.ba-lista body.p-sellador .heroP__txt > *:nth-child(6) { animation-delay: 1.45s; }
+html.ba-lista body.p-sellador .heroP__txt > *:nth-child(7) { animation-delay: 1.55s; }
+@keyframes seSube { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ---------- BOTONES: verde de obra, todos iguales (56 px) ---------- */
+body.p-sellador .heroP__cta,
+body.p-sellador #prod .cta,
+body.p-sellador #prod .se-cta,
+body.p-sellador .btn-flota,
+body.p-sellador #stickycta button {
+  box-sizing: border-box;
+  display: flex !important; align-items: center; justify-content: center;
+  width: 100% !important; height: 56px !important; min-height: 56px; padding: 0 18px !important;
+  font-family: var(--s-tit) !important; font-size: 18px !important; font-weight: 800 !important; line-height: 1 !important;
+  white-space: nowrap; text-transform: none; text-decoration: none;
+  border-radius: 12px !important; border: 0 !important;
+  background: var(--s-verde2) !important; color: #fff !important;
+  box-shadow: 0 10px 22px rgba(4,120,87,.28);
+  cursor: pointer; transition: background .2s var(--s-curva), transform .15s var(--s-curva);
+  position: relative; overflow: hidden;
+}
+body.p-sellador .heroP__cta:hover, body.p-sellador #prod .cta:hover, body.p-sellador #prod .se-cta:hover, body.p-sellador .btn-flota:hover { background: #065F46 !important; }
+body.p-sellador .heroP__cta:active, body.p-sellador #prod .cta:active, body.p-sellador #prod .se-cta:active { transform: scale(.97); }
+body.p-sellador .heroP__cta:focus-visible, body.p-sellador #prod .cta:focus-visible { outline: 3px solid var(--s-pri); outline-offset: 3px; }
+body.p-sellador #prod .se-cta { margin-top: 20px; }
+body.p-sellador #prod .cta.azul { background: #fff !important; color: var(--s-pri) !important; border: 2px solid var(--s-pri) !important; box-shadow: none; }
+/* una pasada de spray recorre el botón cada pocos segundos */
+body.p-sellador .heroP__cta::after, body.p-sellador #prod .cta.rojo::after, body.p-sellador #prod .se-cta::after, body.p-sellador .btn-flota::after {
+  content: ''; position: absolute; top: 0; bottom: 0; left: -45%; width: 35%;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.35), rgba(255,255,255,0));
+  pointer-events: none; animation: seBrillo 4s ease-in-out 2.6s infinite;
+}
+@keyframes seBrillo { 0% { left: -45%; } 30% { left: 120%; } 100% { left: 120%; } }
+body.p-sellador .heroP__pie { flex-wrap: wrap; }
+body.p-sellador #stickycta .btn-flota { width: auto !important; flex: 1 1 auto; }
+body.p-sellador #stickycta .waFlota { width: auto !important; flex: 0 0 auto; background: #08783A !important; color: #fff !important; font-family: var(--s-tit); }
+body.p-sellador .heroP__wa { font-family: var(--s-tit); }
+
+/* ---------- ANTES / DESPUÉS ---------- */
+body.p-sellador #prod .ba-sec { background: #fff; margin: 0; padding: 30px 16px 26px; border-bottom: 1px solid var(--s-borde); }
+body.p-sellador #prod .ba-sec .ba-img { border-radius: 14px; overflow: hidden; margin: 6px 0 2px; box-shadow: 0 12px 30px rgba(15,23,42,.14); }
+body.p-sellador #prod .ba-sec .ba-img img { display: block; width: 100%; height: auto; }
+
+/* ---------- compra corta ---------- */
+body.p-sellador #prod .arriba2 { background: var(--s-fondo); }
+body.p-sellador #prod .arriba2 .datos h1 { font-family: var(--s-tit); font-weight: 800; color: var(--s-osc); }
+body.p-sellador #prod .precioTop { font-family: var(--s-tit); font-variant-numeric: tabular-nums; }
+body.p-sellador #prod .arriba2 .dscTop, body.p-sellador #prod .arriba2 .dscTop__ul { display: none; }
+
+/* ---------- secciones propias ---------- */
+body.p-sellador .se-sec { padding: 40px 16px; }
+body.p-sellador .se-usos { background: #fff; }
+body.p-sellador .se-usos-lista { display: grid; gap: 18px; }
+body.p-sellador .se-uso { margin: 0; background: var(--s-fondo); border: 1px solid var(--s-borde); border-radius: 16px; overflow: hidden; }
+body.p-sellador .se-uso-img { overflow: hidden; }
+body.p-sellador .se-uso-img img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; transition: transform .6s var(--s-curva); }
+body.p-sellador .se-uso.se-ya .se-uso-img img { animation: seZoom 1.2s var(--s-curva) both; }
+@keyframes seZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+body.p-sellador .se-uso figcaption { padding: 14px 16px 16px; display: grid; gap: 4px; }
+body.p-sellador .se-uso figcaption b { font: 700 18px var(--s-tit); color: var(--s-osc); }
+body.p-sellador .se-uso figcaption span { font-size: 15px; line-height: 1.5; color: var(--s-pri2); }
+@media (min-width: 768px) { body.p-sellador .se-usos-lista { grid-template-columns: repeat(3, 1fr); } }
+
+body.p-sellador .se-pasos-sec { background: var(--s-osc); }
+body.p-sellador .se-pasos-sec .se-h2 { color: #fff; }
+body.p-sellador .se-pasos-sec .se-h2 em { color: #34D399; }
+body.p-sellador .se-pasos-sec .se-rot { color: #CBD5E1; }
+body.p-sellador .se-pasos { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 12px; counter-reset: none; }
+body.p-sellador .se-paso {
+  display: grid; grid-template-columns: 34px 44px 1fr; gap: 12px; align-items: start;
+  background: #1E293B; border: 1px solid #334155; border-radius: 14px; padding: 16px 14px;
+}
+body.p-sellador .se-paso-n { font: 800 28px/1 var(--s-tit); color: #34D399; font-variant-numeric: tabular-nums; }
+body.p-sellador .se-paso-ico { width: 44px; height: 44px; border-radius: 12px; background: #0F172A; display: grid; place-items: center; color: #fff; }
+body.p-sellador .se-paso-ico svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.p-sellador .se-paso b { font: 700 17px var(--s-tit); color: #fff; }
+body.p-sellador #prod .se-paso p { margin: 4px 0 0; font-size: 15px; line-height: 1.5; color: #CBD5E1; }
+
+body.p-sellador .se-sino { background: var(--s-fondo); }
+body.p-sellador .se-sino-grid { display: grid; gap: 14px; margin-top: 8px; }
+@media (min-width: 768px) { body.p-sellador .se-sino-grid { grid-template-columns: 1fr 1fr; } }
+body.p-sellador .se-caja { border-radius: 16px; padding: 18px 16px; background: #fff; border: 1px solid var(--s-borde); }
+body.p-sellador .se-caja > b { display: block; font: 800 18px var(--s-tit); margin-bottom: 10px; }
+body.p-sellador .se-caja-si { border-top: 5px solid var(--s-verde); }
+body.p-sellador .se-caja-si > b { color: var(--s-verde2); }
+body.p-sellador .se-caja-no { border-top: 5px solid var(--s-rojo); }
+body.p-sellador .se-caja-no > b { color: #B91C1C; }
+body.p-sellador .se-caja ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+body.p-sellador .se-caja li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 15.5px; line-height: 1.45; color: var(--s-osc); }
+body.p-sellador .se-caja li svg { width: 22px; height: 22px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+body.p-sellador .se-caja-si li svg { stroke: var(--s-verde2); }
+body.p-sellador .se-caja-no li svg { stroke: var(--s-rojo); }
+body.p-sellador #prod .se-nota { margin: 16px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--s-pri2); }
+
+body.p-sellador .se-foto { margin: 14px 0 18px; }
+body.p-sellador .se-foto img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 12px 30px rgba(15,23,42,.14); }
+
+/* ---------- POR QUÉ FUNCIONA (las 4 tarjetas de la ficha) ---------- */
+body.p-sellador #prod .form-sec { background: var(--s-gris); padding-top: 40px; padding-bottom: 40px; }
+body.p-sellador #prod .form-sec :has(> .ing) { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+body.p-sellador #prod .form-sec .ing {
+  display: flex; flex-direction: column; gap: 10px; margin: 0;
+  background: #fff; border: 1px solid var(--s-borde); border-radius: 14px; padding: 16px 14px;
+}
+body.p-sellador #prod .form-sec .ing .cir { width: 44px; height: 44px; border-radius: 12px; background: var(--s-pri); display: grid; place-items: center; border: 0; }
+body.p-sellador #prod .form-sec .ing .cir svg { width: 24px; height: 24px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+body.p-sellador #prod .form-sec .ing b { font-family: var(--s-tit); font-weight: 700; font-size: 16.5px; color: var(--s-osc); display: block; text-transform: none; letter-spacing: 0; }
+body.p-sellador #prod .form-sec .ing p { font-size: 14.5px; line-height: 1.5; margin: 4px 0 0; }
+
+/* ---------- VÍDEO ---------- */
+body.p-sellador #prod .vid-wrap { background: #fff; padding-top: 36px; }
+body.p-sellador #prod .se-cab { padding: 0 16px 14px; }
+body.p-sellador #prod .vid-prod, body.p-sellador #prod .vid-wrap video { background: var(--s-osc); border-radius: 16px; }
+
+/* ---------- el resto de la ficha ---------- */
+body.p-sellador #prod section.desc { background: #fff; }
+body.p-sellador #prod .promo-sec, body.p-sellador #prod .cmp-sec, body.p-sellador #prod .gar-sec { background: var(--s-fondo); }
+body.p-sellador #prod .res-sec { background: var(--s-gris); }
+body.p-sellador #prod .cmp th.us { color: var(--s-verde2); font-family: var(--s-tit); }
+body.p-sellador #prod .cmp .si svg { stroke: var(--s-verde); }
+body.p-sellador #prod .form { background: var(--s-fondo); }
+body.p-sellador #prod .sello .nom { font-family: var(--s-tit); font-weight: 800; font-size: 16px; text-transform: none; letter-spacing: 0; color: var(--s-osc); }
+body.p-sellador #prod .sello img.logoTr { margin: 4px auto 10px; }
+
+/* ---------- FORMULARIO (los estilos del selector de pago viven por producto) ---------- */
+body.p-sellador #prod .pasoRot { display: flex; align-items: center; gap: 9px; margin: 22px 0 10px; font-family: var(--s-tit); font-size: 15px; font-weight: 600; color: var(--s-osc); }
+body.p-sellador #prod .pasoRot:first-of-type { margin-top: 4px; }
+body.p-sellador #prod .pasoRot b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--s-pri); color: #fff; font-size: 13px; font-weight: 700; }
+body.p-sellador #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 4px; }
+body.p-sellador #prod .pagoOp {
+  position: relative; display: grid; grid-template-areas: 'ico' 'tit' 'pr' 'sub'; align-content: start; gap: 2px;
+  min-height: 132px; padding: 16px 12px 13px; border: 1.5px solid var(--s-borde); border-radius: 14px;
+  background: #fff; font: inherit; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+}
+body.p-sellador #prod .pagoOp:active { transform: scale(.985); }
+body.p-sellador #prod .pagoOp.sel { border-color: var(--s-verde2); background: var(--s-verdeC); box-shadow: 0 0 0 3px rgba(4,120,87,.15); }
+body.p-sellador #prod .pagoOp:focus-visible { outline: 2px solid var(--s-pri); outline-offset: 3px; }
+body.p-sellador #prod .pagoOp__ico { grid-area: ico; margin-bottom: 4px; }
+body.p-sellador #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: var(--s-pri2); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+body.p-sellador #prod .pagoOp.sel .pagoOp__ico svg { stroke: var(--s-verde2); }
+body.p-sellador #prod .pagoOp__tit { grid-area: tit; font-size: 14px; font-weight: 700; line-height: 1.25; color: var(--s-osc); }
+body.p-sellador #prod .pagoOp__pr { grid-area: pr; margin-top: 2px; font-family: var(--s-tit); font-size: 21px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--s-osc); }
+body.p-sellador #prod .pagoOp__sub { grid-area: sub; margin-top: 3px; font-size: 12px; line-height: 1.35; color: var(--s-pri2); }
+body.p-sellador #prod .pagoOp__cinta { position: absolute; top: -9px; right: 10px; padding: 3px 9px; border-radius: 999px; background: var(--s-verde2); color: #fff; font-family: var(--s-tit); font-size: 11px; font-weight: 700; white-space: nowrap; }
+
+/* ---------- entrada al hacer scroll ---------- */
+body.p-sellador.se-mueve .se-sube { opacity: 0; transform: translateY(16px); transition: opacity .35s var(--s-curva), transform .35s var(--s-curva); transition-delay: calc(var(--i, 0) * 60ms); }
+body.p-sellador.se-mueve .se-sube.se-ya { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  body.p-sellador .heroP__img, body.p-sellador .heroP__txt, body.p-sellador .heroP__txt > *, body.p-sellador .hCas__l {
+    animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
+  body.p-sellador .se-lluvia { display: none; }
+  body.p-sellador .heroP__cta::after, body.p-sellador #prod .cta::after, body.p-sellador .btn-flota::after { display: none; }
+  body.p-sellador .se-sube { opacity: 1 !important; transform: none !important; transition: none !important; }
+  body.p-sellador #prod h2.se-tit::after { transform: none; }
+}
+
+/* ============================================================
+   RULETA DE REGALO (16-10). Estructura y letras de ui-ux-pro-max (Lora +
+   Raleway, bloques); COLORES DE LA PÁGINA del sellador (James 16-10: "utiliza
+   los colores de la página"): verde #047857 (regalo, botón, circulito) ·
+   pizarra #334155 · gris #F2F3F4 · texto #0F172A / #475569 · flecha roja
+   #DC2626 · verde claro #ECFDF5. Antes era rojo/oro/rosado del script.
+   Contrastes: blanco/#047857 5,5:1 · blanco/#334155 10,4:1 · #0F172A/#F2F3F4 16:1.
+   ============================================================ */
+body.p-sellador .se-r { position: fixed; inset: 0; z-index: 9000; display: grid; place-items: center; padding: 16px;
+  background: rgba(0,0,0,.35); cursor: pointer;
+  /* 16-10 bug: antes era opacity 0 + clase "abierta" puesta con requestAnimationFrame; en el navegador de Facebook / pestaña en
+     segundo plano ese paso no corría y la ruleta quedaba INVISIBLE comiéndose los toques. Ahora se ve siempre y solo se anima. */
+  opacity: 1; }
+/* cerrada NO puede tapar la página (display:grid le ganaba a [hidden] y se comía los toques: no dejaba comprar) */
+body.p-sellador .se-r[hidden] { display: none; }
+/* James 16-10: "NEGRO VIDRIOSO": vidrio negro con la página borrosa detrás, brillo arriba, no blanca */
+body.p-sellador .se-r-tarjeta { width: min(380px, 100%);
+  background: linear-gradient(160deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.03) 38%, rgba(255,255,255,0) 60%), rgba(0,0,0,.58);
+  -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255,255,255,.22); border-top: 6px solid #059669;
+  border-radius: 22px; padding: 22px 18px 20px; text-align: center; font-family: 'Raleway', system-ui, sans-serif; color: #F8FAFC;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 24px 60px rgba(0,0,0,.55); }
+/* sin vidrio (navegadores viejos): negro casi sólido para que el texto se lea */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { body.p-sellador .se-r-tarjeta { background: rgba(0,0,0,.9); } }
+body.p-sellador .se-r-rot { display: inline-block; padding: 5px 12px; border-radius: 999px; background: #ECFDF5; color: #065F46;
+  font: 700 12px 'Raleway', system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+body.p-sellador .se-r-tarjeta h3 { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1.08; margin: 12px 0 8px; color: #F8FAFC; }
+body.p-sellador .se-r-tarjeta p { color: #CBD5E1; font-size: 16px; line-height: 1.4; margin: 0 0 12px; }
+body.p-sellador .se-r-marco { position: relative; width: min(260px, 70vw); margin: 8px auto 16px; }
+body.p-sellador .se-r-flecha { position: absolute; left: 50%; top: -8px; z-index: 2; width: 0; height: 0; transform: translateX(-50%);
+  border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 24px solid #DC2626; }
+body.p-sellador .se-r-rueda { display: block; width: 100%; height: auto; border-radius: 50%; box-shadow: 0 0 0 8px #F8FAFC, 0 10px 28px rgba(4,120,87,.45); }
+body.p-sellador .se-r-gana { fill: #047857; }
+body.p-sellador .se-r-a { fill: #F2F3F4; }
+body.p-sellador .se-r-b { fill: #334155; }
+body.p-sellador .se-r-txt { font-family: 'Raleway', system-ui, sans-serif; font-weight: 700; font-size: 13px; fill: #FFFFFF; }
+body.p-sellador .se-r-txt-gana { font-weight: 800; }
+body.p-sellador .se-r-txt-osc { fill: #0F172A; }
+body.p-sellador .se-r-eje { fill: #FFFFFF; stroke: #047857; stroke-width: 6; }
+body.p-sellador .se-r-btn { width: 100%; min-height: 52px; border: 0; border-radius: 14px; background: #047857; color: #FFFFFF;
+  font: 800 18px 'Raleway', system-ui, sans-serif; cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
+body.p-sellador .se-r-btn:hover { background: #0F172A; color: #FFFFFF; }
+body.p-sellador .se-r-btn:focus-visible, body.p-sellador .se-r-insignia:focus-visible { outline: 3px solid #0F172A; outline-offset: 3px; }
+body.p-sellador .se-r-premio img { display: block; width: min(230px, 62vw); height: auto; margin: 8px auto 12px; border-radius: 16px;
+  background: #FFFFFF; border: 3px solid #334155; }
+body.p-sellador .se-r-nota { font-size: 13px !important; color: #94A3B8 !important; }
+/* circulito "¡Ganaste tu regalo!" con el icono del regalo, como el del desengrasante (late suave) */
+/* James 16-10: del tamaño del botón de WhatsApp y a media pantalla, en la esquina izquierda */
+body.p-sellador .se-r-insignia { position: fixed; left: 10px; top: 50%; margin-top: -29px; z-index: 8000; width: 58px; height: 58px; padding: 4px;
+  display: grid; place-items: center; text-align: center; border: 2px solid #0F172A; border-radius: 50%;
+  /* James 16-10: el amarillo del BOTE (sacado de la foto del héroe: #F8B028); texto #0F172A 10:1 */
+  background: #F8B028; color: #0F172A;
+  font: 800 10px/1.05 'Raleway', system-ui, sans-serif; box-shadow: 0 0 18px rgba(248,176,40,.6); cursor: pointer;
+  /* James 16-10: que PALPITE y se note que es un regalo: latido + onda amarilla que sale, y el moño se mueve */
+  animation: se-r-late 1.3s ease-in-out infinite, se-r-onda 1.3s ease-out infinite; }
+body.p-sellador .se-r-insignia svg { animation: se-r-mono 1.3s ease-in-out infinite; }
+@keyframes se-r-onda { 0% { box-shadow: 0 0 0 0 rgba(248,176,40,.75), 0 0 18px rgba(248,176,40,.6); } 80%, 100% { box-shadow: 0 0 0 18px rgba(248,176,40,0), 0 0 18px rgba(248,176,40,.6); } }
+@keyframes se-r-mono { 0%, 60%, 100% { transform: rotate(0); } 70% { transform: rotate(-12deg); } 80% { transform: rotate(10deg); } 90% { transform: rotate(-6deg); } }
+body.p-sellador .se-r-insignia[hidden] { display: none; }
+body.p-sellador .se-r-insignia svg { display: block; width: 20px; height: 20px; margin: 0 auto 2px; }
+@keyframes se-r-late { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.14); } 30% { transform: scale(1); } 45% { transform: scale(1.1); } 60% { transform: scale(1); } }
+/* burbujas de festejo cuando gana */
+.se-r-pop { position: fixed; z-index: 9500; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, #FFFFFF, rgba(255,255,255,.6) 55%, rgba(5,150,105,.45)); animation: se-r-vuela 1.3s ease-out forwards; }
+@keyframes se-r-vuela { to { transform: translate(var(--x), var(--y)) scale(.3); opacity: 0; } }
+/* la × para cerrar, arriba a la derecha */
+body.p-sellador .se-r-tarjeta { position: relative; }
+body.p-sellador .se-r-x { position: absolute; top: 8px; right: 10px; width: 36px; height: 36px; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.12); color: #F8FAFC; font: 400 24px/36px system-ui, sans-serif; cursor: pointer; }
+body.p-sellador .se-r-ok { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 12px; border-radius: 14px;
+  background: #ECFDF5; border: 2px solid #E6E8EA; text-align: left; }
+body.p-sellador .se-r-ok img { width: 64px; height: 64px; border-radius: 10px; background: #FFFFFF; object-fit: cover; flex: none; }
+body.p-sellador .se-r-ok b { display: block; color: #065F46; font-family: 'Lora', Georgia, serif; font-size: 17px; }
+body.p-sellador .se-r-ok span { color: #475569; font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { body.p-sellador .se-r, body.p-sellador .se-r-btn { transition: none; animation: none; } body.p-sellador .se-r-insignia, body.p-sellador .se-r-insignia svg { animation: none; } }
