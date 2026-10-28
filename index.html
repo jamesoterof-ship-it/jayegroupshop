@@ -1,37 +1,30 @@
 <!DOCTYPE html>
-<html lang="es-CO">
+<html lang="es-EC">
 <head>
 <meta charset="utf-8">
 <script>
-/* NO MOVER: va antes que todo. Los anuncios de Meta llevan a
-   https://jayegroupshop.com/?cmp=gafas-co-meta (y pueden traer fbclid y utm_*).
-   Desde que la portada es la tienda, la ficha de las gafas vive en /gafas/.
-   Aquí esas visitas se mandan DIRECTO a su ficha, con TODOS sus parámetros:
-   el cmp es lo que ata la venta a su campaña en el panel.
-   También vuelven a las gafas los regresos de Wompi (?pago= y ?anticipo=),
-   porque el link de pago apunta a https://jayegroupshop.com/?pago=<venta>. */
+/* NO MOVER: va antes que todo. 28-10: la tienda pasó a ECUADOR (la versión de
+   Colombia quedó guardada en la rama "colombia" del repo).
+   ?p=<producto> manda directo a la ficha /<producto>/ con TODOS sus parámetros
+   (el cmp es lo que ata la venta a su campaña en el panel). */
 (function () {
   try {
     var q = new URLSearchParams(location.search);
-    var c = (q.get('cmp') || q.get('utm_campaign') || '').toLowerCase();
     var p = (q.get('p') || '').toLowerCase();
     var ir = '';
-    if (c.indexOf('gafas') === 0 || p === 'gafas') ir = '/gafas/';
-    else if (c.indexOf('chao') === 0 || p.indexOf('chao') === 0) ir = '/chao-canas/';
-    else if (p && /^[a-z0-9-]+$/.test(p)) ir = '/' + p + '/';
-    else if (q.get('pago') || q.get('anticipo')) ir = '/gafas/';
+    if (p && /^[a-z0-9-]+$/.test(p)) ir = '/' + p + '/';
     if (ir) { window.__jayeVa = ir; location.replace(ir + location.search + location.hash); }
   } catch (e) {}
 })();
 </script>
 <meta name="facebook-domain-verification" content="k5ow7eqv1klyo3wyc2poxwvi2e7rxc" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Jaye Group Colombia · Envío gratis y pago contra entrega</title>
-<meta name="description" content="Tienda Jaye Group Colombia. Envío gratis a toda Colombia, pago contra entrega o pago anticipado y despacho en 2 a 5 días.">
+<title>Jaye Group Ecuador · Envío gratis y pago contra entrega</title>
+<meta name="description" content="Tienda Jaye Group Ecuador. Envío gratis a todo Ecuador, pago contra entrega y despacho en 2 a 5 días.">
 <link rel="canonical" href="https://jayegroupshop.com/">
 <meta name="theme-color" content="#0F0E0C">
-<meta property="og:title" content="Jaye Group Colombia · Envío gratis y pago contra entrega">
-<meta property="og:description" content="Elige tu producto, te lo enviamos gratis y pagas contra entrega o por anticipado.">
+<meta property="og:title" content="Jaye Group Ecuador · Envío gratis y pago contra entrega">
+<meta property="og:description" content="Elige tu producto, te lo enviamos gratis y pagas contra entrega.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://jayegroupshop.com/img/oferta.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,15 +46,17 @@
  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(ya)}else{ya()}
  setTimeout(ya,400);})();
 </script>
-<!-- Meta Pixel: el mismo de la ficha de las gafas (4451697161762536) -->
+<!-- Meta Pixel: APAGADO desde el 28-10. El 4451697161762536 es el de Colombia;
+     el de Ecuador lo define James. Para prenderlo: poner su id en PIXEL_EC. -->
 <script>
 /* El píxel SOLO en la tienda de verdad (jayegroupshop.com). Fuera de ahí
    (copia local, revisión, vista previa) no se baja ni se manda nada.
    Si la visita se está yendo a una ficha (arriba), no se cuenta aquí:
    la ficha manda su propio PageView. */
-if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jayegroupshop.com')) {
+var PIXEL_EC = '';
+if (PIXEL_EC && !window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jayegroupshop.com')) {
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init','4451697161762536');
+  fbq('init',PIXEL_EC);
   fbq('track','PageView');
 } else {
   window.fbq = function () {};   // fuera de la tienda no se manda nada
@@ -76,11 +71,11 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
   <!-- marquesina -->
   <div class="marq" aria-label="Avisos">
     <div class="pista">
-      <span>Envío gratis a toda Colombia</span><span>·</span>
-      <span>Pago contra entrega o pago anticipado</span><span>·</span>
+      <span>Envío gratis a todo Ecuador</span><span>·</span>
+      <span>Pago contra entrega</span><span>·</span>
       <span>Despacho en 2 a 5 días</span><span>·</span>
-      <span>Envío gratis a toda Colombia</span><span>·</span>
-      <span>Pago contra entrega o pago anticipado</span><span>·</span>
+      <span>Envío gratis a todo Ecuador</span><span>·</span>
+      <span>Pago contra entrega</span><span>·</span>
       <span>Despacho en 2 a 5 días</span><span>·</span>
     </div>
   </div>
@@ -113,7 +108,7 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
     <div class="capa"></div>
     <div class="txt">
       <h1>Pídelo hoy,<br>paga al recibir</h1>
-      <p>Envío gratis a toda Colombia. Pagas cuando lo tienes en la mano, o por anticipado si prefieres.</p>
+      <p>Envío gratis a todo Ecuador. Pagas cuando lo tienes en la mano.</p>
       <a class="cta" href="#productos">Ver productos
         <svg class="ic" viewBox="0 0 24 24" style="width:17px;height:17px;stroke-width:2.4"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
       </a>
@@ -138,7 +133,7 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
     </div>
   </div>
 
-  <!-- quiénes somos + sello (sin garantía de días: en Colombia no aplica) -->
+  <!-- quiénes somos + sello (sin garantía de días) -->
   <section class="nos" id="nosotros">
     <div class="nos-in">
       <div class="nos-txt">
@@ -147,7 +142,7 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
       </div>
 
       <div class="nos-sello" data-rv style="--d:.10s">
-        <svg viewBox="0 0 240 250" role="img" aria-label="Sello Jaye Group Colombia: paga al recibir">
+        <svg viewBox="0 0 240 250" role="img" aria-label="Sello Jaye Group Ecuador: paga al recibir">
           <defs>
             <linearGradient id="oroMetal" x1="0.12" y1="0" x2="0.72" y2="1">
               <stop offset="0"    stop-color="#FFF7DC"/>
@@ -214,9 +209,9 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
               <text font-size="17.5" letter-spacing="1.7" fill="#FFFBEF">
                 <textPath href="#arcoArr" startOffset="50%" text-anchor="middle">COMPRA SEGURA</textPath></text>
               <text font-size="15" letter-spacing="2.6" fill="#5C430B" fill-opacity=".55">
-                <textPath href="#arcoAba" startOffset="50%" text-anchor="middle" dy="1.4">JAYE GROUP COLOMBIA</textPath></text>
+                <textPath href="#arcoAba" startOffset="50%" text-anchor="middle" dy="1.4">JAYE GROUP ECUADOR</textPath></text>
               <text font-size="15" letter-spacing="2.6" fill="#FFFBEF">
-                <textPath href="#arcoAba" startOffset="50%" text-anchor="middle">JAYE GROUP COLOMBIA</textPath></text>
+                <textPath href="#arcoAba" startOffset="50%" text-anchor="middle">JAYE GROUP ECUADOR</textPath></text>
             </g>
 
             <text x="120" y="120" text-anchor="middle" font-family="'Barlow Condensed','Inter',sans-serif"
@@ -235,12 +230,12 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
     <div class="nos-puntos">
       <div data-rv>
         <svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1.6"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/></svg>
-        <b>Contra entrega o anticipado</b>
-        <span>Pagas cuando te llega, o antes con Wompi: tarjeta, PSE o Nequi.</span>
+        <b>Pago contra entrega</b>
+        <span>Pagas en efectivo cuando te llega el pedido.</span>
       </div>
       <div data-rv style="--d:.08s">
         <svg class="ic" viewBox="0 0 24 24"><path d="M2 7h11v9H2zM13 10h4.5l2.5 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
-        <b>Despacho a toda Colombia</b>
+        <b>Despacho a todo Ecuador</b>
         <span>Envío gratis y despacho en 2 a 5 días a tu ciudad.</span>
       </div>
       <div data-rv style="--d:.16s">
@@ -285,19 +280,19 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
     <div class="rese-pista" id="resePista" aria-label="Opiniones"></div>
   </section>
 
-  <!-- video de marca (el mismo de Chile), con texto de Colombia y sin garantía de días -->
+  <!-- video de marca (el mismo de Chile), con texto de Ecuador y sin garantía de días -->
   <section class="gar gar-video">
     <video class="clip-gar" id="clipGar" muted loop playsinline preload="none" aria-hidden="true">
       <source src="/img/pareja-compras.mp4" type="video/mp4">
     </video>
     <div class="velo"></div>
     <div class="dentro">
-      <h2>Clientes felices en toda Colombia</h2>
+      <h2>Clientes felices en todo Ecuador</h2>
       <p>Elegimos uno a uno los productos que vendemos.</p>
     </div>
   </section>
 
-  <!-- PIE · el mismo de la ficha de las gafas (datos de Colombia) -->
+  <!-- PIE · el mismo de la ficha de las gafas (datos de Ecuador) -->
   <footer class="pie">
     <div class="envoltorio">
 
@@ -326,9 +321,9 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
 
         <div class="col contacto">
           <h4>Contacto</h4>
-          <p><a href="https://wa.me/573145021958" target="_blank" rel="noopener">WhatsApp +57 314 502 1958</a></p>
+          <!-- WhatsApp de Ecuador: se pone cuando James tenga el número -->
           <p><a href="mailto:gerencia@jayegroup.com.co">gerencia@jayegroup.com.co</a></p>
-          <p>Despacho a toda Colombia</p>
+          <p>Despacho a todo Ecuador</p>
         </div>
       </div>
 
@@ -355,9 +350,6 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
           <a href="https://www.facebook.com/1021271641058424" target="_blank" rel="noopener" aria-label="Facebook">
             <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.4 21v-7.1h2.4l.4-2.8h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.300-3.7 3.8v2H8v2.8h2.4V21h3z"/></svg>
           </a>
-          <a href="https://wa.me/573145021958" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M17 14.4c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.6.9-.8 1-.1.2-.3.2-.5.1a7.3 7.3 0 0 1-3.6-3.2c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/><path fill="#fff" d="M12 3.5A8.4 8.4 0 0 0 4.7 16l-1.2 4.5 4.6-1.2A8.4 8.4 0 1 0 12 3.5zm0 15.3c-1.3 0-2.5-.3-3.5-1l-.3-.1-2.6.7.7-2.6-.2-.3a6.9 6.9 0 1 1 5.9 3.3z"/></svg>
-          </a>
           <a href="https://www.tiktok.com/@jaye.group" target="_blank" rel="noopener" aria-label="TikTok">
             <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#010101"/><g transform="translate(12,12) scale(0.6) translate(-12,-12)"><path fill="#25F4EE" d="M15.8 5.1a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.590 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V8.94a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.18a7.35 7.35 0 0 0 4.29 1.37V6.46A4.28 4.28 0 0 1 15.8 5.1z"/><path fill="#FE2C55" d="M17.4 6.54a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08v-3.16a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V9.62a7.35 7.35 0 0 0 4.29 1.37V7.9a4.28 4.28 0 0 1-3.22-1.36z"/><path fill="#fff" d="M16.6 5.82A4.28 4.28 0 0 1 15.53 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V9.66a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.9a7.35 7.35 0 0 0 4.29 1.37V7.18a4.28 4.28 0 0 1-3.22-1.36z"/></g></svg>
           </a>
@@ -369,19 +361,18 @@ if (!window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.h
       </div>
 
       <div class="abajo">
-        <small>© 2026 Jaye Group Colombia. Todos los derechos reservados.</small>
-        <small>Envío incluido · Pago anticipado o contra entrega en toda Colombia</small>
+        <small>© 2026 Jaye Group Ecuador. Todos los derechos reservados.</small>
+        <small>Envío incluido · Pago contra entrega en todo Ecuador</small>
       </div>
 
     </div>
   </footer>
 
-<script src="/productos-co.js?v=1"></script>
-<script src="/resenas.js?v=1"></script>
-<script src="/tienda-co.js?v=2"></script>
+<!-- resenas.js (opiniones de las gafas de Colombia) ya no se carga: cada producto
+     de Ecuador trae sus propias opiniones reales. Sin opiniones, la sección se oculta. -->
+<script src="/productos-co.js?v=3"></script>
+<script src="/tienda-co.js?v=3"></script>
 
-<a class="wa" href="https://wa.me/573145021958" aria-label="WhatsApp" target="_blank" rel="noopener">
-  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.900-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
-</a>
+<!-- botón flotante de WhatsApp: vuelve cuando esté el número de Ecuador -->
 </body>
 </html>
