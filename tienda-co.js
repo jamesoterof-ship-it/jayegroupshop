@@ -11,10 +11,10 @@
 (function () {
   'use strict';
 
-  /* dólares: $24,90 (con centavos solo si los tiene) */
+  /* pesos mexicanos: $799 (sin centavos salvo que los tenga) */
   var pesos = function (n) {
     n = Number(n);
-    return '$' + n.toLocaleString('es-EC', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+    return '$' + n.toLocaleString('es-MX', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }) + ' MXN';
   };
   var esc = function (s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (m) {
@@ -116,7 +116,7 @@
     var c = document.getElementById('cuantos');
     if (c) c.textContent = lista.length
       ? lista.length + (lista.length === 1 ? ' producto' : ' productos')
-      : 'Muy pronto · estamos preparando los productos para Ecuador';
+      : 'Muy pronto · estamos preparando los productos para México';
     revelar();
   }
 
@@ -321,7 +321,7 @@
     var n = document.getElementById('reseNota');
     var q = document.getElementById('reseCuantas');
     if (n) n.textContent = (suma / lista.length).toFixed(1);
-    if (q) q.textContent = lista.length.toLocaleString('es-EC') + ' opiniones';
+    if (q) q.textContent = lista.length.toLocaleString('es-MX') + ' opiniones';
 
     var fotos = [];
     lista.forEach(function (r) { if (r.foto && fotos.indexOf(r.foto) < 0) fotos.push(ruta(r.foto)); });
