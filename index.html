@@ -46,14 +46,14 @@
  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(ya)}else{ya()}
  setTimeout(ya,400);})();
 </script>
-<!-- Meta Pixel: APAGADO desde el 28-10. El 4451697161762536 es el de Colombia;
-     el de Ecuador lo define James. Para prenderlo: poner su id en PIXEL_EC. -->
+<!-- Meta Pixel de ECUADOR: "Jaye Group Ecuador" 3801303723356168 (creado el 28-10 en el
+     negocio Jaye Group, conectado a la cuenta Jaye Group). El 4451697161762536 es el de Colombia. -->
 <script>
 /* El píxel SOLO en la tienda de verdad (jayegroupshop.com). Fuera de ahí
    (copia local, revisión, vista previa) no se baja ni se manda nada.
    Si la visita se está yendo a una ficha (arriba), no se cuenta aquí:
    la ficha manda su propio PageView. */
-var PIXEL_EC = '';
+var PIXEL_EC = '3801303723356168';
 if (PIXEL_EC && !window.__jayeVa && (location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jayegroupshop.com')) {
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init',PIXEL_EC);
