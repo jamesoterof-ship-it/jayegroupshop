@@ -973,9 +973,9 @@
       ? '<div class="field"><label for="fProvincia">' + t('lProvincia', 'Estado') + '</label><select id="fProvincia" required autocomplete="address-level1"><option value="">' + t('elige', 'Selecciona…') + '</option></select><div class="err">' + t('eProvincia', 'Selecciona tu estado.') + '</div></div>'
         + '<div class="field"><label for="fCiudad">' + t('lCiudad', 'Municipio o delegación') + '</label><select id="fCiudad" required autocomplete="address-level2" disabled><option value="">' + t('eligeEstado', 'Primero elige tu estado') + '</option></select><div class="err">' + t('eCiudad', 'Selecciona tu municipio.') + '</div></div>'
         + '<div class="field"><label for="fDir">' + t('lDir', 'Dirección y complementos') + '</label><input id="fDir" required autocomplete="street-address" placeholder="' + t('phDir', 'Calle, número exterior e interior') + '"><div class="err">' + t('eDir', 'Escribe la calle y el número.') + '</div></div>'
-        + campoCorreo
+        /* 29-10 James: sin campo de colonia (Dropi no la pide) y el código postal va arriba del correo */
         + '<div class="field"><label for="fCP">' + t('lCP', 'Código postal') + '</label><input id="fCP" required inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="' + t('phCP', '06000') + '"><div class="err">' + t('eCP', 'Escribe los 5 dígitos de tu código postal.') + '</div></div>'
-        + '<div class="field"><label for="fColonia">' + t('lColonia', 'Colonia') + '</label><input id="fColonia" required autocomplete="address-level3" placeholder="' + t('phColonia', 'Ej: Centro') + '"><div class="err">' + t('eColonia', 'Escribe tu colonia.') + '</div></div>'
+        + campoCorreo
       : campoCorreo
         + '<div class="field"><label for="fDir">' + t('lDir', 'Dirección') + '</label><input id="fDir" required autocomplete="street-address" placeholder="' + t('phDir', 'Calle, número, piso y puerta') + '"><div class="err">' + t('eDir', 'Escribe la calle y el número.') + '</div></div>'
         + '<div class="field"><label for="fRef">' + t('lRef', 'Indicaciones para el repartidor') + ' <span class="opc">' + t('opcional', '(opcional)') + '</span></label><input id="fRef" autocomplete="address-line2" placeholder="' + t('phRef', 'Portal, timbre, horario en el que estás en casa…') + '"></div>'
