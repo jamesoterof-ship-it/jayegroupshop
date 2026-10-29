@@ -2,7 +2,7 @@
    OPINIONES · Brain Memory & Mood (México) · 28-10-2026 (corregidas según GUIA_PAGINA_MEXICO.md, punto 5)
    50 opiniones REALES de compradores de cápsulas para la memoria y la concentración (AliExpress). Traducción
    arreglada a español mexicano natural sin cambiar lo que dijo cada comprador; se quitaron 6 sin sentido o que chocaban
-   con la página. La primera con foto (29-10 James: las 5 fotos salían del mismo video y se notaba; no hay otras fotos reales distintas del mismo frasco) del MISMO frasco (cuadros del video real). Nombres latinos por decisión de James.
+   con la página. Las 2 primeras con foto, de escenas DISTINTAS del mismo frasco (video principal y video de otra creadora con el frasco Healthybeat) del MISMO frasco (cuadros del video real). Nombres latinos por decisión de James.
    Media: 4.74. Scripts: _kn_scratch/_brain_resenas_2810.js y _brain_resenas_fix_2810.js
    ============================================================ */
 window.RESENAS = [
@@ -13,7 +13,7 @@ window.RESENAS = [
   "fecha": "2026-02-03",
   "pais": "MX",
   "verificada": true,
-  "foto": "img/rev/brain-r01.webp",
+  "foto": "img/rev/brain-r02.webp",
   "texto": "Por la tarde me baja la concentración y eso afecta mi trabajo, así que lo compré para quitarme la neblina mental. Lo voy a seguir tomando y, si veo buenos resultados, compro más. 👌"
  },
  {
@@ -23,6 +23,7 @@ window.RESENAS = [
   "fecha": "2026-01-11",
   "pais": "MX",
   "verificada": true,
+  "foto": "img/rev/brain-r06.webp",
   "texto": "Es un buen suplemento, lo recomiendo. Es práctico y me da una sensación de estabilidad. Lo voy a volver a comprar. Aquí no hay muchas marcas de suplementos, pero he probado varios y estos están bien."
  },
  {
