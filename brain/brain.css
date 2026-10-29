@@ -5,7 +5,7 @@
    Skill ui-ux-pro-max, proyecto brain-mx-libre, opción #83 (atada a la página en candado-paleta), de MASTER.md:
      · Estilo: Nature Distilled · efectos: parallax sutil, easing natural (ease-out), textura de grano, sombras suaves
      · Paleta en su lado oscuro (James 29-10): fondo #0F172A (el tono más oscuro de la paleta) · tarjeta #0C4A6E ·
-       texto #FFFFFF / #F0F9FF · texto suave #BAE6FD · primario #0369A1 · secundario #0EA5E9 · acción #16A34A
+       texto #FFFFFF / #F0F9FF · texto suave #BAE6FD · primario #0369A1 · secundario #0EA5E9 · acción #0EA5E9
        (texto #000000) · error #DC2626 · anillo #0369A1
      · Letras: Plus Jakarta Sans (títulos y texto)
      · Componentes de MASTER.md: .btn-primary / .btn-secondary / .card / .input / sombras --shadow-sm…xl / espacios
@@ -27,7 +27,7 @@ body.p-brain {
 body.p-brain #prod, body.p-brain #stickycta {
   --tinta: #FFFFFF; --suave: #BAE6FD; --linea: rgba(186,230,253,0.22); --hueso: #0C4A6E; --gris: #0C4A6E;
   --crema: #0F172A; --rosa: #0EA5E9; --rosaF: #0369A1; --tinta2: #BAE6FD;
-  --acento: #16A34A; --sobreAcento: #000000; --aviso: #0369A1; --sobreAviso: #FFFFFF;
+  --acento: #0369A1; --sobreAcento: #FFFFFF; --aviso: #0369A1; --sobreAviso: #FFFFFF;
   --oro: var(--b-oro);
 }
 body.p-brain #prod { background: var(--b-grano), #0F172A; color: #FFFFFF; font-family: var(--b-fuente); }
@@ -44,7 +44,8 @@ body.p-brain #prod :is(a, button, input, select, summary, textarea):focus-visibl
 
 /* ---------- .btn-primary / .btn-secondary (MASTER.md) ---------- */
 body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"], .b-pagoAnt__btn), body.p-brain #stickycta :is(a, button):not(.waBoton) {
-  background: #16A34A !important; color: #000000 !important; padding: 12px 24px; border: 0 !important; border-radius: 8px !important;
+  /* 29-10 James: "los botones tienen que ser azules, no pega el verde": Primary #0369A1 con On Primary #FFFFFF */
+  background: #0369A1 !important; color: #FFFFFF !important; padding: 12px 24px; border: 0 !important; border-radius: 8px !important;
   font-weight: 600 !important; transition: all 200ms ease; cursor: pointer; box-shadow: var(--shadow-md);
 }
 body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"], .b-pagoAnt__btn):hover, body.p-brain #stickycta :is(a, button):not(.waBoton):hover { opacity: 0.9; transform: translateY(-1px); }
@@ -61,17 +62,17 @@ body.p-brain #prod :is(.ing, .res, .rsc, .sello, .oc, .fq details, .formcard, .p
   box-shadow: var(--shadow-md); transition: all 200ms ease;
 }
 body.p-brain #prod :is(.ing, .res, .b-fi, .pack, .pagoOp):hover { box-shadow: var(--shadow-lg); }
-body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #16A34A !important; box-shadow: 0 0 0 3px #16A34A40, var(--shadow-md); }
+body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #0EA5E9 !important; box-shadow: 0 0 0 3px #0EA5E940, var(--shadow-md); }
 body.p-brain #prod :is(td, th) { border-color: var(--b-borde) !important; color: #FFFFFF; }
 body.p-brain #prod th { background: #0F172A !important; color: #FFFFFF !important; font-weight: 600; }
-body.p-brain #prod .cmp .si svg { stroke: #16A34A; }
+body.p-brain #prod .cmp .si svg { stroke: #0EA5E9; }
 body.p-brain #prod .cmp .no svg { stroke: #DC2626; }
 body.p-brain #prod .res :is(b, strong) { font-weight: 700; color: #0EA5E9; }
 body.p-brain #prod .res span { color: #BAE6FD; }
 body.p-brain #prod .ing .cir { background: #0F172A; border-radius: 50%; }
 body.p-brain #prod .ing .cir svg { stroke: #0EA5E9; }
 body.p-brain #prod .ing p { color: #BAE6FD; }
-body.p-brain #prod .desc ul li::before { color: #16A34A; border-color: #16A34A; }
+body.p-brain #prod .desc ul li::before { color: #0EA5E9; border-color: #0EA5E9; }
 body.p-brain #prod :is(img, video) { border-radius: 12px; }
 
 /* ---------- .input (MASTER.md) ---------- */
@@ -90,7 +91,7 @@ body.p-brain #prod .heroP__img { aspect-ratio: 1024 / 1400 !important; object-fi
 body.p-brain #prod .heroP__fundido, body.p-brain #prod .heroP__txt { display: none !important; }
 body.p-brain #prod .b-sobre { position: absolute; z-index: 2; left: 0; right: 0; top: 0; padding: var(--space-lg) 18px 0; }
 body.p-brain #prod .b-sobre .heroP__kicker { color: #FFFFFF; background: transparent; border: 0; padding: 0; margin: 0 0 var(--space-sm); font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
-body.p-brain #prod .b-sobre .heroP__kicker i { background: #16A34A; }
+body.p-brain #prod .b-sobre .heroP__kicker i { background: #0EA5E9; }
 body.p-brain #prod .heroP .b-sobre .heroP__h1 { margin: 0; color: #FFFFFF; font-family: var(--b-fuente); font-weight: 700; text-transform: none; font-size: clamp(30px, 9vw, 62px); line-height: 1.05; overflow-wrap: normal; }
 body.p-brain #prod .heroP .b-sobre .heroP__h1, body.p-brain #prod .heroP .b-sobre .heroP__h1 * { font-style: normal !important; }
 body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro), body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro) * { color: #0EA5E9; }
@@ -106,10 +107,10 @@ body.p-brain #prod .arriba2 { padding-top: var(--space-sm) !important; }
 body.p-brain #prod .arriba2 :is(.gal, .miniz, .dscTop, .dscTop__ul) { display: none !important; }
 body.p-brain #prod .arriba2 .ahora { font-weight: 700; color: #FFFFFF; }
 body.p-brain #prod .arriba2 .antes { color: #BAE6FD; }
-body.p-brain #prod .arriba2 .off { background: #16A34A; color: #000000; border-radius: 8px; }
+body.p-brain #prod .arriba2 .off { background: #0EA5E9; color: #000000; border-radius: 8px; }
 body.p-brain #prod .arriba2 .preTop { display: block; margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #BAE6FD; }
 body.p-brain #prod .arriba2 .preTop b { color: #FFFFFF; }
-body.p-brain #prod .arriba2 .preTop .preTop__tag { color: #16A34A; }
+body.p-brain #prod .arriba2 .preTop .preTop__tag { color: #0EA5E9; }
 body.p-brain #prod :is(.bloque:has(#btnArriba)) { padding-top: var(--space-sm) !important; padding-bottom: var(--space-sm) !important; }
 
 /* ---------- tres pasos ---------- */
@@ -138,7 +139,7 @@ body.p-brain #prod .b-foto { display: block; width: 100% !important; height: aut
 body.p-brain #prod .promo-banner { background: #0369A1 !important; color: #FFFFFF !important; }
 body.p-brain #prod .promo-banner * { color: #FFFFFF !important; }
 body.p-brain #prod :is(.promo-qt, .promo-ahora, .promo-precios b) { color: #FFFFFF; }
-body.p-brain #prod .promo-tarjeta b { color: #16A34A; }
+body.p-brain #prod .promo-tarjeta b { color: #0EA5E9; }
 /* contador: el segundero con efecto (James: "el segundero no tiene ningún efecto") — el golpe lo da brain.js */
 body.p-brain #prod .cuenta > div { background: #0F172A !important; border: 1px solid var(--b-borde) !important; border-radius: 12px !important; }
 body.p-brain #prod .cuenta > div b { color: #FFFFFF !important; font-weight: 700; display: inline-block; }
@@ -148,13 +149,13 @@ body.p-brain #prod .cuenta > div.seg :is(b, span) { color: #FFFFFF !important; }
 
 /* ---------- paga con tarjeta y gana ---------- */
 body.p-brain #prod .b-pagoAnt { padding-top: 12px !important; padding-bottom: var(--space-xl) !important; }
-body.p-brain #prod .b-pagoAnt__caja { padding: var(--space-lg); border-color: #16A34A !important; }
+body.p-brain #prod .b-pagoAnt__caja { padding: var(--space-lg); border-color: #0EA5E9 !important; }
 body.p-brain #prod .b-pagoAnt__tit { margin: 0 0 10px; font-weight: 700; font-size: 20px; color: #FFFFFF; }
 body.p-brain #prod .b-pagoAnt__lista { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
 body.p-brain #prod .b-pagoAnt__lista li { display: flex; gap: 8px; align-items: flex-start; color: #FFFFFF; font-size: 15px; line-height: 1.4; }
 body.p-brain #prod .b-pagoAnt__lista li::before { content: none; }
-body.p-brain #prod .b-pagoAnt__lista svg { flex: none; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #16A34A; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-body.p-brain #prod .b-pagoAnt__lista b { color: #16A34A; }
+body.p-brain #prod .b-pagoAnt__lista svg { flex: none; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #0EA5E9; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+body.p-brain #prod .b-pagoAnt__lista b { color: #0EA5E9; }
 body.p-brain #prod .b-pagoAnt__pie { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
 body.p-brain #prod .b-pagoAnt__logos { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 body.p-brain #prod .b-pagoAnt__logos img { height: 18px; width: auto; border-radius: 0 !important; }
@@ -168,7 +169,7 @@ body.p-brain #prod .ba-img { position: relative; overflow: hidden; padding: 0 !i
 body.p-brain #prod .ba-img img { display: block; width: 100%; border-radius: 0 !important; }
 body.p-brain #prod .b-ba { position: absolute; left: 12px; padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
 body.p-brain #prod .b-ba--antes { top: 12px; background: #0F172A; color: #FFFFFF; box-shadow: var(--shadow-md); }
-body.p-brain #prod .b-ba--despues { top: calc(50% + 12px); background: #16A34A; color: #000000; box-shadow: var(--shadow-md); }
+body.p-brain #prod .b-ba--despues { top: calc(50% + 12px); background: #0EA5E9; color: #000000; box-shadow: var(--shadow-md); }
 body.p-brain #prod .b-ilus { margin: 8px 0 0; font-size: 13px; color: #BAE6FD; }
 
 /* ---------- formulario ---------- */
@@ -177,14 +178,14 @@ body.p-brain #prod .pasoRot b { display: grid; place-items: center; width: 30px;
 body.p-brain #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: var(--space-md); }
 /* James: "una sección montada arriba de otra": el resumen quedaba pegado a las opciones de pago */
 body.p-brain #prod .summary { margin-top: var(--space-md) !important; padding: var(--space-md); }
-body.p-brain #prod .summary .desc { background: transparent !important; color: #16A34A; }
+body.p-brain #prod .summary .desc { background: transparent !important; color: #0EA5E9; }
 body.p-brain #prod .pagoOp { position: relative; display: grid; grid-template-areas: 'ico' 'tit' 'pr' 'sub' 'logos'; align-content: start; gap: 2px; min-height: 132px; padding: 16px 12px; border-width: 2px !important; font: inherit; text-align: left; cursor: pointer; }
 body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #0EA5E9; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 body.p-brain #prod .pagoOp__tit { font-weight: 700; font-size: 15px; line-height: 1.25; color: #FFFFFF; }
 body.p-brain #prod .pagoOp__pr { font-weight: 700; font-size: 24px; line-height: 1.1; color: #FFFFFF; }
 body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #BAE6FD; }
 body.p-brain #prod .pagoOp__logos img { height: 14px; width: auto; border-radius: 0 !important; }
-body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 8px; background: #16A34A; color: #000000; font-weight: 700; font-size: 13px; }
+body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 8px; background: #0EA5E9; color: #000000; font-weight: 700; font-size: 13px; }
 body.p-brain #prod :is(.esc-sec > div, .cod-badge, .gar-chips > *) { background: #0C4A6E !important; color: #FFFFFF !important; border-color: var(--b-borde) !important; }
 body.p-brain #prod p[style*="4a4a4a"] { color: #BAE6FD !important; }
 body.p-brain #prod .verif { color: #BAE6FD !important; }
