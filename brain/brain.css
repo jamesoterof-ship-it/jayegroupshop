@@ -122,7 +122,9 @@ body.p-brain #prod .b-chip { display: inline-flex; align-items: center; gap: 5px
 body.p-brain #prod .b-chip svg { width: 16px; height: 16px; fill: none; stroke: #0891B2; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 /* tres pasos */
-body.p-brain #prod .b-pasos { padding: 40px 20px; background: var(--b-noche); }
+/* 29-10 James (captura): mucho espacio vacío entre el botón y "Tres pasos y listo" */
+body.p-brain #prod .b-pasos { padding: 16px 20px 32px; background: var(--b-noche); }
+body.p-brain #prod :is(.bloque:has(#btnArriba)) { padding-top: 8px !important; padding-bottom: 8px !important; }
 body.p-brain #prod .b-pasos__lista { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
 body.p-brain #prod .b-pasos__lista li { position: relative; padding: 16px 16px 16px 64px; background: var(--b-tarjeta); border: 1px solid var(--b-borde); border-radius: var(--b-radio); }
 body.p-brain #prod .b-pasos__lista li::before { content: attr(data-n); position: absolute; left: 16px; top: 16px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #0284C7; color: #000000; font: 600 16px var(--b-tit); }
