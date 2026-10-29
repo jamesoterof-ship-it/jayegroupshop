@@ -16,13 +16,15 @@ window.TEXTOS = {
   phCiudad: 'Ej: Guadalajara',
   phCP: '06000',
   phMovil: '55 1234 5678',
-  phDir: 'Calle y número (exterior e interior)',   /* 29-10: la colonia ahora se elige en su lista */
+  /* 29-10 James: los nombres de los campos son los mismos del formulario de crear orden de Dropi México */
+  lDir: 'Dirección y complementos',
+  phDir: 'Calle, número exterior e interior',
   phRef: 'Entre calles, color de la casa, horario en que estás…',
-  lCiudad: 'Ciudad o municipio',
-  eCiudad: 'Selecciona tu municipio.',   /* 29-10: el municipio es una lista (James) */
+  lCiudad: 'Municipalidad o delegación',
+  eCiudad: 'Selecciona tu municipalidad o delegación.',
   eligeEstado: 'Primero elige tu estado',
   eligeMun: 'Primero elige tu municipio',
-  lColonia: 'Colonia', eColonia: 'Selecciona tu colonia.',
+  lColonia: 'Colonia', eColonia: 'Escribe tu colonia.', phColonia: 'Ej: Centro',
   /* 28-10 James: "los iconos de la transportadora tienen que ser originales". Son las 6 que ofrece Dropi México
      al crear la orden (logos sacados de app.dropi.mx/assets/images/delivery/). */
   carriers: ['Veloces', 'Tiui', 'AMPM', 'Afimex', 'Quality Post', 'Coordi'],
