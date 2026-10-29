@@ -954,11 +954,13 @@ window.PRODUCTOS.push({
   etiquetaOro: true,
 
   foto: 'img/brain-pack2.webp?v=1',
-  fotos: ['img/brain-g1.webp?v=1', 'img/brain-oferta.webp?v=1', 'img/brain-g2.webp?v=1', 'img/brain-g3.webp?v=1'],
+  /* 29-10 rediseño oscuro: fuera la oferta con precios pegados en la foto; g3 rehecha con las cápsulas beige reales */
+  fotos: ['img/brain-g1.webp?v=1', 'img/brain-g2.webp?v=1', 'img/brain-g3-v2.webp?v=1'],
+  fotoOferta: 'img/brain-oferta-v2.webp?v=1',   /* 29-10: la pareja con los frascos, SIN texto (los precios van en HTML) */
   /* 28-10 James: el video anterior (TikTok, frasco en español sobre una alfombra) era malo. Este es el del frasco en INGLÉS
      (el que se vende, Dropi 61103): TikTok @promexobl48 7599932194680851733, s 11-31,5, recortado desde y 300 para sacar
      el letrero "Memory & Mood – Brain" del creador, sin audio. */
-  video: 'img/brain-ficha-v3.mp4?v=1',
+  video: 'img/brain-ficha-v4.mp4?v=1',   /* 28-10 James: mismo video, al tamaño del colágeno: 720×1280 (9:16 exacto), recortado del original */
 
   hero: {
     img: 'img/brain-heroe-v3.webp?v=1',   /* 28-10 James: "ese hero está bien" (frasco solo, fondo impactante, tercio de arriba libre) */
@@ -971,13 +973,17 @@ window.PRODUCTOS.push({
       ['pago', 'Pagas al recibir'],
     ],
   },
-  acento: '#2563EB',   /* Accent/CTA de la skill (opción #78, la que eligió James) */
+  acento: '#16A34A',   /* 29-10 rediseño oscuro: Accent/CTA de la skill (brain-mx-rediseno, verde salud) */
 
   /* Stock REAL leído en Dropi México el 28-10-2026 (7.123). Ventas diarias de Dropdata: 115 en promedio, 420 el mejor día. */
   escasez: { hoy: 167, mejorDia: 420, quedan: 7123,
     nota: 'Se despacha desde nuestra bodega en Ciudad de México por orden de pedido. Pagas cuando lo tienes en la mano.' },
 
-  desc: 'Brain Memory & Mood es un suplemento en cápsulas para el día a día de la mente. Cada toma de 2 cápsulas trae fosfatidilserina y omega-3, vitaminas B1, B6, B12 y folato, zinc y un complejo de tres formas de magnesio, además de cardo mariano y dihidromiricetina. Se toma una vez al día con un vaso de agua. Un frasco trae 60 cápsulas: 30 días. Por eso el pack de 2 frascos es el que más se lleva: dos meses completos.',
+  /* 29-10 James: las secciones de las páginas de Chile (Nerve): el problema y la solución van en su propia sección con
+     fotos (brain.js); "Qué es y para qué sirve" lleva esta descripción. */
+  desc: 'Brain Memory & Mood es un suplemento en cápsulas para el día a día de la mente: en cada toma de 2 cápsulas trae fosfatidilserina y omega-3, vitaminas del complejo B, zinc y tres formas de magnesio. Se toma una vez al día con un vaso de agua y un frasco dura 30 días.',
+  fotoProblema: 'img/brain-problema.webp?v=1',   /* la mitad "antes" del antes y después, recortada cuadrada */
+  fotoSolucion: 'img/brain-g1.webp?v=1',
 
   puntos: [
     'Fosfatidilserina y omega-3 en la misma cápsula',
@@ -1014,8 +1020,8 @@ window.PRODUCTOS.push({
   ],
 
   fotosResenas: [],
-  antesDespues: 'img/brain-ba.webp?v=1',
-  antesDespuesSub: 'La misma persona y el mismo escritorio: cansada y sin foco, y después despejada, con el frasco a su lado. Imagen ilustrativa.',
+  antesDespues: 'img/brain-ba-v2.webp?v=1',   /* 29-10: sin letras dentro; ANTES / DESPUÉS van en HTML (brain.js) */
+  antesDespuesSub: 'La misma persona y el mismo escritorio: cansada y sin foco, y después despejada, con el frasco a su lado.',
 
   /* PRECIOS aprobados por James el 28-10-2026 ("2 frascos 799 … 3 frascos 1200"). 'antes' en 0: no hay precio anterior. */
   packs: [

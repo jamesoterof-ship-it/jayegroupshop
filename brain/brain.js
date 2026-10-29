@@ -1,94 +1,192 @@
 /* ============================================================
-   BRAIN · MEMORY & MOOD · MÉXICO · 28-10-2026
-   Corre DESPUÉS de ficha.js. No toca precios, formulario ni los id que usa ficha.js. Como neocell.js en Chile:
-     1. Héroe: el título (rótulo, titular y frase) va ENCIMA de la foto, en el tercio libre de arriba (molde de Chile,
-        James 28-10: "ese hero está bien").
-     2. Efectos del catálogo --domain gsap de la skill:
-        · "Stagger List · Complex" en el titular: SplitText por letra, opacity 0, y 20, rotateX -40, 0.6 s, stagger 0.015, expo.out
-        · "Scroll Reveal": opacity 0, y 24, 0.5 s, stagger 0.08, power2.out, al entrar en pantalla
-        Con movimiento reducido no se anima nada (queda el estado final, legible).
+   BRAIN · MEMORY & MOOD · MÉXICO · REDISEÑO OSCURO 29-10-2026
+   James 29-10: "hazme las secciones igualitas a la del drenador (jayegroup.com.co/lymphoria)… no me cambies las
+   secciones". Mismo orden y mismas secciones de Lymphoria; colores y letras de la opción #80 de la skill.
+     1. Héroe: rótulo, titular en cascada y frase ENCIMA de la foto
+     2. Chips (3 datos cortos)
+     3. Presentación: estrellas, nombre, frase, precio y "o $719 pagando ahora" (sin galería y sin descripción)
+     4. Botón "Lo quiero, pago al recibir"
+     5. "Tres pasos y listo"
+     6. "Qué es y para qué sirve": foto del frasco, texto, viñetas y 3 fichas con foto (para qué sirve / cómo se
+        toma / qué recibes)
+     7. Promoción · 8. "Paga con tarjeta y gana" · 9. Video · 10. Lo que trae · 11. Lo que te garantizamos ·
+     12. Comparación · 13. Opiniones · 14. Garantía · 15. Antes y después · 16. Preguntas · 17. Cierre ·
+     18. Con quién se despacha · 19. Formulario
+   Corre DESPUÉS de ficha.js. No toca precios, formulario ni los id que usa ficha.js: solo ordena y completa.
+   Efectos de la skill (--domain gsap, suaves): "Scroll Reveal · Subtle" y la "respiración" del estilo orgánico.
    ============================================================ */
 (function () {
   var p = ''; try { p = window.__P || new URLSearchParams(location.search).get('p') || ''; } catch (e) {}
   if (p !== 'brain') return;
   document.body.classList.add('p-brain');
   var calma = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var P = function () { return (window.PRODUCTOS || [])[0]; };
+  var mx = function (n) { return '$' + Number(n).toLocaleString('es-MX'); };
+  var irPedido = function () { var f = document.getElementById('pedir'); if (f) f.scrollIntoView({ behavior: 'smooth' }); };
+  var ICO = {
+    sinCafe: '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M4 4l16 16"/>',
+    capsula: '<rect x="3" y="8.5" width="18" height="7" rx="3.5" transform="rotate(-35 12 12)"/><path d="M9.2 7.9l5.6 8.2"/>',
+    sol: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
+    check: '<path d="M4 12l5 5L20 6"/>'
+  };
+  var svg = function (k) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICO[k] + '</svg>'; };
 
   function heroe(prod) {
     var h = prod.querySelector('.heroP'); if (!h || h.querySelector('.b-sobre')) return !!h;
     var marco = h.querySelector('.heroP__marco'), txt = h.querySelector('.heroP__txt');
     if (!marco || !txt) return false;
     var sobre = document.createElement('div'); sobre.className = 'b-sobre';
-    /* 28-10 reglas de James: el pago anticipado (−10 %) se promociona EN EL HÉROE. El aviso del motor vive en el bloque
-       de texto que quedó oculto (una sola presentación), así que viaja con el título encima de la foto. */
-    ['.heroP__kicker', '.heroP__h1', '.heroP__sub', '.heroP__ahorra'].forEach(function (q) { var el = txt.querySelector(q); if (el) sobre.appendChild(el); });
+    ['.heroP__kicker', '.heroP__h1', '.heroP__sub'].forEach(function (q) { var el = txt.querySelector(q); if (el) sobre.appendChild(el); });
     marco.appendChild(sobre);
     return true;
   }
 
-  /* 28-10 reglas de James: el pago anticipado también va EN LA PROMOCIÓN ("o $719 pagando ahora con tarjeta…").
-     El precio sale del producto (productos.js, anticipado.precios), nunca escrito aquí. */
-  function promoAnticipado(prod) {
-    if (prod.querySelector('.promo-tarjeta')) return;
-    var P = (window.PRODUCTOS || [])[0], bp = document.getElementById('btnPromo');
-    var uni = prod.querySelector('.promo-sec .promo-uni');
-    if (!P || !P.anticipado || !P.anticipado.precios || !bp || !uni) return;
-    var i = Number(bp.getAttribute('data-i')), pre = P.anticipado.precios[i];
+  /* 2 · chips, como Lymphoria ("Sabor a miel · Vegano · Sin gluten") */
+  function chips() {
+    var s = document.createElement('div'); s.className = 'b-chips';
+    s.innerHTML = [['sinCafe', 'Sin cafeína'], ['capsula', '60 cápsulas'], ['sol', '1 toma al día']].map(function (c, i) {
+      return '<span class="b-chip" style="--i:' + i + '">' + svg(c[0]) + c[1] + '</span>'; }).join('');
+    return s;
+  }
+
+  /* 5 · "Tres pasos y listo" */
+  function pasos() {
+    var s = document.createElement('section'); s.className = 'b-pasos';
+    s.innerHTML = '<span class="eyebrow">Así de simple</span><h2 class="tit2">Tres pasos y listo</h2><ol class="b-pasos__lista">'
+      + [['Lo recibes en tu casa', 'Envío gratis a todo México. Le pagas al repartidor cuando lo tienes en la mano.'],
+         ['Dos cápsulas por la mañana', 'Con un vaso de agua, en el desayuno. Un frasco trae 60 cápsulas: te dura 30 días.'],
+         ['Sigues con tu día', 'Sin cafeína ni estimulantes: no te acelera ni te quita el sueño.']].map(function (x, i) {
+        return '<li data-n="' + (i + 1) + '" style="--i:' + i + '"><b>' + x[0] + '</b><p>' + x[1] + '</p></li>'; }).join('')
+      + '</ol>';
+    return s;
+  }
+
+  /* 6 · "Qué es y para qué sirve" con la foto del frasco arriba y 3 fichas con foto debajo (como Lymphoria) */
+  function completarDesc(desc) {
+    if (!desc || desc.querySelector('.b-fichas')) return;
+    var h2 = desc.querySelector('h2');
+    if (h2) h2.insertAdjacentHTML('afterend', '<figure class="b-frasco"><img src="img/brain-pack2.webp?v=1" alt="Dos frascos de Brain Memory & Mood" loading="lazy" width="1024" height="1024"></figure>');
+    var Pr = P() || {};
+    var fichas = [
+      [(Pr.fotos || [])[0], 'Mujer en su cocina con el frasco de Brain en una mano y un vaso de agua en la otra', 'Para qué sirve', 'Memoria y concentración, en tu día a día',
+        'Trae fosfatidilserina y omega-3, que forman parte de la membrana de las neuronas, con vitaminas del complejo B, zinc y magnesio. Es un suplemento alimenticio para acompañar tu rutina, no un medicamento.'],
+      [(Pr.fotos || [])[2], 'Mano con dos cápsulas beige junto al frasco abierto', 'Cómo se toma', 'Dos cápsulas y sigues con lo tuyo',
+        'Una vez al día, por la mañana, con un vaso de agua. Son cápsulas vegetales del tamaño de una vitamina común, sin sabor y sin cafeína.'],
+      [Pr.fotoOferta, 'Pareja en la sala mostrando sus frascos de Brain Memory & Mood', 'Qué recibes', '60 cápsulas por frasco, sellado',
+        'Cada frasco trae 60 cápsulas: 30 días de toma diaria. El pack de 2 son dos meses completos y el de 3, tres meses. Lo pagas cuando llega a tu casa.']
+    ].filter(function (f) { return f[0]; });
+    desc.insertAdjacentHTML('beforeend', '<div class="b-fichas">' + fichas.map(function (f) {
+      return '<figure class="b-fi"><img src="' + f[0] + '" alt="' + f[1] + '" loading="lazy" width="1024" height="1024"><figcaption>'
+        + '<span class="b-rot2">' + f[2] + '</span><b>' + f[3] + '</b><p>' + f[4] + '</p></figcaption></figure>'; }).join('') + '</div>');
+  }
+
+  /* 7 · la promoción con su línea del pago anticipado */
+  function promoAnticipado(promo) {
+    var Pr = P(), bp = document.getElementById('btnPromo'), uni = promo && promo.querySelector('.promo-uni');
+    if (!Pr || !Pr.anticipado || !bp || !uni || promo.querySelector('.promo-tarjeta')) return;
+    var pre = Pr.anticipado.precios[Number(bp.getAttribute('data-i'))];
     if (!(pre > 0)) return;
-    var lin = document.createElement('p');
-    lin.className = 'promo-uni promo-tarjeta';
-    lin.innerHTML = 'o <b>$' + Number(pre).toLocaleString('es-MX') + '</b> pagando ahora con tarjeta · −' + P.anticipado.pct + '&nbsp;% y entrega prioritaria';
+    var lin = document.createElement('p'); lin.className = 'promo-uni promo-tarjeta';
+    lin.innerHTML = 'o <b>' + mx(pre) + '</b> pagando ahora con tarjeta · −' + Pr.anticipado.pct + '&nbsp;% y entrega prioritaria';
     uni.parentNode.insertBefore(lin, uni.nextSibling);
   }
 
-  /* 28-10 James: "los botones que tengan efecto". Catálogo --domain gsap de la skill, "Hover Micro-interaction · Standard":
-     gsap.to(el, { y:-4, scale:1.02, boxShadow:'0 12px 24px …', duration:0.25, ease:'power2.out' }). En el celular no hay
-     mouse: se repite solo (ida y vuelta) para que el botón llame, como en Chile. Al tocar baja a 0.96 y vuelve. */
-  function botones() {
+  /* 8 · "Paga con tarjeta y gana", la misma caja de Lymphoria. El botón deja marcada la opción del propio motor. */
+  function pagoAnt() {
+    var Pr = P(); if (!Pr || !Pr.anticipado) return null;
+    var s = document.createElement('section'); s.className = 'bloque b-pagoAnt';
+    var logos = document.querySelector('#pedir .pagoOp__logos');
+    s.innerHTML = '<div class="b-pagoAnt__caja"><p class="b-pagoAnt__tit">Paga con tarjeta y gana</p><ul class="b-pagoAnt__lista">'
+      + '<li>' + svg('check') + '<span><b>' + Pr.anticipado.pct + '&nbsp;% de descuento</b> en todos los packs</span></li>'
+      + '<li>' + svg('check') + '<span><b>Entrega prioritaria</b>: tu pedido sale primero</span></li>'
+      + '<li>' + svg('check') + '<span><b>Pago seguro</b> con PayPal: tarjeta de crédito o débito, sin crear cuenta</span></li></ul>'
+      + '<div class="b-pagoAnt__pie">' + (logos ? '<span class="b-pagoAnt__logos">' + logos.innerHTML + '</span>' : '')
+      + '<button type="button" class="cta b-pagoAnt__btn">Pagar con tarjeta</button></div></div>';
+    s.querySelector('.b-pagoAnt__btn').addEventListener('click', function () {
+      var op = document.querySelector('#pedir .pagoOp[data-pago="pre"]'); if (op) op.click();
+      irPedido();
+    });
+    return s;
+  }
+
+  /* 15 · antes y después: las palabras en HTML encima de cada mitad, y "Imagen ilustrativa" debajo */
+  function rotulosBA(ba) {
+    var caja = ba && ba.querySelector('.ba-img'); if (!caja || caja.querySelector('.b-ba')) return;
+    caja.insertAdjacentHTML('beforeend', '<span class="b-ba b-ba--antes">Antes</span><span class="b-ba b-ba--despues">Después</span>');
+    caja.insertAdjacentHTML('afterend', '<p class="b-ilus">Imagen ilustrativa.</p>');
+  }
+
+  function ordenar(prod) {
+    if (prod.dataset.bOrden) return; prod.dataset.bOrden = '1';
+    var q = function (s) { return prod.querySelector(':scope > ' + s); };
+    var arriba = q('.arriba2');
+    var boton = arriba && arriba.nextElementSibling && arriba.nextElementSibling.querySelector('#btnArriba') ? arriba.nextElementSibling : null;
+    var desc = prod.querySelectorAll(':scope > .desc');
+    var bloques = Array.prototype.slice.call(prod.querySelectorAll(':scope > .bloque'));
+    var preguntas = bloques.filter(function (x) { return x.querySelector('.fq'); })[0];
+    var despacho = bloques.filter(function (x) { return x.querySelector('.sellos'); })[0];
+    var promo = q('.promo-sec');
+    completarDesc(desc[0]); promoAnticipado(promo); rotulosBA(q('.ba-sec'));
+    /* Lymphoria no lleva el bloque de "salieron hoy" */
+    var esc = q('.esc-sec'); if (esc) esc.remove();
+    var orden = [q('.heroP'), chips(), arriba, boton, pasos(), desc[0], promo, pagoAnt(), q('.vid-wrap'), q('.form-sec'),
+      q('.res-sec'), q('.cmp-sec'), q('#resenas'), q('.gar-sec'), q('.ba-sec'), preguntas, desc[1], despacho, q('#pedir')];
+    orden.forEach(function (n) { if (n) prod.appendChild(n); });
+    var form = q('#pedir');
+    Array.prototype.forEach.call(prod.querySelectorAll(':scope > section'), function (n) {
+      if (orden.indexOf(n) === -1 && form) prod.insertBefore(n, form);
+    });
+  }
+
+  function precioAnticipadoArriba(prod) {
+    var Pr = P(), pd = prod.querySelector('.arriba2 .packDe');
+    if (!Pr || !Pr.anticipado || !Pr.anticipado.precios || !pd || prod.querySelector('.arriba2 .preTop')) return;
+    var l = document.createElement('p'); l.className = 'preTop';
+    l.innerHTML = 'o <b>' + mx(Pr.anticipado.precios[0]) + '</b> pagando ahora con tarjeta · <b class="preTop__tag">−' + Pr.anticipado.pct + '&nbsp;% y entrega prioritaria</b>';
+    pd.parentNode.insertBefore(l, pd.nextSibling);
+  }
+
+  /* "Respiración" del estilo Biomimetic / Organic 2.0: lenta, sin exceso */
+  function respirar() {
     if (calma || !window.gsap) return;
-    document.querySelectorAll('#prod .cta, #prod .heroP__cta, #prod #btnPromo, #prod button[type="submit"], #stickycta a:not(.waBoton), #stickycta button').forEach(function (b, i) {
-      if (b.dataset.bBtn) return; b.dataset.bBtn = '1';
-      gsap.to(b, { y: -4, scale: 1.02, boxShadow: '0 12px 24px rgba(37,99,235,0.45)', duration: 0.25, ease: 'power2.out', yoyo: true, repeat: -1, repeatDelay: 1.6, delay: (i % 3) * 0.4 });
-      b.addEventListener('pointerdown', function () { gsap.to(b, { scale: 0.96, duration: 0.12, ease: 'power1.out', overwrite: 'auto' }); });
-      ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) { b.addEventListener(ev, function () { gsap.to(b, { scale: 1, duration: 0.2, ease: 'power2.out' }); }); });
+    var frasco = document.querySelector('#prod .heroP__img');
+    if (frasco && !frasco.dataset.bResp) { frasco.dataset.bResp = '1'; gsap.to(frasco, { scale: 1.025, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, transformOrigin: '50% 60%' }); }
+    document.querySelectorAll('#prod .cta, #prod #btnPromo, #prod button[type="submit"], #stickycta a:not(.waBoton), #stickycta button').forEach(function (b, i) {
+      if (b.dataset.bResp) return; b.dataset.bResp = '1';
+      gsap.to(b, { scale: 1.03, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: (i % 3) * 0.5 });
     });
   }
 
   function efectos(prod) {
     if (calma || !window.gsap || prod.dataset.bFx) return;
     prod.dataset.bFx = '1';
-    /* "Parallax Scroll · Subtle": gsap.to(capa, { yPercent:10, ease:'none', scrollTrigger:{ trigger:sección, scrub:true } }) */
-    var foto = prod.querySelector('.heroP__img');
-    /* 28-10 James vio una franja gris arriba de la foto: con el disparador por defecto la foto ya arrancaba corrida hacia
-       abajo. Ahora empieza en 0 cuando la página está arriba del todo y solo se mueve al bajar. */
-    if (foto && window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); gsap.fromTo(foto, { yPercent: 0 }, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: prod.querySelector('.heroP'), start: 'top top', end: 'bottom top', scrub: true } }); }
     var tit = prod.querySelector('.b-sobre .heroP__h1');
     if (tit && window.SplitText) {
       gsap.registerPlugin(SplitText);
       var split = new SplitText(tit, { type: 'words,chars' });
-      gsap.fromTo(split.chars, { opacity: 0, y: 20, rotateX: -40 }, { opacity: 1, y: 0, rotateX: 0, duration: 0.6, stagger: 0.015, ease: 'expo.out' });
+      gsap.fromTo(split.chars, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.02, ease: 'power1.out' });
     }
     if (!('IntersectionObserver' in window)) return;
+    /* "Scroll Reveal · Subtle" de la skill */
     var io = new IntersectionObserver(function (ent) {
       ent.forEach(function (e) {
         if (!e.isIntersecting) return;
         io.unobserve(e.target);
-        gsap.fromTo(e.target.children, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out', clearProps: 'all' });
+        gsap.fromTo(e.target.children, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.06, ease: 'power1.out', clearProps: 'opacity,transform' });
       });
-    }, { threshold: 0.15 });
-    /* "Scroll Reveal" en TODAS las secciones (James: "las secciones que tengan efecto"); nada queda escondido antes */
-    Array.prototype.forEach.call(prod.querySelectorAll(':scope > section, :scope > .bloque, .ing-grid, .res-grid, .sellos'), function (caja) {
-      if (caja.classList.contains('heroP') || !caja.children.length) return;
-      io.observe(caja);
+    }, { threshold: 0.1 });
+    Array.prototype.forEach.call(prod.querySelectorAll(':scope > section'), function (caja) {
+      if (!caja.classList.contains('heroP') && caja.id !== 'pedir') io.observe(caja);
     });
   }
 
   function armar() {
     var prod = document.getElementById('prod');
-    if (!prod || !heroe(prod)) return false;
-    promoAnticipado(prod);
+    if (!prod || !heroe(prod) || !document.getElementById('pedir')) return false;
+    precioAnticipadoArriba(prod);
+    ordenar(prod);
     efectos(prod);
-    botones(); setTimeout(botones, 1500);   /* el botón fijo de abajo aparece después */
+    respirar(); setTimeout(respirar, 1500);
     return true;
   }
   function intentar() {

@@ -1,135 +1,217 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Nunito:ital,wght@0,700;0,800;0,900;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
 /* ============================================================
-   BRAIN · MEMORY & MOOD · MÉXICO · 28-10-2026 · FONDO OSCURO
-   James: "todas con fondo oscuro… las secciones que tengan efecto, los botones que tengan efecto, no cambies las imágenes".
-   Rediseño de la skill ui-ux-pro-max, opción #78 elegida por James ("Opción A"), design-system/brain-mexico-negro:
-     · Paleta: #0F172A fondo · #192134 tarjeta · #10182B apagado · #1E293B primario · #334155 secundario ·
-               #2563EB acción (texto #FFFFFF) · #FFFFFF texto · #94A3B8 texto suave · #DC2626 error
-     · Letras: Nunito (títulos) / DM Sans (texto)
-     · Estilo Bento Box Grid: tarjetas de esquinas redondeadas (16 px), sombras sutiles, al tocar crecen a 1.02,
-       transiciones suaves
-     · Componentes de MASTER.md: botón #2563EB / #FFFFFF radio 8 · tarjeta radio 12 sombra media · campo con foco y anillo
-       (las sombras de MASTER.md van con el tono del fondo, #0F172A, en vez de negro: el candado solo deja la paleta)
-     · Efectos (catálogo --domain gsap, en brain.js): Hover Micro-interaction en los botones, Scroll Reveal en las
-       secciones, Parallax en la foto del héroe, SplitText en el titular. Con movimiento reducido no se anima nada.
-   Motor de las fichas de España/Chile (ficha.js) intacto; todo cuelga de body.p-brain. Imágenes sin tocar.
-   Estrellas doradas (#F59E0B).
+   BRAIN · MEMORY & MOOD · MÉXICO · REDISEÑO OSCURO · 29-10-2026
+   James 29-10: "rediséñala nuevamente… la quiero así en fondo oscuro" → "ok" a la propuesta.
+   Skill ui-ux-pro-max, proyecto brain-mx-rediseno, opción #80 (atada a la página en candado-paleta):
+     · Patrón: Hero + Testimonials + CTA (Héroe > Problema > Solución > Opiniones > CTA)
+     · Estilo: Biomimetic / Organic 2.0 en su modo oscuro: formas suaves, "respiración" lenta, sin neón ni exceso
+     · Paleta: #0284C7 primario · #0891B2 secundario · #16A34A acción con #000000 encima (On Primary / On Accent) ·
+       #0C4A6E (el tono más oscuro de la paleta) de FONDO, oscurecido con negro #000000 · #FFFFFF texto ·
+       #BAE6FD texto suave · #DC2626 error · anillo de foco #0284C7
+     · Letras: Lexend (títulos) / Source Sans 3 (texto)
+   Motor de las fichas (ficha.js) intacto; todo cuelga de body.p-brain y los colores van SOLO dentro de #prod y
+   #stickycta: el encabezado y el pie quedan como en todas las páginas.
+   Estrellas SIEMPRE doradas (regla de James 25-10): el dorado de la marca que ya trae la tienda (--oro de tienda.css),
+   tomado en el body antes de que la ficha lo cambie por el acento.
    ============================================================ */
 body.p-brain {
-  --b-tit: 'Nunito', system-ui, sans-serif; --b-txt: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --shadow-sm: 0 1px 2px rgba(15,23,42,0.5); --shadow-md: 0 4px 6px rgba(15,23,42,0.6);
-  --shadow-lg: 0 10px 15px rgba(15,23,42,0.7); --shadow-xl: 0 20px 25px rgba(15,23,42,0.8);
-  --card-radius: 16px; --hover-scale: 1.02;
-  background: #0F172A;
+  --b-oro: var(--oro);
+  --b-tit: 'Lexend', system-ui, sans-serif; --b-txt: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --b-noche: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), #0C4A6E;
+  --b-tarjeta: rgba(255,255,255,0.06); --b-borde: rgba(255,255,255,0.10);
+  --b-radio: 22px; --b-sombra: 0 12px 32px rgba(0,0,0,0.35);
+  background: #0C4A6E;
 }
-/* las variables del motor van SOLO dentro del producto: el encabezado y el pie quedan como en todas las páginas */
 body.p-brain #prod, body.p-brain #stickycta {
-  --tinta: #FFFFFF; --suave: #94A3B8; --linea: #334155; --hueso: #10182B; --gris: #192134;
-  --crema: #0F172A; --rosa: #334155; --rosaF: #2563EB; --tinta2: #94A3B8;
-  --acento: #2563EB; --sobreAcento: #FFFFFF; --aviso: #2563EB; --sobreAviso: #FFFFFF;
+  --tinta: #FFFFFF; --suave: #BAE6FD; --linea: rgba(255,255,255,0.10); --hueso: #0C4A6E; --gris: #0C4A6E;
+  --crema: #0C4A6E; --rosa: #0891B2; --rosaF: #0284C7; --tinta2: #BAE6FD;
+  --acento: #16A34A; --sobreAcento: #000000; --aviso: #0284C7; --sobreAviso: #000000;
+  --oro: var(--b-oro);
 }
-body.p-brain #prod { background: #0F172A; color: #FFFFFF; font-family: var(--b-txt); }
-body.p-brain #prod :is(section, .bloque, .arriba2, .desc, .form) { background: #0F172A !important; color: #FFFFFF; }
+body.p-brain #prod { background: var(--b-noche); color: #FFFFFF; font-family: var(--b-txt); font-size: 17px; }
+body.p-brain #prod :is(section, .bloque, .arriba2, .desc, .form) { background: var(--b-noche) !important; color: #FFFFFF; }
 body.p-brain #prod :is(p, li, td, th, label, small, span, .sub, .sub2, .ctaSub, .baj, .preTop) { color: inherit; font-family: var(--b-txt); }
-body.p-brain #prod :is(.sub, .ctaSub, .baj, small, .nota, .cl) { color: #94A3B8; }
-body.p-brain #prod :is(h1, h2, h3, h4, .tit2, .rev-title, .nombre) { font-family: var(--b-tit); font-weight: 800; color: #FFFFFF; letter-spacing: -.01em; }
-body.p-brain #prod .eyebrow { color: #94A3B8; }
+body.p-brain #prod :is(.sub, .sub2, .ctaSub, .baj, small, .nota, .cl) { color: #BAE6FD; }
+body.p-brain #prod :is(h1, h2, h3, h4, .tit2, .rev-title, .nombre) { font-family: var(--b-tit); font-weight: 600; color: #FFFFFF; letter-spacing: -.01em; }
+body.p-brain #prod .tit2 { font-size: clamp(26px, 7vw, 40px); line-height: 1.1; }
+body.p-brain #prod .eyebrow { color: #0891B2; font-family: var(--b-tit); font-weight: 500; letter-spacing: .14em; }
 body.p-brain #prod a { color: #FFFFFF; }
+body.p-brain #prod .bloque { padding-top: 44px; padding-bottom: 44px; }
+body.p-brain #prod :is(.est svg, .stars svg, .estrellas svg) { fill: var(--b-oro); }
+body.p-brain #prod .stars { color: var(--b-oro); }
 
-/* ---------- componentes de MASTER.md ---------- */
-/* 28-10 James: "¿dónde has visto un botón de WhatsApp azul?": los botones de WhatsApp (.waBoton) quedan fuera del azul y
-   conservan el verde de WhatsApp que ya trae el motor. */
+/* ---------- botones: acción verde de la skill con su texto negro ---------- */
 body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]), body.p-brain #stickycta :is(a, button):not(.waBoton) {
-  background: #2563EB !important; color: #FFFFFF !important; border: 0 !important; border-radius: 8px !important;
-  font-family: var(--b-txt) !important; font-weight: 600 !important; box-shadow: var(--shadow-md);
-  transition: all 200ms ease; cursor: pointer; min-height: 44px;
+  background: #16A34A !important; color: #000000 !important; border: 0 !important; border-radius: 999px !important;
+  font-family: var(--b-tit) !important; font-weight: 600 !important; letter-spacing: .01em;
+  box-shadow: 0 8px 24px rgba(22,163,74,0.30); transition: box-shadow 200ms ease; cursor: pointer; min-height: 48px;
 }
-/* 28-10 James: "el botón de WhatsApp ponlo normal como tal de Chile": en Chile la barra de abajo NO lleva botón de WhatsApp
-   escrito; WhatsApp es solo la bolita verde redonda de la esquina (que esta página ya tiene). "Pedir ahora" queda igual. */
-body.p-brain #stickycta .waFlota { display: none !important; }
-/* tienda.css esconde la bolita cuando sale la barra (porque la barra traía su WhatsApp): aquí la bolita queda siempre,
-   encima de la barra (body.con-barra .wa la sube 72 px), como en Chile. Solo esta página. */
+body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]):hover, body.p-brain #stickycta :is(a, button):not(.waBoton):hover { box-shadow: 0 10px 30px rgba(22,163,74,0.45); }
+body.p-brain #stickycta .waFlota { display: none !important; }   /* en Chile WhatsApp es solo la bolita verde de la esquina */
 body.p-brain:has(.stickycta.show) .wa { opacity: 1 !important; pointer-events: auto !important; }
-body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]):hover, body.p-brain #stickycta :is(a, button):not(.waBoton):hover { opacity: 0.9; transform: translateY(-1px); }
 body.p-brain #prod :is(.btn-write, .masRs, .cta.azul) {
-  background: transparent !important; color: #FFFFFF !important; border: 2px solid #334155 !important;
-  border-radius: 8px !important; font-weight: 600; transition: all 200ms ease; cursor: pointer;
+  background: transparent !important; color: #FFFFFF !important; border: 1.5px solid #0891B2 !important;
+  border-radius: 999px !important; font-weight: 600; box-shadow: none; cursor: pointer;
 }
-/* tarjetas Bento: fondo tarjeta, radio 16, sombra sutil, crecen 1.02 al tocar */
+
+/* ---------- tarjetas orgánicas: esquinas grandes, borde de luz ---------- */
 body.p-brain #prod :is(.ing, .res, .rsc, .sello, .oc, .fq details, .formcard, .promo-card, .gseal, .cmp, .esc, .ba-img, .pack, .pagoOp, table) {
-  background: #192134 !important; color: #FFFFFF; border: 1px solid #334155 !important; border-radius: var(--card-radius) !important;
-  box-shadow: var(--shadow-md); transition: all 200ms ease;
+  background: var(--b-tarjeta) !important; color: #FFFFFF; border: 1px solid var(--b-borde) !important; border-radius: var(--b-radio) !important;
+  box-shadow: var(--b-sombra); transition: border-color 200ms ease, box-shadow 200ms ease;
 }
-body.p-brain #prod :is(.ing, .res, .sello, .oc, .pack):hover { box-shadow: var(--shadow-lg); transform: scale(var(--hover-scale)); }
-body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #2563EB !important; box-shadow: 0 0 0 3px #1E293B, var(--shadow-md); }
-body.p-brain #prod :is(td, th) { border-color: #334155 !important; color: #FFFFFF; }
-body.p-brain #prod .res :is(b, strong) { font-family: var(--b-tit); font-weight: 900; color: #FFFFFF; }
-body.p-brain #prod .ing .cir { background: #1E293B; border-radius: 12px; }
-body.p-brain #prod :is(.est svg, .stars svg, .heroP__nota .est svg) { fill: #F59E0B; }
+body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #16A34A !important; box-shadow: 0 0 0 3px rgba(22,163,74,0.28), var(--b-sombra); }
+body.p-brain #prod :is(td, th) { border-color: var(--b-borde) !important; color: #FFFFFF; }
+body.p-brain #prod th { background: rgba(0,0,0,0.30) !important; color: #FFFFFF !important; font-family: var(--b-tit); font-weight: 500; }
+body.p-brain #prod .cmp .si svg { stroke: #16A34A; }
+body.p-brain #prod .cmp .no svg { stroke: #DC2626; }
+body.p-brain #prod .res :is(b, strong) { font-family: var(--b-tit); font-weight: 700; color: #0891B2; }
+body.p-brain #prod .ing .cir { background: rgba(2,132,199,0.20); border-radius: 50%; }
+body.p-brain #prod .ing .cir svg { stroke: #BAE6FD; }
+body.p-brain #prod .ing :is(b, h3, strong) { font-family: var(--b-tit); font-weight: 600; color: #FFFFFF; }
+body.p-brain #prod .desc ul li::before { color: #16A34A; border-color: #16A34A; }
+
 /* campos */
 body.p-brain #pedir :is(input, select, textarea) {
-  padding: 12px 16px; border: 1px solid #334155 !important; border-radius: 8px !important; font-size: 16px;
-  background: #10182B !important; color: #FFFFFF !important; font-family: var(--b-txt); transition: border-color 200ms ease;
+  padding: 13px 16px; border: 1px solid var(--b-borde) !important; border-radius: 14px !important; font-size: 16px;
+  background: rgba(0,0,0,0.30) !important; color: #FFFFFF !important; font-family: var(--b-txt); transition: border-color 200ms ease;
 }
-body.p-brain #pedir :is(input, select, textarea)::placeholder { color: #94A3B8; }
-body.p-brain #pedir :is(input, select, textarea):focus { border-color: #2563EB !important; outline: none; box-shadow: 0 0 0 3px #1E293B; }
-body.p-brain #prod :is(a, button, input, select, summary, textarea):focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }
-body.p-brain #prod :is(img, video) { border-radius: var(--card-radius); }
+body.p-brain #pedir select option { background: #0C4A6E; color: #FFFFFF; }
+body.p-brain #pedir :is(input, select, textarea)::placeholder { color: #BAE6FD; opacity: .7; }
+body.p-brain #pedir :is(input, select, textarea):focus { border-color: #0284C7 !important; outline: none; box-shadow: 0 0 0 3px rgba(2,132,199,0.35); }
+body.p-brain #prod :is(a, button, input, select, summary, textarea):focus-visible { outline: 3px solid #0284C7; outline-offset: 2px; }
+body.p-brain #prod :is(img, video) { border-radius: var(--b-radio); }
 
 /* ---------- héroe: foto completa con el título encima (molde de Chile) ---------- */
-body.p-brain #prod .heroP {
-  --crema: #0F172A; --rosa: #334155; --rosaF: #2563EB; --tinta: #FFFFFF; --tinta2: #94A3B8;
-  --oro: #2563EB; --oroOsc: #2563EB;
-  background: #0F172A !important;
-}
-/* 28-10 James: la base del frasco quedaba tapada por los datos (el motor monta el texto 46 px sobre la foto): foto completa */
-body.p-brain #prod .heroP__marco { position: relative; overflow: hidden; background: #0F172A; margin: 0 !important; }
-/* 28-10 James: "haces dos presentaciones de producto". El héroe queda solo como FOTO + TÍTULO (molde de Chile);
-   el nombre, el precio y el botón van una sola vez, debajo, en el bloque del producto (galería + cabecera). */
-body.p-brain #prod .heroP__txt { display: none !important; }
-body.p-brain #prod .heroP { padding-bottom: 0 !important; }
-body.p-brain #prod .heroP__img { border-radius: 0 !important; will-change: transform; }
+body.p-brain #prod .heroP { --crema: #0C4A6E; --tinta: #FFFFFF; --tinta2: #BAE6FD; padding-bottom: 0 !important; }
+body.p-brain #prod .heroP__marco { position: relative; overflow: hidden; background: #000000; margin: 0 !important; }
+body.p-brain #prod .heroP__img { aspect-ratio: 1024 / 1400 !important; object-fit: cover !important; object-position: top !important; height: auto !important; border-radius: 0 !important; will-change: transform; }
 body.p-brain #prod .heroP__fundido { display: none; }
+body.p-brain #prod .heroP__txt { display: none !important; }
 body.p-brain #prod .b-sobre { position: absolute; z-index: 2; left: 0; right: 0; top: 0; padding: 22px 18px 0; }
-body.p-brain #prod .b-sobre .heroP__kicker { color: #94A3B8; background: transparent; border: 0; padding: 0; margin: 0 0 8px; font-family: var(--b-txt); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-body.p-brain #prod .b-sobre .heroP__kicker i { background: #2563EB; }
-body.p-brain #prod .heroP .b-sobre .heroP__h1 { margin: 0; color: #FFFFFF; font-family: var(--b-tit); font-weight: 900; text-transform: none; font-size: clamp(28px, 8.4vw, 60px); line-height: 1.02; perspective: 400px; overflow-wrap: normal; }
-body.p-brain #prod .heroP .b-sobre .heroP__h1 b, body.p-brain #prod .heroP .b-sobre .heroP__h1 b * { color: #2563EB; font-style: normal; font-weight: 900; }
-body.p-brain #prod .b-sobre .heroP__sub { margin: 10px 0 0; max-width: 30ch; color: #FFFFFF; font-weight: 500; }
-body.p-brain #prod .heroP__txt { background: #0F172A; }
-/* 28-10 "¿Cómo quieres pagar?" (pago al recibir / paga ahora −10 %). Las fichas de España definen estas tarjetas en la
-   hoja de cada producto (crema.css, etc.); aquí la misma estructura con la paleta y las letras de la skill (#78). */
-body.p-brain #prod .pasoRot { display: flex; align-items: center; gap: 8px; margin: 24px 0 8px; font: 800 20px var(--b-tit); color: #FFFFFF; }
-body.p-brain #prod .pasoRot b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: #2563EB; color: #FFFFFF; font: 700 15px var(--b-txt); }
+body.p-brain #prod .b-sobre .heroP__kicker { color: #BAE6FD; background: transparent; border: 0; padding: 0; margin: 0 0 10px; font-family: var(--b-tit); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+body.p-brain #prod .b-sobre .heroP__kicker i { background: #16A34A; }
+body.p-brain #prod .heroP .b-sobre .heroP__h1 { margin: 0; color: #FFFFFF; font-family: var(--b-tit); font-weight: 700; text-transform: none; font-size: clamp(30px, 9vw, 62px); line-height: 1.04; overflow-wrap: normal; }
+body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro), body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro) * { color: #0891B2; font-style: normal; }
+body.p-brain #prod .b-sobre .heroP__sub { margin: 12px 0 0; max-width: 30ch; color: #FFFFFF; font-weight: 400; line-height: 1.4; }
+body.p-brain #prod .heroP .b-sobre .heroP__h1, body.p-brain #prod .heroP .b-sobre .heroP__h1 * { font-style: normal !important; }
+/* el pago anticipado: línea de texto suelta debajo de la franja de datos, SIN caja (James: las cajas son "feísimo") */
+body.p-brain #prod .heroP > .heroP__ahorra { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 6px 16px 0; padding: 0; background: transparent !important; border: 0 !important; box-shadow: none !important; color: #FFFFFF !important; font-size: 14px; line-height: 1.3; text-align: center; text-decoration: none; }
+body.p-brain #prod .heroP > .heroP__ahorra :is(span, b) { color: #FFFFFF !important; }
+body.p-brain #prod .heroP > .heroP__ahorra b { color: #16A34A !important; }
+body.p-brain #prod .heroP > .heroP__ahorra svg { stroke: #16A34A; color: #16A34A; flex: none; width: 18px; height: 18px; }
+/* franja de 3 datos debajo de la foto, en una línea */
+body.p-brain #prod .heroP__datos { display: flex !important; flex-wrap: nowrap !important; justify-content: center; gap: 6px !important; margin: 12px 8px 4px !important; }
+body.p-brain #prod .heroP__dato { background: var(--b-tarjeta); border: 1px solid var(--b-borde); color: #FFFFFF; border-radius: 999px; font-size: 12px !important; padding: 7px 11px !important; white-space: nowrap; }
+body.p-brain #prod .heroP__dato svg { color: #BAE6FD; stroke: #BAE6FD; }
+body.p-brain #prod .heroP__dato--oro { border-color: #16A34A; }
+
+/* ---------- video en su lugar de siempre: de borde a borde, 9:16 (como el colágeno de Chile) ---------- */
+/* 29-10 James: "el video está muy malo, no se ve bien, muy grande": más chico y centrado, sin estirarlo */
+body.p-brain #prod .vid-wrap { padding: 28px 0 !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+body.p-brain #prod .vid-wrap video { width: 62% !important; max-width: 300px; height: auto !important; aspect-ratio: auto !important; object-fit: contain !important; margin: 0 auto; border-radius: var(--b-radio) !important; border: 1px solid var(--b-borde); display: block; }
+
+/* ---------- presentación única (estrellas, nombre, precio, botón), sin galería repetida ---------- */
+body.p-brain #prod .arriba2 { padding-top: 8px !important; }
+/* 29-10 James: secciones igualitas a Lymphoria. Debajo del héroe: chips y la presentación (estrellas, nombre, frase,
+   precio) SIN galería y SIN descripción; la descripción va en "Qué es y para qué sirve" */
+body.p-brain #prod .arriba2 :is(.gal, .miniz, .dscTop, .dscTop__ul) { display: none !important; }
+
+/* chips */
+body.p-brain #prod .b-chips { display: flex; justify-content: center; flex-wrap: nowrap; gap: 6px; padding: 14px 8px 4px; background: var(--b-noche); }
+body.p-brain #prod .b-chip { display: inline-flex; align-items: center; gap: 5px; padding: 7px 10px; white-space: nowrap; border-radius: 999px; background: var(--b-tarjeta); border: 1px solid var(--b-borde); color: #FFFFFF; font: 500 12px var(--b-tit); }
+body.p-brain #prod .b-chip svg { width: 16px; height: 16px; fill: none; stroke: #0891B2; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* tres pasos */
+body.p-brain #prod .b-pasos { padding: 40px 20px; background: var(--b-noche); }
+body.p-brain #prod .b-pasos__lista { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
+body.p-brain #prod .b-pasos__lista li { position: relative; padding: 16px 16px 16px 64px; background: var(--b-tarjeta); border: 1px solid var(--b-borde); border-radius: var(--b-radio); }
+body.p-brain #prod .b-pasos__lista li::before { content: attr(data-n); position: absolute; left: 16px; top: 16px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #0284C7; color: #000000; font: 600 16px var(--b-tit); }
+body.p-brain #prod .b-pasos__lista b { display: block; font: 600 17px var(--b-tit); color: #FFFFFF; margin-bottom: 4px; }
+body.p-brain #prod .b-pasos__lista p { margin: 0; color: #BAE6FD; font-size: 15px; line-height: 1.45; }
+
+/* qué es: foto del frasco y 3 fichas con foto */
+body.p-brain #prod .b-frasco { margin: 16px 0; }
+body.p-brain #prod .b-frasco img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: auto !important; object-fit: contain !important; }
+body.p-brain #prod .b-fichas { display: grid; gap: 18px; margin-top: 26px; }
+body.p-brain #prod .b-fi { margin: 0; background: var(--b-tarjeta); border: 1px solid var(--b-borde); border-radius: var(--b-radio); overflow: hidden; }
+body.p-brain #prod .b-fi img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 0 !important; }
+body.p-brain #prod .b-fi figcaption { padding: 16px 18px 20px; }
+body.p-brain #prod .b-rot2 { display: block; color: #0891B2; font: 500 12px var(--b-tit); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
+body.p-brain #prod .b-fi b { display: block; font: 600 19px/1.25 var(--b-tit); color: #FFFFFF; margin-bottom: 6px; }
+body.p-brain #prod .b-fi p { margin: 0; color: #BAE6FD; font-size: 15px; line-height: 1.5; }
+
+/* paga con tarjeta y gana */
+body.p-brain #prod .b-pagoAnt { padding-top: 12px !important; padding-bottom: 32px !important; }
+body.p-brain #prod .b-pagoAnt__caja { padding: 20px 18px; background: var(--b-tarjeta); border: 1px solid #16A34A; border-radius: var(--b-radio); box-shadow: 0 10px 30px rgba(22,163,74,0.16); }
+body.p-brain #prod .b-pagoAnt__tit { margin: 0 0 10px; font: 600 20px var(--b-tit); color: #FFFFFF; }
+body.p-brain #prod .b-pagoAnt__lista { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
+body.p-brain #prod .b-pagoAnt__lista li { display: flex; gap: 8px; align-items: flex-start; color: #FFFFFF; font-size: 15px; line-height: 1.4; }
+body.p-brain #prod .b-pagoAnt__lista li::before { content: none; }
+body.p-brain #prod .b-pagoAnt__lista svg { flex: none; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #16A34A; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+body.p-brain #prod .b-pagoAnt__lista b { color: #16A34A; }
+body.p-brain #prod .b-pagoAnt__pie { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+body.p-brain #prod .b-pagoAnt__logos { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+body.p-brain #prod .b-pagoAnt__logos img { height: 18px; width: auto; border-radius: 0 !important; }
+body.p-brain #prod .b-pagoAnt__btn { min-height: 44px; padding: 0 22px; }
+body.p-brain #prod .arriba2 h1 { font-family: var(--b-tit); font-weight: 700; }
+body.p-brain #prod .arriba2 .ahora { font-family: var(--b-tit); font-weight: 700; color: #FFFFFF; }
+body.p-brain #prod .arriba2 .antes { color: #BAE6FD; }
+body.p-brain #prod .arriba2 .off { background: #16A34A; color: #000000; border-radius: 999px; }
+body.p-brain #prod .arriba2 .preTop { display: block; margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #BAE6FD; }
+body.p-brain #prod .arriba2 .preTop b { color: #FFFFFF; }
+body.p-brain #prod .arriba2 .preTop .preTop__tag { color: #16A34A; }
+
+/* ---------- fotos dentro de las secciones (como Neocell) ---------- */
+body.p-brain #prod .b-foto { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; margin: 18px 0; }
+
+/* ---------- antes y después: palabras en HTML ---------- */
+body.p-brain #prod .ba-img { position: relative; overflow: hidden; padding: 0 !important; }
+body.p-brain #prod .ba-img img { display: block; width: 100%; border-radius: 0 !important; }
+body.p-brain #prod .b-ba { position: absolute; left: 12px; padding: 6px 14px; border-radius: 999px; font: 600 15px var(--b-tit); letter-spacing: .08em; text-transform: uppercase; }
+body.p-brain #prod .b-ba--antes { top: 12px; background: rgba(0,0,0,0.70); color: #FFFFFF; border: 1px solid var(--b-borde); }
+body.p-brain #prod .b-ba--despues { top: calc(50% + 12px); background: #16A34A; color: #000000; }
+body.p-brain #prod .b-ilus { margin: 8px 0 0; font-size: 13px; color: #BAE6FD; }
+
+/* ---------- promoción ---------- */
+body.p-brain #prod .promo-banner { background: #0284C7 !important; color: #000000 !important; font-family: var(--b-tit); }
+body.p-brain #prod .promo-banner * { color: #000000 !important; }
+body.p-brain #prod :is(.promo-qt, .promo-ahora, .promo-precios b) { font-family: var(--b-tit); color: #FFFFFF; }
+body.p-brain #prod .promo-sec .b-foto { margin: 0 0 16px; }
+body.p-brain #prod .promo-tarjeta b { color: #16A34A; }
+body.p-brain #prod .cuenta > div { background: rgba(0,0,0,0.30) !important; border: 1px solid var(--b-borde) !important; border-radius: 16px !important; }
+body.p-brain #prod .cuenta > div b { color: #FFFFFF !important; font-family: var(--b-tit); }
+body.p-brain #prod .cuenta > div span { color: #BAE6FD !important; }
+body.p-brain #prod .cuenta > div.seg { background: #0284C7 !important; border-color: #0284C7 !important; }
+body.p-brain #prod .cuenta > div.seg :is(b, span) { color: #000000 !important; }
+
+/* ---------- "Paga con tarjeta y gana 10 %" ---------- */
+body.p-brain #prod .b-tarjeta { text-align: center; }
+body.p-brain #prod .b-tarjeta__lista { list-style: none; margin: 20px auto; padding: 6px 18px; max-width: 460px; background: var(--b-tarjeta); border: 1px solid #16A34A; border-radius: var(--b-radio); box-shadow: 0 10px 30px rgba(22,163,74,0.16); }
+body.p-brain #prod .b-tarjeta__lista li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--b-borde); text-align: left; }
+body.p-brain #prod .b-tarjeta__lista li:last-child { border-bottom: 0; }
+body.p-brain #prod .b-tarjeta__lista li::before { content: none; }
+body.p-brain #prod .b-tarjeta__lista span { font-family: var(--b-tit); font-weight: 500; }
+body.p-brain #prod .b-tarjeta__lista s { color: #BAE6FD; font-size: 15px; }
+body.p-brain #prod .b-tarjeta__lista b { font: 700 24px var(--b-tit); color: #16A34A; }
+body.p-brain #prod .b-tarjeta__logos { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; margin: 0 0 18px; }
+body.p-brain #prod .b-tarjeta__logos img { height: 20px; width: auto; border-radius: 0 !important; }
+
+/* ---------- formulario: "¿Cómo quieres pagar?" ---------- */
+body.p-brain #prod .pasoRot { display: flex; align-items: center; gap: 8px; margin: 24px 0 8px; font: 600 20px var(--b-tit); color: #FFFFFF; }
+body.p-brain #prod .pasoRot b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #0284C7; color: #000000; font: 600 15px var(--b-tit); }
 body.p-brain #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 body.p-brain #prod .pagoOp { position: relative; display: grid; grid-template-areas: 'ico' 'tit' 'pr' 'sub' 'logos'; align-content: start; gap: 2px; min-height: 132px; padding: 16px 12px; border-width: 2px !important; font: inherit; text-align: left; cursor: pointer; }
-body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #2563EB; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-body.p-brain #prod .pagoOp__tit { font: 700 15px/1.25 var(--b-txt); color: #FFFFFF; }
-body.p-brain #prod .pagoOp__pr { font: 900 24px/1.1 var(--b-tit); color: #FFFFFF; }
-body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #94A3B8; }
+body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #BAE6FD; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.p-brain #prod .pagoOp__tit { font: 600 15px/1.25 var(--b-tit); color: #FFFFFF; }
+body.p-brain #prod .pagoOp__pr { font: 700 24px/1.1 var(--b-tit); color: #FFFFFF; }
+body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #BAE6FD; }
 body.p-brain #prod .pagoOp__logos img { height: 14px; width: auto; border-radius: 0 !important; }
-body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 8px; background: #2563EB; color: #FFFFFF; font: 700 13px var(--b-txt); }
-/* 28-10 pago anticipado en el héroe (reglas de James): el aviso del motor venía crema (España) y el texto blanco no se
-   leía. Va como tarjeta de la skill (#192134, borde #334155, texto #FFFFFF, icono #2563EB) y compacto, sin tapar el frasco. */
-body.p-brain #prod .b-sobre .heroP__ahorra { display: inline-flex; align-items: center; gap: 8px; margin: 12px 0 0; padding: 8px 12px; background: #192134 !important; border: 1px solid #334155 !important; border-radius: 8px; color: #FFFFFF !important; font-family: var(--b-txt); font-size: 13px; line-height: 1.3; box-shadow: var(--shadow-md); text-decoration: none; max-width: 100%; }
-body.p-brain #prod .b-sobre .heroP__ahorra :is(span, b) { color: #FFFFFF !important; }
-body.p-brain #prod .b-sobre .heroP__ahorra svg { color: #2563EB; stroke: #2563EB; flex: none; width: 18px; height: 18px; }
-body.p-brain #prod .heroP__dato { background: #192134; border-color: #334155; color: #FFFFFF; }
-body.p-brain #prod .heroP__dato svg { color: #FFFFFF; }
-body.p-brain #prod .heroP__dato--oro { background: #1E293B; border-color: #334155; }
-body.p-brain #prod .heroP__precio span { color: #94A3B8; }
-body.p-brain #prod .heroP__precio b { font-family: var(--b-tit); font-weight: 900; color: #FFFFFF; }
+body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 999px; background: #16A34A; color: #000000; font: 600 13px var(--b-tit); }
 
-/* ---------- lo que quedaba claro del motor, al fondo oscuro de la skill ---------- */
-/* 28-10 James: el ENCABEZADO no se cambia nunca: va igual que en todas las páginas (aquí no se toca) */
-body.p-brain #prod .gal { background: #10182B !important; }
-body.p-brain #prod :is(.miniz button, .gal .puntos button) { background: #192134 !important; }
-body.p-brain #prod :is(.esc-sec > div, .cod-badge, .summary, .gar-chips > *) { background: #192134 !important; color: #FFFFFF !important; border-color: #334155 !important; }
-body.p-brain #prod th { background: #1E293B !important; color: #FFFFFF !important; }
-/* 28-10 James: logos ORIGINALES de las paqueterías de México "bien incrustados en el formulario, como en Chile y España",
-   y después "quita ese fondo blanco": van SIN fondo, directo sobre la tarjeta (logos con fondo transparente; en AMPM y
-   Coordi la tinta negra/azul marino pasa a blanca para que se lean en lo oscuro, el rojo y el azul de marca quedan).
-   Sin el radio de 16 px de las fotos (los recortaba). */
+/* ---------- textos del motor que venían claros ---------- */
+body.p-brain #prod :is(.esc-sec > div, .cod-badge, .summary, .gar-chips > *) { background: var(--b-tarjeta) !important; color: #FFFFFF !important; border-color: var(--b-borde) !important; }
+body.p-brain #prod p[style*="4a4a4a"] { color: #BAE6FD !important; }
+body.p-brain #prod .verif { color: #BAE6FD !important; }
 body.p-brain #prod .logoTr { border-radius: 0 !important; background: transparent !important; }
 body.p-brain #prod .cbadges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 20px; background: transparent !important; padding: 0 !important; margin-top: 8px; }
 

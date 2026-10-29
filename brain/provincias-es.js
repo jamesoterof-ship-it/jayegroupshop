@@ -8,6 +8,7 @@ window.TEXTOS = {
   moneda: 'MXN',
   correo: 'gerencia@jayegroup.com.co',
   marca: 'Jaye Group México',
+  mejorPrecio: '3 meses completos',   /* 29-10: el pack de 3 NO es el mejor precio por frasco ($400 contra $399,50 del de 2) */
   recienLlegado: 'Recién llegado a México · sé de los primeros en probarlo',
   eMovil: 'Revisa tu celular: en México son 10 dígitos.',
   lProvincia: 'Estado',
