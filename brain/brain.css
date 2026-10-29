@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 /* ============================================================
    BRAIN · MEMORY & MOOD · MÉXICO · 29-10-2026
-   James: "rediséñala… el script, tú no hagas nada" + "deja lo que él elija" → "dale".
-   Skill ui-ux-pro-max, proyecto brain-mx-libre, opción #83 (atada a la página en candado-paleta), TAL CUAL de MASTER.md:
+   James: "rediséñala… el script, tú no hagas nada" + "deja lo que él elija" → "dale"; después: "ponle fondo oscuro".
+   Skill ui-ux-pro-max, proyecto brain-mx-libre, opción #83 (atada a la página en candado-paleta), de MASTER.md:
      · Estilo: Nature Distilled · efectos: parallax sutil, easing natural (ease-out), textura de grano, sombras suaves
-     · Paleta: fondo #F0F9FF · texto #0C4A6E · primario #0369A1 (texto #FFFFFF) · secundario #0EA5E9 ·
-       acción #16A34A (texto #000000) · tarjeta #FFFFFF · apagado #E7EFF5 · texto suave #475569 · borde #BAE6FD ·
-       error #DC2626 · anillo #0369A1
+     · Paleta en su lado oscuro (James 29-10): fondo #0F172A (el tono más oscuro de la paleta) · tarjeta #0C4A6E ·
+       texto #FFFFFF / #F0F9FF · texto suave #BAE6FD · primario #0369A1 · secundario #0EA5E9 · acción #16A34A
+       (texto #000000) · error #DC2626 · anillo #0369A1
      · Letras: Plus Jakarta Sans (títulos y texto)
      · Componentes de MASTER.md: .btn-primary / .btn-secondary / .card / .input / sombras --shadow-sm…xl / espacios
-       (el borde del campo de MASTER.md es un gris que no está en la paleta: va el "Muted" #E7EFF5)
    Las secciones son las de Lymphoria (orden que pidió James), armadas en brain.js. Motor ficha.js intacto.
    Colores SOLO dentro de #prod y #stickycta: el encabezado y el pie quedan como en todas las páginas.
    Estrellas SIEMPRE doradas (regla de James 25-10): el dorado de la marca que ya trae la tienda (--oro de tienda.css).
@@ -18,29 +17,30 @@ body.p-brain {
   --b-oro: var(--oro);
   --b-fuente: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --space-3xl: 64px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1); --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.25); --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.35); --shadow-xl: 0 20px 25px rgba(0,0,0,0.45);
+  --b-borde: rgba(186,230,253,0.22);
   /* textura de grano del estilo (--grain-opacity: 0.1) */
-  --b-grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  background: #F0F9FF;
+  --b-grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background: #0F172A;
 }
 body.p-brain #prod, body.p-brain #stickycta {
-  --tinta: #0C4A6E; --suave: #475569; --linea: #BAE6FD; --hueso: #E7EFF5; --gris: #E7EFF5;
-  --crema: #F0F9FF; --rosa: #0EA5E9; --rosaF: #0369A1; --tinta2: #475569;
+  --tinta: #FFFFFF; --suave: #BAE6FD; --linea: rgba(186,230,253,0.22); --hueso: #0C4A6E; --gris: #0C4A6E;
+  --crema: #0F172A; --rosa: #0EA5E9; --rosaF: #0369A1; --tinta2: #BAE6FD;
   --acento: #16A34A; --sobreAcento: #000000; --aviso: #0369A1; --sobreAviso: #FFFFFF;
   --oro: var(--b-oro);
 }
-body.p-brain #prod { background: var(--b-grano), #F0F9FF; color: #0C4A6E; font-family: var(--b-fuente); }
-body.p-brain #prod :is(section.bloque, section.desc, .arriba2, section.form, .b-pasos, .b-chips) { background: transparent !important; color: #0C4A6E; }
+body.p-brain #prod { background: var(--b-grano), #0F172A; color: #FFFFFF; font-family: var(--b-fuente); }
+body.p-brain #prod :is(section.bloque, section.desc, .arriba2, section.form, .b-pasos, .b-chips) { background: transparent !important; color: #FFFFFF; }
 body.p-brain #prod :is(p, li, td, th, label, small, span, button, input, select, textarea) { font-family: var(--b-fuente); }
-body.p-brain #prod :is(.sub, .sub2, .ctaSub, .baj, small, .nota, .cl) { color: #475569; }
-body.p-brain #prod :is(h1, h2, h3, h4, .tit2, .rev-title, .nombre) { font-family: var(--b-fuente); font-weight: 700; color: #0C4A6E; letter-spacing: -.01em; }
-body.p-brain #prod .eyebrow { color: #0369A1; font-weight: 600; }
-body.p-brain #prod a { color: #0369A1; }
+body.p-brain #prod :is(.sub, .sub2, .ctaSub, .baj, small, .nota, .cl) { color: #BAE6FD; }
+body.p-brain #prod :is(h1, h2, h3, h4, .tit2, .rev-title, .nombre) { font-family: var(--b-fuente); font-weight: 700; color: #FFFFFF; letter-spacing: -.01em; }
+body.p-brain #prod .eyebrow { color: #0EA5E9; font-weight: 600; }
+body.p-brain #prod a { color: #0EA5E9; }
 body.p-brain #prod section.bloque { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
 body.p-brain #prod :is(.est svg, .stars svg, .estrellas svg) { fill: var(--b-oro); }
 body.p-brain #prod .stars { color: var(--b-oro); }
-body.p-brain #prod :is(a, button, input, select, summary, textarea):focus-visible { outline: 3px solid #0369A1; outline-offset: 2px; }
+body.p-brain #prod :is(a, button, input, select, summary, textarea):focus-visible { outline: 3px solid #0EA5E9; outline-offset: 2px; }
 
 /* ---------- .btn-primary / .btn-secondary (MASTER.md) ---------- */
 body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"], .b-pagoAnt__btn), body.p-brain #stickycta :is(a, button):not(.waBoton) {
@@ -49,36 +49,39 @@ body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submi
 }
 body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"], .b-pagoAnt__btn):hover, body.p-brain #stickycta :is(a, button):not(.waBoton):hover { opacity: 0.9; transform: translateY(-1px); }
 body.p-brain #prod :is(.btn-write, .masRs, .cta.azul) {
-  background: transparent !important; color: #0369A1 !important; border: 2px solid #0369A1 !important; padding: 12px 24px;
+  background: transparent !important; color: #0EA5E9 !important; border: 2px solid #0EA5E9 !important; padding: 12px 24px;
   border-radius: 8px !important; font-weight: 600; transition: all 200ms ease; cursor: pointer; box-shadow: none;
 }
 body.p-brain #stickycta .waFlota { display: none !important; }   /* en Chile WhatsApp es solo la bolita verde de la esquina */
 body.p-brain:has(.stickycta.show) .wa { opacity: 1 !important; pointer-events: auto !important; }
 
-/* ---------- .card (MASTER.md): tarjeta #FFFFFF de la paleta, radio 12, sombra media ---------- */
+/* ---------- .card (MASTER.md): radio 12, sombra media; en oscuro, la tarjeta es #0C4A6E ---------- */
 body.p-brain #prod :is(.ing, .res, .rsc, .sello, .oc, .fq details, .formcard, .promo-card, .gseal, .cmp, .esc, .pack, .pagoOp, .summary, .b-fi, .b-pagoAnt__caja, .b-pasos__lista li, table) {
-  background: #FFFFFF !important; color: #0C4A6E; border: 1px solid #BAE6FD !important; border-radius: 12px !important;
+  background: #0C4A6E !important; color: #FFFFFF; border: 1px solid var(--b-borde) !important; border-radius: 12px !important;
   box-shadow: var(--shadow-md); transition: all 200ms ease;
 }
 body.p-brain #prod :is(.ing, .res, .b-fi, .pack, .pagoOp):hover { box-shadow: var(--shadow-lg); }
-body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #16A34A !important; box-shadow: 0 0 0 3px #16A34A20, var(--shadow-md); }
-body.p-brain #prod :is(td, th) { border-color: #BAE6FD !important; color: #0C4A6E; }
-body.p-brain #prod th { background: #E7EFF5 !important; color: #0C4A6E !important; font-weight: 600; }
+body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #16A34A !important; box-shadow: 0 0 0 3px #16A34A40, var(--shadow-md); }
+body.p-brain #prod :is(td, th) { border-color: var(--b-borde) !important; color: #FFFFFF; }
+body.p-brain #prod th { background: #0F172A !important; color: #FFFFFF !important; font-weight: 600; }
 body.p-brain #prod .cmp .si svg { stroke: #16A34A; }
 body.p-brain #prod .cmp .no svg { stroke: #DC2626; }
-body.p-brain #prod .res :is(b, strong) { font-weight: 700; color: #0369A1; }
-body.p-brain #prod .ing .cir { background: #E7EFF5; border-radius: 50%; }
-body.p-brain #prod .ing .cir svg { stroke: #0369A1; }
+body.p-brain #prod .res :is(b, strong) { font-weight: 700; color: #0EA5E9; }
+body.p-brain #prod .res span { color: #BAE6FD; }
+body.p-brain #prod .ing .cir { background: #0F172A; border-radius: 50%; }
+body.p-brain #prod .ing .cir svg { stroke: #0EA5E9; }
+body.p-brain #prod .ing p { color: #BAE6FD; }
 body.p-brain #prod .desc ul li::before { color: #16A34A; border-color: #16A34A; }
 body.p-brain #prod :is(img, video) { border-radius: 12px; }
 
 /* ---------- .input (MASTER.md) ---------- */
 body.p-brain #pedir :is(input, select, textarea) {
-  padding: 12px 16px; border: 1px solid #E7EFF5 !important; border-radius: 8px !important; font-size: 16px;
-  background: #FFFFFF !important; color: #0C4A6E !important; transition: border-color 200ms ease;
+  padding: 12px 16px; border: 1px solid var(--b-borde) !important; border-radius: 8px !important; font-size: 16px;
+  background: #0F172A !important; color: #FFFFFF !important; transition: border-color 200ms ease;
 }
-body.p-brain #pedir :is(input, select, textarea)::placeholder { color: #475569; opacity: .7; }
-body.p-brain #pedir :is(input, select, textarea):focus { border-color: #0369A1 !important; outline: none; box-shadow: 0 0 0 3px #0369A120; }
+body.p-brain #pedir select option { background: #0F172A; color: #FFFFFF; }
+body.p-brain #pedir :is(input, select, textarea)::placeholder { color: #BAE6FD; opacity: .7; }
+body.p-brain #pedir :is(input, select, textarea):focus { border-color: #0EA5E9 !important; outline: none; box-shadow: 0 0 0 3px #0369A160; }
 
 /* ---------- héroe: foto completa con el título encima (molde de Chile) ---------- */
 body.p-brain #prod .heroP { padding-bottom: 0 !important; background: transparent !important; }
@@ -95,17 +98,17 @@ body.p-brain #prod .b-sobre .heroP__sub { margin: 12px 0 0; max-width: 30ch; col
 
 /* ---------- chips ---------- */
 body.p-brain #prod .b-chips { display: flex; justify-content: center; flex-wrap: nowrap; gap: var(--space-sm); padding: var(--space-md) 8px var(--space-xs); }
-body.p-brain #prod .b-chip { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; white-space: nowrap; border-radius: 999px; background: #FFFFFF; border: 1px solid #BAE6FD; color: #0C4A6E; font-weight: 600; font-size: 12px; box-shadow: var(--shadow-sm); }
-body.p-brain #prod .b-chip svg { width: 16px; height: 16px; fill: none; stroke: #0369A1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.p-brain #prod .b-chip { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; white-space: nowrap; border-radius: 999px; background: #0C4A6E; border: 1px solid var(--b-borde); color: #FFFFFF; font-weight: 600; font-size: 12px; box-shadow: var(--shadow-sm); }
+body.p-brain #prod .b-chip svg { width: 16px; height: 16px; fill: none; stroke: #0EA5E9; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- presentación: estrellas, nombre, frase, precio (sin galería ni descripción, como Lymphoria) ---------- */
 body.p-brain #prod .arriba2 { padding-top: var(--space-sm) !important; }
 body.p-brain #prod .arriba2 :is(.gal, .miniz, .dscTop, .dscTop__ul) { display: none !important; }
-body.p-brain #prod .arriba2 .ahora { font-weight: 700; color: #0C4A6E; }
-body.p-brain #prod .arriba2 .antes { color: #475569; }
+body.p-brain #prod .arriba2 .ahora { font-weight: 700; color: #FFFFFF; }
+body.p-brain #prod .arriba2 .antes { color: #BAE6FD; }
 body.p-brain #prod .arriba2 .off { background: #16A34A; color: #000000; border-radius: 8px; }
-body.p-brain #prod .arriba2 .preTop { display: block; margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #475569; }
-body.p-brain #prod .arriba2 .preTop b { color: #0C4A6E; }
+body.p-brain #prod .arriba2 .preTop { display: block; margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #BAE6FD; }
+body.p-brain #prod .arriba2 .preTop b { color: #FFFFFF; }
 body.p-brain #prod .arriba2 .preTop .preTop__tag { color: #16A34A; }
 body.p-brain #prod :is(.bloque:has(#btnArriba)) { padding-top: var(--space-sm) !important; padding-bottom: var(--space-sm) !important; }
 
@@ -114,8 +117,8 @@ body.p-brain #prod .b-pasos { padding: var(--space-md) 20px var(--space-xl); }
 body.p-brain #prod .b-pasos__lista { list-style: none; margin: var(--space-md) 0 0; padding: 0; display: grid; gap: 12px; }
 body.p-brain #prod .b-pasos__lista li { position: relative; padding: var(--space-md) var(--space-md) var(--space-md) 64px; }
 body.p-brain #prod .b-pasos__lista li::before { content: attr(data-n); position: absolute; left: 16px; top: 16px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #0369A1; color: #FFFFFF; font-weight: 700; font-size: 16px; }
-body.p-brain #prod .b-pasos__lista b { display: block; font-weight: 700; font-size: 17px; color: #0C4A6E; margin-bottom: 4px; }
-body.p-brain #prod .b-pasos__lista p { margin: 0; color: #475569; font-size: 15px; line-height: 1.45; }
+body.p-brain #prod .b-pasos__lista b { display: block; font-weight: 700; font-size: 17px; color: #FFFFFF; margin-bottom: 4px; }
+body.p-brain #prod .b-pasos__lista p { margin: 0; color: #BAE6FD; font-size: 15px; line-height: 1.45; }
 
 /* ---------- qué es: foto del frasco y 3 fichas con foto ---------- */
 body.p-brain #prod .b-frasco { margin: var(--space-md) 0; }
@@ -124,9 +127,9 @@ body.p-brain #prod .b-fichas { display: grid; gap: 18px; margin-top: var(--space
 body.p-brain #prod .b-fi { margin: 0; overflow: hidden; padding: 0 !important; }
 body.p-brain #prod .b-fi img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; border-radius: 0 !important; }
 body.p-brain #prod .b-fi figcaption { padding: var(--space-md) 18px 20px; }
-body.p-brain #prod .b-rot2 { display: block; color: #0369A1; font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
-body.p-brain #prod .b-fi b { display: block; font-weight: 700; font-size: 19px; line-height: 1.25; color: #0C4A6E; margin-bottom: 6px; }
-body.p-brain #prod .b-fi p { margin: 0; color: #475569; font-size: 15px; line-height: 1.5; }
+body.p-brain #prod .b-rot2 { display: block; color: #0EA5E9; font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
+body.p-brain #prod .b-fi b { display: block; font-weight: 700; font-size: 19px; line-height: 1.25; color: #FFFFFF; margin-bottom: 6px; }
+body.p-brain #prod .b-fi p { margin: 0; color: #BAE6FD; font-size: 15px; line-height: 1.5; }
 body.p-brain #prod .desc:has(.b-fichas) { padding-bottom: 20px !important; }
 
 /* ---------- promoción ---------- */
@@ -134,21 +137,21 @@ body.p-brain #prod .promo-sec { padding-top: 12px !important; }
 body.p-brain #prod .b-foto { display: block; width: 100% !important; height: auto !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; margin: 0 0 var(--space-md); box-shadow: var(--shadow-xl); }
 body.p-brain #prod .promo-banner { background: #0369A1 !important; color: #FFFFFF !important; }
 body.p-brain #prod .promo-banner * { color: #FFFFFF !important; }
-body.p-brain #prod :is(.promo-qt, .promo-ahora, .promo-precios b) { color: #0C4A6E; }
+body.p-brain #prod :is(.promo-qt, .promo-ahora, .promo-precios b) { color: #FFFFFF; }
 body.p-brain #prod .promo-tarjeta b { color: #16A34A; }
 /* contador: el segundero con efecto (James: "el segundero no tiene ningún efecto") — el golpe lo da brain.js */
-body.p-brain #prod .cuenta > div { background: #E7EFF5 !important; border: 1px solid #BAE6FD !important; border-radius: 12px !important; }
-body.p-brain #prod .cuenta > div b { color: #0C4A6E !important; font-weight: 700; display: inline-block; }
-body.p-brain #prod .cuenta > div span { color: #475569 !important; }
+body.p-brain #prod .cuenta > div { background: #0F172A !important; border: 1px solid var(--b-borde) !important; border-radius: 12px !important; }
+body.p-brain #prod .cuenta > div b { color: #FFFFFF !important; font-weight: 700; display: inline-block; }
+body.p-brain #prod .cuenta > div span { color: #BAE6FD !important; }
 body.p-brain #prod .cuenta > div.seg { background: #0369A1 !important; border-color: #0369A1 !important; box-shadow: var(--shadow-lg); }
 body.p-brain #prod .cuenta > div.seg :is(b, span) { color: #FFFFFF !important; }
 
 /* ---------- paga con tarjeta y gana ---------- */
 body.p-brain #prod .b-pagoAnt { padding-top: 12px !important; padding-bottom: var(--space-xl) !important; }
 body.p-brain #prod .b-pagoAnt__caja { padding: var(--space-lg); border-color: #16A34A !important; }
-body.p-brain #prod .b-pagoAnt__tit { margin: 0 0 10px; font-weight: 700; font-size: 20px; color: #0C4A6E; }
+body.p-brain #prod .b-pagoAnt__tit { margin: 0 0 10px; font-weight: 700; font-size: 20px; color: #FFFFFF; }
 body.p-brain #prod .b-pagoAnt__lista { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
-body.p-brain #prod .b-pagoAnt__lista li { display: flex; gap: 8px; align-items: flex-start; color: #0C4A6E; font-size: 15px; line-height: 1.4; }
+body.p-brain #prod .b-pagoAnt__lista li { display: flex; gap: 8px; align-items: flex-start; color: #FFFFFF; font-size: 15px; line-height: 1.4; }
 body.p-brain #prod .b-pagoAnt__lista li::before { content: none; }
 body.p-brain #prod .b-pagoAnt__lista svg { flex: none; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #16A34A; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 body.p-brain #prod .b-pagoAnt__lista b { color: #16A34A; }
@@ -161,29 +164,30 @@ body.p-brain #prod .vid-wrap { padding: 28px 0 !important; margin: 0 !important;
 body.p-brain #prod .vid-wrap video { width: 100% !important; height: auto !important; object-fit: contain !important; margin: 0; border-radius: 0 !important; display: block; }
 
 /* ---------- antes y después: palabras en HTML ---------- */
-body.p-brain #prod .ba-img { position: relative; overflow: hidden; padding: 0 !important; background: #FFFFFF !important; border: 1px solid #BAE6FD !important; border-radius: 12px !important; box-shadow: var(--shadow-md); }
+body.p-brain #prod .ba-img { position: relative; overflow: hidden; padding: 0 !important; background: #0C4A6E !important; border: 1px solid var(--b-borde) !important; border-radius: 12px !important; box-shadow: var(--shadow-md); }
 body.p-brain #prod .ba-img img { display: block; width: 100%; border-radius: 0 !important; }
 body.p-brain #prod .b-ba { position: absolute; left: 12px; padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
-body.p-brain #prod .b-ba--antes { top: 12px; background: #FFFFFF; color: #0C4A6E; box-shadow: var(--shadow-md); }
+body.p-brain #prod .b-ba--antes { top: 12px; background: #0F172A; color: #FFFFFF; box-shadow: var(--shadow-md); }
 body.p-brain #prod .b-ba--despues { top: calc(50% + 12px); background: #16A34A; color: #000000; box-shadow: var(--shadow-md); }
-body.p-brain #prod .b-ilus { margin: 8px 0 0; font-size: 13px; color: #475569; }
+body.p-brain #prod .b-ilus { margin: 8px 0 0; font-size: 13px; color: #BAE6FD; }
 
 /* ---------- formulario ---------- */
-body.p-brain #prod .pasoRot { display: flex; align-items: center; gap: 8px; margin: var(--space-lg) 0 var(--space-sm); font-weight: 700; font-size: 20px; color: #0C4A6E; }
+body.p-brain #prod .pasoRot { display: flex; align-items: center; gap: 8px; margin: var(--space-lg) 0 var(--space-sm); font-weight: 700; font-size: 20px; color: #FFFFFF; }
 body.p-brain #prod .pasoRot b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #0369A1; color: #FFFFFF; font-weight: 700; font-size: 15px; }
 body.p-brain #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: var(--space-md); }
 /* James: "una sección montada arriba de otra": el resumen quedaba pegado a las opciones de pago */
 body.p-brain #prod .summary { margin-top: var(--space-md) !important; padding: var(--space-md); }
 body.p-brain #prod .summary .desc { background: transparent !important; color: #16A34A; }
 body.p-brain #prod .pagoOp { position: relative; display: grid; grid-template-areas: 'ico' 'tit' 'pr' 'sub' 'logos'; align-content: start; gap: 2px; min-height: 132px; padding: 16px 12px; border-width: 2px !important; font: inherit; text-align: left; cursor: pointer; }
-body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #0369A1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-body.p-brain #prod .pagoOp__tit { font-weight: 700; font-size: 15px; line-height: 1.25; color: #0C4A6E; }
-body.p-brain #prod .pagoOp__pr { font-weight: 700; font-size: 24px; line-height: 1.1; color: #0C4A6E; }
-body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #475569; }
+body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #0EA5E9; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.p-brain #prod .pagoOp__tit { font-weight: 700; font-size: 15px; line-height: 1.25; color: #FFFFFF; }
+body.p-brain #prod .pagoOp__pr { font-weight: 700; font-size: 24px; line-height: 1.1; color: #FFFFFF; }
+body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #BAE6FD; }
 body.p-brain #prod .pagoOp__logos img { height: 14px; width: auto; border-radius: 0 !important; }
 body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 8px; background: #16A34A; color: #000000; font-weight: 700; font-size: 13px; }
-body.p-brain #prod :is(.esc-sec > div, .cod-badge, .gar-chips > *) { background: #FFFFFF !important; color: #0C4A6E !important; border-color: #BAE6FD !important; }
-body.p-brain #prod .verif { color: #475569 !important; }
+body.p-brain #prod :is(.esc-sec > div, .cod-badge, .gar-chips > *) { background: #0C4A6E !important; color: #FFFFFF !important; border-color: var(--b-borde) !important; }
+body.p-brain #prod p[style*="4a4a4a"] { color: #BAE6FD !important; }
+body.p-brain #prod .verif { color: #BAE6FD !important; }
 body.p-brain #prod .logoTr { border-radius: 0 !important; background: transparent !important; }
 body.p-brain #prod .cbadges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 20px; background: transparent !important; padding: 0 !important; margin-top: 8px; }
 
