@@ -131,7 +131,7 @@ body.p-brain #prod .b-pasos__lista p { margin: 0; color: #BAE6FD; font-size: 15p
 
 /* qué es: foto del frasco y 3 fichas con foto */
 body.p-brain #prod .b-frasco { margin: 16px 0; }
-body.p-brain #prod .b-frasco img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: auto !important; object-fit: contain !important; }
+body.p-brain #prod .b-frasco img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: 1 / 1 !important; object-fit: contain !important; }
 body.p-brain #prod .b-fichas { display: grid; gap: 18px; margin-top: 26px; }
 body.p-brain #prod .b-fi { margin: 0; background: var(--b-tarjeta); border: 1px solid var(--b-borde); border-radius: var(--b-radio); overflow: hidden; }
 /* 29-10 James (captura): las fotos de las fichas salían gigantes y cortadas: cuadradas y completas, como Lymphoria */
