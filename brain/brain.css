@@ -139,8 +139,7 @@ body.p-brain #prod .b-foto { display: block; width: 100% !important; height: aut
 body.p-brain #prod .promo-banner { background: #0369A1 !important; color: #FFFFFF !important; }
 body.p-brain #prod .promo-banner * { color: #FFFFFF !important; }
 body.p-brain #prod :is(.promo-qt, .promo-ahora, .promo-precios b) { color: #FFFFFF; }
-body.p-brain #prod .promo-tarjeta b { color: #0EA5E9; }
-/* contador: el segundero con efecto (James: "el segundero no tiene ningún efecto") — el golpe lo da brain.js */
+body.p-brain #prod .promo-tarjeta b { color: #0EA5E9; }/* contador: el segundero con efecto (James: "el segundero no tiene ningún efecto") — el golpe lo da brain.js */
 body.p-brain #prod .cuenta > div { background: #0F172A !important; border: 1px solid var(--b-borde) !important; border-radius: 12px !important; }
 body.p-brain #prod .cuenta > div b { color: #FFFFFF !important; font-weight: 700; display: inline-block; }
 body.p-brain #prod .cuenta > div span { color: #BAE6FD !important; }

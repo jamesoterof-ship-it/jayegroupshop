@@ -36,7 +36,19 @@
 <!-- Hero de la ficha. Aparte de tienda.css: si algo sale mal, se quita esta linea y la ficha vuelve a como estaba. -->
 <link rel="stylesheet" href="hero.css?v=213">
 <!-- 28-10 MÉXICO: lo que dio la skill para el Brain (opción #75), solo con body.p-brain -->
-<link rel="stylesheet" href="brain.css?v=42">
+<link rel="stylesheet" href="brain.css?v=43">
+<!-- 29-10 EXCEPCIÓN AUTORIZADA POR JAMES (única, fuera de la paleta del script): "con color púrpura, es el que tiene el
+     producto… y el segundero también púrpura… que tenga efecto de palpitación y cambie de color" → "autorizo que lo
+     cambies, cámbialo" → "solo ese cambio". Solo el precio de la promoción y el segundero, en el morado de la etiqueta. -->
+<style>
+body.p-brain #prod .promo-card .promo-precio { color: #8B5CF6 !important; }
+body.p-brain #prod .cuenta > div.seg { background: #8B5CF6 !important; border-color: #8B5CF6 !important; animation: bSegLate 1s ease-in-out infinite; }
+@keyframes bSegLate {
+  0%, 100% { transform: scale(1); background: #8B5CF6; box-shadow: 0 0 0 0 rgba(139,92,246,.55); }
+  50% { transform: scale(1.1); background: #A78BFA; box-shadow: 0 0 0 10px rgba(139,92,246,0); }
+}
+@media (prefers-reduced-motion: reduce) { body.p-brain #prod .cuenta > div.seg { animation: none; } }
+</style>
 <script>/* CANDADO DEL HERO. Va aqui, en linea y antes de nada, para que no haya
    parpadeo: sin esta clase el CSS deja el hero VISIBLE y sin animacion.
    Si este script no corre -JS desactivado, error de red- el visitante ve el
