@@ -872,6 +872,8 @@
 
   /* el bloque del sellador: mismo aspecto de los packs, pero aparte */
   var kSel = p.packs[elegido];
+  /* el campo de correo (en México va al final del formulario, James 29-10) */
+  var campoCorreo = '<div class="field"><label for="fCorreo">' + t('lCorreo', 'Correo electrónico (opcional)') + '</label><input id="fCorreo" type="email" inputmode="email" autocomplete="email" placeholder="' + t('phCorreo', 'Ej: maria@gmail.com') + '"><div class="err">' + t('eCorreo', 'Escribe un correo válido: ahí te enviamos la confirmación del pedido.') + '</div></div>';
   var formulario = '<section class="form" id="pedir" data-rv><h2>' + t('pideTit', 'Pide el tuyo') + '</h2>'
     + '<p class="baj">' + t('saleHoy', 'Sale hoy de nuestro almacén en Sevilla. Pagas cuando lo recibes.') + '</p>'
     + '<div class="formcard">'
@@ -963,14 +965,25 @@
     /* El correo NO es opcional: el art. 98.7 del TRLGDCU en España (y el
        Decreto-Lei 24/2014 en Portugal) obligan a confirmar el pedido en
        soporte duradero. Sin correo no se puede cumplir. */
-    + '<div class="field"><label for="fCorreo">' + t('lCorreo', 'Correo electrónico (opcional)') + '</label><input id="fCorreo" type="email" inputmode="email" autocomplete="email" placeholder="' + t('phCorreo', 'Ej: maria@gmail.com') + '"><div class="err">' + t('eCorreo', 'Escribe un correo válido: ahí te enviamos la confirmación del pedido.') + '</div></div>'
+    /* 29-10 James (México): el correo es opcional y va AL FINAL del formulario */
+    + (PAIS === 'MX' ? '' : campoCorreo)
     + '<div class="field"><label for="fDir">' + t('lDir', 'Dirección') + '</label><input id="fDir" required autocomplete="street-address" placeholder="' + t('phDir', 'Calle, número, piso y puerta') + '"><div class="err">' + t('eDir', 'Escribe la calle y el número.') + '</div></div>'
     + '<div class="field"><label for="fRef">' + t('lRef', 'Indicaciones para el repartidor') + ' <span class="opc">' + t('opcional', '(opcional)') + '</span></label><input id="fRef" autocomplete="address-line2" placeholder="' + t('phRef', 'Portal, timbre, horario en el que estás en casa…') + '"></div>'
-    + '<div class="row2">'
-    + '<div class="field"><label for="fCP">' + t('lCP', 'Código postal') + '</label><input id="fCP" required inputmode="' + (PAIS === 'PT' ? 'text' : 'numeric') + '" autocomplete="postal-code" maxlength="' + (PAIS === 'PT' ? 8 : 5) + '" placeholder="' + t('phCP', '41001') + '"><div class="err">' + t('eCP', 'Escribe los 5 dígitos de tu código postal.') + '</div></div>'
-    + '<div class="field"><label for="fCiudad">' + t('lCiudad', 'Localidad') + '</label><input id="fCiudad" required autocomplete="address-level2" placeholder="' + t('phCiudad', 'Ej: Sevilla') + '"><div class="err">' + t('eCiudad', 'Escribe tu localidad.') + '</div></div>'
-    + '</div>'
-    + '<div class="field"><label for="fProvincia">' + t('lProvincia', 'Provincia') + '</label><select id="fProvincia" required autocomplete="address-level1"><option value="">' + t('elige', 'Selecciona…') + '</option></select><div class="err">' + t('eProvincia', 'Selecciona tu provincia.') + '</div></div>'
+    + (PAIS === 'MX'
+      /* 29-10 James (México): el municipio también es una LISTA, como el estado. Primero el estado y luego su municipio
+         (los que cubre Dropi México: window.MUNICIPIOS_MX en provincias-es.js). El correo opcional va al final. */
+      ? '<div class="field"><label for="fCP">' + t('lCP', 'Código postal') + '</label><input id="fCP" required inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="' + t('phCP', '06000') + '"><div class="err">' + t('eCP', 'Escribe los 5 dígitos de tu código postal.') + '</div></div>'
+        + '<div class="field"><label for="fProvincia">' + t('lProvincia', 'Estado') + '</label><select id="fProvincia" required autocomplete="address-level1"><option value="">' + t('elige', 'Selecciona…') + '</option></select><div class="err">' + t('eProvincia', 'Selecciona tu estado.') + '</div></div>'
+        + '<div class="field"><label for="fCiudad">' + t('lCiudad', 'Ciudad o municipio') + '</label><select id="fCiudad" required autocomplete="address-level2" disabled><option value="">' + t('eligeEstado', 'Primero elige tu estado') + '</option></select><div class="err">' + t('eCiudad', 'Selecciona tu municipio.') + '</div></div>'
+        /* 29-10 James: colonia en lista (catálogo SEPOMEX en brain/cp/): al elegirla se llena el código postal, y al
+           escribir el código postal se eligen solos el estado, el municipio y la colonia */
+        + '<div class="field"><label for="fColonia">' + t('lColonia', 'Colonia') + '</label><select id="fColonia" autocomplete="address-level3" disabled><option value="">' + t('eligeMun', 'Primero elige tu municipio') + '</option></select><div class="err">' + t('eColonia', 'Selecciona tu colonia.') + '</div></div>'
+        + campoCorreo
+      : '<div class="row2">'
+        + '<div class="field"><label for="fCP">' + t('lCP', 'Código postal') + '</label><input id="fCP" required inputmode="' + (PAIS === 'PT' ? 'text' : 'numeric') + '" autocomplete="postal-code" maxlength="' + (PAIS === 'PT' ? 8 : 5) + '" placeholder="' + t('phCP', '41001') + '"><div class="err">' + t('eCP', 'Escribe los 5 dígitos de tu código postal.') + '</div></div>'
+        + '<div class="field"><label for="fCiudad">' + t('lCiudad', 'Localidad') + '</label><input id="fCiudad" required autocomplete="address-level2" placeholder="' + t('phCiudad', 'Ej: Sevilla') + '"><div class="err">' + t('eCiudad', 'Escribe tu localidad.') + '</div></div>'
+        + '</div>'
+        + '<div class="field"><label for="fProvincia">' + t('lProvincia', 'Provincia') + '</label><select id="fProvincia" required autocomplete="address-level1"><option value="">' + t('elige', 'Selecciona…') + '</option></select><div class="err">' + t('eProvincia', 'Selecciona tu provincia.') + '</div></div>')
     + '<div class="aviso" id="fErr"></div>'
     /* El texto del boton lo fija el art. 98.2 del TRLGDCU (España) y el art. 4
        del Decreto-Lei 24/2014 (Portugal): si el pedido obliga a pagar, el boton
@@ -1536,6 +1549,55 @@
   var selP = $('fProvincia');
   if (PROV && selP) {
     PROV.forEach(function (pr) { selP.add(new Option(pr, pr)); });
+    /* 29-10 México: al elegir el estado se llena la lista de municipios (los que cubre Dropi México) */
+    var selC = $('fCiudad');
+    if (PAIS === 'MX' && selC && selC.tagName === 'SELECT' && window.MUNICIPIOS_MX) {
+      var llenarMun = function () {
+        var lista = window.MUNICIPIOS_MX[selP.value] || [];
+        var antes = selC.value;
+        selC.innerHTML = '';
+        selC.add(new Option(lista.length ? t('elige', 'Selecciona…') : t('eligeEstado', 'Primero elige tu estado'), ''));
+        lista.forEach(function (m) { selC.add(new Option(m, m)); });
+        selC.disabled = !lista.length;
+        if (antes && lista.indexOf(antes) >= 0) selC.value = antes;
+      };
+      selP.addEventListener('change', llenarMun);
+      llenarMun();
+
+      /* 29-10 colonia y código postal en los dos sentidos (SEPOMEX, archivos JSON en cp/, se bajan solo al usarlos) */
+      var selCol = $('fColonia'), inCP = $('fCP'), CACHE = {};
+      var traer = function (f) { if (!CACHE[f]) CACHE[f] = fetch('cp/' + f + '.json').then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }); return CACHE[f]; };
+      var ponerColonias = function (pares, elegir) {   /* pares = [[colonia, cp], …] */
+        selCol.innerHTML = '';
+        selCol.add(new Option(pares.length ? t('elige', 'Selecciona…') : t('eligeMun', 'Primero elige tu municipio'), ''));
+        pares.forEach(function (x) { var o = new Option(x[0], x[0]); o.setAttribute('data-cp', x[1]); selCol.add(o); });
+        selCol.disabled = !pares.length;
+        if (elegir) selCol.value = elegir; else if (pares.length === 1) selCol.value = pares[0][0];
+      };
+      /* municipio elegido → sus colonias */
+      selC.addEventListener('change', function () {
+        var ei = PROV.indexOf(selP.value);
+        if (ei < 0 || !selC.value) { ponerColonias([]); return; }
+        traer('e-' + ei).then(function (d) { ponerColonias((d && d[selC.value]) || []); });
+      });
+      selP.addEventListener('change', function () { ponerColonias([]); });
+      /* colonia elegida → su código postal */
+      selCol.addEventListener('change', function () {
+        var o = selCol.options[selCol.selectedIndex], cp = o && o.getAttribute('data-cp');
+        if (cp && inCP) { inCP.value = cp; inCP.classList.remove('mal'); }
+      });
+      /* código postal escrito → estado, municipio y colonias */
+      if (inCP) inCP.addEventListener('input', function () {
+        var cp = inCP.value.replace(/\D/g, '');
+        if (cp.length !== 5) return;
+        traer('p-' + cp.slice(0, 2)).then(function (d) {
+          var x = d && d[cp]; if (!x || inCP.value.replace(/\D/g, '') !== cp) return;
+          selP.value = x[0]; llenarMun();
+          if (x[1]) selC.value = x[1];
+          ponerColonias(x[2].map(function (c) { return [c, cp]; }));
+        });
+      });
+    }
   } else if (selP) {
     selP.outerHTML = '<input id="fProvincia" placeholder="' + t('lProvincia', 'Provincia') + '">';
   }
@@ -1631,6 +1693,7 @@
     else if (!(PAIS === 'PT' ? (window.CP_PT_REGEX || /^\d{4}-\d{3}$/) : /^\d{5}$/).test(cp)) falla = t('eCP', 'El código postal son 5 cifras.'), $('fCP').classList.add('mal');
     else if (sinCob.indexOf(cpDig.slice(0, PAIS === 'PT' ? 1 : 2)) >= 0) falla = t('sinCobertura', 'Todavía no enviamos a Canarias, Ceuta ni Melilla. Sí enviamos a toda la península y a Baleares.'), $('fCP').classList.add('mal');
     else if (g('fCiudad').length < 2) falla = t('eCiudad', 'Escribe tu localidad.'), $('fCiudad').classList.add('mal');
+    else if (PAIS === 'MX' && $('fColonia') && !$('fColonia').disabled && !g('fColonia')) falla = t('eColonia', 'Selecciona tu colonia.'), $('fColonia').classList.add('mal');
     else if (!g('fProvincia')) falla = t('eProvincia', 'Selecciona tu provincia.'), $('fProvincia').classList.add('mal');
     /* el mismo candado que ya tiene la operacion: sin calle Y numero no se despacha */
     else if (g('fDir').length < 8 || !/\d/.test(g('fDir'))) falla = t('eDirNum', 'Falta el número de la dirección: sin eso el transportista no puede entregar.'), $('fDir').classList.add('mal');
@@ -1697,7 +1760,9 @@
       /* ESPAÑA: Dropi PRO pide city, province y zip. Se mandan tambien con los
          nombres viejos (comuna/region) para que el flujo de n8n que ya existe
          no se quede sin dato mientras se monta el webhook pedido-tienda-es. */
-      direccion: g('fDir'), ciudad: g('fCiudad'), provincia: g('fProvincia'), cp: cp,
+      /* 29-10 México: la colonia elegida en la lista va pegada a la dirección (la guía de Dropi no tiene campo de colonia) */
+      direccion: (function () { var d = g('fDir'), co = $('fColonia') ? g('fColonia') : ''; return co && d.toLowerCase().indexOf(co.toLowerCase()) < 0 ? d + ', Col. ' + co : d; })(),
+      ciudad: g('fCiudad'), provincia: g('fProvincia'), cp: cp,
       comuna: g('fCiudad'), region: g('fProvincia'),
       /* La referencia y el correo se le pedian al cliente y se tiraban a la
          basura: no viajaban en el pedido. La referencia es justo lo que el
