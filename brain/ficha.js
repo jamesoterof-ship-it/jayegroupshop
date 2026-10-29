@@ -1548,7 +1548,9 @@
   var PROV = window.PROVINCIAS_ES || window.DISTRITOS_PT || null;
   var selP = $('fProvincia');
   if (PROV && selP) {
-    PROV.forEach(function (pr) { selP.add(new Option(pr, pr)); });
+    /* 29-10 James: en México solo salen los estados donde Dropi acepta contra entrega (los que tienen municipios en
+       MUNICIPIOS_MX). PROV no se recorta: su posición es la que usan los archivos cp/e-N.json */
+    PROV.forEach(function (pr) { if (PAIS !== 'MX' || !window.MUNICIPIOS_MX || window.MUNICIPIOS_MX[pr]) selP.add(new Option(pr, pr)); });
     /* 29-10 México: al elegir el estado se llena la lista de municipios (los que cubre Dropi México) */
     var selC = $('fCiudad');
     if (PAIS === 'MX' && selC && selC.tagName === 'SELECT' && window.MUNICIPIOS_MX) {
@@ -1592,6 +1594,13 @@
         if (cp.length !== 5) return;
         traer('p-' + cp.slice(0, 2)).then(function (d) {
           var x = d && d[cp]; if (!x || inCP.value.replace(/\D/g, '') !== cp) return;
+          /* 29-10: código postal de un municipio donde Dropi no acepta contra entrega → se avisa y no se llena nada */
+          if ((window.MUNICIPIOS_MX[x[0]] || []).indexOf(x[1]) < 0) {
+            selP.value = ''; llenarMun(); ponerColonias([]); inCP.classList.add('mal');
+            var av = $('fErr');
+            if (av) { av.textContent = t('sinCobertura', 'Lo sentimos: todavía no llegamos con pago contra entrega a tu municipio.'); av.style.display = 'block'; }
+            return;
+          }
           selP.value = x[0]; llenarMun();
           if (x[1]) selC.value = x[1];
           ponerColonias(x[2].map(function (c) { return [c, cp]; }));
