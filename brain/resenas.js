@@ -2,7 +2,7 @@
    OPINIONES · Brain Memory & Mood (México) · 28-10-2026 (corregidas según GUIA_PAGINA_MEXICO.md, punto 5)
    50 opiniones REALES de compradores de cápsulas para la memoria y la concentración (AliExpress). Traducción
    arreglada a español mexicano natural sin cambiar lo que dijo cada comprador; se quitaron 6 sin sentido o que chocaban
-   con la página. Las 5 primeras con foto del MISMO frasco (cuadros del video real). Nombres latinos por decisión de James.
+   con la página. La primera con foto (29-10 James: las 5 fotos salían del mismo video y se notaba; no hay otras fotos reales distintas del mismo frasco) del MISMO frasco (cuadros del video real). Nombres latinos por decisión de James.
    Media: 4.74. Scripts: _kn_scratch/_brain_resenas_2810.js y _brain_resenas_fix_2810.js
    ============================================================ */
 window.RESENAS = [
@@ -23,7 +23,6 @@ window.RESENAS = [
   "fecha": "2026-01-11",
   "pais": "MX",
   "verificada": true,
-  "foto": "img/rev/brain-r02.webp",
   "texto": "Es un buen suplemento, lo recomiendo. Es práctico y me da una sensación de estabilidad. Lo voy a volver a comprar. Aquí no hay muchas marcas de suplementos, pero he probado varios y estos están bien."
  },
  {
@@ -33,7 +32,6 @@ window.RESENAS = [
   "fecha": "2026-08-18",
   "pais": "MX",
   "verificada": true,
-  "foto": "img/rev/brain-r03.webp",
   "texto": "Lo sigo tomando y parece que me ayuda con los dolores de cabeza. Si sigue funcionando así, quiero que mi pareja también lo tome y recomendárselo a los vecinos."
  },
  {
@@ -43,7 +41,6 @@ window.RESENAS = [
   "fecha": "2026-02-21",
   "pais": "MX",
   "verificada": true,
-  "foto": "img/rev/brain-r04.webp",
   "texto": "Me llegó días antes de la fecha, de verdad me sorprendió. Todavía no las tomo, pero por las reseñas creo que me van a funcionar. Muchas gracias por la entrega tan rápida 🤗"
  },
  {
@@ -53,7 +50,6 @@ window.RESENAS = [
   "fecha": "2026-10-10",
   "pais": "MX",
   "verificada": true,
-  "foto": "img/rev/brain-r05.webp",
   "texto": "Lo estoy tomando ahorita y me siento cada vez mejor. ¡Muy recomendado!"
  },
  {
