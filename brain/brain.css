@@ -74,7 +74,12 @@ body.p-brain #prod .heroP {
   --oro: #2563EB; --oroOsc: #2563EB;
   background: #0F172A !important;
 }
-body.p-brain #prod .heroP__marco { position: relative; overflow: hidden; }
+/* 28-10 James: la base del frasco quedaba tapada por los datos (el motor monta el texto 46 px sobre la foto): foto completa */
+body.p-brain #prod .heroP__marco { position: relative; overflow: hidden; background: #0F172A; margin: 0 !important; }
+/* 28-10 James: "haces dos presentaciones de producto". El héroe queda solo como FOTO + TÍTULO (molde de Chile);
+   el nombre, el precio y el botón van una sola vez, debajo, en el bloque del producto (galería + cabecera). */
+body.p-brain #prod .heroP__txt { display: none !important; }
+body.p-brain #prod .heroP { padding-bottom: 0 !important; }
 body.p-brain #prod .heroP__img { border-radius: 0 !important; will-change: transform; }
 body.p-brain #prod .heroP__fundido { display: none; }
 body.p-brain #prod .b-sobre { position: absolute; z-index: 2; left: 0; right: 0; top: 0; padding: 22px 18px 0; }

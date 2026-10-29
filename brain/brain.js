@@ -42,7 +42,9 @@
     prod.dataset.bFx = '1';
     /* "Parallax Scroll · Subtle": gsap.to(capa, { yPercent:10, ease:'none', scrollTrigger:{ trigger:sección, scrub:true } }) */
     var foto = prod.querySelector('.heroP__img');
-    if (foto && window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); gsap.to(foto, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: prod.querySelector('.heroP'), scrub: true } }); }
+    /* 28-10 James vio una franja gris arriba de la foto: con el disparador por defecto la foto ya arrancaba corrida hacia
+       abajo. Ahora empieza en 0 cuando la página está arriba del todo y solo se mueve al bajar. */
+    if (foto && window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); gsap.fromTo(foto, { yPercent: 0 }, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: prod.querySelector('.heroP'), start: 'top top', end: 'bottom top', scrub: true } }); }
     var tit = prod.querySelector('.b-sobre .heroP__h1');
     if (tit && window.SplitText) {
       gsap.registerPlugin(SplitText);
