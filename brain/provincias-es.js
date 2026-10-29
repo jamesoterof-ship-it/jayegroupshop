@@ -18,14 +18,20 @@ window.TEXTOS = {
   phDir: 'Calle, número y colonia',
   phRef: 'Entre calles, color de la casa, horario en que estás…',
   lCiudad: 'Ciudad o municipio',
-  carriers: ['Paquetería nacional', 'Guía rastreable', 'Pago al recibir'],
+  /* 28-10 James: "los iconos de la transportadora tienen que ser originales". Son las 6 que ofrece Dropi México
+     al crear la orden (logos sacados de app.dropi.mx/assets/images/delivery/). */
+  carriers: ['Veloces', 'Tiui', 'AMPM', 'Afimex', 'Quality Post', 'Coordi'],
   pagoCodSub: 'Envío gratis · 2 a 5 días hábiles',
   saleHoy: 'Sale de nuestra bodega en Ciudad de México. Pagas cuando lo recibes.',
   avisoEntrega: 'Tu pedido llega en 2 a 5 días hábiles. Como pagas al recibir, el repartidor te lo entrega en mano: si esos días no vas a estar, avísanos por WhatsApp y le indicamos otro día o que se lo deje a alguien de confianza. Así te llega a la primera 🚚',
   sinCobertura: 'Revisa tu código postal.',
+  /* pago anticipado (James 28-10: 2 frascos $719 · 3 frascos $1.080): México no promete "14 h" como España */
+  yPrioritaria: 'y recíbelo con entrega prioritaria',
+  notaPre: 'Al enviar el pedido te llevamos al pago seguro con tarjeta o PayPal. Tu pedido sale con entrega prioritaria.',
   sellos: [
-    ['Paquetería nacional', 'Envío a todo México'],
-    ['Guía rastreable', 'Te mandamos la guía por WhatsApp'],
+    ['Veloces', 'Entrega a domicilio'],
+    ['Afimex', 'Envío a todo México'],
+    ['Quality Post', 'Guía rastreable por WhatsApp'],
     ['Pagas al recibir', 'Al repartidor, cuando lo tienes en la mano'],
   ],
   resDatos: [

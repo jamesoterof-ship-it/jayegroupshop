@@ -495,6 +495,8 @@
        (2 cremas a 28,95 €): 4 cremas = dos packs de 2 = 57,90 €, un precio que se aplica HOY en esta misma página. */
     if (!unidad && p.promoRef && p.packs[0]) unidad = p.packs[0].precio / p.packs[0].cant;
     var antes = unidad ? +(unidad * k.cant).toFixed(2) : 0;
+    /* 28-10 MÉXICO (James): el tachado es el del pack, un 40 % arriba del precio de venta (productos.js, packs[].antes) */
+    if (PAIS === 'MX' && k.antes > k.precio) antes = k.antes;
     if (!antes || antes <= k.precio) return '';   // sin referencia real, no se tacha nada
     var off = Math.round((1 - k.precio / antes) * 100);
     var ahorra = +(antes - k.precio).toFixed(2);
@@ -642,6 +644,13 @@
     'MRW': ['img/logos/mrw.svg', 20],
     'CTT Express': ['img/logos/ctt.svg', 30],
     'Correos Express': ['img/logos/correosexpress.svg', 34],
+    /* MÉXICO (28-10): logos originales de las paqueterías de Dropi México */
+    'Veloces': ['img/logos/veloces.webp', 34],
+    'Tiui': ['img/logos/tiui.webp', 34],
+    'AMPM': ['img/logos/ampm.webp', 24],
+    'Afimex': ['img/logos/afimex.webp', 24],
+    'Quality Post': ['img/logos/quality-post.webp', 22],
+    'Coordi': ['img/logos/coordi.webp', 18],
   };
   function logoImg(nombre, lg, alto) {
     return '<img class="logoTr" src="' + RAIZ + lg[0] + '" alt="' + esc(nombre) + '" style="height:' + (alto || lg[1]) + 'px" loading="lazy">';
@@ -915,7 +924,10 @@
         + '<span class="pagoOp__sub">' + esc(p.anticipado.envio || '') + '</span>'
         /* 05-10 James: logos OFICIALES (PayPal, Visa, Mastercard) donde el cliente elige cómo pagar */
         + '<span class="pagoOp__logos" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:6px">'
-        + '<img src="/img/pago/visa-claro.svg" alt="Visa" width="34" height="20"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard" width="34" height="20"><img src="/img/pago/amex.svg" alt="American Express" width="30" height="18"><img src="/img/pago/paypal-texto.svg" alt="PayPal" width="52" height="16">'
+        /* 28-10 MÉXICO: la tarjeta es oscura (skill #78) → logos para fondo oscuro */
+        + (PAIS === 'MX'
+          ? '<img src="/img/pago/visa-oscuro.svg" alt="Visa" width="34" height="20"><img src="/img/pago/mastercard-oscuro.svg" alt="Mastercard" width="34" height="20"><img src="/img/pago/amex.svg" alt="American Express" width="30" height="18"><img src="/img/pago/paypal-texto-oscuro.svg" alt="PayPal" width="52" height="16">'
+          : '<img src="/img/pago/visa-claro.svg" alt="Visa" width="34" height="20"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard" width="34" height="20"><img src="/img/pago/amex.svg" alt="American Express" width="30" height="18"><img src="/img/pago/paypal-texto.svg" alt="PayPal" width="52" height="16">')
         + '</span>'
         + '</button>'
         + '</div>' : '')
@@ -1566,12 +1578,14 @@
     var cod = String(q).toLowerCase().split('').filter(function (ch) { return (ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || ch === '-'; }).join('');
     var wa = '<a class="cta negro" href="https://wa.me/' + (window.WA_NUM || '34672423735') + '" target="_blank" rel="noopener" style="display:block;margin-top:10px">' + t('escribenosWa', 'Escríbenos por WhatsApp') + '</a>';
     var aviso = function (tit, txt) { $('pedir').innerHTML = '<div class="listo"><h3>' + tit + '</h3><p>' + txt + '</p>' + wa + '</div>'; };
-    fetch('https://n8n-production-8a42.up.railway.app/webhook/pago-info-es?p=' + encodeURIComponent(cod))
+    /* 28-10 MÉXICO: su propio webhook (pago-info-mx, sal de Lupita) y modo 'anticipo' (180 MXN del cliente riesgoso) */
+    fetch('https://n8n-production-8a42.up.railway.app/webhook/pago-info-' + (PAIS === 'MX' ? 'mx' : 'es') + '?p=' + encodeURIComponent(cod))
       .then(function (r) { return r.json(); })
       .then(function (j) {
+        if (j && j.ok && j.pagado && j.modo === 'anticipo') return aviso('¡Anticipo recibido!', 'Tu anticipo ya está pagado. Te escribimos por WhatsApp cuando tu pedido vaya en camino; el resto lo pagas al recibir.');
         if (j && j.ok && j.pagado) return aviso(t('ppPagadoTit', '¡Pago recibido!'), t('ppYaPagado', 'Este pedido ya está pagado. Te escribimos por WhatsApp cuando vaya en camino.'));
         if (!j || !j.ok || !j.id) return aviso(t('ppEnlaceMal', 'Este enlace de pago no está disponible'), t('ppEnlaceMal2', 'Escríbenos y te ayudamos con tu pedido.'));
-        window._jgEnlace = { id: j.id, monto: Number(j.monto).toFixed(2), nombre1: j.nombre1 || '' };
+        window._jgEnlace = { id: j.id, monto: Number(j.monto).toFixed(2), nombre1: j.nombre1 || '', modo: j.modo || 'pre' };
         $('fPedido').dispatchEvent(new Event('submit', { cancelable: true }));
       })
       .catch(function () { aviso(t('ppEnlaceMal', 'Este enlace de pago no está disponible'), t('ppEnlaceMal3', 'Revisa tu conexión o escríbenos.')); });
@@ -1773,6 +1787,12 @@
            o PayPal) y el WhatsApp de España para mandar la captura. El pedido queda
            "Esperando el pago" en el panel; al llegar la captura, Carmen lo marca pagado. */
         var _imp = window._jgEnlace ? window._jgEnlace.monto : Number(_cobra).toFixed(2);
+        /* 28-10 MÉXICO: misma cuenta de PayPal de España (James: "una sola para todos"), cobrando en PESOS MEXICANOS
+           por sus propios flujos (paypal-orden-mx / paypal-captura-mx), que solo leen ventas de la Página MX. */
+        var _MX = PAIS === 'MX';
+        var _impTxt = _MX ? pesos(Number(_imp)) : String(_imp).replace('.', ',') + ' €';
+        var _ppMon = _MX ? 'MXN' : 'EUR';
+        var _ppSuf = _MX ? '-mx' : '-es';
         var _wa = 'https://wa.me/' + (window.WA_NUM || '34672423735') + '?text=' + encodeURIComponent(t('msgPagado', 'Hola, ya pagué mi pedido de ') + p.nombre + t('msgPagado2', '. Te mando la captura del pago.'));
         /* 04-10 (James: "cómo me dejas eso a medio camino, ármalo ya"): BOTÓN DE PAYPAL INTEGRADO.
            Antes mandaba a paypal.me y pedía la captura por WhatsApp; el 04-10 un cliente eligió pagar
@@ -1784,13 +1804,15 @@
                                : 'BAAc9NmbkqAJ4xLXd_DH4VoURfOABXorMuqMMJoN1M3ron-JlSCnQiaHq3kzTXWZIhuXRYVzPF59hmYx30';
         var _N8N = 'https://n8n-production-8a42.up.railway.app/webhook/';
         var _respaldo = '<div id="ppRespaldo" style="display:none">'
-          + '<a class="cta" href="https://paypal.me/jayegroup714/' + _imp + 'EUR" target="_blank" rel="noopener" style="display:block;margin:14px 0 10px">'
-          + t('pagarBtn', 'Pagar ') + String(_imp).replace('.', ',') + ' € ' + t('pagarBtn2', 'con tarjeta o PayPal') + '</a>'
+          + '<a class="cta" href="https://paypal.me/jayegroup714/' + _imp + _ppMon + '" target="_blank" rel="noopener" style="display:block;margin:14px 0 10px">'
+          + t('pagarBtn', 'Pagar ') + _impTxt + ' ' + t('pagarBtn2', 'con tarjeta o PayPal') + '</a>'
           + '<p style="font-size:14px">' + t('pagaCaptura', 'Cuando pagues, mándanos la captura del pago por WhatsApp y lo dejamos confirmado.') + '</p>'
           + '<a class="cta negro" href="' + _wa + '" target="_blank" rel="noopener" style="display:block;margin-top:8px">' + t('mandarCaptura', 'Mandar la captura por WhatsApp') + '</a></div>';
-        $('pedir').innerHTML = '<div class="listo"><h3>' + t('pedidoPagar', 'Último paso: paga tu pedido') + '</h3>'
-          + '<p>' + t('gracias', 'Gracias, ') + _nom1 + '. ' + t('pagaTxt', 'Paga ahora con tarjeta o PayPal y tu pedido sale con entrega prioritaria.') + '</p>'
-          + '<p style="font-size:22px;font-weight:800;margin:10px 0 12px">' + t('totalPagar', 'Total a pagar: ') + String(_imp).replace('.', ',') + ' €</p>'
+        /* 28-10 MÉXICO: anticipo de 180 MXN del cliente riesgoso (enlace de Lupita); el resto se paga al recibir */
+        var _ant = !!(window._jgEnlace && window._jgEnlace.modo === 'anticipo');
+        $('pedir').innerHTML = '<div class="listo"><h3>' + (_ant ? 'Último paso: paga tu anticipo' : t('pedidoPagar', 'Último paso: paga tu pedido')) + '</h3>'
+          + '<p>' + t('gracias', 'Gracias, ') + _nom1 + '. ' + (_ant ? 'Paga tu anticipo de $180 para que enviemos tu pedido; el resto lo pagas al recibir.' : t('pagaTxt', 'Paga ahora con tarjeta o PayPal y tu pedido sale con entrega prioritaria.')) + '</p>'
+          + '<p style="font-size:22px;font-weight:800;margin:10px 0 12px">' + (_ant ? 'Anticipo a pagar: ' : t('totalPagar', 'Total a pagar: ')) + _impTxt + '</p>'
           + '<div id="ppBotones" style="min-height:120px;margin:4px 0 8px"><p style="font-size:14px;opacity:.75">' + t('ppCargando', 'Cargando el pago seguro…') + '</p></div>'
           + '<p id="ppEstado" role="status" aria-live="polite" style="font-size:15px;font-weight:700;min-height:22px;margin:6px 0"></p>'
           + _respaldo + '</div>';
@@ -1810,15 +1832,15 @@
                el pago es de ESTE pedido y por ESTE importe antes de marcarlo 'PAGADO paypal' (paypal-captura-es). */
             createOrder: function () {
               _ppMsg('');
-              return _ppPost('paypal-orden-es', { venta_id: window._ventaId, modo: _ppSandbox ? 'sandbox' : 'live' })
+              return _ppPost('paypal-orden' + _ppSuf, { venta_id: window._ventaId, modo: _ppSandbox ? 'sandbox' : 'live' })
                 .then(function (j) { if (!j || !j.ok || !j.id) throw new Error((j && j.motivo) || 'sin orden'); return j.id; });
             },
             onApprove: function (data) {
               _ppMsg(t('ppComprobando', 'Comprobando el pago…'));
-              return _ppPost('paypal-captura-es', { venta_id: window._ventaId, order_id: data.orderID, modo: _ppSandbox ? 'sandbox' : 'live' }).then(function (j) {
+              return _ppPost('paypal-captura' + _ppSuf, { venta_id: window._ventaId, order_id: data.orderID, modo: _ppSandbox ? 'sandbox' : 'live' }).then(function (j) {
                 if (!j || !j.ok) throw new Error((j && j.motivo) || 'no completado');
-                $('pedir').innerHTML = '<div class="listo"><h3>' + t('ppPagadoTit', '¡Pago recibido!') + '</h3><p>'
-                  + t('gracias', 'Gracias, ') + _nom1 + '. ' + t('ppPagadoTxt', 'Tu pedido está pagado y sale con entrega prioritaria. Te escribimos por WhatsApp cuando vaya en camino.') + '</p></div>';
+                $('pedir').innerHTML = '<div class="listo"><h3>' + (_ant ? '¡Anticipo recibido!' : t('ppPagadoTit', '¡Pago recibido!')) + '</h3><p>'
+                  + t('gracias', 'Gracias, ') + _nom1 + '. ' + (_ant ? 'Recibimos tu anticipo de $180. Preparamos tu pedido y te escribimos por WhatsApp cuando vaya en camino; el resto lo pagas al recibir.' : t('ppPagadoTxt', 'Tu pedido está pagado y sale con entrega prioritaria. Te escribimos por WhatsApp cuando vaya en camino.')) + '</p></div>';
                 $('pedir').scrollIntoView({ behavior: 'smooth', block: 'center' });
               }).catch(function () {
                 _ppMsg(t('ppNoConfirma', 'No pudimos confirmar el pago. Si se te cobró, escríbenos por WhatsApp y lo revisamos al momento.'), '#b91c1c');
@@ -1832,7 +1854,7 @@
         if (window.paypal && window.paypal.Buttons) _ppPintar();
         else {
           var _sdk = document.createElement('script');
-          _sdk.src = 'https://www.paypal.com/sdk/js?client-id=' + _ppId + '&currency=EUR&intent=capture&components=buttons&locale=' + (PAIS === 'PT' ? 'pt_PT' : 'es_ES');
+          _sdk.src = 'https://www.paypal.com/sdk/js?client-id=' + _ppId + '&currency=' + _ppMon + '&intent=capture&components=buttons&locale=' + (PAIS === 'PT' ? 'pt_PT' : _MX ? 'es_MX' : 'es_ES');
           _sdk.onload = _ppPintar; _sdk.onerror = _ppRespaldo;
           document.head.appendChild(_sdk);
           setTimeout(function () { if (!window.paypal) _ppRespaldo(); }, 12000);

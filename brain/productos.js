@@ -955,8 +955,10 @@ window.PRODUCTOS.push({
 
   foto: 'img/brain-pack2.webp?v=1',
   fotos: ['img/brain-g1.webp?v=1', 'img/brain-oferta.webp?v=1', 'img/brain-g2.webp?v=1', 'img/brain-g3.webp?v=1'],
-  /* metraje real de un vendedor de México (TikTok), cortado: solo las cápsulas cayendo al plato, sin texto ni audio */
-  video: 'img/brain-ficha.mp4?v=1',
+  /* 28-10 James: el video anterior (TikTok, frasco en español sobre una alfombra) era malo. Este es el del frasco en INGLÉS
+     (el que se vende, Dropi 61103): TikTok @promexobl48 7599932194680851733, s 11-31,5, recortado desde y 300 para sacar
+     el letrero "Memory & Mood – Brain" del creador, sin audio. */
+  video: 'img/brain-ficha-v3.mp4?v=1',
 
   hero: {
     img: 'img/brain-heroe-v3.webp?v=1',   /* 28-10 James: "ese hero está bien" (frasco solo, fondo impactante, tercio de arriba libre) */
@@ -969,7 +971,7 @@ window.PRODUCTOS.push({
       ['pago', 'Pagas al recibir'],
     ],
   },
-  acento: '#EA580C',   /* Accent/CTA de la skill (opción #75) */
+  acento: '#2563EB',   /* Accent/CTA de la skill (opción #78, la que eligió James) */
 
   /* Stock REAL leído en Dropi México el 28-10-2026 (7.123). Ventas diarias de Dropdata: 115 en promedio, 420 el mejor día. */
   escasez: { hoy: 167, mejorDia: 420, quedan: 7123,
@@ -1017,13 +1019,24 @@ window.PRODUCTOS.push({
 
   /* PRECIOS aprobados por James el 28-10-2026 ("2 frascos 799 … 3 frascos 1200"). 'antes' en 0: no hay precio anterior. */
   packs: [
-    { cant: 2, precio: 799, antes: 0, texto: '2 frascos' },
-    { cant: 3, precio: 1200, antes: 0, texto: '3 frascos' },
+    /* 28-10 James: el precio tachado va "un 40 % más arriba de lo que lo estamos vendiendo": 799 × 1,4 = 1.119 · 1.200 × 1,4 = 1.680 */
+    { cant: 2, precio: 799, antes: 1119, texto: '2 frascos' },
+    { cant: 3, precio: 1200, antes: 1680, texto: '3 frascos' },
   ],
   popular: 0,
+
+  /* PAGO ANTICIPADO aprobado por James el 28-10-2026 ("Sí, aprobados"): 10 % menos y entrega prioritaria.
+     Cobra la cuenta de PayPal de siempre (la de España) en pesos mexicanos: flujos paypal-orden-mx / paypal-captura-mx. */
+  anticipado: {
+    pct: 10,
+    envio: 'Entrega prioritaria: tu pedido sale primero',
+    titulo: 'Paga ahora con tarjeta',
+    sub: 'Con entrega prioritaria, sin costo. Se paga con tarjeta de débito o crédito o con PayPal.',
+    precios: [719, 1080],
+  },
 });
 
 /* 28-10 MÉXICO: en esta carpeta solo vive el Brain. Los demás productos de España quedan en el archivo
    (copia autorizada por James) pero NO se muestran ni se venden aquí. Candado: solo la escalera aprobada el 28-10. */
 window.PRODUCTOS = window.PRODUCTOS.filter(function (x) { return x.id === 'brain'; });
-window.PRECIOS_APROBADOS = [799, 1200];
+window.PRECIOS_APROBADOS = [799, 1200, 719, 1080];   /* contra entrega 799/1200 · pago anticipado 719/1080 (James 28-10) */

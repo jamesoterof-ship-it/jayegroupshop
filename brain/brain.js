@@ -19,9 +19,26 @@
     var marco = h.querySelector('.heroP__marco'), txt = h.querySelector('.heroP__txt');
     if (!marco || !txt) return false;
     var sobre = document.createElement('div'); sobre.className = 'b-sobre';
-    ['.heroP__kicker', '.heroP__h1', '.heroP__sub'].forEach(function (q) { var el = txt.querySelector(q); if (el) sobre.appendChild(el); });
+    /* 28-10 reglas de James: el pago anticipado (−10 %) se promociona EN EL HÉROE. El aviso del motor vive en el bloque
+       de texto que quedó oculto (una sola presentación), así que viaja con el título encima de la foto. */
+    ['.heroP__kicker', '.heroP__h1', '.heroP__sub', '.heroP__ahorra'].forEach(function (q) { var el = txt.querySelector(q); if (el) sobre.appendChild(el); });
     marco.appendChild(sobre);
     return true;
+  }
+
+  /* 28-10 reglas de James: el pago anticipado también va EN LA PROMOCIÓN ("o $719 pagando ahora con tarjeta…").
+     El precio sale del producto (productos.js, anticipado.precios), nunca escrito aquí. */
+  function promoAnticipado(prod) {
+    if (prod.querySelector('.promo-tarjeta')) return;
+    var P = (window.PRODUCTOS || [])[0], bp = document.getElementById('btnPromo');
+    var uni = prod.querySelector('.promo-sec .promo-uni');
+    if (!P || !P.anticipado || !P.anticipado.precios || !bp || !uni) return;
+    var i = Number(bp.getAttribute('data-i')), pre = P.anticipado.precios[i];
+    if (!(pre > 0)) return;
+    var lin = document.createElement('p');
+    lin.className = 'promo-uni promo-tarjeta';
+    lin.innerHTML = 'o <b>$' + Number(pre).toLocaleString('es-MX') + '</b> pagando ahora con tarjeta · −' + P.anticipado.pct + '&nbsp;% y entrega prioritaria';
+    uni.parentNode.insertBefore(lin, uni.nextSibling);
   }
 
   /* 28-10 James: "los botones que tengan efecto". Catálogo --domain gsap de la skill, "Hover Micro-interaction · Standard":
@@ -29,7 +46,7 @@
      mouse: se repite solo (ida y vuelta) para que el botón llame, como en Chile. Al tocar baja a 0.96 y vuelve. */
   function botones() {
     if (calma || !window.gsap) return;
-    document.querySelectorAll('#prod .cta, #prod .heroP__cta, #prod #btnPromo, #prod button[type="submit"], #stickycta a, #stickycta button').forEach(function (b, i) {
+    document.querySelectorAll('#prod .cta, #prod .heroP__cta, #prod #btnPromo, #prod button[type="submit"], #stickycta a:not(.waBoton), #stickycta button').forEach(function (b, i) {
       if (b.dataset.bBtn) return; b.dataset.bBtn = '1';
       gsap.to(b, { y: -4, scale: 1.02, boxShadow: '0 12px 24px rgba(37,99,235,0.45)', duration: 0.25, ease: 'power2.out', yoyo: true, repeat: -1, repeatDelay: 1.6, delay: (i % 3) * 0.4 });
       b.addEventListener('pointerdown', function () { gsap.to(b, { scale: 0.96, duration: 0.12, ease: 'power1.out', overwrite: 'auto' }); });
@@ -69,6 +86,7 @@
   function armar() {
     var prod = document.getElementById('prod');
     if (!prod || !heroe(prod)) return false;
+    promoAnticipado(prod);
     efectos(prod);
     botones(); setTimeout(botones, 1500);   /* el botón fijo de abajo aparece después */
     return true;

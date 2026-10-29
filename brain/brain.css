@@ -37,18 +37,26 @@ body.p-brain #prod .eyebrow { color: #94A3B8; }
 body.p-brain #prod a { color: #FFFFFF; }
 
 /* ---------- componentes de MASTER.md ---------- */
-body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]), body.p-brain #stickycta :is(a, button) {
+/* 28-10 James: "¿dónde has visto un botón de WhatsApp azul?": los botones de WhatsApp (.waBoton) quedan fuera del azul y
+   conservan el verde de WhatsApp que ya trae el motor. */
+body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]), body.p-brain #stickycta :is(a, button):not(.waBoton) {
   background: #2563EB !important; color: #FFFFFF !important; border: 0 !important; border-radius: 8px !important;
   font-family: var(--b-txt) !important; font-weight: 600 !important; box-shadow: var(--shadow-md);
   transition: all 200ms ease; cursor: pointer; min-height: 44px;
 }
-body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]):hover, body.p-brain #stickycta :is(a, button):hover { opacity: 0.9; transform: translateY(-1px); }
+/* 28-10 James: "el botón de WhatsApp ponlo normal como tal de Chile": en Chile la barra de abajo NO lleva botón de WhatsApp
+   escrito; WhatsApp es solo la bolita verde redonda de la esquina (que esta página ya tiene). "Pedir ahora" queda igual. */
+body.p-brain #stickycta .waFlota { display: none !important; }
+/* tienda.css esconde la bolita cuando sale la barra (porque la barra traía su WhatsApp): aquí la bolita queda siempre,
+   encima de la barra (body.con-barra .wa la sube 72 px), como en Chile. Solo esta página. */
+body.p-brain:has(.stickycta.show) .wa { opacity: 1 !important; pointer-events: auto !important; }
+body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]):hover, body.p-brain #stickycta :is(a, button):not(.waBoton):hover { opacity: 0.9; transform: translateY(-1px); }
 body.p-brain #prod :is(.btn-write, .masRs, .cta.azul) {
   background: transparent !important; color: #FFFFFF !important; border: 2px solid #334155 !important;
   border-radius: 8px !important; font-weight: 600; transition: all 200ms ease; cursor: pointer;
 }
 /* tarjetas Bento: fondo tarjeta, radio 16, sombra sutil, crecen 1.02 al tocar */
-body.p-brain #prod :is(.ing, .res, .sello, .oc, .fq details, .formcard, .promo-card, .gseal, .cmp, .esc, .ba-img, .pack, .pagoOp, table) {
+body.p-brain #prod :is(.ing, .res, .rsc, .sello, .oc, .fq details, .formcard, .promo-card, .gseal, .cmp, .esc, .ba-img, .pack, .pagoOp, table) {
   background: #192134 !important; color: #FFFFFF; border: 1px solid #334155 !important; border-radius: var(--card-radius) !important;
   box-shadow: var(--shadow-md); transition: all 200ms ease;
 }
@@ -89,6 +97,23 @@ body.p-brain #prod .heroP .b-sobre .heroP__h1 { margin: 0; color: #FFFFFF; font-
 body.p-brain #prod .heroP .b-sobre .heroP__h1 b, body.p-brain #prod .heroP .b-sobre .heroP__h1 b * { color: #2563EB; font-style: normal; font-weight: 900; }
 body.p-brain #prod .b-sobre .heroP__sub { margin: 10px 0 0; max-width: 30ch; color: #FFFFFF; font-weight: 500; }
 body.p-brain #prod .heroP__txt { background: #0F172A; }
+/* 28-10 "¿Cómo quieres pagar?" (pago al recibir / paga ahora −10 %). Las fichas de España definen estas tarjetas en la
+   hoja de cada producto (crema.css, etc.); aquí la misma estructura con la paleta y las letras de la skill (#78). */
+body.p-brain #prod .pasoRot { display: flex; align-items: center; gap: 8px; margin: 24px 0 8px; font: 800 20px var(--b-tit); color: #FFFFFF; }
+body.p-brain #prod .pasoRot b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: #2563EB; color: #FFFFFF; font: 700 15px var(--b-txt); }
+body.p-brain #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+body.p-brain #prod .pagoOp { position: relative; display: grid; grid-template-areas: 'ico' 'tit' 'pr' 'sub' 'logos'; align-content: start; gap: 2px; min-height: 132px; padding: 16px 12px; border-width: 2px !important; font: inherit; text-align: left; cursor: pointer; }
+body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #2563EB; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.p-brain #prod .pagoOp__tit { font: 700 15px/1.25 var(--b-txt); color: #FFFFFF; }
+body.p-brain #prod .pagoOp__pr { font: 900 24px/1.1 var(--b-tit); color: #FFFFFF; }
+body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #94A3B8; }
+body.p-brain #prod .pagoOp__logos img { height: 14px; width: auto; border-radius: 0 !important; }
+body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 8px; background: #2563EB; color: #FFFFFF; font: 700 13px var(--b-txt); }
+/* 28-10 pago anticipado en el héroe (reglas de James): el aviso del motor venía crema (España) y el texto blanco no se
+   leía. Va como tarjeta de la skill (#192134, borde #334155, texto #FFFFFF, icono #2563EB) y compacto, sin tapar el frasco. */
+body.p-brain #prod .b-sobre .heroP__ahorra { display: inline-flex; align-items: center; gap: 8px; margin: 12px 0 0; padding: 8px 12px; background: #192134 !important; border: 1px solid #334155 !important; border-radius: 8px; color: #FFFFFF !important; font-family: var(--b-txt); font-size: 13px; line-height: 1.3; box-shadow: var(--shadow-md); text-decoration: none; max-width: 100%; }
+body.p-brain #prod .b-sobre .heroP__ahorra :is(span, b) { color: #FFFFFF !important; }
+body.p-brain #prod .b-sobre .heroP__ahorra svg { color: #2563EB; stroke: #2563EB; flex: none; width: 18px; height: 18px; }
 body.p-brain #prod .heroP__dato { background: #192134; border-color: #334155; color: #FFFFFF; }
 body.p-brain #prod .heroP__dato svg { color: #FFFFFF; }
 body.p-brain #prod .heroP__dato--oro { background: #1E293B; border-color: #334155; }
@@ -101,6 +126,12 @@ body.p-brain #prod .gal { background: #10182B !important; }
 body.p-brain #prod :is(.miniz button, .gal .puntos button) { background: #192134 !important; }
 body.p-brain #prod :is(.esc-sec > div, .cod-badge, .summary, .gar-chips > *) { background: #192134 !important; color: #FFFFFF !important; border-color: #334155 !important; }
 body.p-brain #prod th { background: #1E293B !important; color: #FFFFFF !important; }
+/* 28-10 James: logos ORIGINALES de las paqueterías de México "bien incrustados en el formulario, como en Chile y España",
+   y después "quita ese fondo blanco": van SIN fondo, directo sobre la tarjeta (logos con fondo transparente; en AMPM y
+   Coordi la tinta negra/azul marino pasa a blanca para que se lean en lo oscuro, el rojo y el azul de marca quedan).
+   Sin el radio de 16 px de las fotos (los recortaba). */
+body.p-brain #prod .logoTr { border-radius: 0 !important; background: transparent !important; }
+body.p-brain #prod .cbadges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 20px; background: transparent !important; padding: 0 !important; margin-top: 8px; }
 
 @media (prefers-reduced-motion: reduce) {
   body.p-brain #prod *, body.p-brain #stickycta * { transition: none !important; animation: none !important; }
