@@ -72,7 +72,7 @@
         'Trae fosfatidilserina y omega-3, que forman parte de la membrana de las neuronas, con vitaminas del complejo B, zinc y magnesio. Es un suplemento alimenticio para acompañar tu rutina, no un medicamento.'],
       [(Pr.fotos || [])[2], 'Mano con dos cápsulas beige junto al frasco abierto', 'Cómo se toma', 'Dos cápsulas y sigues con lo tuyo',
         'Una vez al día, por la mañana, con un vaso de agua. Son cápsulas vegetales del tamaño de una vitamina común, sin sabor y sin cafeína.'],
-      [Pr.fotoOferta, 'Pareja en la sala mostrando sus frascos de Brain Memory & Mood', 'Qué recibes', '60 cápsulas por frasco, sellado',
+      [(Pr.fotos || [])[1], 'Hombre en su escritorio con el frasco de Brain Memory & Mood en la mano', 'Qué recibes', '60 cápsulas por frasco, sellado',
         'Cada frasco trae 60 cápsulas: 30 días de toma diaria. El pack de 2 son dos meses completos y el de 3, tres meses. Lo pagas cuando llega a tu casa.']
     ].filter(function (f) { return f[0]; });
     desc.insertAdjacentHTML('beforeend', '<div class="b-fichas">' + fichas.map(function (f) {
@@ -83,6 +83,11 @@
   /* 7 · la promoción con su línea del pago anticipado */
   function promoAnticipado(promo) {
     var Pr = P(), bp = document.getElementById('btnPromo'), uni = promo && promo.querySelector('.promo-uni');
+    /* 29-10 James: "la promoción no tiene ni una foto": la pareja con los 3 frascos, sin texto (precios en HTML) */
+    var card = promo && promo.querySelector('.promo-card');
+    if (Pr && Pr.fotoOferta && card && !promo.querySelector('.b-foto')) {
+      card.insertAdjacentHTML('beforebegin', '<img class="b-foto" src="' + Pr.fotoOferta + '" alt="Pareja mostrando sus frascos de Brain Memory & Mood" loading="lazy" width="1024" height="1024">');
+    }
     if (!Pr || !Pr.anticipado || !bp || !uni || promo.querySelector('.promo-tarjeta')) return;
     var pre = Pr.anticipado.precios[Number(bp.getAttribute('data-i'))];
     if (!(pre > 0)) return;

@@ -134,7 +134,8 @@ body.p-brain #prod .b-frasco { margin: 16px 0; }
 body.p-brain #prod .b-frasco img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: auto !important; object-fit: contain !important; }
 body.p-brain #prod .b-fichas { display: grid; gap: 18px; margin-top: 26px; }
 body.p-brain #prod .b-fi { margin: 0; background: var(--b-tarjeta); border: 1px solid var(--b-borde); border-radius: var(--b-radio); overflow: hidden; }
-body.p-brain #prod .b-fi img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 0 !important; }
+/* 29-10 James (captura): las fotos de las fichas salían gigantes y cortadas: cuadradas y completas, como Lymphoria */
+body.p-brain #prod .b-fi img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; object-position: center !important; border-radius: 0 !important; }
 body.p-brain #prod .b-fi figcaption { padding: 16px 18px 20px; }
 body.p-brain #prod .b-rot2 { display: block; color: #0891B2; font: 500 12px var(--b-tit); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
 body.p-brain #prod .b-fi b { display: block; font: 600 19px/1.25 var(--b-tit); color: #FFFFFF; margin-bottom: 6px; }
@@ -162,7 +163,7 @@ body.p-brain #prod .arriba2 .preTop b { color: #FFFFFF; }
 body.p-brain #prod .arriba2 .preTop .preTop__tag { color: #16A34A; }
 
 /* ---------- fotos dentro de las secciones (como Neocell) ---------- */
-body.p-brain #prod .b-foto { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; margin: 18px 0; }
+body.p-brain #prod .b-foto { display: block; width: 100% !important; height: auto !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; margin: 0 0 16px; }
 
 /* ---------- antes y después: palabras en HTML ---------- */
 body.p-brain #prod .ba-img { position: relative; overflow: hidden; padding: 0 !important; }
