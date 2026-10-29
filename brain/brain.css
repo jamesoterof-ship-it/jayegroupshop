@@ -106,9 +106,9 @@ body.p-brain #prod .heroP__dato svg { color: #BAE6FD; stroke: #BAE6FD; }
 body.p-brain #prod .heroP__dato--oro { border-color: #16A34A; }
 
 /* ---------- video en su lugar de siempre: de borde a borde, 9:16 (como el colágeno de Chile) ---------- */
-/* 29-10 James: "el video está muy malo, no se ve bien, muy grande": más chico y centrado, sin estirarlo */
+/* 29-10 James eligió "dejarlo de borde a borde, como en Lymphoria": ancho completo, en su proporción, sin esquinas */
 body.p-brain #prod .vid-wrap { padding: 28px 0 !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
-body.p-brain #prod .vid-wrap video { width: 62% !important; max-width: 300px; height: auto !important; aspect-ratio: auto !important; object-fit: contain !important; margin: 0 auto; border-radius: var(--b-radio) !important; border: 1px solid var(--b-borde); display: block; }
+body.p-brain #prod .vid-wrap video { width: 100% !important; max-width: none; height: auto !important; aspect-ratio: auto !important; object-fit: contain !important; margin: 0; border-radius: 0 !important; border: 0; display: block; }
 
 /* ---------- presentación única (estrellas, nombre, precio, botón), sin galería repetida ---------- */
 body.p-brain #prod .arriba2 { padding-top: 8px !important; }
