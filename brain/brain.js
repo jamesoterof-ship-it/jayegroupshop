@@ -1,7 +1,8 @@
 /* ============================================================
    BRAIN · MEMORY & MOOD · MÉXICO · REDISEÑO OSCURO 29-10-2026
    James 29-10: "hazme las secciones igualitas a la del drenador (jayegroup.com.co/lymphoria)… no me cambies las
-   secciones". Mismo orden y mismas secciones de Lymphoria; colores y letras de la opción #80 de la skill.
+   secciones". Mismo orden y mismas secciones de Lymphoria; colores, letras y efectos de la opción #83 de la skill
+   (brain-mx-libre, Nature Distilled, la que el script eligió libre y James aprobó con "dale").
      1. Héroe: rótulo, titular en cascada y frase ENCIMA de la foto
      2. Chips (3 datos cortos)
      3. Presentación: estrellas, nombre, frase, precio y "o $719 pagando ahora" (sin galería y sin descripción)
@@ -13,7 +14,7 @@
      12. Comparación · 13. Opiniones · 14. Garantía · 15. Antes y después · 16. Preguntas · 17. Cierre ·
      18. Con quién se despacha · 19. Formulario
    Corre DESPUÉS de ficha.js. No toca precios, formulario ni los id que usa ficha.js: solo ordena y completa.
-   Efectos de la skill (--domain gsap, suaves): "Scroll Reveal · Subtle" y la "respiración" del estilo orgánico.
+   Efectos de la skill (--domain gsap, suaves): "Scroll Reveal" y "Parallax Scroll · Subtle" con easing natural.
    ============================================================ */
 (function () {
   var p = ''; try { p = window.__P || new URLSearchParams(location.search).get('p') || ''; } catch (e) {}
@@ -65,8 +66,8 @@
   function completarDesc(desc) {
     if (!desc || desc.querySelector('.b-fichas')) return;
     var h2 = desc.querySelector('h2');
-    if (h2) h2.insertAdjacentHTML('afterend', '<figure class="b-frasco"><img src="img/brain-pack2.webp?v=1" alt="Dos frascos de Brain Memory & Mood" loading="lazy" width="1024" height="1024"></figure>');
     var Pr = P() || {};
+    if (h2 && Pr.fotoFrasco) h2.insertAdjacentHTML('afterend', '<figure class="b-frasco"><img src="' + Pr.fotoFrasco + '" alt="Frasco de Brain Memory & Mood con sus cápsulas" loading="lazy" width="1024" height="1024"></figure>');
     var fichas = [
       [(Pr.fotos || [])[0], 'Mujer en su cocina con el frasco de Brain en una mano y un vaso de agua en la otra', 'Para qué sirve', 'Memoria y concentración, en tu día a día',
         'Trae fosfatidilserina y omega-3, que forman parte de la membrana de las neuronas, con vitaminas del complejo B, zinc y magnesio. Es un suplemento alimenticio para acompañar tu rutina, no un medicamento.'],
@@ -151,15 +152,19 @@
     pd.parentNode.insertBefore(l, pd.nextSibling);
   }
 
-  /* "Respiración" del estilo Biomimetic / Organic 2.0: lenta, sin exceso */
-  function respirar() {
-    if (calma || !window.gsap) return;
-    var frasco = document.querySelector('#prod .heroP__img');
-    if (frasco && !frasco.dataset.bResp) { frasco.dataset.bResp = '1'; gsap.to(frasco, { scale: 1.025, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, transformOrigin: '50% 60%' }); }
-    document.querySelectorAll('#prod .cta, #prod #btnPromo, #prod button[type="submit"], #stickycta a:not(.waBoton), #stickycta button').forEach(function (b, i) {
-      if (b.dataset.bResp) return; b.dataset.bResp = '1';
-      gsap.to(b, { scale: 1.03, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: (i % 3) * 0.5 });
-    });
+  /* Efectos de la opción #83 (Nature Distilled): "Parallax Scroll · Subtle" del catálogo --domain gsap en la foto del
+     héroe (yPercent 10, scrub, nunca en textos) y easing natural (ease-out). El segundero da un golpe suave cada segundo
+     (James: "el segundero no tiene ningún efecto"). */
+  function parallax(prod) {
+    if (calma || !window.gsap || !window.ScrollTrigger || prod.dataset.bPx) return;
+    var foto = prod.querySelector('.heroP__img'); if (!foto) return;
+    prod.dataset.bPx = '1'; gsap.registerPlugin(ScrollTrigger);
+    gsap.fromTo(foto, { yPercent: 0 }, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: prod.querySelector('.heroP'), start: 'top top', end: 'bottom top', scrub: true } });
+  }
+  function segundero() {
+    var s = document.getElementById('cS'); if (calma || !window.gsap || !s || s.dataset.bSeg) return;
+    s.dataset.bSeg = '1';
+    new MutationObserver(function () { gsap.fromTo(s, { y: -6, opacity: 0.4 }, { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' }); }).observe(s, { childList: true, characterData: true, subtree: true });
   }
 
   function efectos(prod) {
@@ -177,7 +182,7 @@
       ent.forEach(function (e) {
         if (!e.isIntersecting) return;
         io.unobserve(e.target);
-        gsap.fromTo(e.target.children, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.06, ease: 'power1.out', clearProps: 'opacity,transform' });
+        gsap.fromTo(e.target.children, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out', clearProps: 'opacity,transform' });
       });
     }, { threshold: 0.1 });
     Array.prototype.forEach.call(prod.querySelectorAll(':scope > section'), function (caja) {
@@ -191,7 +196,8 @@
     precioAnticipadoArriba(prod);
     ordenar(prod);
     efectos(prod);
-    respirar(); setTimeout(respirar, 1500);
+    parallax(prod);
+    segundero();
     return true;
   }
   function intentar() {

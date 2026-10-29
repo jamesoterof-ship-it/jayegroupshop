@@ -956,7 +956,8 @@ window.PRODUCTOS.push({
   foto: 'img/brain-pack2.webp?v=1',
   /* 29-10 rediseño oscuro: fuera la oferta con precios pegados en la foto; g3 rehecha con las cápsulas beige reales */
   fotos: ['img/brain-g1.webp?v=1', 'img/brain-g2.webp?v=1', 'img/brain-g3-v2.webp?v=1'],
-  fotoOferta: 'img/brain-oferta-v2.webp?v=1',   /* 29-10: la pareja con los frascos, SIN texto (los precios van en HTML) */
+  fotoOferta: 'img/brain-promo-v2.webp?v=1',   /* 29-10 James: en la promoción "nada más potes solos, sin personas" (3 frascos, sin texto) */
+  fotoFrasco: 'img/brain-frasco-v2.webp?v=1',  /* 29-10 James: "crea otra imagen mejor" para "Qué es" (frasco solo con cápsulas) */
   /* 28-10 James: el video anterior (TikTok, frasco en español sobre una alfombra) era malo. Este es el del frasco en INGLÉS
      (el que se vende, Dropi 61103): TikTok @promexobl48 7599932194680851733, s 11-31,5, recortado desde y 300 para sacar
      el letrero "Memory & Mood – Brain" del creador, sin audio. */

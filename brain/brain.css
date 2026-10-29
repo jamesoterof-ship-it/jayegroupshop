@@ -1,220 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 /* ============================================================
-   BRAIN · MEMORY & MOOD · MÉXICO · REDISEÑO OSCURO · 29-10-2026
-   James 29-10: "rediséñala nuevamente… la quiero así en fondo oscuro" → "ok" a la propuesta.
-   Skill ui-ux-pro-max, proyecto brain-mx-rediseno, opción #80 (atada a la página en candado-paleta):
-     · Patrón: Hero + Testimonials + CTA (Héroe > Problema > Solución > Opiniones > CTA)
-     · Estilo: Biomimetic / Organic 2.0 en su modo oscuro: formas suaves, "respiración" lenta, sin neón ni exceso
-     · Paleta: #0284C7 primario · #0891B2 secundario · #16A34A acción con #000000 encima (On Primary / On Accent) ·
-       #0C4A6E (el tono más oscuro de la paleta) de FONDO, oscurecido con negro #000000 · #FFFFFF texto ·
-       #BAE6FD texto suave · #DC2626 error · anillo de foco #0284C7
-     · Letras: Lexend (títulos) / Source Sans 3 (texto)
-   Motor de las fichas (ficha.js) intacto; todo cuelga de body.p-brain y los colores van SOLO dentro de #prod y
-   #stickycta: el encabezado y el pie quedan como en todas las páginas.
-   Estrellas SIEMPRE doradas (regla de James 25-10): el dorado de la marca que ya trae la tienda (--oro de tienda.css),
-   tomado en el body antes de que la ficha lo cambie por el acento.
+   BRAIN · MEMORY & MOOD · MÉXICO · 29-10-2026
+   James: "rediséñala… el script, tú no hagas nada" + "deja lo que él elija" → "dale".
+   Skill ui-ux-pro-max, proyecto brain-mx-libre, opción #83 (atada a la página en candado-paleta), TAL CUAL de MASTER.md:
+     · Estilo: Nature Distilled · efectos: parallax sutil, easing natural (ease-out), textura de grano, sombras suaves
+     · Paleta: fondo #F0F9FF · texto #0C4A6E · primario #0369A1 (texto #FFFFFF) · secundario #0EA5E9 ·
+       acción #16A34A (texto #000000) · tarjeta #FFFFFF · apagado #E7EFF5 · texto suave #475569 · borde #BAE6FD ·
+       error #DC2626 · anillo #0369A1
+     · Letras: Plus Jakarta Sans (títulos y texto)
+     · Componentes de MASTER.md: .btn-primary / .btn-secondary / .card / .input / sombras --shadow-sm…xl / espacios
+       (el borde del campo de MASTER.md es un gris que no está en la paleta: va el "Muted" #E7EFF5)
+   Las secciones son las de Lymphoria (orden que pidió James), armadas en brain.js. Motor ficha.js intacto.
+   Colores SOLO dentro de #prod y #stickycta: el encabezado y el pie quedan como en todas las páginas.
+   Estrellas SIEMPRE doradas (regla de James 25-10): el dorado de la marca que ya trae la tienda (--oro de tienda.css).
    ============================================================ */
 body.p-brain {
   --b-oro: var(--oro);
-  --b-tit: 'Lexend', system-ui, sans-serif; --b-txt: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --b-noche: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), #0C4A6E;
-  --b-tarjeta: rgba(255,255,255,0.06); --b-borde: rgba(255,255,255,0.10);
-  --b-radio: 22px; --b-sombra: 0 12px 32px rgba(0,0,0,0.35);
-  background: #0C4A6E;
+  --b-fuente: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --space-3xl: 64px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1); --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+  /* textura de grano del estilo (--grain-opacity: 0.1) */
+  --b-grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background: #F0F9FF;
 }
 body.p-brain #prod, body.p-brain #stickycta {
-  --tinta: #FFFFFF; --suave: #BAE6FD; --linea: rgba(255,255,255,0.10); --hueso: #0C4A6E; --gris: #0C4A6E;
-  --crema: #0C4A6E; --rosa: #0891B2; --rosaF: #0284C7; --tinta2: #BAE6FD;
-  --acento: #16A34A; --sobreAcento: #000000; --aviso: #0284C7; --sobreAviso: #000000;
+  --tinta: #0C4A6E; --suave: #475569; --linea: #BAE6FD; --hueso: #E7EFF5; --gris: #E7EFF5;
+  --crema: #F0F9FF; --rosa: #0EA5E9; --rosaF: #0369A1; --tinta2: #475569;
+  --acento: #16A34A; --sobreAcento: #000000; --aviso: #0369A1; --sobreAviso: #FFFFFF;
   --oro: var(--b-oro);
 }
-body.p-brain #prod { background: var(--b-noche); color: #FFFFFF; font-family: var(--b-txt); font-size: 17px; }
-body.p-brain #prod :is(section, .bloque, .arriba2, .desc, .form) { background: var(--b-noche) !important; color: #FFFFFF; }
-body.p-brain #prod :is(p, li, td, th, label, small, span, .sub, .sub2, .ctaSub, .baj, .preTop) { color: inherit; font-family: var(--b-txt); }
-body.p-brain #prod :is(.sub, .sub2, .ctaSub, .baj, small, .nota, .cl) { color: #BAE6FD; }
-body.p-brain #prod :is(h1, h2, h3, h4, .tit2, .rev-title, .nombre) { font-family: var(--b-tit); font-weight: 600; color: #FFFFFF; letter-spacing: -.01em; }
-body.p-brain #prod .tit2 { font-size: clamp(26px, 7vw, 40px); line-height: 1.1; }
-body.p-brain #prod .eyebrow { color: #0891B2; font-family: var(--b-tit); font-weight: 500; letter-spacing: .14em; }
-body.p-brain #prod a { color: #FFFFFF; }
-body.p-brain #prod .bloque { padding-top: 44px; padding-bottom: 44px; }
+body.p-brain #prod { background: var(--b-grano), #F0F9FF; color: #0C4A6E; font-family: var(--b-fuente); }
+body.p-brain #prod :is(section.bloque, section.desc, .arriba2, section.form, .b-pasos, .b-chips) { background: transparent !important; color: #0C4A6E; }
+body.p-brain #prod :is(p, li, td, th, label, small, span, button, input, select, textarea) { font-family: var(--b-fuente); }
+body.p-brain #prod :is(.sub, .sub2, .ctaSub, .baj, small, .nota, .cl) { color: #475569; }
+body.p-brain #prod :is(h1, h2, h3, h4, .tit2, .rev-title, .nombre) { font-family: var(--b-fuente); font-weight: 700; color: #0C4A6E; letter-spacing: -.01em; }
+body.p-brain #prod .eyebrow { color: #0369A1; font-weight: 600; }
+body.p-brain #prod a { color: #0369A1; }
+body.p-brain #prod section.bloque { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
 body.p-brain #prod :is(.est svg, .stars svg, .estrellas svg) { fill: var(--b-oro); }
 body.p-brain #prod .stars { color: var(--b-oro); }
+body.p-brain #prod :is(a, button, input, select, summary, textarea):focus-visible { outline: 3px solid #0369A1; outline-offset: 2px; }
 
-/* ---------- botones: acción verde de la skill con su texto negro ---------- */
-body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]), body.p-brain #stickycta :is(a, button):not(.waBoton) {
-  background: #16A34A !important; color: #000000 !important; border: 0 !important; border-radius: 999px !important;
-  font-family: var(--b-tit) !important; font-weight: 600 !important; letter-spacing: .01em;
-  box-shadow: 0 8px 24px rgba(22,163,74,0.30); transition: box-shadow 200ms ease; cursor: pointer; min-height: 48px;
+/* ---------- .btn-primary / .btn-secondary (MASTER.md) ---------- */
+body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"], .b-pagoAnt__btn), body.p-brain #stickycta :is(a, button):not(.waBoton) {
+  background: #16A34A !important; color: #000000 !important; padding: 12px 24px; border: 0 !important; border-radius: 8px !important;
+  font-weight: 600 !important; transition: all 200ms ease; cursor: pointer; box-shadow: var(--shadow-md);
 }
-body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"]):hover, body.p-brain #stickycta :is(a, button):not(.waBoton):hover { box-shadow: 0 10px 30px rgba(22,163,74,0.45); }
+body.p-brain #prod :is(.cta, .heroP__cta, #btnPromo, .cc-btn, button[type="submit"], .b-pagoAnt__btn):hover, body.p-brain #stickycta :is(a, button):not(.waBoton):hover { opacity: 0.9; transform: translateY(-1px); }
+body.p-brain #prod :is(.btn-write, .masRs, .cta.azul) {
+  background: transparent !important; color: #0369A1 !important; border: 2px solid #0369A1 !important; padding: 12px 24px;
+  border-radius: 8px !important; font-weight: 600; transition: all 200ms ease; cursor: pointer; box-shadow: none;
+}
 body.p-brain #stickycta .waFlota { display: none !important; }   /* en Chile WhatsApp es solo la bolita verde de la esquina */
 body.p-brain:has(.stickycta.show) .wa { opacity: 1 !important; pointer-events: auto !important; }
-body.p-brain #prod :is(.btn-write, .masRs, .cta.azul) {
-  background: transparent !important; color: #FFFFFF !important; border: 1.5px solid #0891B2 !important;
-  border-radius: 999px !important; font-weight: 600; box-shadow: none; cursor: pointer;
-}
 
-/* ---------- tarjetas orgánicas: esquinas grandes, borde de luz ---------- */
-body.p-brain #prod :is(.ing, .res, .rsc, .sello, .oc, .fq details, .formcard, .promo-card, .gseal, .cmp, .esc, .ba-img, .pack, .pagoOp, table) {
-  background: var(--b-tarjeta) !important; color: #FFFFFF; border: 1px solid var(--b-borde) !important; border-radius: var(--b-radio) !important;
-  box-shadow: var(--b-sombra); transition: border-color 200ms ease, box-shadow 200ms ease;
+/* ---------- .card (MASTER.md): tarjeta #FFFFFF de la paleta, radio 12, sombra media ---------- */
+body.p-brain #prod :is(.ing, .res, .rsc, .sello, .oc, .fq details, .formcard, .promo-card, .gseal, .cmp, .esc, .pack, .pagoOp, .summary, .b-fi, .b-pagoAnt__caja, .b-pasos__lista li, table) {
+  background: #FFFFFF !important; color: #0C4A6E; border: 1px solid #BAE6FD !important; border-radius: 12px !important;
+  box-shadow: var(--shadow-md); transition: all 200ms ease;
 }
-body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #16A34A !important; box-shadow: 0 0 0 3px rgba(22,163,74,0.28), var(--b-sombra); }
-body.p-brain #prod :is(td, th) { border-color: var(--b-borde) !important; color: #FFFFFF; }
-body.p-brain #prod th { background: rgba(0,0,0,0.30) !important; color: #FFFFFF !important; font-family: var(--b-tit); font-weight: 500; }
+body.p-brain #prod :is(.ing, .res, .b-fi, .pack, .pagoOp):hover { box-shadow: var(--shadow-lg); }
+body.p-brain #prod :is(.pack.sel, .pagoOp.sel) { border-color: #16A34A !important; box-shadow: 0 0 0 3px #16A34A20, var(--shadow-md); }
+body.p-brain #prod :is(td, th) { border-color: #BAE6FD !important; color: #0C4A6E; }
+body.p-brain #prod th { background: #E7EFF5 !important; color: #0C4A6E !important; font-weight: 600; }
 body.p-brain #prod .cmp .si svg { stroke: #16A34A; }
 body.p-brain #prod .cmp .no svg { stroke: #DC2626; }
-body.p-brain #prod .res :is(b, strong) { font-family: var(--b-tit); font-weight: 700; color: #0891B2; }
-body.p-brain #prod .ing .cir { background: rgba(2,132,199,0.20); border-radius: 50%; }
-body.p-brain #prod .ing .cir svg { stroke: #BAE6FD; }
-body.p-brain #prod .ing :is(b, h3, strong) { font-family: var(--b-tit); font-weight: 600; color: #FFFFFF; }
+body.p-brain #prod .res :is(b, strong) { font-weight: 700; color: #0369A1; }
+body.p-brain #prod .ing .cir { background: #E7EFF5; border-radius: 50%; }
+body.p-brain #prod .ing .cir svg { stroke: #0369A1; }
 body.p-brain #prod .desc ul li::before { color: #16A34A; border-color: #16A34A; }
+body.p-brain #prod :is(img, video) { border-radius: 12px; }
 
-/* campos */
+/* ---------- .input (MASTER.md) ---------- */
 body.p-brain #pedir :is(input, select, textarea) {
-  padding: 13px 16px; border: 1px solid var(--b-borde) !important; border-radius: 14px !important; font-size: 16px;
-  background: rgba(0,0,0,0.30) !important; color: #FFFFFF !important; font-family: var(--b-txt); transition: border-color 200ms ease;
+  padding: 12px 16px; border: 1px solid #E7EFF5 !important; border-radius: 8px !important; font-size: 16px;
+  background: #FFFFFF !important; color: #0C4A6E !important; transition: border-color 200ms ease;
 }
-body.p-brain #pedir select option { background: #0C4A6E; color: #FFFFFF; }
-body.p-brain #pedir :is(input, select, textarea)::placeholder { color: #BAE6FD; opacity: .7; }
-body.p-brain #pedir :is(input, select, textarea):focus { border-color: #0284C7 !important; outline: none; box-shadow: 0 0 0 3px rgba(2,132,199,0.35); }
-body.p-brain #prod :is(a, button, input, select, summary, textarea):focus-visible { outline: 3px solid #0284C7; outline-offset: 2px; }
-body.p-brain #prod :is(img, video) { border-radius: var(--b-radio); }
+body.p-brain #pedir :is(input, select, textarea)::placeholder { color: #475569; opacity: .7; }
+body.p-brain #pedir :is(input, select, textarea):focus { border-color: #0369A1 !important; outline: none; box-shadow: 0 0 0 3px #0369A120; }
 
 /* ---------- héroe: foto completa con el título encima (molde de Chile) ---------- */
-body.p-brain #prod .heroP { --crema: #0C4A6E; --tinta: #FFFFFF; --tinta2: #BAE6FD; padding-bottom: 0 !important; }
-body.p-brain #prod .heroP__marco { position: relative; overflow: hidden; background: #000000; margin: 0 !important; }
+body.p-brain #prod .heroP { padding-bottom: 0 !important; background: transparent !important; }
+body.p-brain #prod .heroP__marco { position: relative; overflow: hidden; margin: 0 !important; }
 body.p-brain #prod .heroP__img { aspect-ratio: 1024 / 1400 !important; object-fit: cover !important; object-position: top !important; height: auto !important; border-radius: 0 !important; will-change: transform; }
-body.p-brain #prod .heroP__fundido { display: none; }
-body.p-brain #prod .heroP__txt { display: none !important; }
-body.p-brain #prod .b-sobre { position: absolute; z-index: 2; left: 0; right: 0; top: 0; padding: 22px 18px 0; }
-body.p-brain #prod .b-sobre .heroP__kicker { color: #BAE6FD; background: transparent; border: 0; padding: 0; margin: 0 0 10px; font-family: var(--b-tit); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+body.p-brain #prod .heroP__fundido, body.p-brain #prod .heroP__txt { display: none !important; }
+body.p-brain #prod .b-sobre { position: absolute; z-index: 2; left: 0; right: 0; top: 0; padding: var(--space-lg) 18px 0; }
+body.p-brain #prod .b-sobre .heroP__kicker { color: #FFFFFF; background: transparent; border: 0; padding: 0; margin: 0 0 var(--space-sm); font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 body.p-brain #prod .b-sobre .heroP__kicker i { background: #16A34A; }
-body.p-brain #prod .heroP .b-sobre .heroP__h1 { margin: 0; color: #FFFFFF; font-family: var(--b-tit); font-weight: 700; text-transform: none; font-size: clamp(30px, 9vw, 62px); line-height: 1.04; overflow-wrap: normal; }
-body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro), body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro) * { color: #0891B2; font-style: normal; }
-body.p-brain #prod .b-sobre .heroP__sub { margin: 12px 0 0; max-width: 30ch; color: #FFFFFF; font-weight: 400; line-height: 1.4; }
+body.p-brain #prod .heroP .b-sobre .heroP__h1 { margin: 0; color: #FFFFFF; font-family: var(--b-fuente); font-weight: 700; text-transform: none; font-size: clamp(30px, 9vw, 62px); line-height: 1.05; overflow-wrap: normal; }
 body.p-brain #prod .heroP .b-sobre .heroP__h1, body.p-brain #prod .heroP .b-sobre .heroP__h1 * { font-style: normal !important; }
-/* el pago anticipado: línea de texto suelta debajo de la franja de datos, SIN caja (James: las cajas son "feísimo") */
-body.p-brain #prod .heroP > .heroP__ahorra { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 6px 16px 0; padding: 0; background: transparent !important; border: 0 !important; box-shadow: none !important; color: #FFFFFF !important; font-size: 14px; line-height: 1.3; text-align: center; text-decoration: none; }
-body.p-brain #prod .heroP > .heroP__ahorra :is(span, b) { color: #FFFFFF !important; }
-body.p-brain #prod .heroP > .heroP__ahorra b { color: #16A34A !important; }
-body.p-brain #prod .heroP > .heroP__ahorra svg { stroke: #16A34A; color: #16A34A; flex: none; width: 18px; height: 18px; }
-/* franja de 3 datos debajo de la foto, en una línea */
-body.p-brain #prod .heroP__datos { display: flex !important; flex-wrap: nowrap !important; justify-content: center; gap: 6px !important; margin: 12px 8px 4px !important; }
-body.p-brain #prod .heroP__dato { background: var(--b-tarjeta); border: 1px solid var(--b-borde); color: #FFFFFF; border-radius: 999px; font-size: 12px !important; padding: 7px 11px !important; white-space: nowrap; }
-body.p-brain #prod .heroP__dato svg { color: #BAE6FD; stroke: #BAE6FD; }
-body.p-brain #prod .heroP__dato--oro { border-color: #16A34A; }
+body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro), body.p-brain #prod .heroP .b-sobre .heroP__h1 :is(b, .es-oro) * { color: #0EA5E9; }
+body.p-brain #prod .b-sobre .heroP__sub { margin: 12px 0 0; max-width: 30ch; color: #FFFFFF; font-weight: 500; line-height: 1.4; }
 
-/* ---------- video en su lugar de siempre: de borde a borde, 9:16 (como el colágeno de Chile) ---------- */
-/* 29-10 James eligió "dejarlo de borde a borde, como en Lymphoria": ancho completo, en su proporción, sin esquinas */
-body.p-brain #prod .vid-wrap { padding: 28px 0 !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
-body.p-brain #prod .vid-wrap video { width: 100% !important; max-width: none; height: auto !important; aspect-ratio: auto !important; object-fit: contain !important; margin: 0; border-radius: 0 !important; border: 0; display: block; }
+/* ---------- chips ---------- */
+body.p-brain #prod .b-chips { display: flex; justify-content: center; flex-wrap: nowrap; gap: var(--space-sm); padding: var(--space-md) 8px var(--space-xs); }
+body.p-brain #prod .b-chip { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; white-space: nowrap; border-radius: 999px; background: #FFFFFF; border: 1px solid #BAE6FD; color: #0C4A6E; font-weight: 600; font-size: 12px; box-shadow: var(--shadow-sm); }
+body.p-brain #prod .b-chip svg { width: 16px; height: 16px; fill: none; stroke: #0369A1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-/* ---------- presentación única (estrellas, nombre, precio, botón), sin galería repetida ---------- */
-body.p-brain #prod .arriba2 { padding-top: 8px !important; }
-/* 29-10 James: secciones igualitas a Lymphoria. Debajo del héroe: chips y la presentación (estrellas, nombre, frase,
-   precio) SIN galería y SIN descripción; la descripción va en "Qué es y para qué sirve" */
+/* ---------- presentación: estrellas, nombre, frase, precio (sin galería ni descripción, como Lymphoria) ---------- */
+body.p-brain #prod .arriba2 { padding-top: var(--space-sm) !important; }
 body.p-brain #prod .arriba2 :is(.gal, .miniz, .dscTop, .dscTop__ul) { display: none !important; }
+body.p-brain #prod .arriba2 .ahora { font-weight: 700; color: #0C4A6E; }
+body.p-brain #prod .arriba2 .antes { color: #475569; }
+body.p-brain #prod .arriba2 .off { background: #16A34A; color: #000000; border-radius: 8px; }
+body.p-brain #prod .arriba2 .preTop { display: block; margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #475569; }
+body.p-brain #prod .arriba2 .preTop b { color: #0C4A6E; }
+body.p-brain #prod .arriba2 .preTop .preTop__tag { color: #16A34A; }
+body.p-brain #prod :is(.bloque:has(#btnArriba)) { padding-top: var(--space-sm) !important; padding-bottom: var(--space-sm) !important; }
 
-/* chips */
-body.p-brain #prod .b-chips { display: flex; justify-content: center; flex-wrap: nowrap; gap: 6px; padding: 14px 8px 4px; background: var(--b-noche); }
-body.p-brain #prod .b-chip { display: inline-flex; align-items: center; gap: 5px; padding: 7px 10px; white-space: nowrap; border-radius: 999px; background: var(--b-tarjeta); border: 1px solid var(--b-borde); color: #FFFFFF; font: 500 12px var(--b-tit); }
-body.p-brain #prod .b-chip svg { width: 16px; height: 16px; fill: none; stroke: #0891B2; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* ---------- tres pasos ---------- */
+body.p-brain #prod .b-pasos { padding: var(--space-md) 20px var(--space-xl); }
+body.p-brain #prod .b-pasos__lista { list-style: none; margin: var(--space-md) 0 0; padding: 0; display: grid; gap: 12px; }
+body.p-brain #prod .b-pasos__lista li { position: relative; padding: var(--space-md) var(--space-md) var(--space-md) 64px; }
+body.p-brain #prod .b-pasos__lista li::before { content: attr(data-n); position: absolute; left: 16px; top: 16px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #0369A1; color: #FFFFFF; font-weight: 700; font-size: 16px; }
+body.p-brain #prod .b-pasos__lista b { display: block; font-weight: 700; font-size: 17px; color: #0C4A6E; margin-bottom: 4px; }
+body.p-brain #prod .b-pasos__lista p { margin: 0; color: #475569; font-size: 15px; line-height: 1.45; }
 
-/* tres pasos */
-/* 29-10 James (captura): mucho espacio vacío entre el botón y "Tres pasos y listo" */
-body.p-brain #prod .b-pasos { padding: 16px 20px 32px; background: var(--b-noche); }
-body.p-brain #prod :is(.bloque:has(#btnArriba)) { padding-top: 8px !important; padding-bottom: 8px !important; }
-body.p-brain #prod .b-pasos__lista { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
-body.p-brain #prod .b-pasos__lista li { position: relative; padding: 16px 16px 16px 64px; background: var(--b-tarjeta); border: 1px solid var(--b-borde); border-radius: var(--b-radio); }
-body.p-brain #prod .b-pasos__lista li::before { content: attr(data-n); position: absolute; left: 16px; top: 16px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #0284C7; color: #000000; font: 600 16px var(--b-tit); }
-body.p-brain #prod .b-pasos__lista b { display: block; font: 600 17px var(--b-tit); color: #FFFFFF; margin-bottom: 4px; }
-body.p-brain #prod .b-pasos__lista p { margin: 0; color: #BAE6FD; font-size: 15px; line-height: 1.45; }
+/* ---------- qué es: foto del frasco y 3 fichas con foto ---------- */
+body.p-brain #prod .b-frasco { margin: var(--space-md) 0; }
+body.p-brain #prod .b-frasco img { display: block; width: 100% !important; height: auto !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; box-shadow: var(--shadow-xl); }
+body.p-brain #prod .b-fichas { display: grid; gap: 18px; margin-top: var(--space-lg); }
+body.p-brain #prod .b-fi { margin: 0; overflow: hidden; padding: 0 !important; }
+body.p-brain #prod .b-fi img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; border-radius: 0 !important; }
+body.p-brain #prod .b-fi figcaption { padding: var(--space-md) 18px 20px; }
+body.p-brain #prod .b-rot2 { display: block; color: #0369A1; font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
+body.p-brain #prod .b-fi b { display: block; font-weight: 700; font-size: 19px; line-height: 1.25; color: #0C4A6E; margin-bottom: 6px; }
+body.p-brain #prod .b-fi p { margin: 0; color: #475569; font-size: 15px; line-height: 1.5; }
+body.p-brain #prod .desc:has(.b-fichas) { padding-bottom: 20px !important; }
 
-/* qué es: foto del frasco y 3 fichas con foto */
-body.p-brain #prod .b-frasco { margin: 16px 0; }
-body.p-brain #prod .b-frasco img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: 1 / 1 !important; object-fit: contain !important; }
-body.p-brain #prod .b-fichas { display: grid; gap: 18px; margin-top: 26px; }
-body.p-brain #prod .b-fi { margin: 0; background: var(--b-tarjeta); border: 1px solid var(--b-borde); border-radius: var(--b-radio); overflow: hidden; }
-/* 29-10 James (captura): las fotos de las fichas salían gigantes y cortadas: cuadradas y completas, como Lymphoria */
-body.p-brain #prod .b-fi img { display: block; width: 100% !important; height: auto !important; max-height: none !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; object-position: center !important; border-radius: 0 !important; }
-body.p-brain #prod .b-fi figcaption { padding: 16px 18px 20px; }
-body.p-brain #prod .b-rot2 { display: block; color: #0891B2; font: 500 12px var(--b-tit); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
-body.p-brain #prod .b-fi b { display: block; font: 600 19px/1.25 var(--b-tit); color: #FFFFFF; margin-bottom: 6px; }
-body.p-brain #prod .b-fi p { margin: 0; color: #BAE6FD; font-size: 15px; line-height: 1.5; }
+/* ---------- promoción ---------- */
+body.p-brain #prod .promo-sec { padding-top: 12px !important; }
+body.p-brain #prod .b-foto { display: block; width: 100% !important; height: auto !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; margin: 0 0 var(--space-md); box-shadow: var(--shadow-xl); }
+body.p-brain #prod .promo-banner { background: #0369A1 !important; color: #FFFFFF !important; }
+body.p-brain #prod .promo-banner * { color: #FFFFFF !important; }
+body.p-brain #prod :is(.promo-qt, .promo-ahora, .promo-precios b) { color: #0C4A6E; }
+body.p-brain #prod .promo-tarjeta b { color: #16A34A; }
+/* contador: el segundero con efecto (James: "el segundero no tiene ningún efecto") — el golpe lo da brain.js */
+body.p-brain #prod .cuenta > div { background: #E7EFF5 !important; border: 1px solid #BAE6FD !important; border-radius: 12px !important; }
+body.p-brain #prod .cuenta > div b { color: #0C4A6E !important; font-weight: 700; display: inline-block; }
+body.p-brain #prod .cuenta > div span { color: #475569 !important; }
+body.p-brain #prod .cuenta > div.seg { background: #0369A1 !important; border-color: #0369A1 !important; box-shadow: var(--shadow-lg); }
+body.p-brain #prod .cuenta > div.seg :is(b, span) { color: #FFFFFF !important; }
 
-/* paga con tarjeta y gana */
-body.p-brain #prod .b-pagoAnt { padding-top: 12px !important; padding-bottom: 32px !important; }
-body.p-brain #prod .b-pagoAnt__caja { padding: 20px 18px; background: var(--b-tarjeta); border: 1px solid #16A34A; border-radius: var(--b-radio); box-shadow: 0 10px 30px rgba(22,163,74,0.16); }
-body.p-brain #prod .b-pagoAnt__tit { margin: 0 0 10px; font: 600 20px var(--b-tit); color: #FFFFFF; }
+/* ---------- paga con tarjeta y gana ---------- */
+body.p-brain #prod .b-pagoAnt { padding-top: 12px !important; padding-bottom: var(--space-xl) !important; }
+body.p-brain #prod .b-pagoAnt__caja { padding: var(--space-lg); border-color: #16A34A !important; }
+body.p-brain #prod .b-pagoAnt__tit { margin: 0 0 10px; font-weight: 700; font-size: 20px; color: #0C4A6E; }
 body.p-brain #prod .b-pagoAnt__lista { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
-body.p-brain #prod .b-pagoAnt__lista li { display: flex; gap: 8px; align-items: flex-start; color: #FFFFFF; font-size: 15px; line-height: 1.4; }
+body.p-brain #prod .b-pagoAnt__lista li { display: flex; gap: 8px; align-items: flex-start; color: #0C4A6E; font-size: 15px; line-height: 1.4; }
 body.p-brain #prod .b-pagoAnt__lista li::before { content: none; }
 body.p-brain #prod .b-pagoAnt__lista svg { flex: none; width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: #16A34A; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 body.p-brain #prod .b-pagoAnt__lista b { color: #16A34A; }
 body.p-brain #prod .b-pagoAnt__pie { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
 body.p-brain #prod .b-pagoAnt__logos { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 body.p-brain #prod .b-pagoAnt__logos img { height: 18px; width: auto; border-radius: 0 !important; }
-body.p-brain #prod .b-pagoAnt__btn { min-height: 44px; padding: 0 22px; }
-body.p-brain #prod .arriba2 h1 { font-family: var(--b-tit); font-weight: 700; }
-body.p-brain #prod .arriba2 .ahora { font-family: var(--b-tit); font-weight: 700; color: #FFFFFF; }
-body.p-brain #prod .arriba2 .antes { color: #BAE6FD; }
-body.p-brain #prod .arriba2 .off { background: #16A34A; color: #000000; border-radius: 999px; }
-body.p-brain #prod .arriba2 .preTop { display: block; margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #BAE6FD; }
-body.p-brain #prod .arriba2 .preTop b { color: #FFFFFF; }
-body.p-brain #prod .arriba2 .preTop .preTop__tag { color: #16A34A; }
 
-/* ---------- fotos dentro de las secciones (como Neocell) ---------- */
-body.p-brain #prod .b-foto { display: block; width: 100% !important; height: auto !important; aspect-ratio: 1 / 1 !important; object-fit: cover !important; margin: 0 0 16px; }
+/* ---------- video de borde a borde (James eligió "como en Lymphoria") ---------- */
+body.p-brain #prod .vid-wrap { padding: 28px 0 !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; background: transparent !important; }
+body.p-brain #prod .vid-wrap video { width: 100% !important; height: auto !important; object-fit: contain !important; margin: 0; border-radius: 0 !important; display: block; }
 
 /* ---------- antes y después: palabras en HTML ---------- */
-body.p-brain #prod .ba-img { position: relative; overflow: hidden; padding: 0 !important; }
+body.p-brain #prod .ba-img { position: relative; overflow: hidden; padding: 0 !important; background: #FFFFFF !important; border: 1px solid #BAE6FD !important; border-radius: 12px !important; box-shadow: var(--shadow-md); }
 body.p-brain #prod .ba-img img { display: block; width: 100%; border-radius: 0 !important; }
-body.p-brain #prod .b-ba { position: absolute; left: 12px; padding: 6px 14px; border-radius: 999px; font: 600 15px var(--b-tit); letter-spacing: .08em; text-transform: uppercase; }
-body.p-brain #prod .b-ba--antes { top: 12px; background: rgba(0,0,0,0.70); color: #FFFFFF; border: 1px solid var(--b-borde); }
-body.p-brain #prod .b-ba--despues { top: calc(50% + 12px); background: #16A34A; color: #000000; }
-body.p-brain #prod .b-ilus { margin: 8px 0 0; font-size: 13px; color: #BAE6FD; }
+body.p-brain #prod .b-ba { position: absolute; left: 12px; padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+body.p-brain #prod .b-ba--antes { top: 12px; background: #FFFFFF; color: #0C4A6E; box-shadow: var(--shadow-md); }
+body.p-brain #prod .b-ba--despues { top: calc(50% + 12px); background: #16A34A; color: #000000; box-shadow: var(--shadow-md); }
+body.p-brain #prod .b-ilus { margin: 8px 0 0; font-size: 13px; color: #475569; }
 
-/* ---------- promoción ---------- */
-body.p-brain #prod .promo-banner { background: #0284C7 !important; color: #000000 !important; font-family: var(--b-tit); }
-body.p-brain #prod .promo-banner * { color: #000000 !important; }
-body.p-brain #prod :is(.promo-qt, .promo-ahora, .promo-precios b) { font-family: var(--b-tit); color: #FFFFFF; }
-body.p-brain #prod .promo-sec .b-foto { margin: 0 0 16px; }
-body.p-brain #prod .promo-tarjeta b { color: #16A34A; }
-body.p-brain #prod .cuenta > div { background: rgba(0,0,0,0.30) !important; border: 1px solid var(--b-borde) !important; border-radius: 16px !important; }
-body.p-brain #prod .cuenta > div b { color: #FFFFFF !important; font-family: var(--b-tit); }
-body.p-brain #prod .cuenta > div span { color: #BAE6FD !important; }
-body.p-brain #prod .cuenta > div.seg { background: #0284C7 !important; border-color: #0284C7 !important; }
-body.p-brain #prod .cuenta > div.seg :is(b, span) { color: #000000 !important; }
-
-/* ---------- "Paga con tarjeta y gana 10 %" ---------- */
-body.p-brain #prod .b-tarjeta { text-align: center; }
-body.p-brain #prod .b-tarjeta__lista { list-style: none; margin: 20px auto; padding: 6px 18px; max-width: 460px; background: var(--b-tarjeta); border: 1px solid #16A34A; border-radius: var(--b-radio); box-shadow: 0 10px 30px rgba(22,163,74,0.16); }
-body.p-brain #prod .b-tarjeta__lista li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--b-borde); text-align: left; }
-body.p-brain #prod .b-tarjeta__lista li:last-child { border-bottom: 0; }
-body.p-brain #prod .b-tarjeta__lista li::before { content: none; }
-body.p-brain #prod .b-tarjeta__lista span { font-family: var(--b-tit); font-weight: 500; }
-body.p-brain #prod .b-tarjeta__lista s { color: #BAE6FD; font-size: 15px; }
-body.p-brain #prod .b-tarjeta__lista b { font: 700 24px var(--b-tit); color: #16A34A; }
-body.p-brain #prod .b-tarjeta__logos { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; margin: 0 0 18px; }
-body.p-brain #prod .b-tarjeta__logos img { height: 20px; width: auto; border-radius: 0 !important; }
-
-/* ---------- formulario: "¿Cómo quieres pagar?" ---------- */
-body.p-brain #prod .pasoRot { display: flex; align-items: center; gap: 8px; margin: 24px 0 8px; font: 600 20px var(--b-tit); color: #FFFFFF; }
-body.p-brain #prod .pasoRot b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #0284C7; color: #000000; font: 600 15px var(--b-tit); }
-body.p-brain #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* ---------- formulario ---------- */
+body.p-brain #prod .pasoRot { display: flex; align-items: center; gap: 8px; margin: var(--space-lg) 0 var(--space-sm); font-weight: 700; font-size: 20px; color: #0C4A6E; }
+body.p-brain #prod .pasoRot b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #0369A1; color: #FFFFFF; font-weight: 700; font-size: 15px; }
+body.p-brain #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: var(--space-md); }
+/* James: "una sección montada arriba de otra": el resumen quedaba pegado a las opciones de pago */
+body.p-brain #prod .summary { margin-top: var(--space-md) !important; padding: var(--space-md); }
+body.p-brain #prod .summary .desc { background: transparent !important; color: #16A34A; }
 body.p-brain #prod .pagoOp { position: relative; display: grid; grid-template-areas: 'ico' 'tit' 'pr' 'sub' 'logos'; align-content: start; gap: 2px; min-height: 132px; padding: 16px 12px; border-width: 2px !important; font: inherit; text-align: left; cursor: pointer; }
-body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #BAE6FD; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-body.p-brain #prod .pagoOp__tit { font: 600 15px/1.25 var(--b-tit); color: #FFFFFF; }
-body.p-brain #prod .pagoOp__pr { font: 700 24px/1.1 var(--b-tit); color: #FFFFFF; }
-body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #BAE6FD; }
+body.p-brain #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: #0369A1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.p-brain #prod .pagoOp__tit { font-weight: 700; font-size: 15px; line-height: 1.25; color: #0C4A6E; }
+body.p-brain #prod .pagoOp__pr { font-weight: 700; font-size: 24px; line-height: 1.1; color: #0C4A6E; }
+body.p-brain #prod .pagoOp__sub { font-size: 13px; line-height: 1.35; color: #475569; }
 body.p-brain #prod .pagoOp__logos img { height: 14px; width: auto; border-radius: 0 !important; }
-body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 999px; background: #16A34A; color: #000000; font: 600 13px var(--b-tit); }
-
-/* ---------- textos del motor que venían claros ---------- */
-body.p-brain #prod :is(.esc-sec > div, .cod-badge, .summary, .gar-chips > *) { background: var(--b-tarjeta) !important; color: #FFFFFF !important; border-color: var(--b-borde) !important; }
-body.p-brain #prod p[style*="4a4a4a"] { color: #BAE6FD !important; }
-body.p-brain #prod .verif { color: #BAE6FD !important; }
+body.p-brain #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 10px; border-radius: 8px; background: #16A34A; color: #000000; font-weight: 700; font-size: 13px; }
+body.p-brain #prod :is(.esc-sec > div, .cod-badge, .gar-chips > *) { background: #FFFFFF !important; color: #0C4A6E !important; border-color: #BAE6FD !important; }
+body.p-brain #prod .verif { color: #475569 !important; }
 body.p-brain #prod .logoTr { border-radius: 0 !important; background: transparent !important; }
 body.p-brain #prod .cbadges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 20px; background: transparent !important; padding: 0 !important; margin-top: 8px; }
 
