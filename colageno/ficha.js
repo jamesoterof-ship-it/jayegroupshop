@@ -827,12 +827,12 @@
     + '<input type="hidden" id="fPais" value="MX|+52|10"></span>'
     + '<input id="fTel" inputmode="numeric" autocomplete="tel" placeholder="55 1234 5678"></div>'
     + '<div class="err">Revisa tu celular: en México son 10 dígitos.</div></div>'
-    + '<div class="field"><label for="fDir">Calle y número</label><input id="fDir" autocomplete="street-address" placeholder="Calle y número (exterior e interior)"><div class="err">Escribe la calle y el número.</div></div>'
-    + '<div class="field"><label for="fRef">Indicaciones para el repartidor <span class="opc">(opcional)</span></label><input id="fRef" autocomplete="address-line2" placeholder="Entre calles, color de la casa, horario en que estás…"></div>'
-    + '<div class="field"><label for="fCP">Código postal</label><input id="fCP" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="06000"><div class="err">Escribe los 5 dígitos de tu código postal.</div></div>'
+    /* 29-10 James: igual que el Brain = igual al formulario de crear orden de Dropi México: estado, municipio (solo los
+       que tienen contra entrega), dirección y complementos, código postal y correo opcional. Sin colonia (Dropi no la pide). */
     + '<div class="field"><label for="fProvincia">Estado</label><select id="fProvincia" autocomplete="address-level1"><option value="">Selecciona…</option></select><div class="err">Selecciona tu estado.</div></div>'
-    + '<div class="field"><label for="fCiudad">Ciudad o municipio</label><select id="fCiudad" autocomplete="address-level2" disabled><option value="">Primero elige tu estado</option></select><div class="err">Selecciona tu municipio.</div></div>'
-    + '<div class="field"><label for="fColonia">Colonia</label><select id="fColonia" autocomplete="address-level3" disabled><option value="">Primero elige tu municipio</option></select><div class="err">Selecciona tu colonia.</div></div>'
+    + '<div class="field"><label for="fCiudad">Municipalidad o delegación</label><select id="fCiudad" autocomplete="address-level2" disabled><option value="">Primero elige tu estado</option></select><div class="err">Selecciona tu municipalidad o delegación.</div></div>'
+    + '<div class="field"><label for="fDir">Dirección y complementos</label><input id="fDir" autocomplete="street-address" placeholder="Calle, número exterior e interior"><div class="err">Escribe la calle y el número.</div></div>'
+    + '<div class="field"><label for="fCP">Código postal</label><input id="fCP" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="06000"><div class="err">Escribe los 5 dígitos de tu código postal.</div></div>'
     + '<div class="field"><label for="fCorreo">Correo <span class="opc">(opcional)</span></label><input id="fCorreo" type="email" inputmode="email" autocomplete="email" placeholder="Ej: maria@gmail.com"></div>'
     + '<div class="aviso" id="fErr"></div>'
     + '<button type="submit" class="cta rojo rebota">Comprar — pago al recibir</button>'
@@ -1323,13 +1323,12 @@
   if ($('listaRs')) masResenas();
   if ($('masRs')) $('masRs').addEventListener('click', masResenas);
 
-  /* 29-10 MÉXICO (igual que el Brain): estado (los 32, window.PROVINCIAS_ES), municipio (window.MUNICIPIOS_MX según el
-     estado) y colonia (catálogo SEPOMEX en /brain/cp/: p-XX.json por los 2 primeros dígitos del CP y e-N.json por estado).
-     Al escribir el código postal se eligen solos estado, municipio y colonia; al elegir la colonia aparece su código postal. */
+  /* 29-10 MÉXICO (igual que el Brain): estado y municipio en lista, solo los que tienen contra entrega en Dropi
+     (window.MUNICIPIOS_MX de /brain/provincias-es.js). Sin colonia ni autollenado por código postal, como en Dropi. */
   var PROV = window.PROVINCIAS_ES || [];
-  var selP = $('fProvincia'), selC = $('fCiudad'), selCol = $('fColonia'), inCP = $('fCP');
+  var selP = $('fProvincia'), selC = $('fCiudad'), inCP = $('fCP');
   if (selP && PROV.length) {
-    PROV.forEach(function (pr) { selP.add(new Option(pr, pr)); });
+    PROV.forEach(function (pr) { if (!window.MUNICIPIOS_MX || window.MUNICIPIOS_MX[pr]) selP.add(new Option(pr, pr)); });
     var llenarMun = function () {
       var lista = (window.MUNICIPIOS_MX || {})[selP.value] || [];
       var antes = selC.value;
@@ -1341,39 +1340,7 @@
     };
     selP.addEventListener('change', llenarMun);
     llenarMun();
-    var CACHE = {};
-    var traer = function (f) { if (!CACHE[f]) CACHE[f] = fetch('/brain/cp/' + f + '.json').then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }); return CACHE[f]; };
-    var ponerColonias = function (pares, elegir) {   /* pares = [[colonia, cp], …] */
-      selCol.innerHTML = '';
-      selCol.add(new Option(pares.length ? 'Selecciona…' : 'Primero elige tu municipio', ''));
-      pares.forEach(function (x) { var o = new Option(x[0], x[0]); o.setAttribute('data-cp', x[1]); selCol.add(o); });
-      selCol.disabled = !pares.length;
-      if (elegir) selCol.value = elegir; else if (pares.length === 1) selCol.value = pares[0][0];
-    };
-    /* municipio elegido → sus colonias */
-    selC.addEventListener('change', function () {
-      var ei = PROV.indexOf(selP.value);
-      if (ei < 0 || !selC.value) { ponerColonias([]); return; }
-      traer('e-' + ei).then(function (d) { ponerColonias((d && d[selC.value]) || []); });
-    });
-    selP.addEventListener('change', function () { ponerColonias([]); });
-    /* colonia elegida → su código postal */
-    selCol.addEventListener('change', function () {
-      var o = selCol.options[selCol.selectedIndex], cp = o && o.getAttribute('data-cp');
-      if (cp && inCP) { inCP.value = cp; inCP.classList.remove('mal'); }
-    });
-    /* código postal escrito → estado, municipio y colonias */
-    if (inCP) inCP.addEventListener('input', function () {
-      inCP.value = inCP.value.replace(/\D/g, '').slice(0, 5);
-      var cp = inCP.value;
-      if (cp.length !== 5) return;
-      traer('p-' + cp.slice(0, 2)).then(function (d) {
-        var x = d && d[cp]; if (!x || inCP.value !== cp) return;
-        selP.value = x[0]; llenarMun();
-        if (x[1]) selC.value = x[1];
-        ponerColonias(x[2].map(function (c) { return [c, cp]; }));
-      });
-    });
+    if (inCP) inCP.addEventListener('input', function () { inCP.value = inCP.value.replace(/\D/g, '').slice(0, 5); });
   }
 
   /* enviar el pedido */
@@ -1400,8 +1367,7 @@
     else if (g('fDir').length < 8 || !/\d/.test(g('fDir'))) falla = 'Falta el número de la dirección: sin eso el transportista no puede entregar.', $('fDir').classList.add('mal');
     else if (!/^\d{5}$/.test(cp)) falla = 'El código postal son 5 dígitos.', $('fCP').classList.add('mal');
     else if (!g('fProvincia')) falla = 'Selecciona tu estado.', $('fProvincia').classList.add('mal');
-    else if (g('fCiudad').length < 2) falla = 'Selecciona tu municipio.', $('fCiudad').classList.add('mal');
-    else if ($('fColonia') && !$('fColonia').disabled && !g('fColonia')) falla = 'Selecciona tu colonia.', $('fColonia').classList.add('mal');
+    else if (g('fCiudad').length < 2) falla = 'Selecciona tu municipalidad o delegación.', $('fCiudad').classList.add('mal');
     else if (g('fCorreo') && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(g('fCorreo'))) falla = 'Escribe un correo válido o déjalo vacío.', $('fCorreo').classList.add('mal');
     /* Si el formulario lo frena, no lo dejamos ahi parado: se le ofrece el
        WhatsApp en el mismo error, con el pedido ya escrito. El 09-09 quedaron 50
