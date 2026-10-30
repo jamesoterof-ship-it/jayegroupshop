@@ -2344,6 +2344,8 @@ function abrirUpsell(nombre, telWA, upsell) {
        (PT|+351|9). España queda exactamente igual. */
     var ind = val('fCod') || '+34';
     if (window.TEXTOS && window.TEXTOS._pais === 'PT') ind = val('fPais').split('|')[1] || '+351';
+    /* 29-10 James: México salía con +34 y el carrito caía en el panel de España (y a Carmen) */
+    if (window.TEXTOS && window.TEXTOS._pais === 'MX') ind = '+52';
     /* los nombres van completos: son los que lee el flujo Abandonado -> PG */
     return {
       sid: SID, telefono: tel, indicativo: ind,
