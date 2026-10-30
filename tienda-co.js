@@ -391,6 +391,22 @@
     var a = document.getElementById('reseIzq'), b = document.getElementById('reseDer');
     if (a) a.addEventListener('click', function () { mover(-1); });
     if (b) b.addEventListener('click', function () { mover(1); });
+
+    /* 29-10 James: las opiniones de texto también corren solas (como la tira de fotos). Avanza una tarjeta cada
+       4 s y se queda quieta mientras el cliente la toca o pasa el mouse, para que pueda leer. */
+    if (pista && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      var quieta = false, suelta;
+      var parar = function () { quieta = true; clearTimeout(suelta); };
+      var seguir = function () { clearTimeout(suelta); suelta = setTimeout(function () { quieta = false; }, 5000); };
+      pista.addEventListener('pointerenter', parar); pista.addEventListener('pointerleave', seguir);
+      pista.addEventListener('touchstart', parar, { passive: true }); pista.addEventListener('touchend', seguir);
+      setInterval(function () {
+        if (quieta || document.hidden) return;
+        var t = pista.querySelector('.rsn'), paso = (t ? t.offsetWidth : 190) + 10;
+        var max = pista.scrollWidth - pista.clientWidth;
+        pista.scrollTo({ left: pista.scrollLeft + paso > max - 4 ? 0 : pista.scrollLeft + paso, behavior: 'smooth' });
+      }, 4000);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
