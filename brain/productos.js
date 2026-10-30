@@ -955,7 +955,8 @@ window.PRODUCTOS.push({
 
   foto: 'img/brain-pack2.webp?v=1',
   /* 29-10 rediseño oscuro: fuera la oferta con precios pegados en la foto; g3 rehecha con las cápsulas beige reales */
-  fotos: ['img/brain-g1.webp?v=1', 'img/brain-g2.webp?v=1', 'img/brain-g3-v2.webp?v=1'],
+  /* 30-10 velocidad: las mismas fotos a 780 px (tamaño de celular): 333 KB → 159 KB */
+  fotos: ['img/brain-g1-m.webp?v=1', 'img/brain-g2-m.webp?v=1', 'img/brain-g3-v2-m.webp?v=1'],
   fotoOferta: 'img/brain-promo-v2.webp?v=1',   /* 29-10 James: en la promoción "nada más potes solos, sin personas" (3 frascos, sin texto) */
   fotoFrasco: 'img/brain-frasco-v2.webp?v=1',  /* 29-10 James: "crea otra imagen mejor" para "Qué es" (frasco solo con cápsulas) */
   /* 28-10 James: el video anterior (TikTok, frasco en español sobre una alfombra) era malo. Este es el del frasco en INGLÉS
@@ -964,7 +965,7 @@ window.PRODUCTOS.push({
   video: 'img/brain-ficha-v4.mp4?v=1',   /* 28-10 James: mismo video, al tamaño del colágeno: 720×1280 (9:16 exacto), recortado del original */
 
   hero: {
-    img: 'img/brain-heroe-v3.webp?v=1',   /* 28-10 James: "ese hero está bien" (frasco solo, fondo impactante, tercio de arriba libre) */
+    img: 'img/brain-heroe-v3-m.webp?v=1',   /* 28-10 James: "ese hero está bien" (frasco solo, fondo impactante, tercio de arriba libre) · 30-10 la misma a 780 px: 120 → 53 KB */
     kicker: 'Nuevo en México · 60 cápsulas',
     titulo: 'Memoria clara.<br><b>Mente despierta.</b>',
     sub: 'Fosfatidilserina, omega-3 y vitaminas B: lo que el cerebro usa para recordar, concentrarse y estar de buen ánimo.',
@@ -984,7 +985,7 @@ window.PRODUCTOS.push({
      fotos (brain.js); "Qué es y para qué sirve" lleva esta descripción. */
   desc: 'Brain Memory & Mood es un suplemento en cápsulas para el día a día de la mente: en cada toma de 2 cápsulas trae fosfatidilserina y omega-3, vitaminas del complejo B, zinc y tres formas de magnesio. Se toma una vez al día con un vaso de agua y un frasco dura 30 días.',
   fotoProblema: 'img/brain-problema.webp?v=1',   /* la mitad "antes" del antes y después, recortada cuadrada */
-  fotoSolucion: 'img/brain-g1.webp?v=1',
+  fotoSolucion: 'img/brain-g1-m.webp?v=1',
 
   puntos: [
     'Fosfatidilserina y omega-3 en la misma cápsula',

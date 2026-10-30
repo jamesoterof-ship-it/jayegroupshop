@@ -400,7 +400,7 @@
     if (!marco) return;
     var f = fotos[iFoto];
     marco.innerHTML = f
-      ? '<img src="' + esc(f) + '" alt="' + esc(p.nombre) + '" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'vacio\',textContent:\'' + esc(p.nombre.charAt(0)) + '\'}))">'
+      ? '<img src="' + esc(f) + '" alt="' + esc(p.nombre) + '" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'vacio\',textContent:\'' + esc(p.nombre.charAt(0)) + '\'}))">'
       : '<span class="vacio">' + esc(p.nombre.charAt(0)) + '</span>';
     document.querySelectorAll('.gal .puntos button').forEach(function (b, i) { b.setAttribute('aria-current', String(i === iFoto)); });
     document.querySelectorAll('.miniz button').forEach(function (b, i) { b.setAttribute('aria-current', String(i === iFoto)); });
@@ -417,7 +417,7 @@
     + '</div>'
     + (fotos.length > 1
       ? '<div class="miniz">' + fotos.map(function (f, i) {
-          return '<button type="button" aria-label="Ver foto ' + (i + 1) + '"><img src="' + esc(f) + '" alt="" onerror="this.parentNode.style.display=\'none\'"></button>'; }).join('') + '</div>'
+          return '<button type="button" aria-label="Ver foto ' + (i + 1) + '"><img src="' + esc(f) + '" alt="" loading="lazy" decoding="async" onerror="this.parentNode.style.display=\'none\'"></button>'; }).join('') + '</div>'
       : '');
 
   /* ---------- 2 y 3 · estrellas, precio y nombre ---------- */
@@ -949,7 +949,7 @@
        texto y las banderas no se ven. Aca cada opcion lleva su imagen. */
     + '<div class="telrow"><span class="cc-wrap">'
     + '<button type="button" class="cc-btn" id="ccBtn" aria-haspopup="listbox" aria-expanded="false">'
-    + '<img class="cc-flag" id="ccFlag" src="https://flagcdn.com/' + CC.toLowerCase() + '.svg" alt="">'
+    + '<img class="cc-flag" id="ccFlag" src="https://flagcdn.com/' + CC.toLowerCase() + '.svg" alt="" loading="lazy">'
     + '<span class="cc-code" id="ccCode">' + CCIND + '</span></button>'
     + '<div class="cc-lista" id="ccLista" role="listbox" hidden>'
     + PAISES.map(function (x) {
