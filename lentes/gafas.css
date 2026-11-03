@@ -1,0 +1,269 @@
+/* ============================================================
+   GAFAS MULTIFOCALES · ESPAÑA · estilos (rehecho 20-10-2026, 3ª vez)
+   James 20-10: "rediseña la página con UI Max Pro… nada de verde" → propuesta A de ui-ux-pro-max,
+   corrida #25 ("blue light blocking glasses violet lens tech eyewear", diales 4/4/4), James: "DAEL".
+   TODO sale de la skill:
+   · estilo HUD / Sci-Fi FUI: líneas finas de 1 px, brillo (glow 0 0 5px), marcas técnicas en las esquinas,
+     letra monoespaciada para datos, fondo oscuro, línea que escanea, marcadores que parpadean, texto en cinta
+   · colores: fondo #0B0B10 · tarjeta #1E1E23 · apagado #232328 · texto #F8FAFC · texto 2 #94A3B8 ·
+     acento/botón #3B82F6 con letra #000000 · borde #1E293B · rojo #EF4444 · sobre claro #0F172A
+   · letras: Exo (títulos) / Roboto Mono (datos, precios, rótulos)
+   · movimiento: entrada escalonada 300-450 ms back.out(1.4); todo quieto con "reducir movimiento"
+   La lupa se mantiene (James). Solo con body.p-gafas (lo pone gafas.js con ?p=gafas).
+   ============================================================ */
+body.p-gafas {
+  --gm-fondo: #0B0B10;
+  --gm-tarjeta: #1E1E23;
+  --gm-apagado: #232328;
+  --gm-texto: #F8FAFC;
+  --gm-texto2: #94A3B8;
+  --gm-azul: #3B82F6;
+  --gm-sobre-azul: #000000;
+  --gm-borde: #1E293B;
+  --gm-rojo: #EF4444;
+  --gm-oscuro: #0F172A;
+  --gm-glow: 0 0 5px rgba(59, 130, 246, .55);
+  --gm-linea: 1px solid #1E293B;
+  --gm-mono: 'Roboto Mono', ui-monospace, monospace;
+  --gm-tit: 'Exo', system-ui, sans-serif;
+  background: var(--gm-fondo);
+  color: var(--gm-texto);
+  font-family: 'Exo', system-ui, sans-serif;
+  font-size: 16px;
+}
+
+/* ---------- todo el contenido en oscuro: fondos, textos y tarjetas de la plantilla ---------- */
+body.p-gafas #prod, body.p-gafas #prod .bloque, body.p-gafas #prod section, body.p-gafas #prod .form { background: var(--gm-fondo); color: var(--gm-texto); }
+body.p-gafas #prod :is(h1, h2, h3, h4, p, li, span, b, strong, em, i, label, td, th, small, a, summary, div):not(.off) { color: inherit; }
+body.p-gafas #prod p, body.p-gafas #prod li { font-size: 16px; line-height: 1.6; }
+body.p-gafas #prod :is(.sub, .sub2, .ctaSub, .formnote, .promo-uni, .verif, .small, small, .cl, .gm-lead, .gm-nota, .heroP__sub, .baj) { color: var(--gm-texto2); }
+body.p-gafas #prod :is(h1, h2, h3, .gm-h2) { font-family: var(--gm-tit); color: var(--gm-texto); font-style: normal; }
+body.p-gafas #prod h2 { display: block; text-transform: none; font-weight: 700; line-height: 1.15; }
+body.p-gafas #prod h2::before { content: none; display: none; }
+body.p-gafas #prod h2 em, body.p-gafas .gm-h2 em { font-style: normal; color: var(--gm-azul); text-shadow: var(--gm-glow); }
+body.p-gafas #prod a { color: var(--gm-azul); }
+
+/* tarjetas: grafito, línea fina de 1 px y brillo azul (HUD) */
+body.p-gafas #prod :is(.promo-card, .ing, .cmp, .rsc, .sello, .formcard, .pack, .summary, .cuenta > div, .res, .oc, .masRs, .gm-zona, .gm-foto, .gm-cifras > div) {
+  background: var(--gm-tarjeta); color: var(--gm-texto); border: var(--gm-linea); box-shadow: var(--gm-glow);
+}
+body.p-gafas #prod .cmp th, body.p-gafas #prod .cmp td { background: var(--gm-tarjeta); color: var(--gm-texto); border-color: var(--gm-borde); }
+body.p-gafas #prod .cmp th.us { background: var(--gm-azul); color: var(--gm-sobre-azul); font-family: var(--gm-mono); }
+body.p-gafas #prod .cmp .si svg { stroke: var(--gm-azul); }
+body.p-gafas #prod .cmp .no svg { stroke: var(--gm-rojo); }
+body.p-gafas #prod .ing .cir, body.p-gafas #prod .im { background: var(--gm-apagado); border: var(--gm-linea); }
+body.p-gafas #prod .ing .cir svg { stroke: var(--gm-azul); }
+body.p-gafas #prod .ing b { font-family: var(--gm-tit); color: var(--gm-texto); }
+body.p-gafas #prod .track { background: var(--gm-apagado); }
+body.p-gafas #prod :is(.btn-write, .masRs) { background: transparent; color: var(--gm-texto); border: 1px solid var(--gm-azul); box-shadow: var(--gm-glow); }
+body.p-gafas #prod .ini { background: var(--gm-apagado); color: var(--gm-texto); }
+body.p-gafas #prod :is(.promo-precio, .free, .precioTop) { color: var(--gm-azul); font-family: var(--gm-mono); }
+body.p-gafas #prod .cuenta > div { border-color: var(--gm-azul); }
+/* 20-10 James "arregla esto urgente": las etiquetas de la garantía salían blancas con letra blanca */
+body.p-gafas #prod .gar-chips span {
+  background: var(--gm-tarjeta) !important; color: var(--gm-texto) !important; border: 1px solid var(--gm-azul) !important;
+  box-shadow: var(--gm-glow) !important; font-family: var(--gm-mono); text-shadow: none;
+}
+body.p-gafas #prod :is(.cuenta b, .res b) { color: var(--gm-azul); font-family: var(--gm-mono); text-shadow: var(--gm-glow); }
+body.p-gafas #prod :is(.cuenta span, .res span) { color: var(--gm-texto2); }
+body.p-gafas #prod .cod-badge { background: var(--gm-apagado); color: var(--gm-texto); border: var(--gm-linea); }
+
+/* rótulos en mono con un marcador que parpadea (HUD) */
+body.p-gafas #prod .eyebrow, body.p-gafas .gm-rot {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 14px/1.3 var(--gm-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gm-azul);
+}
+body.p-gafas #prod .eyebrow::before, body.p-gafas .gm-rot::before {
+  content: ''; width: 8px; height: 8px; background: var(--gm-azul); box-shadow: var(--gm-glow);
+  animation: gm-parpadeo 1.6s steps(2, start) infinite;
+}
+@keyframes gm-parpadeo { to { opacity: .15; } }
+body.p-gafas a:focus-visible, body.p-gafas button:focus-visible, body.p-gafas input:focus-visible, body.p-gafas select:focus-visible { outline: 2px solid var(--gm-azul); outline-offset: 3px; }
+
+/* ---------- héroe: foto, titular encima con la cascada de la plantilla, y una línea que escanea ---------- */
+body.p-gafas .heroP {
+  --crema: #0B0B10; --rosa: #1E1E23; --rosaF: #3B82F6; --tinta: #F8FAFC; --tinta2: #94A3B8; --oro: #3B82F6; --oroOsc: #F8FAFC;
+  background: var(--gm-fondo); color: var(--gm-texto);
+}
+body.p-gafas .heroP__marco { position: relative; background: var(--gm-fondo); }
+body.p-gafas .heroP__marco::after {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; z-index: 2; pointer-events: none;
+  background: var(--gm-azul); box-shadow: 0 0 5px rgba(59, 130, 246, .8);
+  animation: gm-escanea 4.5s linear infinite;
+}
+@keyframes gm-escanea { from { transform: translateY(0); } to { transform: translateY(var(--gm-alto, 560px)); } }
+body.p-gafas .gm-heroSombra {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(11, 11, 16, .82) 0%, rgba(11, 11, 16, .5) 26%, rgba(11, 11, 16, 0) 48%);
+}
+body.p-gafas .gm-heroTit { position: absolute; top: 0; left: 0; right: 0; z-index: 3; padding: 20px 16px 0; text-align: center; }
+body.p-gafas .gm-heroTit .heroP__nota, body.p-gafas .gm-heroTit .heroP__kicker {
+  margin: 0 auto 12px; background: rgba(11, 11, 16, .8); border: 1px solid var(--gm-azul); box-shadow: var(--gm-glow); color: var(--gm-texto);
+}
+body.p-gafas .gm-heroTit .heroP__nota * { color: var(--gm-texto); }
+body.p-gafas .gm-heroTit .heroP__h1 {
+  margin: 0; font-family: var(--gm-tit); font-weight: 700; font-style: normal;
+  font-size: clamp(34px, 9.6vw, 60px); line-height: 1.06; color: var(--gm-texto);
+}
+body.p-gafas .gm-heroTit .hCas__l { font-style: normal; color: var(--gm-texto); -webkit-text-fill-color: var(--gm-texto); }
+body.p-gafas .gm-heroTit .hCas__w.es-oro .hCas__l,
+html.ba-lista body.p-gafas .gm-heroTit .hCas__w.es-oro .hCas__l { color: var(--gm-azul); -webkit-text-fill-color: var(--gm-azul); text-shadow: var(--gm-glow); }
+body.p-gafas .heroP__txt { background: var(--gm-fondo); color: var(--gm-texto); }
+body.p-gafas #prod .heroP__sub { font-size: 17px; color: var(--gm-texto2); }
+body.p-gafas .heroP__dato, body.p-gafas .heroP__ahorra {
+  background: var(--gm-tarjeta); color: var(--gm-texto); border: var(--gm-linea); font-family: var(--gm-mono); font-size: 14px;
+}
+body.p-gafas .heroP__dato svg, body.p-gafas .heroP__ahorra svg { color: var(--gm-azul); stroke: var(--gm-azul); }
+body.p-gafas .heroP__precio span { color: var(--gm-texto2); font-family: var(--gm-mono); }
+body.p-gafas .heroP__precio b { color: var(--gm-texto); font-family: var(--gm-mono); }
+body.p-gafas .heroP__kicker i { background: var(--gm-azul); }
+@media (min-width: 768px) { body.p-gafas .gm-heroTit { padding-top: 36px; } }
+
+/* ---------- botones: azul del acento con letra negra y brillo ---------- */
+body.p-gafas .heroP__cta, body.p-gafas #prod .cta, body.p-gafas #prod .gm-cta,
+body.p-gafas .btn-flota, body.p-gafas #stickycta button, body.p-gafas #prod button[type="submit"] {
+  background: var(--gm-azul); color: var(--gm-sobre-azul); border: 0; border-radius: 4px; min-height: 48px;
+  box-shadow: var(--gm-glow); font: 700 17px/1.2 var(--gm-tit); letter-spacing: .02em; cursor: pointer; touch-action: manipulation;
+  transition: box-shadow .2s ease;
+}
+body.p-gafas .heroP__cta:hover, body.p-gafas #prod .cta:hover, body.p-gafas #prod .gm-cta:hover, body.p-gafas .btn-flota:hover { box-shadow: 0 0 12px rgba(59, 130, 246, .8); }
+body.p-gafas #prod .gm-cta {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; max-width: 440px; margin: 26px auto 0; padding: 14px 22px;
+}
+body.p-gafas .gm-cta svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- la lectura: cinta (texto en cinta, HUD) + LUPA + cifras ---------- */
+body.p-gafas .gm-lectura { background: var(--gm-fondo); border-top: var(--gm-linea); border-bottom: var(--gm-linea); padding: 0 0 26px; }
+body.p-gafas .gm-cinta { overflow: hidden; background: var(--gm-tarjeta); color: var(--gm-azul); border-bottom: 1px solid var(--gm-azul); box-shadow: var(--gm-glow); padding: 11px 0; }
+body.p-gafas .gm-cinta__va { display: flex; width: max-content; animation: gm-corre 48s linear infinite; }
+body.p-gafas .gm-cinta__va span { white-space: nowrap; padding-right: 6px; font: 500 15px/1 var(--gm-mono); text-transform: uppercase; letter-spacing: .06em; }
+@keyframes gm-corre { to { transform: translateX(-50%); } }
+
+body.p-gafas .gm-lupa {
+  --gm-x: 50%; --gm-y: 50%; --gm-r: 56px;
+  position: relative; height: 150px; margin: 22px 16px 0; overflow: hidden;
+  border-radius: 4px; background: var(--gm-tarjeta); border: var(--gm-linea); box-shadow: var(--gm-glow);
+  cursor: crosshair; touch-action: pan-y;
+}
+body.p-gafas .gm-letra {
+  position: absolute; inset: 0; margin: 0; padding: 14px 16px;
+  font: 400 13px/1.75 'Exo', sans-serif; color: var(--gm-texto2); text-align: justify; user-select: none;
+}
+body.p-gafas #prod .gm-letra { font-size: 13px; line-height: 1.75; color: var(--gm-texto2); }
+body.p-gafas .gm-letra b { font-weight: 700; color: inherit; }
+body.p-gafas .gm-letra--borrosa { filter: blur(2.6px); opacity: .75; }
+body.p-gafas .gm-letra--clara {
+  background: var(--gm-apagado); font-size: 15.5px;
+  clip-path: circle(var(--gm-r) at var(--gm-x) var(--gm-y));
+}
+body.p-gafas #prod .gm-letra--clara { font-size: 15.5px; color: var(--gm-texto); }
+body.p-gafas .gm-lente {
+  position: absolute; left: var(--gm-x); top: var(--gm-y);
+  width: calc(var(--gm-r) * 2); height: calc(var(--gm-r) * 2);
+  transform: translate(-50%, -50%); border-radius: 50%;
+  border: 1px solid var(--gm-azul); box-shadow: 0 0 5px rgba(59, 130, 246, .8), inset 0 0 5px rgba(59, 130, 246, .5); pointer-events: none;
+}
+body.p-gafas .gm-lente::after {
+  content: ''; position: absolute; right: -24px; bottom: -12px; width: 30px; height: 1px;
+  background: var(--gm-azul); box-shadow: var(--gm-glow); transform: rotate(38deg);
+}
+body.p-gafas #prod .gm-lupa__dice { margin: 12px 16px 0; text-align: center; font-size: 16px; color: var(--gm-texto2); }
+body.p-gafas #prod .gm-lupa__dice b { color: var(--gm-texto); }
+
+body.p-gafas .gm-cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 22px 16px 0; }
+body.p-gafas .gm-cifras div { position: relative; border-radius: 4px; padding: 14px 8px; text-align: center; }
+body.p-gafas .gm-cifras b { display: block; font: 500 40px/1 var(--gm-mono); color: var(--gm-azul); text-shadow: var(--gm-glow); }
+body.p-gafas #prod .gm-cifras span { display: block; margin-top: 6px; font: 400 14px/1.35 'Exo', sans-serif; color: var(--gm-texto); }
+
+/* marcas técnicas en las esquinas (HUD) */
+body.p-gafas :is(.gm-zona, .gm-foto, .gm-cifras > div, .gm-lupa) { position: relative; }
+body.p-gafas :is(.gm-zona, .gm-foto, .gm-cifras > div)::before,
+body.p-gafas :is(.gm-zona, .gm-foto, .gm-cifras > div)::after {
+  content: ''; position: absolute; width: 12px; height: 12px; pointer-events: none; z-index: 1;
+  border: 0 solid var(--gm-azul);
+}
+body.p-gafas :is(.gm-zona, .gm-foto, .gm-cifras > div)::before { top: -1px; left: -1px; border-top-width: 1px; border-left-width: 1px; }
+body.p-gafas :is(.gm-zona, .gm-foto, .gm-cifras > div)::after { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px; }
+
+/* ---------- secciones propias ---------- */
+body.p-gafas .gm-sec { padding: 44px 16px; text-align: center; }
+body.p-gafas .gm-h2 { font-size: clamp(28px, 7vw, 40px); line-height: 1.15; font-weight: 700; margin: 12px 0 10px; }
+body.p-gafas #prod .gm-lead { max-width: 560px; margin: 0 auto; font-size: 17px; }
+
+body.p-gafas .gm-zonas { display: grid; gap: 12px; max-width: 520px; margin: 24px auto 0; text-align: left; }
+body.p-gafas .gm-zona { display: grid; gap: 4px; padding: 18px; border-radius: 4px; }
+body.p-gafas #prod .gm-zona i { font: 500 13px/1.2 var(--gm-mono); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--gm-azul); }
+body.p-gafas #prod .gm-zona b { font: 700 21px/1.2 var(--gm-tit); color: var(--gm-texto); }
+body.p-gafas #prod .gm-zona span { font-size: 16px; color: var(--gm-texto2); }
+body.p-gafas #prod .gm-nota { max-width: 520px; margin: 16px auto 0; font-size: 15px; }
+
+body.p-gafas .gm-fotos { display: grid; gap: 16px; max-width: 980px; margin: 24px auto 0; text-align: left; }
+body.p-gafas .gm-foto { margin: 0; border-radius: 4px; overflow: hidden; }
+body.p-gafas .gm-foto__img { aspect-ratio: 4 / 3; overflow: hidden; }
+body.p-gafas .gm-foto__img img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+body.p-gafas .gm-foto figcaption { padding: 16px 18px 20px; display: grid; gap: 4px; }
+body.p-gafas #prod .gm-foto figcaption i { font: 500 13px/1.2 var(--gm-mono); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--gm-azul); }
+body.p-gafas #prod .gm-foto figcaption b { font: 700 20px/1.25 var(--gm-tit); color: var(--gm-texto); }
+body.p-gafas #prod .gm-foto figcaption span { font-size: 16px; color: var(--gm-texto2); line-height: 1.55; }
+@media (min-width: 768px) {
+  body.p-gafas .gm-fotos { grid-template-columns: repeat(3, 1fr); }
+  body.p-gafas .gm-lupa { height: 170px; max-width: 980px; margin-left: auto; margin-right: auto; }
+  body.p-gafas .gm-cifras { max-width: 980px; margin-left: auto; margin-right: auto; }
+  body.p-gafas .gm-zonas { grid-template-columns: 1fr 1fr; max-width: 760px; }
+}
+
+/* ---------- vídeo: horizontal completo, a su tamaño real (1280 × 640), sin recortar ni deformar ---------- */
+body.p-gafas #prod .vid-wrap.gm-video { background: var(--gm-fondo); padding: 44px 16px !important; }
+body.p-gafas #prod .gm-video .vid-prod {
+  aspect-ratio: 2 / 1 !important; object-fit: contain; max-width: 980px; margin: 22px auto 0;
+  border-radius: 4px; border: 1px solid var(--gm-azul); box-shadow: var(--gm-glow); background: var(--gm-tarjeta) !important;
+}
+
+/* ---------- promoción ---------- */
+body.p-gafas .gm-promo { margin: 18px auto 6px; max-width: 460px; }
+body.p-gafas .gm-promo img { width: 100%; height: auto; display: block; border-radius: 4px; border: var(--gm-linea); }
+body.p-gafas #prod .promo-card { border: 1px solid var(--gm-azul); }
+body.p-gafas #prod .promo-card :is(.promo-precio, .promo-qt) { color: var(--gm-texto); }
+body.p-gafas #prod .promo-card .promo-precio { color: var(--gm-azul); text-shadow: var(--gm-glow); }
+
+/* ---------- formulario y forma de pago ---------- */
+body.p-gafas #prod :is(input, select, textarea) {
+  background: var(--gm-apagado); color: var(--gm-texto); border: 1px solid var(--gm-borde); border-radius: 4px; font-size: 16px;
+}
+body.p-gafas #prod :is(input, textarea)::placeholder { color: var(--gm-texto2); }
+body.p-gafas #prod option { background: var(--gm-tarjeta); color: var(--gm-texto); }
+body.p-gafas #prod .cc-btn, body.p-gafas #prod .cc-lista { background: var(--gm-apagado); color: var(--gm-texto); border: 1px solid var(--gm-borde); }
+body.p-gafas #prod .err { color: var(--gm-rojo); }
+body.p-gafas #prod .pasoRot { display: flex; align-items: center; gap: 10px; margin: 22px 0 10px; font: 700 16px var(--gm-tit); color: var(--gm-texto); }
+body.p-gafas #prod .pasoRot:first-of-type { margin-top: 4px; }
+body.p-gafas #prod .pasoRot b { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 4px; background: var(--gm-azul); color: var(--gm-sobre-azul); font: 500 14px var(--gm-mono); box-shadow: var(--gm-glow); }
+body.p-gafas #prod .pack { border: var(--gm-linea); }
+body.p-gafas #prod .pack.sel, body.p-gafas #prod .pack[aria-checked="true"] { border-color: var(--gm-azul); box-shadow: 0 0 8px rgba(59, 130, 246, .7); }
+body.p-gafas #prod .pagoSel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 4px; }
+body.p-gafas #prod .pagoOp {
+  position: relative; display: grid; grid-template-areas: 'ico' 'tit' 'pr' 'sub' 'logos'; align-content: start; gap: 2px;
+  min-height: 132px; padding: 16px 12px 13px; border: var(--gm-linea); border-radius: 4px;
+  background: var(--gm-tarjeta); font: inherit; color: var(--gm-texto); text-align: left; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; transition: border-color .2s ease, box-shadow .2s ease;
+}
+body.p-gafas #prod .pagoOp.sel { border-color: var(--gm-azul); box-shadow: 0 0 8px rgba(59, 130, 246, .7); }
+body.p-gafas #prod .pagoOp__ico { grid-area: ico; margin-bottom: 4px; }
+body.p-gafas #prod .pagoOp__ico svg { width: 26px; height: 26px; fill: none; stroke: var(--gm-texto2); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+body.p-gafas #prod .pagoOp.sel .pagoOp__ico svg { stroke: var(--gm-azul); }
+body.p-gafas #prod .pagoOp__tit { grid-area: tit; font: 700 15px/1.25 var(--gm-tit); color: var(--gm-texto); }
+body.p-gafas #prod .pagoOp__pr { grid-area: pr; margin-top: 2px; font: 500 22px/1.1 var(--gm-mono); color: var(--gm-texto); }
+body.p-gafas #prod .pagoOp__sub { grid-area: sub; margin-top: 3px; font-size: 14px; line-height: 1.35; color: var(--gm-texto2); }
+body.p-gafas #prod .pagoOp__logos { grid-area: logos; }
+body.p-gafas #prod .pagoOp__logos img { height: 14px; width: auto; }
+body.p-gafas #prod .pagoOp__cinta { position: absolute; top: -11px; right: 10px; padding: 3px 9px; border-radius: 2px; background: var(--gm-azul); color: var(--gm-sobre-azul); font: 500 13px var(--gm-mono); white-space: nowrap; }
+
+/* ---------- entrada escalonada al bajar (300-450 ms, back.out) ---------- */
+body.p-gafas.gm-mueve .gm-entra { opacity: 0; transform: translateY(16px) scale(.92); transition: opacity .4s cubic-bezier(.34, 1.56, .64, 1), transform .4s cubic-bezier(.34, 1.56, .64, 1); transition-delay: calc(var(--i, 0) * 60ms); }
+body.p-gafas.gm-mueve .gm-entra.gm-visto { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  body.p-gafas .gm-cinta__va, body.p-gafas .heroP__marco::after, body.p-gafas #prod .eyebrow::before, body.p-gafas .gm-rot::before { animation: none; }
+  body.p-gafas .heroP__marco::after { display: none; }
+  body.p-gafas .gm-entra { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
