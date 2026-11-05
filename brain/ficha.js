@@ -1698,6 +1698,20 @@
       err.style.display = 'block'; err.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
     if (window._soloPre && formaPago === 'cod') { _avisoPre(); return; }
+    /* 05-11 James: cobertura OFICIAL de Dropi México (window.cobDropiMX en provincias-es.js).
+       Sin envío: no se toma el pedido y se pide otra dirección. Solo pago anticipado: se pasa a "Paga ahora". */
+    if (PAIS === 'MX' && window.cobDropiMX) {
+      var _cob = window.cobDropiMX(g('fProvincia'), g('fCiudad'), cp);
+      if (_cob === 'N') {
+        err.textContent = 'Lo sentimos: a esa dirección la paquetería todavía no tiene entrega. Si puedes recibir en otra dirección cercana (tu trabajo o la casa de un familiar), cámbiala aquí con su código postal.';
+        err.style.display = 'block'; err.scrollIntoView({ behavior: 'smooth', block: 'center' }); return;
+      }
+      if (_cob === 'A' && formaPago === 'cod') {
+        var _preMX = document.querySelector('.pagoOp[data-pago="pre"]'); if (_preMX) _preMX.click();
+        err.textContent = 'A tu zona la paquetería solo entrega con el pedido pagado: con tarjeta o PayPal, más barato y con entrega prioritaria. Revisa el total y pulsa otra vez el botón.';
+        err.style.display = 'block'; err.scrollIntoView({ behavior: 'smooth', block: 'center' }); return;
+      }
+    }
     /* 28-10 MÉXICO: sin huella (es de España) */
     if (formaPago === 'cod' && !window._huellaVista && PAIS !== 'MX') {
       var _f = this; window._huellaVista = true;
