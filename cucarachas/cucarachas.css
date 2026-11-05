@@ -96,7 +96,8 @@ body.p-cuc main.cuc *, body.p-cuc main.cuc *::before, body.p-cuc main.cuc *::aft
 
 /* CTA fijo (patrón: Hero sticky + Bottom) */
 body.p-cuc .cuc-fijo { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-  background: var(--c-bg); border-top: 1px solid var(--c-border); box-shadow: 0 -4px 6px rgba(0,0,0,.06); transform: translateY(110%); transition: transform 250ms ease; }
+  background: transparent; border: 0; box-shadow: none; pointer-events: none; transform: translateY(110%); transition: transform 250ms ease; }
+body.p-cuc .cuc-fijo a { pointer-events: auto; box-shadow: var(--sh-lg); }   /* James 04-11: el botón solo, sin la franja blanca */
 body.p-cuc .cuc-fijo.ver { transform: none; }
 body.p-cuc .cuc-fijo a { display: flex; align-items: center; justify-content: center; max-width: 520px; margin: 0 auto; background: var(--c-cta); color: var(--c-on-cta);
   border-radius: 8px; min-height: 50px; font: 700 15px/1 var(--f); text-transform: uppercase; letter-spacing: .02em; text-decoration: none; }
