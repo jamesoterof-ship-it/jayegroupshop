@@ -32,10 +32,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../brain/tienda.css?v=103">
-<link rel="stylesheet" href="cucarachas.css?v=1">
-<link rel="preload" as="image" href="img/cuc-heroe.webp?v=1">
+<link rel="stylesheet" href="cucarachas.css?v=2">
+<link rel="preload" as="image" href="img/cuc-heroe-dia.webp?v=1">
 <script>
 (function(){var d=document.documentElement;
  var ya=function(){d.classList.add("fuentesListas")};
@@ -211,25 +211,36 @@ window._cargarPixel();
   <main class="cuc" id="cuc">
 
     <!-- 1 · HÉROE CON TITULAR E IMAGEN -->
+    <!-- héroe como los de Chile (James): la foto del producto a pantalla completa, titular gigante encima en cascada,
+         efecto propio (las cucarachas salen corriendo de la pantalla) y los datos debajo. Sin tarjetas sobre la foto. -->
     <section class="heroe">
-      <div class="envuelve heroe__grid">
-        <div>
-          <span class="rotulo">Nuevo en México · 12 cebos por caja</span>
-          <h1>Que las cucarachas<br><b>no vuelvan a salir.</b></h1>
-          <p class="heroe__sub">Cebos en gel que se colocan donde ellas se esconden: bajo el fregadero, detrás del refrigerador y en el baño. Sin rociar nada.</p>
-          <div class="heroe__precio">
-            <span class="ya">$449</span><s>$629</s>
-            <span class="pre">o $404 pagando ahora con tarjeta</span>
-          </div>
-          <div class="estrellas"><i>⭐⭐⭐⭐⭐</i><span id="cucNota">Opiniones de compradores en México</span></div>
-          <a class="btn-primary btn-ancho" href="#pedir" data-ir>Lo quiero, pago al recibir</a>
-          <div class="datos3">
-            <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>Envío gratis</div>
-            <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>En 2 a 5 días</div>
-            <div><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="11" rx="2"/><circle cx="12" cy="12" r="2.4"/></svg>Pagas al recibir</div>
-          </div>
+      <div class="heroe__escena">
+        <img src="img/cuc-heroe-dia.webp?v=1" alt="Caja del cebo MoonSpry con 12 cebos verdes en la cocina" width="780" height="1170" fetchpriority="high">
+        <div class="heroe__arriba">
+          <span class="rotulo">Cocina · baño · rincones</span>
+          <h1 id="cucTit">Adiós a las <b>cucarachas</b></h1>
+          <p class="heroe__frase">Abres la tapa y lo dejas en el rincón. Sin rociar nada.</p>
         </div>
-        <div class="heroe__foto"><img src="img/cuc-heroe.webp?v=1" alt="Caja del cebo MoonSpry con 12 cebos verdes" width="780" height="1170" fetchpriority="high"></div>
+        <div class="heroe__bichos" aria-hidden="true">
+          <svg class="bicho b1" viewBox="0 0 40 24"><ellipse cx="20" cy="12" rx="13" ry="7"/><circle cx="35" cy="12" r="4"/><path d="M12 6 6 1M20 5 18 0M28 6 32 1M12 18 6 23M20 19 18 24M28 18 32 23M38 9 44 4M38 15 44 20"/></svg>
+          <svg class="bicho b2" viewBox="0 0 40 24"><ellipse cx="20" cy="12" rx="13" ry="7"/><circle cx="35" cy="12" r="4"/><path d="M12 6 6 1M20 5 18 0M28 6 32 1M12 18 6 23M20 19 18 24M28 18 32 23M38 9 44 4M38 15 44 20"/></svg>
+          <svg class="bicho b3" viewBox="0 0 40 24"><ellipse cx="20" cy="12" rx="13" ry="7"/><circle cx="35" cy="12" r="4"/><path d="M12 6 6 1M20 5 18 0M28 6 32 1M12 18 6 23M20 19 18 24M28 18 32 23M38 9 44 4M38 15 44 20"/></svg>
+        </div>
+      </div>
+      <div class="datos3">
+        <div><b>12</b><span>cebos por caja</span></div>
+        <div><b>2 en 1</b><span>cocina y baño</span></div>
+        <div><b>$599</b><span>por 2 cajas</span></div>
+      </div>
+      <div class="envuelve heroe__abajo">
+        <div class="estrellas"><i>⭐⭐⭐⭐⭐</i><span id="cucNota">Opiniones de compradores en México</span></div>
+        <h2 class="heroe__nombre">Cebo MoonSpry contra Cucarachas</h2>
+        <p class="heroe__sub">Caja con 12 cebos en gel listos para colocar · envío gratis a todo México</p>
+        <div class="heroe__precio"><span class="ya">$449</span><s>$629</s><span class="desc">−29 %</span></div>
+        <p class="heroe__pack">POR <b>1 CAJA</b> · 2 cajas $599 · 3 cajas $649</p>
+        <p class="heroe__pre">o $404 pagando ahora con tarjeta · −10 % y entrega prioritaria</p>
+        <a class="btn-primary btn-ancho" href="#pedir" data-ir>Lo quiero, pago al recibir</a>
+        <p class="heroe__nota">Envío gratis · Pagas al recibir o con tarjeta y ahorras 10 %</p>
       </div>
     </section>
 
@@ -242,7 +253,7 @@ window._cargarPixel();
         <div class="valor__par">
           <figure data-rev><img src="img/cuc-problema.webp?v=1" alt="Cucarachas bajo el fregadero" loading="lazy" width="780" height="1170">
             <figcaption><b>Donde ellas se esconden</b>Bajo el fregadero, junto a la tubería: humedad, oscuridad y comida.</figcaption></figure>
-          <figure data-rev><img src="img/cuc-fregadero.webp?v=1" alt="Colocando un cebo bajo el fregadero" loading="lazy" width="720" height="720" style="aspect-ratio:2/3">
+          <figure data-rev><img src="img/cuc-fregadero.webp?v=1" alt="Colocando un cebo bajo el fregadero" loading="lazy" width="720" height="720">
             <figcaption><b>Ahí mismo va el cebo</b>Abres la tapa y lo dejas en el rincón. No hay que rociar ni limpiar después.</figcaption></figure>
         </div>
         <div class="valor__multi">
@@ -275,7 +286,7 @@ window._cargarPixel();
           <article class="card" data-rev><img src="img/cuc-fregadero.webp?v=1" alt="Cebo bajo el fregadero" loading="lazy" width="720" height="720"><div><h3>Bajo el fregadero</h3><p>Junto a la tubería, que es por donde suben y donde hay humedad.</p></div></article>
           <article class="card" data-rev><img src="img/cuc-refri.webp?v=1" alt="Cebo junto al refrigerador" loading="lazy" width="720" height="720"><div><h3>Detrás del refrigerador</h3><p>El calor del motor y las migajas las atraen: ahí va uno.</p></div></article>
           <article class="card" data-rev><img src="img/cuc-bano.webp?v=1" alt="Cebo en el baño" loading="lazy" width="720" height="720"><div><h3>En el baño</h3><p>En la esquina detrás del excusado y junto a la coladera.</p></div></article>
-          <article class="card" data-rev><img src="img/cuc-pack1.webp?v=1" alt="Caja con 12 cebos" loading="lazy" width="720" height="720"><div><h3>12 cebos por caja</h3><p>Alcanza para la cocina, el baño y los muebles de un departamento.</p></div></article>
+          <article class="card" data-rev><img class="entera" src="img/cuc-pack1.webp?v=1" alt="Caja con 12 cebos" loading="lazy" width="720" height="720"><div><h3>12 cebos por caja</h3><p>Alcanza para la cocina, el baño y los muebles de un departamento.</p></div></article>
         </div>
         <ul class="lista" data-rev>
           <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>No se rocía nada en la cocina ni cerca de la comida.</li>
@@ -286,22 +297,9 @@ window._cargarPixel();
       </div>
     </section>
 
-    <!-- 4 · BLOQUE DE COMPRA: oferta con contador, pago anticipado, formulario, opiniones y preguntas -->
-    <section class="compra">
+    <!-- orden de Chile (James): reseñas → preguntas → formulario -->
+    <section class="opis-sec">
       <div class="envuelve">
-        <span class="rotulo" data-rev>Pide el tuyo</span>
-        <h2 data-rev>Elige tus cajas y paga al recibir.</h2>
-        <div class="oferta" data-rev>
-          <h3>2 cajas por $599 · el más pedido</h3>
-          <p>24 cebos: uno para la cocina y otro para el baño. Envío gratis a todo México. La oferta termina en:</p>
-          <div class="reloj" id="cucReloj"><div><b data-h>00</b><span>horas</span></div><div><b data-m>00</b><span>min</span></div><div><b data-s>00</b><span>seg</span></div></div>
-        </div>
-        <div class="anticipo" data-rev>
-          <b>−10 %</b>
-          <p><strong>Paga ahora con tarjeta o PayPal</strong> y tu pedido sale con entrega prioritaria: 1 caja $404 · 2 cajas $539 · 3 cajas $584.</p>
-        </div>
-        <div class="compra__form" id="cucForm"></div>
-
         <div class="opis" id="cucOpis" hidden>
           <span class="rotulo">Opiniones del producto</span>
           <h2>Lo que dicen quienes ya lo compraron.</h2>
@@ -321,7 +319,24 @@ window._cargarPixel();
           <details><summary>¿Cómo pago?</summary><p>Contra entrega: pagas en efectivo al repartidor cuando recibes el paquete. Si prefieres, pagas ahora con tarjeta con 10 % de descuento y entrega prioritaria.</p></details>
           <details><summary>¿A dónde envían y cuánto tarda?</summary><p>A todo México, sin costo de envío. Entre 2 y 5 días hábiles según tu ciudad.</p></details>
         </div>
-        <a class="btn-primary btn-ancho" href="#pedir" data-ir style="margin-top:24px">Lo quiero, pago al recibir</a>
+      </div>
+    </section>
+
+    <!-- 4 · BLOQUE DE COMPRA: oferta con contador, pago anticipado y formulario -->
+    <section class="compra">
+      <div class="envuelve">
+        <span class="rotulo" data-rev>Pide el tuyo</span>
+        <h2 data-rev>Elige tus cajas y paga al recibir.</h2>
+        <div class="oferta" data-rev>
+          <h3>2 cajas por $599 · el más pedido</h3>
+          <p>24 cebos: uno para la cocina y otro para el baño. Envío gratis a todo México. La oferta termina en:</p>
+          <div class="reloj" id="cucReloj"><div><b data-h>00</b><span>horas</span></div><div><b data-m>00</b><span>min</span></div><div><b data-s>00</b><span>seg</span></div></div>
+        </div>
+        <div class="anticipo" data-rev>
+          <b>−10 %</b>
+          <p><strong>Paga ahora con tarjeta o PayPal</strong> y tu pedido sale con entrega prioritaria: 1 caja $404 · 2 cajas $539 · 3 cajas $584.</p>
+        </div>
+        <div class="compra__form" id="cucForm"></div>
       </div>
     </section>
   </main>
@@ -432,7 +447,7 @@ window._cargarPixel();
 <script src="../lentes/efectos.js?v=4"></script>
 <script>window.URL_PEDIDO = "https://n8n-production-8a42.up.railway.app/webhook/pedido-tienda-mx";</script>
 <script src="../lentes/ficha.js?v=13"></script>
-<script src="cucarachas.js?v=1"></script>
+<script src="cucarachas.js?v=2"></script>
 
 <!-- Boton flotante de WhatsApp: el molde de Chile (shilajit/producto.html) con
      el numero español que dio James el 26-09-2026. Antes iba apagado a proposito:

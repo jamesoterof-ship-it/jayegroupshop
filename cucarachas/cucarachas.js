@@ -10,6 +10,28 @@
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
+  /* 0 · titular del héroe en cascada, letra por letra (regla de héroe de James) */
+  var h1 = $('cucTit');
+  if (h1 && !calma) {
+    var k = 0;
+    var parte = function (nodo) {
+      Array.prototype.slice.call(nodo.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var f = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (pal) {
+            if (!pal) return;
+            if (/^\s+$/.test(pal)) { f.appendChild(document.createTextNode(pal)); return; }
+            var w = document.createElement('span'); w.style.whiteSpace = 'nowrap';
+            pal.split('').forEach(function (ch) { var s = document.createElement('span'); s.className = 'l'; s.style.animationDelay = (k++ * 28) + 'ms'; s.textContent = ch; w.appendChild(s); });
+            f.appendChild(w);
+          });
+          nodo.replaceChild(f, n);
+        } else if (n.nodeType === 1) parte(n);
+      });
+    };
+    parte(h1);
+  }
+
   /* 1 · el formulario de la ficha al bloque de compra */
   function moverForm() {
     var f = $('pedir'), dst = $('cucForm');
