@@ -45,6 +45,8 @@
   /* La nota y cuántas opiniones tiene ESTE producto, filtradas igual que en
      la ficha, para que la portada y la ficha digan el mismo número. */
   function notaDe(p) {
+    /* 05-11 James: los productos cuyas opiniones viven en su propia ficha traen aquí la misma nota y el mismo número */
+    if (p.nota && p.nota.n) return { n: p.nota.n, prom: String(p.nota.prom) };
     var todas = window.RESENAS || [];
     var mias = todas.filter(function (r) {
       var t = (r.producto || '').toLowerCase(), n = p.nombre.toLowerCase();

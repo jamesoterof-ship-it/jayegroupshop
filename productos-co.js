@@ -34,6 +34,7 @@ window.PRODUCTOS = [
     foto: 'lentes/img/gafas-letra.webp',
     packs: [{ cant: 1, precio: 479, antes: 671, texto: '1 par' }, { cant: 2, precio: 629, antes: 881, texto: '2 pares' }, { cant: 3, precio: 799, antes: 1119, texto: '3 pares' }],
     anticipado: { pct: 10, precios: [431, 566, 719] },
+    nota: { n: 53, prom: '4.9' },   /* las mismas que muestra la ficha /lentes/ (lentes/resenas.js, 05-11) */
   },
   {
     id: 'cucarachas', nombre: 'Cebo MoonSpry contra Cucarachas', sub: 'Caja con 12 cebos en gel listos para colocar',
@@ -41,6 +42,7 @@ window.PRODUCTOS = [
     foto: 'cucarachas/img/cuc-pack1.webp',
     packs: [{ cant: 1, precio: 449, antes: 629, texto: '1 caja' }, { cant: 2, precio: 599, antes: 839, texto: '2 cajas' }, { cant: 3, precio: 649, antes: 909, texto: '3 cajas' }],
     anticipado: { pct: 10, precios: [404, 539, 584] },
+    nota: { n: 30, prom: '4.9' },   /* las mismas que muestra la ficha /cucarachas/ (cucarachas/resenas.js, 05-11) */
   },
 ];
 
