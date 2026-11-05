@@ -26,6 +26,22 @@ window.PRODUCTOS = [
     packs: [{ cant: 1, precio: 779, antes: 1039, texto: '1 frasco' }, { cant: 2, precio: 1079, antes: 1559, texto: '2 frascos' }, { cant: 3, precio: 1549, antes: 2369, texto: '3 frascos' }],
     anticipado: { pct: 10, precios: [699, 969, 1389] },
   },
+  /* 05-11 James ("¿por qué en la página de inicio no están los lentes ni lo de las cucarachas?"): los dos en la portada,
+     con los precios aprobados (lentes 03-11 · cebo 04-11). Las fichas viven en /lentes/ y /cucarachas/. */
+  {
+    id: 'lentes', nombre: 'Lentes TR90 Pro Titanium', sub: 'Sin marco · de cerca y de lejos · filtro de luz azul',
+    categoria: 'Cuidado personal', etiqueta: 'Nuevo en México', etiquetaOro: true,
+    foto: 'lentes/img/gafas-letra.webp',
+    packs: [{ cant: 1, precio: 479, antes: 671, texto: '1 par' }, { cant: 2, precio: 629, antes: 881, texto: '2 pares' }, { cant: 3, precio: 799, antes: 1119, texto: '3 pares' }],
+    anticipado: { pct: 10, precios: [431, 566, 719] },
+  },
+  {
+    id: 'cucarachas', nombre: 'Cebo MoonSpry contra Cucarachas', sub: 'Caja con 12 cebos en gel listos para colocar',
+    categoria: 'Hogar', etiqueta: 'Nuevo en México', etiquetaOro: true,
+    foto: 'cucarachas/img/cuc-pack1.webp',
+    packs: [{ cant: 1, precio: 449, antes: 629, texto: '1 caja' }, { cant: 2, precio: 599, antes: 839, texto: '2 cajas' }, { cant: 3, precio: 649, antes: 909, texto: '3 cajas' }],
+    anticipado: { pct: 10, precios: [404, 539, 584] },
+  },
 ];
 
 /* preguntas de despacho y pago, iguales para todos (como en Chile) */
@@ -38,4 +54,6 @@ window.PREGUNTAS = [
 /* candado de Chile: si un precio no está aprobado, la ficha no vende.
    México: vacío hasta que entre el Brain 61103 (2 × $799 · 3 × $1.200 MXN, aprobado el 28-10). */
 window.PRECIOS_APROBADOS = [799, 1200, 719, 1080,   /* Brain: contra entrega y pago anticipado (James 28-10) */
-  779, 1079, 1549, 699, 969, 1389];                   /* Colágeno: contra entrega y pago anticipado (James 29-10) */
+  779, 1079, 1549, 699, 969, 1389,                    /* Colágeno: contra entrega y pago anticipado (James 29-10) */
+  479, 629, 431, 566,                                  /* Lentes (James 03-11): 479/629/799 · anticipado 431/566/719 (799 y 719 ya están) */
+  449, 599, 649, 404, 539, 584];                       /* Cebo cucarachas (James 04-11) */
