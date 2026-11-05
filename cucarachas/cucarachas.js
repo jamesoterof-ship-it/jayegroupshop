@@ -69,7 +69,10 @@
     var pasado = y > heroe.offsetTop + heroe.offsetHeight - 80;
     var enForm = false;
     if (f) { var r = f.getBoundingClientRect(); enForm = r.top < window.innerHeight && r.bottom > 0; }
-    fijo.classList.toggle('ver', pasado && !enForm);
+    /* James 04-11: tampoco aparece al final, sobre el pie de la página */
+    var pie = document.querySelector('footer.pie'), enPie = false;
+    if (pie) enPie = pie.getBoundingClientRect().top < window.innerHeight;
+    fijo.classList.toggle('ver', pasado && !enForm && !enPie);
   }
   window.addEventListener('scroll', verFijo, { passive: true }); verFijo();
 
