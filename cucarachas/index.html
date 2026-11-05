@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<script>
+/* LINK CORTO EN LA BARRA (James 26-10: "te queda prohibido hacerme esos links largos de página"; mismo arreglo que Chile 29-09).
+   La ficha es UNA (producto.html?p=id), pero la barra muestra jayegroup.com.es/id. El id queda en window.__P (lo leen
+   ficha.js, pago-anticipado.js y el script de cada producto) y se reescribe la barra SIN recargar. /id sin barra final
+   para que img/ y los .js sigan resolviendo contra la raíz. Solo ids con su carpeta (si recargan, la carpeta redirige).
+   Los demás parámetros (cmp, fbclid, pagar…) se conservan. */
+(function () {
+  try {
+    /* 03-11 MÉXICO: en jayegroupshop.com/lentes/ esta ficha es la de los lentes TR90 (id 'gafas', diseño de España) */
+    var q = new URLSearchParams(location.search), p = q.get('p') || 'cucarachas';
+    window.__P = p;
+    var CARPETAS = ['aranazos', 'balsamo', 'crema', 'ducha', 'gafas', 'pistola', 'pulsera', 'sellador'];
+    if (p && CARPETAS.indexOf(p) >= 0 && /producto\.html$/.test(location.pathname)) {
+      q.delete('p'); var r = q.toString();
+      history.replaceState(history.state, '', '/' + p + (r ? '?' + r : '') + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Verificacion del dominio en Meta (negocio Jaye Group, dominio 1082679124366879).
+     TIENE que estar dentro del <head> y en el HTML de verdad: si se inyecta con
+     JavaScript, Meta no la ve y la verificacion falla. NO SE BORRA: sin ella se
+     pierden eventos de iPhone y la atribucion de las ventas. -->
+<meta name="facebook-domain-verification" content="bh17zp72fh5ewf4yle14ommqnjdgcx" />
+<title>Cebo MoonSpry contra Cucarachas · Jaye Group México</title>
+<meta name="description" content="12 cebos en gel contra cucarachas. Envío gratis a todo México y pagas cuando lo recibes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../brain/tienda.css?v=103">
+<link rel="stylesheet" href="cucarachas.css?v=1">
+<link rel="preload" as="image" href="img/cuc-heroe.webp?v=1">
+<script>
+(function(){var d=document.documentElement;
+ var ya=function(){d.classList.add("fuentesListas")};
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(ya)}else{ya()}
+ setTimeout(ya,400);})();
+</script>
+<!-- Meta Pixel · JAYE GROUP EUROPA (1788531032387111) -->
+<script>
+/* PIXEL PROPIO DE EUROPA, creado el 24-09-2026. Antes estaba puesto el de
+   Chile (Jaye Hogar, 1249894010361489): los eventos de España y Portugal se
+   habrian mezclado con los de Chile y el aprendizaje de las campañas chilenas
+   se habria ensuciado con gente que nunca va a comprar alli.
+   El MISMO pixel sirve para España y para Portugal: arrancando de cero, partir
+   los eventos en dos hace que ninguno de los dos salga del aprendizaje. Lo que
+   se separa son las campanas, no el pixel.
+
+   El pixel SOLO en la tienda de verdad. Cuando la pagina se abre desde otro
+   lado —una copia local, una revision, una vista previa— tambien disparaba
+   eventos, y esos entraban a Meta como si fueran clientes: el 28-08 hubo 72
+   eventos desde localhost que ensuciaron el conteo de compras.
+
+   🔴 Y NO SE CARGA HASTA QUE EL VISITANTE ACEPTE LAS COOKIES. Lo exige el
+   art. 22.2 de la LSSI en España y la Lei 41/2004 en Portugal: cargar el pixel
+   antes del consentimiento es lo que multa la AEPD. Quien prende esto es
+   cookies-es.js, llamando a window._cargarPixel(). Nunca antes. */
+/* 28-10 MÉXICO: píxel "Jaye Group México" 3801303723356168 (el 1788531032387111 es el de Europa y NO va aquí).
+   En México no hay aviso de cookies: el píxel se carga de una vez, solo en jayegroupshop.com. */
+window.PIXEL_EU = '3801303723356168';
+window.fbq = window.fbq || function () {};   // por defecto, no se manda nada
+window._cargarPixel = function () {
+  var h = location.hostname;
+  if (h !== 'jayegroupshop.com' && h !== 'www.jayegroupshop.com') return;
+  if (window._pixelPuesto) return;
+  window._pixelPuesto = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq&&f.fbq.loaded)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.PIXEL_EU);
+  /* la visita y lo que pasó antes de aceptar salen AHORA, con su event_id, por navegador y por servidor */
+  if (window.jayePixel && window.jayePixel._soltar) window.jayePixel._soltar(); else fbq('track','PageView');
+};
+
+/* ---- LOS DATOS QUE PIDE LA API DE CONVERSIONES ----
+   Hoy la compra se le avisa a Meta SOLO desde el navegador, y ahi se pierde
+   una parte grande: bloqueadores, Safari, y el que cierra la pagina antes de
+   que salga el aviso. Meta reporta bastante menos ventas que el panel.
+
+   Para que el servidor pueda mandar esa misma compra —y que Meta no la
+   cuente dos veces— hacen falta tres cosas:
+     · `event_id`: el MISMO identificador en el aviso del navegador y en el
+       del servidor. Con eso Meta entiende que son la misma venta.
+     · `_fbp`: la cookie que el propio pixel deja en el navegador.
+     · `_fbc`: de que anuncio vino. Si la cookie todavia no existe -pasa
+       cuando el cliente entra y compra en la misma visita- se arma con el
+       `fbclid` que Meta pega en la URL, que es la forma que la propia
+       documentacion indica.
+   Aca solo se RECOGEN y se mandan con el pedido. Quien los usa es el flujo
+   del servidor. Si algo de esto falla, se manda vacio y todo sigue igual. */
+window.jayePixel = (function () {
+  var cola = [];
+  function galleta(n) {
+    try { var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; }
+    catch (e) { return ''; }
+  }
+  function nuevoId() {
+    return 'jg.' + Date.now().toString(36) + '.' + Math.random().toString(36).slice(2, 10);
+  }
+  function fbc() {
+    var c = galleta('_fbc');
+    if (c) return c;
+    try {
+      var q = new URLSearchParams(location.search).get('fbclid');
+      if (q) return 'fb.1.' + Date.now() + '.' + q;
+    } catch (e) {}
+    return '';
+  }
+  return {
+    id: nuevoId,
+    fbp: function () { return galleta('_fbp'); },
+    fbc: fbc,
+    /* manda el evento con su identificador y lo devuelve. Antes de aceptar las
+       cookies el fbq de relleno lo tiraba a la basura (Meta no veia ningun
+       ViewContent): ahora ESPERA en la cola y sale cuando el visitante acepta.
+       Si no acepta, no sale nada (LSSI art. 22.2). */
+    track: function (ev, obj, idFijo) {
+      var e = idFijo || nuevoId();
+      if (window._pixelPuesto) mandar(ev, obj, e); else cola.push([ev, obj, e]);
+      return e;
+    },
+    _soltar: function () {
+      mandar('PageView', {}, nuevoId());
+      var c = cola; cola = [];
+      for (var i = 0; i < c.length; i++) mandar(c[i][0], c[i][1], c[i][2]);
+    },
+  };
+  /* API DE CONVERSIONES (01-10, Meta: "costo 17,8% mas bajo"): cada evento, ademas
+     del navegador, va al servidor (flujo n8n Ja4hV1ibXS6OzJU4) con el MISMO event_id,
+     y Meta se queda con uno. La COMPRA no: esa la manda el flujo de ventas
+     (Yxsr3rSUnADbtoe7), si no iria dos veces por servidor. */
+  function mandar(ev, obj, e) {
+    try { if (window.fbq) window.fbq('track', ev, obj || {}, { eventID: e }); } catch (x) {}
+    if (ev === 'Purchase') return;
+    var ir = function () {
+      try {
+        var U = 'https://n8n-production-8a42.up.railway.app/webhook/capi-mx-evento';   /* 28-10 MÉXICO: flujo L5QoGli92XhrYBon */
+        var d = JSON.stringify({ event_name: ev, event_id: e, url: location.href, fbp: galleta('_fbp'), fbc: fbc(), ua: navigator.userAgent, datos: obj || {} });
+        if (!(navigator.sendBeacon && navigator.sendBeacon(U, d))) fetch(U, { method: 'POST', body: d, keepalive: true, mode: 'no-cors' });
+      } catch (x) {}
+    };
+    /* la cookie _fbp la crea el pixel al cargar: si aun no esta, se espera un poco */
+    if (galleta('_fbp')) ir(); else setTimeout(ir, 1500);
+  }
+})();
+/* 28-10 MÉXICO: sin aviso de cookies, el píxel se carga ya (solo en jayegroupshop.com) */
+window._cargarPixel();
+</script>
+  <style>
+    /* SOLO en la ficha de producto: al bajar se esconde la barra de anuncios
+       y queda unicamente la de JAYE GROUP, para que el producto se lleve la
+       pantalla. En la portada no se toca: ahi la marquesina si tiene sentido.
+       La logica de .bajando ya existia en efectos.js (se activa pasados 90px). */
+    .pegado .marq{transition:max-height .28s cubic-bezier(.2,.8,.2,1),padding .28s ease,opacity .22s ease;max-height:60px;overflow:hidden}
+    .pegado.bajando .marq{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
+    @media (prefers-reduced-motion:reduce){.pegado .marq{transition:none}}
+
+    /* 29-09 · franja "Paga ahora y ahorra" en la cabecera del producto */
+    .heroP__ahorra{display:flex;align-items:center;gap:10px;margin:14px 0 4px;padding:10px 14px;border-radius:12px;
+      background:#fff7e3;border:1px solid #e9cf8f;color:#5b4410;text-decoration:none;font-size:14.5px;line-height:1.35}
+    .heroP__ahorra svg{width:22px;height:22px;flex:0 0 22px;color:#8A6210}
+    .heroP__ahorra b{font-weight:800;color:#3d2c05}
+  </style>
+</head>
+<body>
+
+  <!-- cabecera: al bajar se esconde la blanca y las otras tres quedan fijas -->
+  <div class="pegado" id="pegado">
+
+  <!-- marquesina -->
+  <div class="marq" aria-label="Avisos">
+    <div class="pista">
+      <span>Envío gratis a todo México</span><span>·</span>
+      <span>Pagas cuando lo recibes</span><span>·</span>
+      <span>Entrega en 2 a 5 días hábiles</span><span>·</span>
+      <span>Envío gratis a todo México</span><span>·</span>
+      <span>Pagas cuando lo recibes</span><span>·</span>
+      <span>Entrega en 2 a 5 días hábiles</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- linea blanca al medio: aca vive el menu. Se esconde al bajar -->
+  <!-- la barra de categorías se quita en la ficha: le quita vista al producto.
+       Sigue en index.html, que es donde el cliente navega. -->
+
+  <!-- 29-09 (James: "se ve plano, míralo el de Chile que tiene donde dice inicio").
+       El 24-09 se habían quitado porque era una página de UN producto y no llevaban a
+       ningún sitio. Ahora hay TIENDA con dos productos, así que vuelven igual que en
+       Chile, pero FUNCIONANDO: Inicio -> la tienda · lupa -> el catálogo · carrito ->
+       el formulario de compra de esta ficha. -->
+  <header class="top">
+    <div class="fila">
+      <a class="ofertas" href="/">Inicio</a>
+      <a class="logo" href="/"><span class="j">JAYE</span><i class="raya"></i><span class="g">GROUP</span></a>
+      <div class="icos">
+        <a href="/#productos" aria-label="Ver todos los productos" style="color:inherit;display:flex"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></a>
+        <a href="#pedir" aria-label="Ir a comprar" style="color:inherit;display:flex"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2.2l1.7 10.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 8H6"></path><circle cx="10" cy="20" r="1.2"></circle><circle cx="17" cy="20" r="1.2"></circle></svg></a>
+      </div>
+    </div>
+  </header>
+  </div>
+  <!-- ============================================================
+       CEBO MOONSPRY · MÉXICO · 04-11-2026 · composición del script ui-ux-pro-max (corrida #96, James "Dale")
+       Patrón Hero + Features + CTA: 1 Héroe · 2 Propuesta de valor · 3 Beneficios clave · 4 Bloque de compra · 5 Pie
+       ficha.js pinta el formulario (#pedir: precios, pago, pedido, PayPal, píxel) en #prod; cucarachas.js lo pasa al bloque 4.
+       ============================================================ -->
+  <main class="cuc" id="cuc">
+
+    <!-- 1 · HÉROE CON TITULAR E IMAGEN -->
+    <section class="heroe">
+      <div class="envuelve heroe__grid">
+        <div>
+          <span class="rotulo">Nuevo en México · 12 cebos por caja</span>
+          <h1>Que las cucarachas<br><b>no vuelvan a salir.</b></h1>
+          <p class="heroe__sub">Cebos en gel que se colocan donde ellas se esconden: bajo el fregadero, detrás del refrigerador y en el baño. Sin rociar nada.</p>
+          <div class="heroe__precio">
+            <span class="ya">$449</span><s>$629</s>
+            <span class="pre">o $404 pagando ahora con tarjeta</span>
+          </div>
+          <div class="estrellas"><i>⭐⭐⭐⭐⭐</i><span id="cucNota">Opiniones de compradores en México</span></div>
+          <a class="btn-primary btn-ancho" href="#pedir" data-ir>Lo quiero, pago al recibir</a>
+          <div class="datos3">
+            <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>Envío gratis</div>
+            <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>En 2 a 5 días</div>
+            <div><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="11" rx="2"/><circle cx="12" cy="12" r="2.4"/></svg>Pagas al recibir</div>
+          </div>
+        </div>
+        <div class="heroe__foto"><img src="img/cuc-heroe.webp?v=1" alt="Caja del cebo MoonSpry con 12 cebos verdes" width="780" height="1170" fetchpriority="high"></div>
+      </div>
+    </section>
+
+    <!-- 2 · PROPUESTA DE VALOR -->
+    <section class="valor">
+      <div class="envuelve">
+        <span class="rotulo" data-rev>El problema</span>
+        <h2 data-rev>Salen de noche, por los rincones que no ves.</h2>
+        <p class="valor__intro" data-rev>Las cucarachas viven donde hay humedad y migajas: bajo el fregadero, detrás del refrigerador y de la estufa. El aerosol no llega ahí y hay que repetirlo cada día. El cebo se queda puesto justo en ese rincón.</p>
+        <div class="valor__par">
+          <figure data-rev><img src="img/cuc-problema.webp?v=1" alt="Cucarachas bajo el fregadero" loading="lazy" width="780" height="1170">
+            <figcaption><b>Donde ellas se esconden</b>Bajo el fregadero, junto a la tubería: humedad, oscuridad y comida.</figcaption></figure>
+          <figure data-rev><img src="img/cuc-fregadero.webp?v=1" alt="Colocando un cebo bajo el fregadero" loading="lazy" width="720" height="720" style="aspect-ratio:2/3">
+            <figcaption><b>Ahí mismo va el cebo</b>Abres la tapa y lo dejas en el rincón. No hay que rociar ni limpiar después.</figcaption></figure>
+        </div>
+        <div class="valor__multi">
+          <div data-rev>
+            <span class="rotulo">Así se usa</span>
+            <div class="valor__video">
+              <video class="vid-prod" data-src="img/cuc-video.mp4?v=1" poster="img/cuc-video-poster.jpg?v=1" muted loop playsinline preload="none" aria-label="Video del cebo colocado junto al refrigerador"></video>
+              <p>Video real del producto: se abren los cebos y se colocan junto al refrigerador.</p>
+            </div>
+          </div>
+          <div data-rev>
+            <span class="rotulo">El cambio</span>
+            <div class="ba">
+              <img src="img/cuc-ba.webp?v=1" alt="El mismo rincón de la cocina antes y después" loading="lazy" width="780" height="1178">
+              <span class="ba__et a">ANTES</span>
+              <span class="ba__et d">DESPUÉS</span>
+            </div>
+            <p class="ba-nota">Imagen ilustrativa: el mismo rincón de la cocina antes y después de colocar los cebos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · BENEFICIOS CLAVE (4) -->
+    <section class="benef">
+      <div class="envuelve">
+        <span class="rotulo" data-rev>Dónde se pone</span>
+        <h2 data-rev>Un cebo en cada rincón por donde pasan.</h2>
+        <div class="benef__grid">
+          <article class="card" data-rev><img src="img/cuc-fregadero.webp?v=1" alt="Cebo bajo el fregadero" loading="lazy" width="720" height="720"><div><h3>Bajo el fregadero</h3><p>Junto a la tubería, que es por donde suben y donde hay humedad.</p></div></article>
+          <article class="card" data-rev><img src="img/cuc-refri.webp?v=1" alt="Cebo junto al refrigerador" loading="lazy" width="720" height="720"><div><h3>Detrás del refrigerador</h3><p>El calor del motor y las migajas las atraen: ahí va uno.</p></div></article>
+          <article class="card" data-rev><img src="img/cuc-bano.webp?v=1" alt="Cebo en el baño" loading="lazy" width="720" height="720"><div><h3>En el baño</h3><p>En la esquina detrás del excusado y junto a la coladera.</p></div></article>
+          <article class="card" data-rev><img src="img/cuc-pack1.webp?v=1" alt="Caja con 12 cebos" loading="lazy" width="720" height="720"><div><h3>12 cebos por caja</h3><p>Alcanza para la cocina, el baño y los muebles de un departamento.</p></div></article>
+        </div>
+        <ul class="lista" data-rev>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>No se rocía nada en la cocina ni cerca de la comida.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Se queda puesto en el rincón: no hay que repetir cada día.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Llega a donde el aerosol no alcanza: detrás de los muebles.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Pequeños y discretos: casi no se ven.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4 · BLOQUE DE COMPRA: oferta con contador, pago anticipado, formulario, opiniones y preguntas -->
+    <section class="compra">
+      <div class="envuelve">
+        <span class="rotulo" data-rev>Pide el tuyo</span>
+        <h2 data-rev>Elige tus cajas y paga al recibir.</h2>
+        <div class="oferta" data-rev>
+          <h3>2 cajas por $599 · el más pedido</h3>
+          <p>24 cebos: uno para la cocina y otro para el baño. Envío gratis a todo México. La oferta termina en:</p>
+          <div class="reloj" id="cucReloj"><div><b data-h>00</b><span>horas</span></div><div><b data-m>00</b><span>min</span></div><div><b data-s>00</b><span>seg</span></div></div>
+        </div>
+        <div class="anticipo" data-rev>
+          <b>−10 %</b>
+          <p><strong>Paga ahora con tarjeta o PayPal</strong> y tu pedido sale con entrega prioritaria: 1 caja $404 · 2 cajas $539 · 3 cajas $584.</p>
+        </div>
+        <div class="compra__form" id="cucForm"></div>
+
+        <div class="opis" id="cucOpis" hidden>
+          <span class="rotulo">Opiniones del producto</span>
+          <h2>Lo que dicen quienes ya lo compraron.</h2>
+          <div class="opis__res"><b id="cucProm">4.8</b><div><i>⭐⭐⭐⭐⭐</i><br><span id="cucCuenta"></span></div></div>
+          <div class="opis__fotos" id="cucFotos"></div>
+          <div class="opis__lista" id="cucLista"></div>
+          <button type="button" class="btn-secondary btn-ancho opis__mas" id="cucMas">Ver más opiniones</button>
+          <p class="opis__nota">Opiniones de compras verificadas de este mismo cebo, tomadas de la plataforma donde se vende en México. El texto es el que dejó cada comprador.</p>
+        </div>
+
+        <div class="faq">
+          <span class="rotulo">Preguntas</span>
+          <h2>Lo que nos preguntan.</h2>
+          <details><summary>¿Cómo se usa?</summary><p>Abres la tapa del cebo y lo dejas en el rincón por donde has visto cucarachas: bajo el fregadero, detrás del refrigerador, en el baño. Una caja trae 12 cebos.</p></details>
+          <details><summary>¿Cuántas cajas necesito?</summary><p>Para un departamento suele bastar una caja. Si es una casa grande, o quieres cubrir cocina y baño por separado, el pack de 2 es el más pedido.</p></details>
+          <details><summary>¿Tengo que rociar algo?</summary><p>No. Solo se colocan los cebos. No se rocía nada en la cocina ni cerca de la comida.</p></details>
+          <details><summary>¿Cómo pago?</summary><p>Contra entrega: pagas en efectivo al repartidor cuando recibes el paquete. Si prefieres, pagas ahora con tarjeta con 10 % de descuento y entrega prioritaria.</p></details>
+          <details><summary>¿A dónde envían y cuánto tarda?</summary><p>A todo México, sin costo de envío. Entre 2 y 5 días hábiles según tu ciudad.</p></details>
+        </div>
+        <a class="btn-primary btn-ancho" href="#pedir" data-ir style="margin-top:24px">Lo quiero, pago al recibir</a>
+      </div>
+    </section>
+  </main>
+  <div class="cuc-fijo" id="cucFijo"><a href="#pedir" data-ir>Lo quiero · $449 al recibir</a></div>
+
+  <!-- la ficha pinta aquí el formulario (lógica: precios, pago, pedido); cucarachas.js lo pasa al bloque 4 -->
+  <div id="prod" class="prod"></div>
+
+  <footer class="pie">
+    <div class="envoltorio">
+
+      <div class="cols">
+        <details class="col">
+          <summary>Atención al cliente<i class="mas"></i></summary>
+          <div class="dentro">
+            <a href="/envio.html">Envíos y entregas</a>
+            <a href="/envio.html">Seguir mi pedido</a>
+            <a href="/reembolso.html">Cambios y devoluciones</a>
+            <a href="/contacto.html">Contáctanos</a>
+          </div>
+        </details>
+
+        <details class="col">
+          <summary>Políticas<i class="mas"></i></summary>
+          <div class="dentro">
+            <a href="/terminos.html">Términos y condiciones</a>
+            <a href="/privacidad.html">Política de privacidad</a>
+            <a href="/reembolso.html">Política de reembolsos</a>
+            <a href="/reembolso.html">Política de cambios y garantía</a>
+            <a href="/envio.html">Política de envíos</a>
+            <a href="/privacidad.html">Tratamiento de datos</a>
+          </div>
+        </details>
+
+        <div class="col contacto">
+          <h4>Contacto</h4>
+          <p><a href="mailto:gerencia@jayegroup.com.co">gerencia@jayegroup.com.co</a></p>
+          <p><a href="https://wa.me/525597219871">WhatsApp +52 55 9721 9871</a></p>
+          <p>Bodega en Ciudad de México</p>
+          <p>Envíos a todo México</p>
+        </div>
+      </div>
+
+      <!-- suscripcion al correo -->
+      <div class="boletin">
+        <h4>Recibe nuestras ofertas</h4>
+        <p class="dice">Te avisamos cuando entren productos nuevos y cuando haya descuentos. Sin spam.</p>
+        <form id="fBoletin" novalidate>
+          <input type="email" id="correoBoletin" placeholder="Tu correo electrónico" autocomplete="email" required>
+          <label class="acepto">
+            <input type="checkbox" id="aceptoBoletin" required>
+            <span>Acepto recibir correos con ofertas y novedades, según la <a href="/privacidad.html">política de privacidad</a>.</span>
+          </label>
+          <button type="submit">Suscribirme</button>
+        </form>
+      </div>
+
+      <div class="redes">
+        <span class="rot">Síguenos</span>
+        <div class="iconos">
+          <a href="https://www.instagram.com/jaye.group" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="34" height="34"><defs><linearGradient id="jig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset="1" stop-color="#962fbf"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="6.5" fill="url(#jig)"/><rect x="6" y="6" width="12" height="12" rx="4" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.8" cy="7.2" r="1.05" fill="#fff"/></svg>
+          </a>
+          <a href="https://www.facebook.com/1021271641058424" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.4 21v-7.1h2.4l.4-2.8h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.4V21h3z"/></svg>
+          </a>
+          <a href="https://wa.me/525597219871" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M17 14.4c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.6.9-.8 1-.1.2-.3.2-.5.1a7.3 7.3 0 0 1-3.6-3.2c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/><path fill="#fff" d="M12 3.5A8.4 8.4 0 0 0 4.7 16l-1.2 4.5 4.6-1.2A8.4 8.4 0 1 0 12 3.5zm0 15.3c-1.3 0-2.5-.3-3.5-1l-.3-.1-2.6.7.7-2.6-.2-.3a6.9 6.9 0 1 1 5.9 3.3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@jaye.group" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#010101"/><g transform="translate(12,12) scale(0.6) translate(-12,-12)"><path fill="#25F4EE" d="M15.8 5.1a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V8.94a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.18a7.35 7.35 0 0 0 4.29 1.37V6.46A4.28 4.28 0 0 1 15.8 5.1z"/><path fill="#FE2C55" d="M17.4 6.54a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08v-3.16a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V9.62a7.35 7.35 0 0 0 4.29 1.37V7.9a4.28 4.28 0 0 1-3.22-1.36z"/><path fill="#fff" d="M16.6 5.82A4.28 4.28 0 0 1 15.53 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V9.66a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.9a7.35 7.35 0 0 0 4.29 1.37V7.18a4.28 4.28 0 0 1-3.22-1.36z"/></g></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 05-10 James: logos OFICIALES de pago, sin iconos dibujados. PayPal: paypalobjects.com/paypal-ui; Visa y Mastercard:
+           los que PayPal usa en sus botones (paypalobjects.com/js-sdk-logos). Sin placas: el pie se queda negro (James); 05-10 James eligió: logos sin fondo, mismo tamaño; en negro VISA y mastercard en blanco, PayPal Pay blanco + Pal celeste (versión oficial para fondo oscuro), AmEx. -->
+      <!-- 05-10 James: logos OFICIALES de pago, sin iconos dibujados. PayPal: paypalobjects.com/paypal-ui; Visa y Mastercard:
+           los que PayPal usa en sus botones (paypalobjects.com/js-sdk-logos). Sin placas: el pie se queda negro (James); 05-10 James eligió: logos sin fondo, mismo tamaño; en negro VISA y mastercard en blanco, PayPal Pay blanco + Pal celeste (versión oficial para fondo oscuro), AmEx.
+           28-10 James: el PIE no se cambia nunca (va igual que en todas las páginas). -->
+      <div class="pagos" style="margin:20px 0 8px;text-align:center">
+        <span style="display:block;font:700 12.5px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#cfcfcf;margin-bottom:10px">Pago 100 % seguro</span>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center">
+          <img src="/img/pago/visa-oscuro.svg" alt="Visa" width="48" height="29" loading="lazy">
+          <img src="/img/pago/mastercard-oscuro.svg" alt="Mastercard" width="48" height="29" loading="lazy">
+          <img src="/img/pago/amex.svg" alt="American Express" width="40" height="24" loading="lazy">
+          <img src="/img/pago/paypal-texto-oscuro.svg" alt="PayPal" width="71" height="22" loading="lazy">
+          <span style="display:inline-flex;align-items:center;height:28px;padding:0 4px;font:700 13px/1 Inter,sans-serif;color:#cfcfcf">Pago al recibir</span>
+        </div>
+      </div>
+
+      <div class="marca-grande">
+        <span class="j">JAYE</span><i class="raya"></i><span class="g">GROUP</span>
+      </div>
+
+      <div class="abajo">
+        <small>© 2026 Jaye Group México. Todos los derechos reservados.</small>
+        <small>Envío gratis · Pago contra entrega en todo México</small>
+      </div>
+
+    </div>
+  </footer>
+
+<script src="productos.js?v=1"></script>
+<script src="../lentes/provincias-es.js?v=119"></script>
+<script>/* el texto compartido dice "por par" (lentes): aquí son cajas */ if (window.TEXTOS) window.TEXTOS.mejorPrecio = 'Mejor precio por caja';</script>
+<script src="resenas.js?v=1"></script>
+<script src="../lentes/efectos.js?v=4"></script>
+<script>window.URL_PEDIDO = "https://n8n-production-8a42.up.railway.app/webhook/pedido-tienda-mx";</script>
+<script src="../lentes/ficha.js?v=13"></script>
+<script src="cucarachas.js?v=1"></script>
+
+<!-- Boton flotante de WhatsApp: el molde de Chile (shilajit/producto.html) con
+     el numero español que dio James el 26-09-2026. Antes iba apagado a proposito:
+     apuntaba al +56 y un cliente español acababa escribiendo a Chile. James
+     dijo que si sabiendo que aqui no hay bot: lo que entre por aqui lo atiende
+     una persona. El CSS (.wa) ya estaba en esta pagina. -->
+<a class="wa" href="https://wa.me/525597219871" aria-label="WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+
+<!-- 28-10 MÉXICO: sin aviso de cookies (era exigencia de España/Portugal). -->
+</body>
+</html>
