@@ -115,6 +115,12 @@
         + '<div class="opi__cab"><i>' + est(r.estrellas) + '</i><span>' + esc(r.nombre) + ' · ' + esc(fecha(r.fecha)) + '</span></div>'
         + '<p>' + esc(r.texto) + '</p><div class="opi__ver">Compra verificada</div></article>';
     };
+    /* barras por estrellas, como el desengrasante */
+    var barras = $('cucBarras');
+    if (barras) barras.innerHTML = [5, 4, 3, 2, 1].map(function (s) {
+      var n = R.filter(function (r) { return r.estrellas === s; }).length;
+      return '<div class="barra"><span>' + s + ' ★</span><i><b style="width:' + Math.round(n / R.length * 100) + '%"></b></i><span>' + n + '</span></div>';
+    }).join('');
     var conFoto = R.filter(function (r) { return r.foto; }), sinFoto = R.filter(function (r) { return !r.foto; });
     $('cucFotos').innerHTML = conFoto.map(tarjeta).join('');
     var lista = $('cucLista'), mas = $('cucMas'), i = 0;
