@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<script>
+/* LINK CORTO EN LA BARRA (James 26-10): el id de esta ficha queda en window.__P (lo leen ficha.js y pago-anticipado.js). */
+(function () {
+  try {
+    var q = new URLSearchParams(location.search), p = q.get('p') || 'drenaje';
+    window.__P = p;
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Verificacion del dominio en Meta (negocio Jaye Group, dominio 1082679124366879). NO SE BORRA. -->
+<meta name="facebook-domain-verification" content="bh17zp72fh5ewf4yle14ommqnjdgcx" />
+<title>Drenaje Linfático Nature's Sunshine · Jaye Group México</title>
+<meta name="description" content="Drenaje linfático en gotas, frasco de 59 ml con cuatro hierbas. Envío gratis a todo México y pagas cuando lo recibes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../brain/tienda.css?v=103">
+<link rel="stylesheet" href="../_mx-pagina.css?v=5">
+<link rel="stylesheet" href="drenaje.css?v=1">
+<!-- botón flotante de WhatsApp: el MISMO de todas las páginas de la tienda (lentes, brain, portada) -->
+<style>.wa{position:fixed;right:14px;bottom:16px;z-index:50;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.wa svg{width:25px;height:25px;fill:#fff}</style>
+<link rel="preload" as="image" href="img/dr-heroe.webp?v=1">
+<script>
+(function(){var d=document.documentElement;
+ var ya=function(){d.classList.add("fuentesListas")};
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(ya)}else{ya()}
+ setTimeout(ya,400);})();
+</script>
+<!-- Meta Pixel · Jaye Group México (3801303723356168) -->
+<script>
+/* 28-10 MÉXICO: píxel "Jaye Group México" 3801303723356168. Sin aviso de cookies: se carga de una vez, solo en jayegroupshop.com. */
+window.PIXEL_EU = '3801303723356168';
+window.fbq = window.fbq || function () {};
+window._cargarPixel = function () {
+  var h = location.hostname;
+  if (h !== 'jayegroupshop.com' && h !== 'www.jayegroupshop.com') return;
+  if (window._pixelPuesto) return;
+  window._pixelPuesto = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq&&f.fbq.loaded)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.PIXEL_EU);
+  if (window.jayePixel && window.jayePixel._soltar) window.jayePixel._soltar(); else fbq('track','PageView');
+};
+/* API DE CONVERSIONES: event_id, _fbp y _fbc viajan con el pedido; cada evento va también al servidor (flujo capi-mx-evento). */
+window.jayePixel = (function () {
+  var cola = [];
+  function galleta(n) {
+    try { var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; }
+    catch (e) { return ''; }
+  }
+  function nuevoId() {
+    return 'jg.' + Date.now().toString(36) + '.' + Math.random().toString(36).slice(2, 10);
+  }
+  function fbc() {
+    var c = galleta('_fbc');
+    if (c) return c;
+    try {
+      var q = new URLSearchParams(location.search).get('fbclid');
+      if (q) return 'fb.1.' + Date.now() + '.' + q;
+    } catch (e) {}
+    return '';
+  }
+  return {
+    id: nuevoId,
+    fbp: function () { return galleta('_fbp'); },
+    fbc: fbc,
+    track: function (ev, obj, idFijo) {
+      var e = idFijo || nuevoId();
+      if (window._pixelPuesto) mandar(ev, obj, e); else cola.push([ev, obj, e]);
+      return e;
+    },
+    _soltar: function () {
+      mandar('PageView', {}, nuevoId());
+      var c = cola; cola = [];
+      for (var i = 0; i < c.length; i++) mandar(c[i][0], c[i][1], c[i][2]);
+    },
+  };
+  function mandar(ev, obj, e) {
+    try { if (window.fbq) window.fbq('track', ev, obj || {}, { eventID: e }); } catch (x) {}
+    if (ev === 'Purchase') return;
+    var ir = function () {
+      try {
+        var U = 'https://n8n-production-8a42.up.railway.app/webhook/capi-mx-evento';
+        var d = JSON.stringify({ event_name: ev, event_id: e, url: location.href, fbp: galleta('_fbp'), fbc: fbc(), ua: navigator.userAgent, datos: obj || {} });
+        if (!(navigator.sendBeacon && navigator.sendBeacon(U, d))) fetch(U, { method: 'POST', body: d, keepalive: true, mode: 'no-cors' });
+      } catch (x) {}
+    };
+    if (galleta('_fbp')) ir(); else setTimeout(ir, 1500);
+  }
+})();
+window._cargarPixel();
+</script>
+</head>
+<body class="mx-p p-drenaje">
+
+  <div class="pegado" id="pegado">
+
+  <!-- marquesina -->
+  <div class="marq" aria-label="Avisos">
+    <div class="pista">
+      <span>Envío gratis a todo México</span><span>·</span>
+      <span>Pagas cuando lo recibes</span><span>·</span>
+      <span>Entrega en 2 a 5 días hábiles</span><span>·</span>
+      <span>Envío gratis a todo México</span><span>·</span>
+      <span>Pagas cuando lo recibes</span><span>·</span>
+      <span>Entrega en 2 a 5 días hábiles</span><span>·</span>
+    </div>
+  </div>
+
+  <header class="top">
+    <div class="fila">
+      <a class="ofertas" href="/">Inicio</a>
+      <a class="logo" href="/"><span class="j">JAYE</span><i class="raya"></i><span class="g">GROUP</span></a>
+      <div class="icos">
+        <a href="/#productos" aria-label="Ver todos los productos" style="color:inherit;display:flex"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></a>
+        <a href="#pedir" aria-label="Ir a comprar" style="color:inherit;display:flex"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2.2l1.7 10.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 8H6"></path><circle cx="10" cy="20" r="1.2"></circle><circle cx="17" cy="20" r="1.2"></circle></svg></a>
+      </div>
+    </div>
+  </header>
+  </div>
+
+  <!-- DRENAJE LINFÁTICO · MÉXICO · 05-11-2026 · plano nº 100 del script (Biomimetic / Organic 2.0), orden de secciones de Lymphoria.
+       ../_mx-pagina.js arma las secciones con los textos de productos.js; ficha.js pinta el formulario en #prod y se pasa al final. -->
+  <main id="mxp"></main>
+
+  <div id="prod" class="prod"></div>
+
+  <footer class="pie">
+    <div class="envoltorio">
+
+      <div class="cols">
+        <details class="col">
+          <summary>Atención al cliente<i class="mas"></i></summary>
+          <div class="dentro">
+            <a href="/envio.html">Envíos y entregas</a>
+            <a href="/envio.html">Seguir mi pedido</a>
+            <a href="/reembolso.html">Cambios y devoluciones</a>
+            <a href="/contacto.html">Contáctanos</a>
+          </div>
+        </details>
+
+        <details class="col">
+          <summary>Políticas<i class="mas"></i></summary>
+          <div class="dentro">
+            <a href="/terminos.html">Términos y condiciones</a>
+            <a href="/privacidad.html">Política de privacidad</a>
+            <a href="/reembolso.html">Política de reembolsos</a>
+            <a href="/reembolso.html">Política de cambios y garantía</a>
+            <a href="/envio.html">Política de envíos</a>
+            <a href="/privacidad.html">Tratamiento de datos</a>
+          </div>
+        </details>
+
+        <div class="col contacto">
+          <h4>Contacto</h4>
+          <p><a href="mailto:gerencia@jayegroup.com.co">gerencia@jayegroup.com.co</a></p>
+          <p><a href="https://wa.me/525597219871">WhatsApp +52 55 9721 9871</a></p>
+          <p>Bodega en Ciudad de México</p>
+          <p>Envíos a todo México</p>
+        </div>
+      </div>
+
+      <div class="boletin">
+        <h4>Recibe nuestras ofertas</h4>
+        <p class="dice">Te avisamos cuando entren productos nuevos y cuando haya descuentos. Sin spam.</p>
+        <form id="fBoletin" novalidate>
+          <input type="email" id="correoBoletin" placeholder="Tu correo electrónico" autocomplete="email" required>
+          <label class="acepto">
+            <input type="checkbox" id="aceptoBoletin" required>
+            <span>Acepto recibir correos con ofertas y novedades, según la <a href="/privacidad.html">política de privacidad</a>.</span>
+          </label>
+          <button type="submit">Suscribirme</button>
+        </form>
+      </div>
+
+      <div class="redes">
+        <span class="rot">Síguenos</span>
+        <div class="iconos">
+          <a href="https://www.instagram.com/jaye.group" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="34" height="34"><defs><linearGradient id="jig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset="1" stop-color="#962fbf"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="6.5" fill="url(#jig)"/><rect x="6" y="6" width="12" height="12" rx="4" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.8" cy="7.2" r="1.05" fill="#fff"/></svg>
+          </a>
+          <a href="https://www.facebook.com/1021271641058424" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.4 21v-7.1h2.4l.4-2.8h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.4V21h3z"/></svg>
+          </a>
+          <a href="https://wa.me/525597219871" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M17 14.4c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.6.9-.8 1-.1.2-.3.2-.5.1a7.3 7.3 0 0 1-3.6-3.2c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/><path fill="#fff" d="M12 3.5A8.4 8.4 0 0 0 4.7 16l-1.2 4.5 4.6-1.2A8.4 8.4 0 1 0 12 3.5zm0 15.3c-1.3 0-2.5-.3-3.5-1l-.3-.1-2.6.7.7-2.6-.2-.3a6.9 6.9 0 1 1 5.9 3.3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@jaye.group" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="12" fill="#010101"/><g transform="translate(12,12) scale(0.6) translate(-12,-12)"><path fill="#25F4EE" d="M15.8 5.1a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V8.94a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.18a7.35 7.35 0 0 0 4.29 1.37V6.46A4.28 4.28 0 0 1 15.8 5.1z"/><path fill="#FE2C55" d="M17.4 6.54a4.3 4.3 0 0 1-1.07-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08v-3.16a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V9.62a7.35 7.35 0 0 0 4.29 1.37V7.9a4.28 4.28 0 0 1-3.22-1.36z"/><path fill="#fff" d="M16.6 5.82A4.28 4.28 0 0 1 15.53 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .71-5.08V9.66a5.72 5.72 0 0 0-.71-.05 5.68 5.68 0 1 0 5.68 5.68V8.9a7.35 7.35 0 0 0 4.29 1.37V7.18a4.28 4.28 0 0 1-3.22-1.36z"/></g></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 28-10 James: el PIE no se cambia nunca (va igual que en todas las páginas). -->
+      <div class="pagos" style="margin:20px 0 8px;text-align:center">
+        <span style="display:block;font:700 12.5px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#cfcfcf;margin-bottom:10px">Pago 100 % seguro</span>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center">
+          <img src="/img/pago/visa-oscuro.svg" alt="Visa" width="48" height="29" loading="lazy">
+          <img src="/img/pago/mastercard-oscuro.svg" alt="Mastercard" width="48" height="29" loading="lazy">
+          <img src="/img/pago/amex.svg" alt="American Express" width="40" height="24" loading="lazy">
+          <img src="/img/pago/paypal-texto-oscuro.svg" alt="PayPal" width="71" height="22" loading="lazy">
+          <span style="display:inline-flex;align-items:center;height:28px;padding:0 4px;font:700 13px/1 Inter,sans-serif;color:#cfcfcf">Pago al recibir</span>
+        </div>
+      </div>
+
+      <div class="marca-grande">
+        <span class="j">JAYE</span><i class="raya"></i><span class="g">GROUP</span>
+      </div>
+
+      <div class="abajo">
+        <small>© 2026 Jaye Group México. Todos los derechos reservados.</small>
+        <small>Envío gratis · Pago contra entrega en todo México</small>
+      </div>
+
+    </div>
+  </footer>
+
+<script src="productos.js?v=2"></script>
+<script src="../lentes/provincias-es.js?v=121"></script>
+<script>/* el texto compartido dice "por par" (lentes): aquí son frascos */ if (window.TEXTOS) window.TEXTOS.mejorPrecio = 'Mejor precio por frasco';</script>
+<script src="resenas.js?v=1"></script>
+<script src="../lentes/efectos.js?v=4"></script>
+<script>window.URL_PEDIDO = "https://n8n-production-8a42.up.railway.app/webhook/pedido-tienda-mx";</script>
+<script src="../lentes/ficha.js?v=14"></script>
+<script src="../_mx-pagina.js?v=2"></script>
+
+<a class="wa" href="https://wa.me/525597219871" aria-label="WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2.1 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.4-2.1-2.1-4.6-2.1-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 15.9 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+</body>
+</html>

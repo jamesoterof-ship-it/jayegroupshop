@@ -1,0 +1,11 @@
+/* DRENAJE LINFÁTICO · MÉXICO · 05-11-2026 · plano nº 100 del script (drenaje-mexico), aprobado por James ("Sí, apruebo" y "Sí, autorizo").
+   Biomimetic / Organic 2.0 · DM Sans · verde bosque, verde fresco y botón ámbar sobre menta.
+   La estructura y los efectos comunes están en ../_mx-pagina.css; aquí van los colores y las letras de esta página. */
+body.mx-p.p-drenaje {
+  --mx-p: #15803D; --mx-on-p: #FFFFFF; --mx-s: #22C55E; --mx-on-s: #0F172A;
+  --mx-a: #D97706; --mx-on-a: #000000; --mx-bg: #F0FDF4; --mx-fg: #14532D;
+  --mx-card: #FFFFFF; --mx-card-fg: #14532D; --mx-muted: #E8F0F1; --mx-muted-fg: #475569;
+  --mx-borde: #BBF7D0; --mx-ring: #15803D; --mx-rojo: #DC2626;
+  --mx-tit: 'DM Sans', system-ui, sans-serif; --mx-txt: 'DM Sans', system-ui, sans-serif;
+}
+.p-drenaje .mx-heroe__foto { background: #BBF7D0; }

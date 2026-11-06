@@ -1,0 +1,14 @@
+/* NAD+ RESVERATROL ZOOONE · MÉXICO · 05-11-2026 · plano nº 101 del script (nad-mexico), aprobado por James ("Sí, apruebo" y "Sí, autorizo").
+   Biomimetic / Organic 2.0 · Varela Round (títulos) y Nunito Sans (texto) · naranja energía, turquesa y botón ámbar sobre crema.
+   La estructura y los efectos comunes están en ../_mx-pagina.css; aquí van los colores y las letras de esta página. */
+body.mx-p.p-nad {
+  --mx-p: #EA580C; --mx-on-p: #000000; --mx-s: #0891B2; --mx-on-s: #000000;
+  /* 05-11 James: "no pusiste los botones en rojo… rojo, rojo, no anaranjado" → botones en el ROJO de la paleta del script
+     (Destructive #DC2626, con su letra On Destructive #FFFFFF), ni el ámbar ni el naranja */
+  --mx-a: #DC2626; --mx-on-a: #FFFFFF; --mx-bg: #FFF7ED; --mx-fg: #0F172A;
+  --mx-card: #FFFFFF; --mx-card-fg: #0F172A; --mx-muted: #FDF4F0; --mx-muted-fg: #475569;
+  --mx-borde: #FCEAE1; --mx-ring: #EA580C; --mx-rojo: #DC2626;
+  --mx-tit: 'Varela Round', system-ui, sans-serif; --mx-txt: 'Nunito Sans', system-ui, sans-serif;
+}
+.p-nad .mx-heroe__foto { background: #FCEAE1; }
+.p-nad .mx-heroe h1 b, .p-nad .mx-cap, .p-nad .mx-promo__cab span:first-child { color: #EA580C; }
