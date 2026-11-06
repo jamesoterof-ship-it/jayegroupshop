@@ -73,6 +73,12 @@
     + '<div id="mxResFicha"></div>'
     + '<div class="bq-faq"><h3 class="bq-kin" data-kin>Lo que nos preguntan</h3>' + P.preguntas.map(function (q) { return '<details><summary>' + esc(q[0]) + '</summary><p>' + esc(q[1]) + '</p></details>'; }).join('') + '</div>'
     + '<ul class="bq-garantias" data-rev><li><b>$0</b>de envío a todo México</li><li><b>2 a 5</b>días hábiles</li><li><b>30</b>días de garantía</li><li><b>Al recibir</b>pagas en efectivo</li></ul>'
+    /* 06-11 James: "falta la sección de cómo entregamos, revísala en las demás páginas" (cebo y NAD+: "Con quién se despacha") */
+    + '<div class="bq-despacho"><h3 class="bq-kin" data-kin>Con quién se despacha</h3><div class="bq-despacho__g" data-rev>'
+    + '<div><img src="img/logos/veloces.webp" alt="Veloces" loading="lazy"><b>Veloces</b><span>Entrega a domicilio</span></div>'
+    + '<div><img src="img/logos/afimex.webp" alt="Afimex" loading="lazy"><b>Afimex</b><span>Envío a todo México</span></div>'
+    + '<div><img src="img/logos/quality-post.webp" alt="Quality Post" loading="lazy"><b>Quality Post</b><span>Guía rastreable por WhatsApp</span></div>'
+    + '<div class="bq-despacho__pago"><b>Pagas al recibir</b><span>Al repartidor, cuando la tienes en la mano</span></div></div></div>'
     + '<div class="bq-compra"><h2 class="bq-kin" data-kin>Pide la tuya</h2><div id="mxForm"></div></div></section>');
 
   raiz.innerHTML = html.join('');

@@ -141,6 +141,18 @@ body.mx-p.p-boq {
 .bq-garantias { list-style: none; margin: 30px 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .bq-garantias li { padding: 14px; border-radius: 10px; background: #FDF4F0; font: 400 13px/1.3 'Roboto', sans-serif; color: #475569; }
 .bq-garantias b { display: block; font: 900 24px/1.1 'Roboto', sans-serif; color: #EA580C; }
+/* con quién se despacha (como en el cebo y el NAD+) */
+.bq-despacho { margin: 36px 0 0; }
+.bq-despacho h3 { margin-bottom: 14px; font-size: clamp(28px, 8vw, 44px); }
+.bq-despacho__g { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.bq-despacho__g > div { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px; border-radius: 10px; background: #FFFFFF; border: 1px solid #FCEAE1; }
+.bq-despacho__g img { height: 30px; width: auto; max-width: 100%; object-fit: contain; margin-bottom: 4px; }
+.bq-despacho__g img[alt="Quality Post"] { background: #0F172A; padding: 4px 10px; border-radius: 6px; height: 34px; }
+.bq-despacho__g b { font: 800 15px/1.2 'Roboto', sans-serif; color: #0F172A; }
+.bq-despacho__g span { font: 400 13px/1.35 'Roboto', sans-serif; color: #475569; }
+.bq-despacho__pago { background: #0F172A !important; border-color: #0F172A !important; justify-content: center; }
+.bq-despacho__pago b { font-size: 19px; color: #F97316 !important; }
+.bq-despacho__pago span { color: #FCEAE1 !important; }
 .bq-compra { margin-top: 40px; }
 .bq-compra h2 { margin-bottom: 16px; }
 
