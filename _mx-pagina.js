@@ -97,7 +97,9 @@
     + C.filas.map(function (f) { return '<tr><td>' + esc(f) + '</td><td class="si">✓</td><td class="no">✕</td></tr>'; }).join('') + '</tbody></table>'));
 
   /* 12 · OPINIONES REALES (resenas.js): solo si hay; primero las con foto */
-  html.push(sec('mx-opis-s', '<div class="mx-opis" id="mxOpis" hidden><h2>Lo que dicen quienes ya lo usan</h2>'
+  /* 05-11 James: "las reseñas igual a las demás páginas": aquí se muda la sección #resenas que pinta ficha.js (la de Brain y lentes);
+     el bloque propio #mxOpis queda solo de respaldo si ficha.js no la pinta. */
+  html.push(sec('mx-opis-s', '<div id="mxResFicha"></div><div class="mx-opis" id="mxOpis" hidden><h2>Lo que dicen quienes ya lo usan</h2>'
     + '<div class="mx-opis__res"><b id="mxProm"></b><div><i>★★★★★</i><span id="mxCuenta"></span></div></div><p class="mx-opis__nota">' + esc(P.notaResenas || '') + '</p>'
     + '<div class="mx-barras" id="mxBarras"></div><div class="mx-opis__fotos" id="mxFotos"></div><div class="mx-opis__lista" id="mxLista"></div>'
     + '<button type="button" class="mx-btn mx-btn--sec mx-btn--ancho" id="mxMas">Ver más opiniones</button></div>'));
@@ -211,7 +213,9 @@
 
   /* opiniones reales: nota, barras, primero las que traen foto y después de 6 en 6 */
   var R = (window.RESENAS || []).slice();
-  if (R.length) {
+  var mudarRes = function () { var s = $('resenas'), d = $('mxResFicha'); if (!s || !d) return false; if (s.parentNode !== d) d.appendChild(s); return true; };
+  var propia = function () {
+    if (!R.length || mudarRes()) return;
     $('mxOpis').hidden = false;
     var prom = Math.round(R.reduce(function (a, r) { return a + r.estrellas; }, 0) / R.length * 10) / 10;
     var promTxt = String(prom).replace('.', ',');
@@ -232,5 +236,6 @@
     var resto = R.filter(function (r) { return !r.foto; }), j = 0, mas = $('mxMas');
     var pinta = function () { $('mxLista').insertAdjacentHTML('beforeend', resto.slice(j, j + 6).map(tarjeta).join('')); j += 6; if (j >= resto.length) mas.hidden = true; };
     pinta(); mas.addEventListener('click', pinta);
-  }
+  };
+  if (R.length && !mudarRes()) { var vr = 0, tr = setInterval(function () { if (mudarRes()) clearInterval(tr); else if (++vr > 40) { clearInterval(tr); propia(); } }, 100); }
 })();
