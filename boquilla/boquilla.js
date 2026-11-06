@@ -21,7 +21,10 @@
   var H = P.heroe, html = [];
 
   /* HÉROE · tipografía en movimiento sobre el producto solo y grande */
+  /* 06-11 James: "el héroe, ponle efecto de agua, caen gotas" */
+  var gotas = ''; for (var g = 0; g < 18; g++) gotas += '<i style="left:' + (3 + Math.round(Math.random() * 94)) + '%;animation-delay:' + (Math.random() * 3.2).toFixed(2) + 's;animation-duration:' + (1.6 + Math.random() * 1.6).toFixed(2) + 's;--t:' + (0.6 + Math.random() * 0.8).toFixed(2) + '"></i>';
   html.push('<section class="bq-heroe"><img class="bq-heroe__img" src="' + esc(H.img) + '" alt="' + esc(H.alt) + '" width="780" height="1170" fetchpriority="high">'
+    + (calma ? '' : '<div class="bq-gotas" aria-hidden="true">' + gotas + '</div>')
     + '<div class="bq-heroe__txt"><p class="bq-rot bq-rot--claro">' + esc(H.rotulo) + '</p>'
     + '<h1 id="bqTit"><span class="bq-l1">Tu manguera</span><span class="bq-l2">con <b>fuerza</b></span></h1>'
     + '<p class="bq-escribe" aria-live="off"><span id="bqEscribe">lava tu auto</span><i class="bq-cursor" aria-hidden="true"></i></p></div>'
@@ -60,6 +63,12 @@
     + (preP ? '<p class="bq-tarjeta">o <b>' + mx(preP) + '</b> pagando ahora con tarjeta · −' + pct + ' % y entrega prioritaria</p>' : '')
     + '<div class="bq-reloj" id="bqReloj" aria-label="La promoción termina hoy"><span><b data-h>00</b>h</span><span><b data-m>00</b>m</span><span><b data-s>00</b>s</span></div>'
     + '<a class="bq-btn bq-btn--ancho" href="#pedir" data-ir>Quiero la promoción</a></div></div>'
+    /* 06-11 James: "¿dónde está el pago anticipado que siempre ponemos abajo en la promoción?" */
+    + '<div class="bq-pre" data-rev><p class="bq-pre__tit"><span>−' + pct + ' %</span>Paga con tarjeta y gana</p><ul>'
+    + '<li><b>' + pct + ' % de descuento</b> en todos los paquetes: ' + packs.map(function (k, i) { return esc(k.texto) + ' <b>' + mx(pre[i]) + '</b>'; }).join(' · ') + '</li>'
+    + '<li><b>Entrega prioritaria:</b> tu pedido sale primero</li><li><b>Pago seguro</b> con PayPal: tarjeta de crédito o débito, sin crear cuenta</li></ul>'
+    + '<div class="bq-pre__pie"><span class="bq-pre__logos"><img src="/img/pago/paypal-texto.svg" alt="PayPal" width="60" height="18"><img src="/img/pago/visa-claro.svg" alt="Visa" width="38" height="23"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard" width="38" height="23"></span>'
+    + '<a class="bq-btn bq-btn--chico" href="#pedir" data-ir>Pagar con tarjeta</a></div></div>'
     + '<img class="bq-packs" src="img/boq-packs.webp?v=1" alt="Paquetes de 1, 2 y 3 boquillas" loading="lazy" width="720" height="720" data-rev>'
     + '<div id="mxResFicha"></div>'
     + '<div class="bq-faq"><h3 class="bq-kin" data-kin>Lo que nos preguntan</h3>' + P.preguntas.map(function (q) { return '<details><summary>' + esc(q[0]) + '</summary><p>' + esc(q[1]) + '</p></details>'; }).join('') + '</div>'
@@ -158,6 +167,20 @@
     reloj.querySelector('[data-s]').textContent = d2(s % 60);
   };
   if (reloj) { tic(); setInterval(tic, 1000); }
+
+  /* 06-11 James: el carrusel de pasos se mueve SOLO, de lado (se pausa mientras el cliente lo toca) */
+  var carril = raiz.querySelector('.bq-carril');
+  if (carril && !calma) {
+    var quieto = false, tq;
+    var pausa = function () { quieto = true; clearTimeout(tq); tq = setTimeout(function () { quieto = false; }, 4000); };
+    carril.addEventListener('touchstart', pausa, { passive: true }); carril.addEventListener('mousedown', pausa); carril.addEventListener('wheel', pausa, { passive: true });
+    setInterval(function () {
+      if (quieto || document.hidden) return;
+      var li = carril.querySelector('li'); if (!li) return;
+      var paso = li.offsetWidth + 14, fin = carril.scrollWidth - carril.clientWidth - 4;
+      carril.scrollTo({ left: carril.scrollLeft >= fin ? 0 : carril.scrollLeft + paso, behavior: 'smooth' });
+    }, 2600);
+  }
 
   /* video real: se carga al primer movimiento */
   var v = raiz.querySelector('video[data-src]');

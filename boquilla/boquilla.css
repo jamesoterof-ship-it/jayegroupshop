@@ -21,6 +21,13 @@ body.mx-p.p-boq {
 .bq-heroe::before { content: ''; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(180deg, rgba(15,23,42,.78) 0%, rgba(15,23,42,.35) 34%, rgba(15,23,42,0) 52%, rgba(15,23,42,0) 70%, rgba(15,23,42,.7) 100%); }
 .bq-heroe__txt { padding: 26px 20px 0; }
+/* gotas de agua que caen sobre el héroe (James 06-11) */
+.bq-gotas { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bq-gotas i { position: absolute; top: -40px; width: calc(16px * var(--t)); height: calc(24px * var(--t)); border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.35) 45%, rgba(37,99,235,.25) 100%);
+  box-shadow: 0 1px 3px rgba(15,23,42,.35); animation: bqGota linear infinite; }
+@keyframes bqGota { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: .95; } 85% { opacity: .9; } 100% { transform: translateY(110vh); opacity: 0; } }
+.bq-heroe__txt, .bq-heroe__pie { position: relative; z-index: 1; }
 .bq-rot { margin: 0 0 10px; font: 700 12px/1.2 'Roboto', sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #EA580C; }
 .bq-rot--claro { color: #F97316; }
 .bq-heroe h1 { margin: 0; font: 900 clamp(46px, 14.5vw, 96px)/.86 'Roboto', sans-serif; letter-spacing: -.035em; text-transform: uppercase; }
@@ -112,6 +119,15 @@ body.mx-p.p-boq {
 .bq-reloj { display: flex; gap: 8px; margin: 0 0 16px; }
 .bq-reloj span { flex: 1; text-align: center; padding: 10px 0; border-radius: 8px; background: #0F172A; color: #FFFFFF; font: 500 13px/1 'Roboto', sans-serif; }
 .bq-reloj b { font: 900 26px/1 'Roboto', sans-serif; margin-right: 2px; font-variant-numeric: tabular-nums; }
+/* pago anticipado bajo la promoción (James 06-11) */
+.bq-pre { margin-top: 22px; padding: 18px; border-radius: 14px; background: #FFFFFF; border: 2px dashed #2563EB; }
+.bq-pre__tit { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font: 800 19px/1.2 'Roboto', sans-serif; color: #0F172A; }
+.bq-pre__tit span { padding: 6px 10px; border-radius: 8px; background: #2563EB; color: #FFFFFF; font-weight: 900; }
+.bq-pre ul { margin: 0 0 14px; padding-left: 18px; font: 400 14.5px/1.5 'Roboto', sans-serif; color: #475569; }
+.bq-pre li b { color: #0F172A; }
+.bq-pre__pie { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.bq-pre__logos { display: flex; align-items: center; gap: 8px; }
+.bq-btn--chico { min-height: 44px; padding: 0 18px; font-size: 14px; }
 .bq-packs { display: block; width: 100%; height: auto; margin: 30px 0; border-radius: 12px; }
 
 .bq-faq { margin: 40px 0 10px; }
