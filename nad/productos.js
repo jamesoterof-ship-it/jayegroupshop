@@ -81,7 +81,7 @@ window.PAGINA = {
   },
   promoImg: 'img/nad-promo-2.webp?v=1',
   promoTitulo: 'Paquete de 2 cajas · el más pedido',
-  video: null,
+  video: 'img/nad-video.mp4', videoPoster: 'img/nad-video-poster.webp', videoAlt: 'Caja de NAD+ Zooone abierta con sus sobres',   /* 05-11: metraje real (TikTok), 15 s, sin audio ni textos */
   formula: {
     rotulo: 'Qué trae dentro', titulo: 'Cinco ingredientes en cada sobre.',
     sub: 'Lo que declara la caja: fórmula Cel+Blend de 1000 mg en sobres líquidos de 10 g.',
@@ -97,7 +97,7 @@ window.PAGINA = {
     titulo: '¿Por qué en sobre y no en cápsulas?', nos: 'Sobre líquido', otro: 'Cápsulas',
     filas: ['Se toma directo: no hay que tragar pastillas', 'Un sobre ya trae la porción: nada de contar', 'Cabe en la bolsa o en el bolsillo', '30 sobres por caja'],
   },
-  notaResenas: 'Opiniones reales de compradores del mismo producto, tal como las escribieron.',
+  notaResenas: 'Opiniones reales de compradores de NAD+ con resveratrol.',
   cambio: {
     rotulo: 'El cambio', titulo: 'Tus mañanas, otra vez',
     sub: 'La misma mañana, antes y después de sumar un sobre a la rutina.',
