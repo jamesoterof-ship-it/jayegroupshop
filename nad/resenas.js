@@ -10,7 +10,7 @@ window.RESENAS = [
   "pais": "MX",
   "verificada": true,
   "texto": "He probado muchísimos productos para la energía y la concentración, y este es el primero que de verdad cumplió. En una semana ya me sentía más despejada en las mañanas, sin bajones en la tarde, ¡y mi piel brilla!",
-  "foto": "img/rev/nad-r01.webp"
+  "foto": "img/rev/nad-r01.webp?v=2"
  },
  {
   "producto": "NAD+ Resveratrol Zooone",
@@ -20,7 +20,17 @@ window.RESENAS = [
   "pais": "MX",
   "verificada": true,
   "texto": "todo bien, tal cual como se describe. llevo 6 meses tomándolo.",
-  "foto": "img/rev/nad-r02.webp"
+  "foto": "img/rev/nad-r02.webp?v=2"
+ },
+ {
+  "producto": "NAD+ Resveratrol Zooone",
+  "nombre": "Daniela Vázquez",
+  "estrellas": 5,
+  "fecha": "2025-11-08",
+  "pais": "MX",
+  "verificada": true,
+  "texto": "ya van varias veces que lo pido estoy muy contenta porque se nota la diferencia lentamente pero segura",
+  "foto": "img/rev/nad-r03.webp?v=2"
  },
  {
   "producto": "NAD+ Resveratrol Zooone",
@@ -93,15 +103,6 @@ window.RESENAS = [
   "pais": "MX",
   "verificada": true,
   "texto": "Entrega muy rápida. Este suplemento de NAD es muy útil para aumentar la energía, mejorar la actividad y lograr una piel más saludable."
- },
- {
-  "producto": "NAD+ Resveratrol Zooone",
-  "nombre": "Daniela Vázquez",
-  "estrellas": 5,
-  "fecha": "2025-11-08",
-  "pais": "MX",
-  "verificada": true,
-  "texto": "ya van varias veces que lo pido estoy muy contenta porque se nota la diferencia lentamente pero segura"
  },
  {
   "producto": "NAD+ Resveratrol Zooone",

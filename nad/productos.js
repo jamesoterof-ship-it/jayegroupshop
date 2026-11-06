@@ -65,7 +65,7 @@ window.PAGINA = {
     lista: [
       ['img/nad-tarjeta-sobre.webp?v=1', '<b>Abre</b> un sobre en la mañana', 'Mano abriendo un sobre de NAD+ junto a un vaso de agua'],
       ['img/nad-tarjeta-escritorio.webp?v=1', '<b>Tómalo</b> directo o en tu vaso de agua', 'Caja y sobres en el escritorio junto a un café'],
-      ['img/nad-tarjeta-caminar.webp?v=1', '<b>Sigue</b> con tu día, sin cápsulas', 'Señor caminando en el parque con un sobre en la mano'],
+      ['img/nad-tarjeta-caminar.webp?v=2', '<b>Sigue</b> con tu día, sin cápsulas', 'Señor caminando en el parque con un sobre en la mano'],
     ],
   },
   quees: {
