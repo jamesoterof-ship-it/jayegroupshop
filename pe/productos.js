@@ -5,8 +5,8 @@
    Las fichas viven en /pe/<id>/ (cada una con su propio productos.js; aquí va lo que pinta la portada).
    ============================================================ */
 window.PRODUCTOS = [
-  /* 09-11 James ("Avanza"): Creatina en gomitas Beast Bites, Dropi Perú 9707.
-     Contra entrega 1 u. S/ 85 · 2 u. S/ 145 · 3 u. S/ 175 · con tarjeta −10 %: S/ 77 · S/ 131 · S/ 158 · tachado +40 %. */
+  /* 09-11 James ("Avanza"; 1 u. subida a S/ 87 por James el 09-11): Creatina en gomitas Beast Bites, Dropi Perú 9707.
+     Contra entrega 1 u. S/ 87 · 2 u. S/ 145 · 3 u. S/ 175 · con tarjeta −10 %: S/ 78 · S/ 131 · S/ 158 · tachado +40 %. */
   {
     id: 'creatina', dropiId: 9707,
     nombre: 'Creatina en Gomitas Beast Bites',
@@ -15,11 +15,11 @@ window.PRODUCTOS = [
     etiqueta: 'Nuevo en Perú',
     foto: 'pe/creatina/img/cr-frasco.webp?v=1',
     packs: [
-      { cant: 1, precio: 85, antes: 119, texto: '1 frasco' },
+      { cant: 1, precio: 87, antes: 122, texto: '1 frasco' },
       { cant: 2, precio: 145, antes: 203, texto: '2 frascos' },
       { cant: 3, precio: 175, antes: 245, texto: '3 frascos' },
     ],
-    anticipado: { pct: 10, precios: [77, 131, 158] },
+    anticipado: { pct: 10, precios: [78, 131, 158] },
   },
 ];
 
@@ -31,4 +31,4 @@ window.PREGUNTAS = [
 ];
 
 /* candado: si un precio no está aprobado por James, la portada no lo muestra. Perú: escalera de la creatina aprobada el 09-11. */
-window.PRECIOS_APROBADOS = [85, 145, 175, 77, 131, 158];
+window.PRECIOS_APROBADOS = [87, 145, 175, 78, 131, 158];

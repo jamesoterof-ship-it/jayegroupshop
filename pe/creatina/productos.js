@@ -6,8 +6,8 @@
    OJO: la descripción de Dropi habla de "Male Performance Gummies" (energía y desempeño masculino); la etiqueta dice creatina.
    La página habla SOLO de lo que dice la etiqueta, sin promesas médicas ni cifras de la etiqueta que no cuadran
    (dice "30 porciones con 5 g de creatina" en un frasco de 150 g: no se publica).
-   Escalera APROBADA por James el 09-11 ("Avanza"): contra entrega 1 u. S/ 85 · 2 u. S/ 145 · 3 u. S/ 175.
-   Pago anticipado con tarjeta −10 % (entrega prioritaria): S/ 77 · S/ 131 · S/ 158. Tachado = +40 % redondeado (como México).
+   Escalera APROBADA por James el 09-11 ("Avanza"; 1 u. subida a S/ 87 por James el 09-11): contra entrega 1 u. S/ 87 · 2 u. S/ 145 · 3 u. S/ 175.
+   Pago anticipado con tarjeta −10 % (entrega prioritaria): S/ 78 · S/ 131 · S/ 158. Tachado = +40 % redondeado (como México).
    ============================================================ */
 window.PRODUCTOS = [{
   id: 'creatina', unidad: 'frasco',
@@ -18,7 +18,7 @@ window.PRODUCTOS = [{
   etiqueta: 'Nuevo en Perú',
   foto: 'img/cr-frasco.webp?v=1',
   packs: [
-    { cant: 1, precio: 85, antes: 119, texto: '1 frasco', nivel: 'Nivel 1 · Empieza' },
+    { cant: 1, precio: 87, antes: 122, texto: '1 frasco', nivel: 'Nivel 1 · Empieza' },
     { cant: 2, precio: 145, antes: 203, texto: '2 frascos', nivel: 'Nivel 2 · Constante' },
     { cant: 3, precio: 175, antes: 245, texto: '3 frascos', nivel: 'Nivel 3 · Bestia' },
   ],
@@ -27,11 +27,11 @@ window.PRODUCTOS = [{
     pct: 10,
     titulo: 'Paga ahora con tarjeta',
     envio: 'Entrega prioritaria: sale primero',
-    precios: [77, 131, 158],
+    precios: [78, 131, 158],
   },
 }];
 /* Candado: solo la escalera aprobada por James el 09-11 */
-window.PRECIOS_APROBADOS = [85, 145, 175, 77, 131, 158];
+window.PRECIOS_APROBADOS = [87, 145, 175, 78, 131, 158];
 
 /* Textos de la página (los pinta creatina.js con el plano del script "creatina-peru"). */
 window.PAGINA = {
