@@ -9,8 +9,8 @@ window.PRODUCTOS = [];
 
 /* preguntas de despacho y pago, iguales para todos */
 window.PREGUNTAS = [
-  { q: '¿Cuánto tarda en llegar?', a: 'Depende de tu distrito: en Lima llega antes y a provincias toma unos días más. Te enviamos la guía por WhatsApp.' },
-  { q: '¿Puedo pagar contra entrega?', a: 'Sí. Pagas cuando te llegue el pedido.' },
+  { q: '¿Cuánto tarda en llegar?', a: 'Normalmente entre 2 y 5 días hábiles, según tu ciudad.' },
+  { q: '¿Puedo pagar contra entrega?', a: 'Sí. Pagas en efectivo cuando te llegue el pedido.' },
   { q: '¿El envío tiene costo?', a: 'No. El envío a todo el Perú ya está incluido en el precio.' },
 ];
 
