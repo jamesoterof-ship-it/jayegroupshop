@@ -35,10 +35,11 @@
   var H = P.heroe, html = [];
 
   /* 1 · HÉROE: texto arriba en su bloque, foto del producto entera abajo, franja de datos */
-  html.push('<section class="rd-heroe" aria-labelledby="rdTit"><div class="rd-heroe__txt">' + rot(H.rotulo)
-    + '<h1 id="rdTit"><span>' + esc(H.l1) + '</span><span>' + esc(H.l2) + ' <b id="rdClave">' + esc(H.clave) + '</b></span></h1>'
-    + '<p class="rd-heroe__frase">' + esc(H.frase) + '</p></div>'
-    + '<img class="rd-heroe__foto" src="' + esc(H.img) + '" alt="' + esc(H.alt) + '" width="900" height="972" fetchpriority="high">'
+  html.push('<section class="rd-heroe" aria-labelledby="rdTit"><div class="rd-heroe__marco">'
+    + '<img class="rd-heroe__foto" src="' + esc(H.img) + '" alt="' + esc(H.alt) + '" width="1024" height="1536" fetchpriority="high">'
+    + '<div class="rd-heroe__txt">' + rot(H.rotulo)
+    + '<h1 id="rdTit"><span>' + esc(H.l1) + '</span><span>' + esc(H.l2) + ' <b id="rdClave">' + esc(H.clave) + '</b></span></h1></div></div>'
+    + '<p class="rd-heroe__frase" style="margin:0;padding:16px 20px;background:#FFFFFF">' + esc(H.frase) + '</p>'
     + '<ul class="rd-datos">' + H.datos.map(function (d) { return '<li><b>' + esc(d[0]) + '</b><span>' + esc(d[1]) + '</span></li>'; }).join('') + '</ul></section>');
 
   /* 2 · FICHA DE COMPRA */

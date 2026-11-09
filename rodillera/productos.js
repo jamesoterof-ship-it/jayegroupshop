@@ -50,7 +50,7 @@ window.PRECIOS_APROBADOS = [899, 1299, 1649, 809, 1169, 1484];
 /* Textos de la página v2 (08-11): orden de secciones del ORGANIZADOR de Chile, cada sección con su foto grande. */
 window.PAGINA = {
   heroe: {
-    img: 'img/rod-heroe2.webp?v=1', alt: 'Par de rodilleras negras con resortes de acero sobre un escalón de madera',
+    img: 'img/rod-heroe3.webp?v=1', alt: 'Par de rodilleras negras con resortes de acero sobre un escalón de madera',
     rotulo: 'Rodillera con resortes · el par',
     l1: 'Tu rodilla,', l2: 'con', clave: 'impulso.',
     frase: 'Resortes de acero que acompañan a tu rodilla al subir escaleras, agacharte y levantarte.',
