@@ -38,8 +38,8 @@ window.PRODUCTOS = [{
   popular: 1,
   anticipado: {
     pct: 10,
-    envio: 'Entrega prioritaria: tu pedido sale primero',
-    titulo: 'Paga ahora con tarjeta',
+    envio: 'Entrega prioritaria: sale primero',
+    titulo: 'Paga ahora',
     sub: 'Con entrega prioritaria, sin costo. Se paga con tarjeta de débito o crédito o con PayPal.',
     precios: [809, 1169, 1484],
   },
