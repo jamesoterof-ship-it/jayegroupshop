@@ -251,13 +251,17 @@ body.mx-p { background: var(--mx-bg); color: var(--mx-fg); font-family: var(--mx
 .mx-p #pedir .pack .w { font-size: 12.5px; color: var(--mx-muted-fg); text-decoration: line-through; }
 .mx-p #pedir .pack .tag, .mx-p #pedir .pagoOp__cinta { position: absolute; top: -11px; right: 14px; padding: 5px 9px; border-radius: 99px; background: var(--mx-p); color: var(--mx-on-p); font: 800 10.5px/1 var(--mx-txt); letter-spacing: .04em; text-transform: uppercase; }
 .mx-p #pedir .pagoOp__cinta { background: var(--mx-a); color: var(--mx-on-a); }
-.mx-p #pedir .pagoOp { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 12px; align-items: center; }
-.mx-p #pedir .pagoOp__ico { grid-row: span 2; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 46% 54% 50% 50%; background: var(--mx-bg); }
-.mx-p #pedir .pagoOp__ico svg { width: 22px; height: 22px; fill: none; stroke: var(--mx-p); stroke-width: 1.8; }
-.mx-p #pedir .pagoOp__tit { font: 700 14.5px/1.25 var(--mx-tit); }
-.mx-p #pedir .pagoOp__pr { grid-row: span 2; font: 800 21px/1 var(--mx-tit); }
-.mx-p #pedir .pagoOp__sub { font-size: 12.5px; color: var(--mx-muted-fg); }
-.mx-p #pedir .pagoOp__logos { grid-column: 2 / -1; } .mx-p #pedir .pagoOp__logos img { height: 16px; width: auto; }
+/* 08-11 James ("el pago anticipado no es así, por eso la gente no lo coge, revisa los de España… revisa todas las páginas de
+   México y ponlas así igual"): Pago al recibir y Paga ahora LADO A LADO, del mismo tamaño y con el precio grande, como en España. */
+.mx-p #pedir .pagoSel { grid-template-columns: 1fr 1fr; }
+.mx-p #pedir .pagoOp { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 16px 12px 14px; }
+.mx-p #pedir .pagoOp__ico { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 46% 54% 50% 50%; background: var(--mx-bg); }
+.mx-p #pedir .pagoOp__ico svg { width: 20px; height: 20px; fill: none; stroke: var(--mx-p); stroke-width: 1.8; }
+.mx-p #pedir .pagoOp__tit { font: 800 15px/1.2 var(--mx-tit); }
+.mx-p #pedir .pagoOp__pr { font: 800 26px/1 var(--mx-tit); color: var(--mx-fg); }
+.mx-p #pedir .pagoOp__sub { font-size: 12.5px; line-height: 1.35; color: var(--mx-muted-fg); }
+.mx-p #pedir .pagoOp__cinta { right: 10px; font-size: 12px; }
+.mx-p #pedir .pagoOp__logos { margin-top: 2px !important; } .mx-p #pedir .pagoOp__logos img { height: 16px; width: auto; }
 .mx-p #pedir .summary { margin: 16px 0; padding: 12px 14px; border-radius: 16px; background: var(--mx-bg); font-size: 14.5px; }
 .mx-p #pedir .summary .r { display: flex; justify-content: space-between; gap: 10px; padding: 4px 0; }
 .mx-p #pedir .summary .free, .mx-p #pedir .summary .desc { color: var(--mx-p); font-weight: 700; }
