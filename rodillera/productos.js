@@ -19,7 +19,7 @@ window.PRODUCTOS = [{
   etiquetaOro: true,
   foto: 'img/rod-packs.webp?v=1',
   fotos: ['img/rod-packs.webp?v=1', 'img/rod-heroe.webp?v=1', 'img/rod-escaleras.webp?v=1'],
-  acento: '#16A34A',   /* Accent/CTA del plano #125 Azul clínico, aprobado por James el 07-11 */
+  acento: '#16A34A',   /* Accent/CTA del plano Azul clínico, aprobado por James el 07-11 */
   desc: 'Par de rodilleras de neopreno con bisagra de resortes de acero. Los resortes acompañan a tu rodilla cuando subes escaleras, te agachas o te levantas de la silla.',
   puntos: [
     'Viene el par: una rodillera para cada pierna',
@@ -47,44 +47,40 @@ window.PRODUCTOS = [{
 /* Candado: solo la escalera aprobada por James el 07-11 */
 window.PRECIOS_APROBADOS = [899, 1299, 1649, 809, 1169, 1484];
 
-/* Textos de la página (plano #125 Azul clínico: Hero + Testimonials + CTA, en el orden de secciones de las páginas que venden) */
+/* Textos de la página v2 (08-11): orden de secciones del ORGANIZADOR de Chile, cada sección con su foto grande. */
 window.PAGINA = {
   heroe: {
-    img: 'img/rod-heroe.webp?v=1', alt: 'Par de rodilleras negras con resortes de acero en la bisagra',
-    rotulo: 'Nuevo en México · Salud y bienestar',
-    l1: 'Tu rodilla,', l2: 'con', clave: 'impulso',
+    img: 'img/rod-heroe2.webp?v=1', alt: 'Par de rodilleras negras con resortes de acero sobre un escalón de madera',
+    rotulo: 'Rodillera con resortes · el par',
+    l1: 'Tu rodilla,', l2: 'con', clave: 'impulso.',
     frase: 'Resortes de acero que acompañan a tu rodilla al subir escaleras, agacharte y levantarte.',
-    datos: [['Par', 'una para cada rodilla'], ['Velcro', 'se ajusta sobre el pantalón'], ['$0', 'envío a todo México']],
+    datos: [['Par', 'dos rodilleras'], ['Acero', 'resortes'], ['Velcro', 'ajustable']],
   },
-  usos: ['subir escaleras', 'levantarte de la silla', 'agacharte en el trabajo', 'caminar con confianza'],
-  problema: {
-    rotulo: 'El problema', titulo: '¿Te cuesta subir las escaleras?',
-    texto: 'Cuando la rodilla molesta, cada escalón, cada vez que te agachas y cada vez que te levantas de la silla se vuelve un esfuerzo.',
-    img: 'img/rod-antes-despues.webp?v=1', alt: 'Antes: señora con dolor de rodilla en la escalera. Después: la misma señora subiendo con la rodillera puesta',
-  },
-  solucion: {
-    rotulo: 'La solución', titulo: 'Resortes que trabajan contigo',
-    texto: 'La rodillera abraza la pierna arriba y abajo de la rodilla con dos correas de velcro. En el costado lleva una bisagra con resortes de acero: al doblar la pierna se cargan y al estirarla te devuelven ese impulso.',
-    tarjetas: [
-      ['img/rod-escaleras.webp?v=1', 'Al subir escaleras', 'El resorte acompaña a la rodilla en cada escalón.', 'Señor subiendo la escalera de su casa con la rodillera puesta'],
-      ['img/rod-sillon.webp?v=1', 'Al levantarte', 'Te ayuda a pararte del sillón o de la silla.', 'Señora levantándose del sillón con la rodillera puesta'],
-      ['img/rod-trabajo.webp?v=1', 'Al agacharte', 'Para el trabajo, la bodega o el jardín.', 'Trabajador agachándose a levantar una caja con rodilleras en las dos piernas'],
-    ],
-  },
-  video: '', videoPoster: '', videoAlt: '',   /* 08-11: falta el video real de la rodillera negra (sin marca de agua) */
-  partes: [
+  hace: { rotulo: 'Lo que hace por ti', lista: [['1', 'Subir y bajar escaleras con más confianza'], ['2', 'Levantarte de la silla o del sillón'], ['3', 'Agacharte en la casa, el trabajo o el jardín']] },
+  video: { rotulo: 'Así se pone', titulo: 'Mírala de cerca', texto: 'La bisagra con sus resortes de acero, cómo se coloca en la rodilla y cómo se cierran las correas.',
+    src: 'img/rod-video.mp4?v=1', poster: 'img/rod-video-poster.webp?v=1', alt: 'Video: la rodillera negra con resortes en las manos y puesta en la rodilla' },
+  producto: { rotulo: 'El producto', titulo: 'Qué es y para qué sirve', img: 'img/rod-heroe.webp?v=1', alt: 'Par de rodilleras negras con resortes de acero',
+    texto: 'Es un <b>par de rodilleras</b> de neopreno negro con una bisagra al costado de la rodilla. Esa bisagra lleva <b>resortes de acero</b>: cuando doblas la pierna se cargan y cuando la estiras acompañan el movimiento. Por eso se siente el apoyo al <b>subir escaleras, levantarte y agacharte</b>.' },
+  resortes: { rotulo: 'Cómo funciona', titulo: 'Resortes de acero en la bisagra', img: 'img/rod-resortes.webp?v=1', alt: 'Bisagra lateral de la rodillera con resortes de acero, de cerca',
+    texto: 'Los resortes van en una <b>bisagra lateral</b>, al costado de la rodilla, donde la pierna se dobla. No van sobre la rótula: la rodilla queda libre en el centro y la bisagra trabaja contigo en cada paso.' },
+  sePone: { rotulo: 'Cómo se pone', titulo: 'Centrada en la rodilla, en un minuto', img: 'img/rod-se-pone.webp?v=1', alt: 'Rodillera negra con resortes bien puesta sobre el jean, centrada en la rodilla',
+    pasos: ['<b>Centra</b> la rodillera en la rodilla, con la bisagra al costado.', '<b>Cierra</b> la correa de arriba en el muslo y la de abajo en la pantorrilla.', '<b>Ajusta</b> el velcro a tu medida. Se puede usar sobre el pantalón.'] },
+  hecha: { rotulo: 'De qué está hecha', titulo: 'Hecha para el uso de todos los días', lista: [
     ['Resortes de acero', 'En la bisagra lateral: se cargan al doblar la pierna y empujan al estirarla.'],
     ['Neopreno', 'Abraza la pierna arriba y abajo de la rodilla.'],
-    ['Dos correas de velcro', 'Ajustas la rodillera a tu medida, sobre el pantalón.'],
-    ['Viene el par', 'Una rodillera para cada pierna.'],
-  ],
-  promoImg: 'img/rod-promo.webp?v=1',
-  promoTitulo: 'Paquete de 2 pares · el más pedido',
-  compara: {
-    titulo: 'Con rodillera de resortes o sin ella', nos: 'Con resortes', otro: 'Sin rodillera',
-    filas: ['Impulso al estirar la pierna', 'Apoyo a los lados de la rodilla', 'Se ajusta con velcro sobre la ropa', 'Para las dos rodillas'],
-  },
-  packsImg: 'img/rod-packs.webp?v=1',
+    ['Dos correas de velcro', 'Ajustas la rodillera a tu medida, también sobre la ropa.'],
+    ['Viene el par', 'Una rodillera para cada pierna.'] ] },
+  promoImg: 'img/rod-promo.webp?v=1', packsImg: 'img/rod-packs.webp?v=1',
+  promoTitulo: '2 pares · el paquete más pedido',
+  dia: { rotulo: 'Para tu día a día', titulo: 'Donde la rodilla más se siente', escenas: [
+    ['img/rod-caminando.webp?v=1', 'Al caminar', 'En la calle, en el mercado o en el parque.', 'Señor mayor caminando por la calle con la rodillera puesta'],
+    ['img/rod-escaleras.webp?v=1', 'Al subir escaleras', 'El resorte acompaña a la rodilla en cada escalón.', 'Señor subiendo la escalera de su casa con la rodillera puesta'],
+    ['img/rod-sillon.webp?v=1', 'Al levantarte', 'Del sillón, de la silla o de la cama.', 'Señora levantándose del sillón con la rodillera puesta'],
+    ['img/rod-trabajo.webp?v=1', 'Al agacharte', 'En el trabajo, la bodega o el jardín.', 'Trabajador agachándose a levantar una caja con rodilleras en las dos piernas'] ] },
+  compara: { titulo: 'Con rodillera de resortes o sin ella', nos: 'Con resortes', otro: 'Sin rodillera',
+    filas: ['Impulso al estirar la pierna', 'Apoyo a los lados de la rodilla', 'Se ajusta con velcro sobre la ropa', 'Para las dos rodillas'] },
+  cambio: { rotulo: 'El cambio', titulo: 'El antes y después que se nota', texto: 'La misma persona, la misma escalera: sin rodillera y con la rodillera de resortes puesta.',
+    img: 'img/rod-antes-despues.webp?v=1', alt: 'Antes: señora con dolor de rodilla en la escalera. Después: la misma señora subiendo con la rodillera puesta' },
   preguntas: [
     ['¿Qué es?', 'Un par de rodilleras de neopreno con una bisagra lateral de resortes de acero que acompañan el movimiento de la rodilla.'],
     ['¿Cuántas vienen?', 'Viene el par: dos rodilleras, una para cada pierna.'],
@@ -95,4 +91,10 @@ window.PAGINA = {
     ['¿A dónde envían y cuánto tarda?', 'A todo México, sin costo de envío. Entre 2 y 5 días hábiles según tu ciudad.'],
     ['¿Tiene garantía?', 'Sí: 30 días de garantía de satisfacción. Si no quedas conforme, te devolvemos tu dinero.'],
   ],
+  porque: { rotulo: 'Por qué la quieres', titulo: 'Rodillera con resortes, el par', lista: [
+    'Resortes de acero que acompañan a la rodilla al estirar la pierna',
+    'Ayuda al subir escaleras, levantarte y agacharte',
+    'Neopreno con velcro: se ajusta a tu medida y sobre la ropa',
+    'Viene el par: una para cada rodilla',
+    'Envío gratis a todo México y pagas cuando la recibes'] },
 };
