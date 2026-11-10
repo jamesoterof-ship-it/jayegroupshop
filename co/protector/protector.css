@@ -67,6 +67,54 @@
 .pr-pre:hover{background:rgba(245,158,11,.2)}
 .pr-pre b{font-size:18px}
 .pr-pre span{font-size:14px}
+/* ---------- EFECTOS DE NAVIDAD (James 10-11: "ponle efecto al hero y a los botones, no la hagas tan sencilla")
+   Del script: Aurora UI (ya puesta) + Motion-Driven (movimiento continuo, transform, reduced-motion)
+   + Kinetic Typography (texto con degradado que corre, background-clip:text). ---------- */
+.pr-heroe__foto{position:relative;overflow:hidden}
+.pr-heroe__foto::after,.pr-nieve{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.95) 0 2px,rgba(255,255,255,0) 3px),
+    radial-gradient(circle at 70% 60%,rgba(255,255,255,.8) 0 3px,rgba(255,255,255,0) 4px),
+    radial-gradient(circle at 45% 40%,rgba(255,255,255,.7) 0 1.5px,rgba(255,255,255,0) 2.5px);
+  background-size:90px 90px,140px 140px,200px 200px;
+  animation:nieve 10s linear infinite}
+.pr-nieve{z-index:-1}
+@keyframes nieve{from{background-position:0 0,0 0,0 0}to{background-position:90px 360px,-140px 280px,0 200px}}
+.pr-heroe__txt{padding-top:42px}
+.pr-luces{position:absolute;top:0;left:0;right:0;height:30px;display:flex;justify-content:space-around;pointer-events:none;
+  border-top:2px solid rgba(15,23,42,.6);z-index:1}
+.pr-luces i{width:10px;height:15px;margin-top:4px;border-radius:50% 50% 45% 45%;color:var(--rojo);background:currentColor;
+  box-shadow:0 0 10px 2px currentColor;animation:titila 1.4s ease-in-out infinite alternate}
+.pr-luces i:nth-child(4n+2){color:var(--oro2);animation-delay:.35s}
+.pr-luces i:nth-child(4n+3){color:var(--blanco);animation-delay:.7s}
+.pr-luces i:nth-child(4n){color:var(--verde);animation-delay:1.05s;box-shadow:0 0 10px 2px var(--oro2)}
+@keyframes titila{from{opacity:.35;transform:scale(.85)}to{opacity:1;transform:scale(1.05)}}
+.pr-h1 em{background:linear-gradient(90deg,var(--oro2) 0%,var(--oro2) 35%,var(--blanco) 50%,var(--oro2) 65%,var(--dorado) 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 10px rgba(245,158,11,.45));animation:brilloTxt 3.2s linear infinite}
+@keyframes brilloTxt{from{background-position:120% 0}to{background-position:-120% 0}}
+.pr-datos b{text-shadow:0 0 14px rgba(245,158,11,.55)}
+/* botones: rayas de bastón de caramelo que corren, destello que cruza y latido suave */
+.pr-btn:not(.pr-btn--sec){position:relative;overflow:hidden;isolation:isolate;border-bottom:3px solid var(--dorado);
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.13) 0 12px,rgba(255,255,255,0) 12px 24px) 0 0/34px 34px,var(--rojo);
+  animation:caramelo 1.6s linear infinite,late 2.4s ease-in-out infinite}
+.pr-btn:not(.pr-btn--sec)::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;z-index:-1;
+  background:linear-gradient(110deg,rgba(255,255,255,0),rgba(255,255,255,.6),rgba(255,255,255,0));
+  transform:skewX(-20deg);animation:destello 3.2s ease-in-out infinite}
+@keyframes caramelo{to{background-position:34px 0,0 0}}
+@keyframes late{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.55),var(--shadow-md)}60%{box-shadow:0 0 0 12px rgba(220,38,38,0),var(--shadow-md)}}
+@keyframes destello{0%,55%{left:-60%}100%{left:130%}}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+.pr-pre{border-color:transparent;
+  background:linear-gradient(rgba(22,101,52,.92),rgba(22,101,52,.92)) padding-box,
+    conic-gradient(from var(--ang),var(--oro2),var(--blanco),var(--dorado),var(--rojo),var(--oro2)) border-box;
+  box-shadow:0 0 18px rgba(245,158,11,.35);animation:giro 4s linear infinite}
+.pr-pre:hover{background:linear-gradient(rgba(21,128,61,.95),rgba(21,128,61,.95)) padding-box,
+    conic-gradient(from var(--ang),var(--oro2),var(--blanco),var(--dorado),var(--rojo),var(--oro2)) border-box}
+@keyframes giro{to{--ang:360deg}}
+@media (prefers-reduced-motion:reduce){
+  .pr-heroe__foto::after,.pr-nieve,.pr-luces i,.pr-h1 em,.pr-btn,.pr-btn::after,.pr-pre{animation:none!important}
+}
 @media (min-width:900px){
   .pr-heroe{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr}
   .pr-heroe__foto{grid-row:1 / 3}
