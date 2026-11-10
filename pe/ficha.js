@@ -191,7 +191,21 @@
     selT.innerHTML = '<option value="">' + (l.length ? 'Elige tu distrito' : 'Primero elige tu departamento') + '</option>'
       + l.map(function (d) { return '<option value="' + esc(d) + '">' + esc(d) + '</option>'; }).join('');
     selT.disabled = !l.length;
+    revisarCod();
   });
+  /* 10-11 James: contra entrega SOLO en los distritos de la planilla de cobertura de Dropi (window.codPE en departamentos-pe.js).
+     Fuera de ella el pago al recibir se apaga y queda el pago con tarjeta: así no entran pedidos que Dropi no puede despachar (#9173 Tacna). */
+  var codOk = function () { return !window.codPE || window.codPE(g('fDepto'), g('fDist')); };
+  function revisarCod() {
+    var bCod = caja.querySelector('.pf-pago[data-pago="cod"]'), bPre = caja.querySelector('.pf-pago[data-pago="pre"]');
+    var ok = codOk();
+    if (bCod) { bCod.disabled = !ok; bCod.style.opacity = ok ? '' : '.45'; }
+    if (!ok) {
+      if (formaPago === 'cod' && bPre) bPre.click();
+      aviso('En tu distrito el courier todavía no cobra al entregar. Tu pedido sale con pago con tarjeta (' + (pre ? pre.pct + ' % menos y ' : '') + 'entrega prioritaria).', true);
+    } else if ($('fErr').textContent.indexOf('cobra al entregar') >= 0) $('fErr').style.display = 'none';
+  }
+  selT.addEventListener('change', revisarCod);
 
   /* celular: solo números mientras escribe */
   $('fTel').addEventListener('input', function () { this.value = this.value.replace(/\D/g, '').slice(0, 11); });
@@ -264,6 +278,7 @@
       var primero = $(mal[0]); if (primero) { primero.focus(); primero.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
       return;
     }
+    if (formaPago === 'cod' && !codOk()) { revisarCod(); return; }
     $('fErr').style.display = 'none';
     var k = p.packs[elegido], total = precioAhora(elegido);
     var btn = $('btnPedir'); btn.disabled = true; btn.textContent = 'Enviando…'; enviando = true;
