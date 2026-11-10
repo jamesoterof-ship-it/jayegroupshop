@@ -200,6 +200,29 @@
     if (t.length === 11 && t.indexOf('51') === 0) t = t.slice(2);
     return t;
   };
+
+  /* ---------- carrito abandonado (10-11 James) ----------
+     Apenas hay un celular peruano completo (9 dígitos), los datos van a n8n abandonado-pe (fin_abandonados, +51).
+     El mismo sid actualiza la misma fila. Si compra, ya no se manda (y el flujo de recuperación no le escribe a quien compró). */
+  var SID_AB = 'PE' + Date.now() + Math.floor(Math.random() * 1e6), ultimoAb = '', compro = false;
+  function abandonado() {
+    if (compro || !/^9\d{8}$/.test(celular())) return;
+    var k = p.packs[elegido];
+    var d = { sid: SID_AB, telefono: celular(), indicativo: '+51', nombre: g('fNombre'), producto: p.nombre, cantidad: String(k.cant), total: String(precioAhora(elegido)),
+      forma_pago: formaPago, direccion: g('fDir'), referencia: g('fRef'), distrito: g('fDist'), departamento: g('fDepto'), correo: g('fCorreo'),
+      pagina: p.id + '-pe', cmp: window._CMP || '', fecha: new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' }), estado: 'INCOMPLETO' };
+    var firma = JSON.stringify(d).replace(/"fecha":"[^"]*"/, '');
+    if (firma === ultimoAb) return; ultimoAb = firma;
+    var cuerpo = JSON.stringify(d);
+    try {
+      fetch(N8N + 'abandonado-pe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: cuerpo, keepalive: true })
+        .catch(function () { try { if (navigator.sendBeacon) navigator.sendBeacon(N8N + 'abandonado-pe', new Blob([cuerpo], { type: 'text/plain' })); } catch (e) {} });
+    } catch (e) {}
+  }
+  var tAb;
+  $('fTel').addEventListener('input', function () { clearTimeout(tAb); tAb = setTimeout(abandonado, 1200); });
+  ['fNombre', 'fTel', 'fDepto', 'fDist', 'fDir', 'fRef', 'fCorreo'].forEach(function (k) { $(k).addEventListener('change', abandonado); });
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') abandonado(); });
   function validar() {
     var mal = [];
     var nom = g('fNombre');
@@ -252,6 +275,7 @@
     mandar(pedido, 1).then(function (r) {
       if (!r || !r.ok) { rechazado(r); return; }
       window._ventaId = String(r.venta_id || r.id || '');
+      compro = true;
       try { localStorage.removeItem('jaye_pe_pendiente'); } catch (e) {}
       track('Purchase', { value: total, currency: 'PEN', content_name: p.nombre, content_ids: [p.id], content_type: 'product', num_items: k.cant }, pedido.event_id);
       if (formaPago === 'pre') pantallaPago(g('fNombre').split(' ')[0], total, false);
@@ -292,15 +316,21 @@
   }
 
   /* ---------- pago con tarjeta (PayPal) ---------- */
-  function pantallaPago(nom, monto, desdeEnlace) {
+  function pantallaPago(nom, monto, desdeEnlace, info) {
     var sandbox = /[?&]pp=sandbox\b/.test(location.search);
+    var anticipo = !!(info && info.modo === 'anticipo');
     var cliente = sandbox ? 'ARl0OqVJgvzKnXBi88HHPnsANVy6psflN_yB0V-EeewfUrAWn1o7C0AVx4Ey0006osewp5ryNr9OSOEX'
                           : 'BAAc9NmbkqAJ4xLXd_DH4VoURfOABXorMuqMMJoN1M3ron-JlSCnQiaHq3kzTXWZIhuXRYVzPF59hmYx30';
     var waPago = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola, quiero pagar con tarjeta mi pedido #' + (window._ventaId || '') + ' de ' + p.nombre);
-    caja.innerHTML = '<div class="pf pf-listo"><h3>Último paso: paga tu pedido</h3>'
-      + '<p>Gracias' + (nom ? ', ' + esc(nom) : '') + '. Paga con tarjeta de forma segura y tu pedido sale con entrega prioritaria.</p>'
-      + '<p class="pf-total">Total: ' + soles(monto) + '</p>'
-      + '<p class="pf-usd">PayPal cobra en dólares al tipo de cambio del día: antes de confirmar ves el monto exacto en USD. Puedes pagar con tarjeta de crédito o débito sin crear cuenta.</p>'
+    caja.innerHTML = (anticipo
+      ? '<div class="pf pf-listo"><h3>Paga tu anticipo y tu pedido sale hoy</h3>'
+        + '<p>Hola' + (nom ? ' ' + esc(nom) : '') + '. Para despachar tu pedido #' + esc(info.id) + ' la transportadora pide un anticipo de USD 5, que se descuenta del total.</p>'
+        + '<p class="pf-total">Anticipo: USD 5.00</p>'
+        + '<p class="pf-usd">Al recibir pagas solo ' + soles(info.resto) + ' en efectivo. Puedes pagar con tarjeta de crédito o débito sin crear cuenta.</p>'
+      : '<div class="pf pf-listo"><h3>Último paso: paga tu pedido</h3>'
+        + '<p>Gracias' + (nom ? ', ' + esc(nom) : '') + '. Paga con tarjeta de forma segura y tu pedido sale con entrega prioritaria.</p>'
+        + '<p class="pf-total">Total: ' + soles(monto) + '</p>'
+        + '<p class="pf-usd">PayPal cobra en dólares al tipo de cambio del día: antes de confirmar ves el monto exacto en USD. Puedes pagar con tarjeta de crédito o débito sin crear cuenta.</p>')
       + '<div id="ppBotones"><p class="pf-nota">Cargando el pago seguro…</p></div>'
       + '<p id="ppEstado" role="status" aria-live="polite" class="pf-nota"></p>'
       + '<div id="ppRespaldo" hidden><a class="cr-btn" href="' + waPago + '" target="_blank" rel="noopener">Pedir el enlace de pago por WhatsApp</a></div></div>';
@@ -325,7 +355,8 @@
           return post('paypal-captura-pe', { venta_id: window._ventaId, order_id: data.orderID, modo: sandbox ? 'sandbox' : 'live' }).then(function (j) {
             if (!j || !j.ok) throw new Error((j && j.motivo) || 'no completado');
             caja.innerHTML = '<div class="pf pf-listo"><h3>¡Pago recibido!</h3><p>Gracias' + (nom ? ', ' + esc(nom) : '')
-              + '. Tu pedido está pagado y sale con entrega prioritaria. Te escribimos por WhatsApp cuando vaya en camino.</p></div>';
+              + (anticipo ? '. Recibimos tu anticipo y tu pedido sale de inmediato. Al recibir pagas ' + soles(info.resto) + '. Te escribimos por WhatsApp cuando vaya en camino.</p></div>'
+                          : '. Tu pedido está pagado y sale con entrega prioritaria. Te escribimos por WhatsApp cuando vaya en camino.</p></div>');
             caja.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }).catch(function () { msg('No pudimos confirmar el pago. Si se te cobró, escríbenos por WhatsApp y lo revisamos al momento.'); respaldo(); });
         },
@@ -354,7 +385,7 @@
       if (j && j.ok && j.pagado) return fin('¡Pago recibido!', 'Este pedido ya está pagado. Te escribimos por WhatsApp cuando vaya en camino.');
       if (!j || !j.ok || !j.id) return fin('Este enlace de pago no está disponible', 'Escríbenos por WhatsApp y te ayudamos con tu pedido.');
       window._ventaId = String(j.id);
-      pantallaPago(j.nombre1 || '', Number(j.monto || j.total), true);
+      pantallaPago(j.nombre1 || '', Number(j.monto || j.total), true, j);
     }).catch(function () { fin('Este enlace de pago no está disponible', 'Revisa tu conexión o escríbenos por WhatsApp.'); });
   })();
 
