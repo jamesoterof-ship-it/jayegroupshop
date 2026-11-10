@@ -118,10 +118,14 @@
   fijo.querySelector('button').addEventListener('click', function () { bajarA(caja); });
   document.body.appendChild(fijo);
   var pendiente = false;
+  var pie = document.querySelector('footer.pie');
   function revisarFijo() {
     var r = caja ? caja.getBoundingClientRect() : null;
     var enForm = r && r.top < innerHeight && r.bottom > 0;
-    fijo.classList.toggle('ver', (window.scrollY || 0) > 500 && !enForm);
+    /* 10-11 James: tampoco se muestra encima del pie de página (tapaba el logo y los medios de pago) */
+    var p = pie ? pie.getBoundingClientRect() : null;
+    var enPie = p && p.top < innerHeight;
+    fijo.classList.toggle('ver', (window.scrollY || 0) > 500 && !enForm && !enPie);
     pendiente = false;
   }
   window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; requestAnimationFrame(revisarFijo); } }, { passive: true });
