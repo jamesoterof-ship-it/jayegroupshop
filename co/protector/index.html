@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/tienda.css?v=2">
-<link rel="stylesheet" href="protector.css?v=1">
+<link rel="stylesheet" href="protector.css?v=2">
 <script>
 (function(){var d=document.documentElement;
  var ok=function(){d.classList.add("fuentesListas")};
@@ -39,16 +39,25 @@ window.fbq = window.fbq || function () {};
     window._pixelCO = true;
   }
 })();
-/* el event_id viaja con el pedido para la API de conversiones (flujo pedido-tienda-co) */
-window.pixelCO = {
-  id: function () { return 'co.' + Date.now().toString(36) + '.' + Math.random().toString(36).slice(2, 10); },
-  track: function (ev, datos, idFijo) {
-    var e = idFijo || window.pixelCO.id();
-    try { if (window._pixelCO) window.fbq('track', ev, datos || {}, { eventID: e }); } catch (x) {}
-    return e;
+/* event_id, _fbp y _fbc viajan con el pedido (el flujo pedido-tienda-co los guarda para la API de conversiones); igual que Perú */
+window.jayePixel = (function () {
+  function galleta(n) { try { var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; } catch (e) { return ''; } }
+  function nuevoId() { return 'jg.' + Date.now().toString(36) + '.' + Math.random().toString(36).slice(2, 10); }
+  function fbc() {
+    var c = galleta('_fbc'); if (c) return c;
+    try { var q = new URLSearchParams(location.search).get('fbclid'); if (q) return 'fb.1.' + Date.now() + '.' + q; } catch (e) {}
+    return '';
   }
-};
-window.pixelCO.track('PageView', {});
+  return {
+    id: nuevoId, fbp: function () { return galleta('_fbp'); }, fbc: fbc,
+    track: function (ev, obj, idFijo) {
+      var e = idFijo || nuevoId();
+      try { if (window._pixelCO) window.fbq('track', ev, obj || {}, { eventID: e }); } catch (x) {}
+      return e;
+    },
+  };
+})();
+window.jayePixel.track('PageView', {});
 </script>
 </head>
 <body class="pr-co">
@@ -84,7 +93,7 @@ window.pixelCO.track('PageView', {});
     <div class="pr-aurora" aria-hidden="true"></div>
     <div class="pr-heroe__in">
       <figure class="pr-foto pr-foto--heroe" data-falta="Foto héroe: el combo completo (3 protectores, 6 fundas y la cobija), solo y grande">
-        <img src="img/pr-01-heroe.webp?v=1" alt="Tres protectores de colchón doblados, seis fundas de almohada y una cobija navideña roja con lazo" width="1080" height="1080" fetchpriority="high">
+        <img src="img/pr-01-heroe.webp?v=2" alt="Cama con el protector de colchón acolchado puesto, almohadas y la cobija navideña con lazo, junto al árbol de Navidad" width="1024" height="1536" fetchpriority="high">
       </figure>
       <div class="pr-heroe__txt">
         <span class="pr-rot pr-rot--claro">Edición Navidad · regalo incluido</span>
@@ -131,6 +140,16 @@ window.pixelCO.track('PageView', {});
     <button type="button" class="pr-btn pr-btn--sec" data-ir="paso2">Ver la solución</button>
   </section>
 
+  <!-- ANTES Y DESPUÉS (como las demás páginas de la tienda) -->
+  <section class="pr-sec pr-antes" id="antes" data-rv>
+    <span class="pr-rot">Antes y después</span>
+    <h2 class="pr-h2">Sin protector y con protector</h2>
+    <figure class="pr-foto pr-foto--ancha" data-falta="Antes y después: colchón manchado / colchón limpio con el protector">
+      <img src="img/pr-05-antes-despues.webp?v=1" alt="Antes: colchón con manchas amarillas. Después: el mismo colchón cubierto con el protector, limpio" width="1080" height="1080" loading="lazy">
+    </figure>
+    <p class="pr-sub">El protector recibe el sudor, el agua y los accidentes. Lo quitas, lo lavas y tu colchón sigue como nuevo.</p>
+  </section>
+
   <!-- PASO 2 · LA SOLUCIÓN -->
   <section class="pr-sec pr-paso2" id="paso2" data-rv>
     <span class="pr-rot">Paso 2 · La solución</span>
@@ -162,6 +181,16 @@ window.pixelCO.track('PageView', {});
     <button type="button" class="pr-btn pr-btn--sec" data-ir="pedir">Elegir medida y color</button>
   </section>
 
+  <!-- VIDEO (como las demás páginas de la tienda) -->
+  <section class="pr-sec pr-video" id="video" data-rv>
+    <span class="pr-rot">Míralo en video</span>
+    <h2 class="pr-h2">Así protege tu colchón</h2>
+    <div class="pr-video__caja">
+      <video id="prVideo" src="img/pr-video.mp4?v=1" poster="img/pr-video-poster.webp?v=1" muted loop playsinline preload="metadata" aria-label="Video del protector de colchón"></video>
+      <button type="button" class="pr-btn pr-btn--sec pr-video__sonido" id="prVideoSonido">Activar sonido</button>
+    </div>
+  </section>
+
   <!-- RESEÑAS (solo si hay reales) -->
   <div id="prResenas"></div>
 
@@ -179,12 +208,9 @@ window.pixelCO.track('PageView', {});
       <div class="pr-sellos">
         <span class="pr-sellos__rot"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2.5"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/></svg>Pago 100 % seguro con Wompi, de Bancolombia</span>
         <div class="pr-sellos__logos">
-          <img src="https://wompi.com/assets/downloadble/logos_wompi/Wompi_LogoPrincipal.svg" alt="Wompi" height="22" loading="lazy" onerror="this.remove()">
-          <img src="/img/pagos/bancolombia.svg" alt="Bancolombia" height="22" loading="lazy">
-          <img src="/img/pagos/pse.svg" alt="PSE" height="22" loading="lazy">
-          <img src="/img/pagos/nequi.svg" alt="Nequi" height="22" loading="lazy">
-          <img src="/img/pagos/visa.svg" alt="Visa" height="22" loading="lazy">
-          <img src="/img/pagos/mastercard.svg" alt="Mastercard" height="22" loading="lazy">
+          <img src="/co/img/pago-wompi.svg" alt="Wompi" width="71" height="18" loading="lazy">
+          <img src="/img/pago/visa-oscuro.svg" alt="Visa" width="48" height="29" loading="lazy">
+          <img src="/img/pago/mastercard-oscuro.svg" alt="Mastercard" width="48" height="29" loading="lazy">
         </div>
       </div>
       <button type="button" class="pr-btn pr-btn--compra" data-ir="pedir" data-pago-pre>Quiero pagar ahora y ahorrar</button>
@@ -203,8 +229,12 @@ window.pixelCO.track('PageView', {});
     </ol>
   </section>
 
-  <!-- CTA FINAL: formulario (lo pinta protector.js) -->
-  <div id="prForm"></div>
+  <!-- CTA FINAL: el formulario de todas las tiendas (../ficha.js lo pinta en #pedir) -->
+  <section class="pr-sec pr-pedir" data-rv>
+    <span class="pr-rot">Haz tu pedido</span>
+    <h2 class="pr-h2">Pide tu combo navideño</h2>
+    <div id="pedir"></div>
+  </section>
 
   <!-- PREGUNTAS -->
   <section class="pr-sec pr-faq" data-rv>
@@ -289,8 +319,8 @@ window.pixelCO.track('PageView', {});
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center">
           <img src="/img/pago/visa-oscuro.svg" alt="Visa" width="48" height="29" loading="lazy">
           <img src="/img/pago/mastercard-oscuro.svg" alt="Mastercard" width="48" height="29" loading="lazy">
+          <img src="/co/img/pago-wompi.svg" alt="Wompi" width="71" height="18" loading="lazy">
           <img src="/img/pago/amex.svg" alt="American Express" width="40" height="24" loading="lazy">
-<span style="display:inline-flex;align-items:center;height:28px;padding:0 4px;font:700 13px/1 Inter,sans-serif;color:#cfcfcf">PSE · Nequi · Wompi</span>
 <span style="display:inline-flex;align-items:center;height:28px;padding:0 4px;font:700 13px/1 Inter,sans-serif;color:#cfcfcf">Pago al recibir</span>
         </div>
       </div>
@@ -306,8 +336,9 @@ window.pixelCO.track('PageView', {});
     </div>
   </footer>
 
-<script src="productos.js?v=1"></script>
-<script src="resenas.js?v=1"></script>
-<script src="protector.js?v=1"></script>
+<script src="productos.js?v=2"></script>
+<script src="resenas.js?v=2"></script>
+<script src="../ficha.js?v=1"></script>
+<script src="protector.js?v=2"></script>
 </body>
 </html>

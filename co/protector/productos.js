@@ -8,14 +8,19 @@
      · pago contra entrega  $119.900
      · pago anticipado Wompi $107.900 (10 % menos, "la transportadora cobra menos")
    Clientes riesgosos: anticipo de $20.000 que se descuenta (lo pone el flujo pedido-tienda-co).
+   Formato estándar de las fichas (lo lee ../ficha.js, el mismo formulario de todas las tiendas).
    ============================================================ */
-window.PRODUCTO_CO = {
-  id: 'protector-navidad',
-  dropiId: 2293056,
+window.__P = 'protector';
+window.PRODUCTOS = [{
+  id: 'protector', dropiId: 2293056,
   nombre: 'Combo Protector de Colchón + Cobija Navideña',
   corto: 'Combo Protector + Cobija',
-  precio: 119900,
-  anticipado: 107900,
+  unidad: 'combo',
+  packs: [
+    { cant: 1, precio: 119900, texto: '1 combo', detalle: '3 protectores + 6 fundas + cobija de regalo' },
+  ],
+  popular: 0,
+  anticipado: { pct: 10, precios: [107900] },
   /* las 5 medidas de Dropi; el ancho es el estándar en Colombia (para orientar al cliente) */
   medidas: [
     ['SENCILLO', 'Sencillo', '100 × 190 cm'],
@@ -42,6 +47,8 @@ window.PRODUCTO_CO = {
     ['ROJO', 'Rojo', '#C62828'],
     ['VINO TINTO', 'Vino tinto', '#6E1B2A'],
   ],
-};
+}];
+window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (10-11) */
-window.PRECIOS_APROBADOS_CO = [119900, 107900];
+window.PRECIOS_APROBADOS = [119900, 107900];
+window.PRECIOS_APROBADOS_CO = window.PRECIOS_APROBADOS;

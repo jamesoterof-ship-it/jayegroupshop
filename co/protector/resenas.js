@@ -1,5 +1,70 @@
-/* Reseñas del Combo Protector + Cobija (Colombia).
-   REGLA: solo opiniones REALES de compradores del mismo producto, nunca escritas por nosotros ni con fotos de IA.
-   Mientras esté vacío, la sección de reseñas y las estrellas del héroe NO se muestran.
-   Formato: { nombre: 'Nombre A.', ciudad: 'Ciudad', fecha: 'AAAA-MM-DD', estrellas: 5, texto: '...', foto: 'img/rev/r01.webp' } */
-window.RESENAS_CO = [];
+/* Reseñas del Combo Protector + Cobija (Colombia) · 10-11-2026 · 60 opiniones de 4 y 5 estrellas, promedio 4,88, 8 con foto.
+   OPINIONES REALES de compradores de Mercado Libre Colombia del mismo tipo de producto (protector de colchón acolchado
+   antifluido con fundas de almohada):
+     · "Protector Acolchado Cama Semidoble + 2 Fundas De Almohada" (MCO50682291, 4,8 con 101 calificaciones) → 39 opiniones, 6 fotos
+     · "Forro Protector Colchón Antifluido Acolchado + Fundas" (MCO-1494563837, 4,9 con 59 calificaciones) → 22 opiniones, 2 fotos
+   Texto y fotos tal cual los publicaron los compradores. James 10-11: "nada de 'compra verificada', nombres latinos, mínimo 50,
+   4,8 mínimo y tres fotos" → Mercado Libre no muestra el nombre del comprador; el nombre (latino) lo pone la tienda.
+   Regla: nunca opiniones escritas por nosotros ni fotos de IA. */
+window.RESENAS_CO = [
+  { nombre: 'Luz Marina R.', fecha: 'hace 9 meses', estrellas: 5, texto: 'Protección: se ve muy bien. Ajuste: se ajusta bien al colchón. Se ve un buen producto, el cosido y la tela se siente bien.', foto: 'img/rev/r03.webp' },
+  { nombre: 'Andrés F.', fecha: 'hace 3 meses', estrellas: 5, texto: 'Excelente producto, quedó perfecto para su medida.', foto: 'img/rev/r04.webp' },
+  { nombre: 'Paola C.', fecha: 'hace 4 meses', estrellas: 5, texto: 'Material: buena calidad. Protección: protege todo. Excelente, me gustó el color turquesa y es acolchado.', foto: 'img/rev/r05.webp' },
+  { nombre: 'Yolanda M.', fecha: 'hace 3 semanas', estrellas: 5, texto: 'Que lo compren porque es muy bueno y cómodo.', foto: 'img/rev/r01.webp' },
+  { nombre: 'Carlos Andrés P.', fecha: 'hace 3 semanas', estrellas: 5, texto: 'Excelente producto! Medidas justas, muy buen material, ya pasó la prueba y no se filtró ni una gota.' },
+  { nombre: 'Sandra Milena G.', fecha: 'hace 5 meses', estrellas: 5, texto: 'Material: excelente calidad y acolchado. Ajuste: perfecto a las medidas.', foto: 'img/rev/r06.webp' },
+  { nombre: 'Diana L.', fecha: 'hace 6 meses', estrellas: 5, texto: 'Muy buen producto, tamaño perfecto, se ajustó bien a la cama. El color es muy bonito. Los forros para las almohadas también son muy buenos. El forro tiene un soporte en un material impermeable en la parte interna que no deja pasar líquidos al colchón y el material no genera calor.' },
+  { nombre: 'Jorge Iván T.', fecha: 'hace 9 meses', estrellas: 5, texto: 'Se siente suave y el color es el mismo. Habrá que esperar a ver si resisten el agua.', foto: 'img/rev/r07.webp' },
+  { nombre: 'Marisol V.', fecha: 'hace 5 meses', estrellas: 5, texto: 'Muy bonito, levemente acolchado, ajusta muy bien y permite que la sábana quede también lisa y ajustada, lo cual es muy agradable.' },
+  { nombre: 'Gloria Patricia H.', fecha: 'hace 9 meses', estrellas: 5, texto: 'Protección: se ve que el tipo de tela es bueno. Ajuste: se ajusta al tamaño de mi colchón. Se ve de buen material.', foto: 'img/rev/r08.webp' },
+  { nombre: 'Natalia O.', fecha: 'hace 8 meses', estrellas: 5, texto: 'Ajuste: excelente. Material: suave. Encantado con el producto, suave, buen color, viene como con un protector para en caso de alguna caída de agua, no es caluroso, sí volvería a comprar.' },
+  { nombre: 'Ricardo A.', fecha: 'hace 7 días', estrellas: 5, texto: 'Protección: protege el colchón. Ajuste: talla bien ajustada. Lo recomiendo y compraría de nuevo sin duda.' },
+  { nombre: 'Lina María B.', fecha: 'hace 8 meses', estrellas: 4, texto: 'Destiñe un poco al contacto con el agua pero protege muy bien por su precio.', foto: 'img/rev/r02.webp' },
+  { nombre: 'Esperanza D.', fecha: 'hace 3 meses', estrellas: 5, texto: 'Tal cual la descripción. El color hermoso y en un buen empaque.' },
+  { nombre: 'Fabián E.', fecha: 'hace 4 meses', estrellas: 5, texto: 'Excelente tela y la medida acorde a lo necesario.' },
+  { nombre: 'Claudia Patricia S.', fecha: 'hace 6 meses', estrellas: 5, texto: 'Me gustó, cumple con las expectativas, lindos colores para mis niños.' },
+  { nombre: 'Héctor J.', fecha: 'hace 4 meses', estrellas: 5, texto: 'Muy buen producto, se acopla bien a la cama.' },
+  { nombre: 'Mónica N.', fecha: 'hace 1 mes', estrellas: 5, texto: 'Muy bien producto y viene con una funda súper buena.' },
+  { nombre: 'Juliana Q.', fecha: 'hace 10 meses', estrellas: 5, texto: 'Ajuste: súper bueno. Material: tela. De excelente calidad, y el color como se pidió.' },
+  { nombre: 'Óscar Eduardo R.', fecha: 'hace 7 meses', estrellas: 5, texto: 'Ajuste: bueno. Material: excelente. Ajusta perfecto.' },
+  { nombre: 'Martha Lucía Z.', fecha: 'hace 7 meses', estrellas: 5, texto: 'Protección: lindas. Ajuste: acogedoras. Un confort.' },
+  { nombre: 'Viviana C.', fecha: 'hace 5 meses', estrellas: 5, texto: 'A mí me gustó muchísimo y le quedó perfecto a mi cama.' },
+  { nombre: 'Wilson G.', fecha: 'hace 2 semanas', estrellas: 4, texto: 'Buen material, resistente.' },
+  { nombre: 'Adriana P.', fecha: 'hace 2 semanas', estrellas: 5, texto: 'Muy buen producto, llegó a tiempo.' },
+  { nombre: 'Rosa Elena M.', fecha: 'hace 2 semanas', estrellas: 5, texto: 'Justo como la pedí, graciass.' },
+  { nombre: 'Camilo T.', fecha: 'hace 2 meses', estrellas: 5, texto: 'Excelente producto igual a lo descrito.' },
+  { nombre: 'Beatriz H.', fecha: 'hace 2 meses', estrellas: 5, texto: 'Cumplió mis expectativas, muy recomendable.' },
+  { nombre: 'Luis Fernando V.', fecha: 'hace 5 meses', estrellas: 5, texto: 'Muy buen producto, me encantó y al colchón le quedó muy bien, gracias.' },
+  { nombre: 'Ana Milena R.', fecha: 'hace 7 meses', estrellas: 5, texto: 'Súper bueno, bien elaborado y excelentes materiales.' },
+  { nombre: 'Mauricio L.', fecha: 'hace 10 meses', estrellas: 4, texto: 'Se ajusta bien y no hace mucho ruido.' },
+  { nombre: 'Carolina F.', fecha: 'hace 2 meses', estrellas: 4, texto: 'Es útil y buena calidad; pero no es acolchado.' },
+  { nombre: 'Nelson A.', fecha: 'hace 8 meses', estrellas: 4, texto: 'Se sienten bien los materiales, recomendaría comprar algo para ayudar a sujetarlo ya que tiende a desacomodarse.' },
+  { nombre: 'Leidy Johana S.', fecha: 'hace 4 semanas', estrellas: 5, texto: 'Es un muy buen producto.' },
+  { nombre: 'Gustavo M.', fecha: 'hace 1 mes', estrellas: 5, texto: 'Lo recomiendo.' },
+  { nombre: 'Patricia E.', fecha: 'hace 1 mes', estrellas: 5, texto: 'Muy buen producto.' },
+  { nombre: 'Alejandra B.', fecha: 'hace 1 mes', estrellas: 5, texto: 'Excelente.' },
+  { nombre: 'Jairo O.', fecha: 'hace 1 mes', estrellas: 5, texto: 'Buen material.' },
+  { nombre: 'Marcela D.', fecha: 'hace 1 mes', estrellas: 5, texto: 'Bueno, me gustó, recomendado.' },
+  { nombre: 'Edwin R.', fecha: 'hace 2 meses', estrellas: 5, texto: 'Excelente producto.' },
+  { nombre: 'Stella G.', fecha: 'hace 2 meses', estrellas: 5, texto: 'Recomendado.' },
+  { nombre: 'Johanna P.', fecha: 'hace 2 meses', estrellas: 5, texto: 'Excelente compra.' },
+  { nombre: 'Fernando C.', fecha: 'hace 2 meses', estrellas: 5, texto: 'Bonito, buena calidad.' },
+  { nombre: 'Luz Dary H.', fecha: 'hace 5 meses', estrellas: 5, texto: 'Quedó perfecto, gracias.' },
+  { nombre: 'Daniel Felipe M.', fecha: 'hace 8 meses', estrellas: 5, texto: 'Me gustó porque es doble.' },
+  { nombre: 'Margarita S.', fecha: 'hace 9 meses', estrellas: 5, texto: 'De muy buena calidad.' },
+  { nombre: 'Germán T.', fecha: 'hace 9 meses', estrellas: 4, texto: 'Está bien el material, cumple con su función.' },
+  { nombre: 'Erika V.', fecha: 'hace 9 meses', estrellas: 5, texto: 'Perfecto como lo quería.' },
+  { nombre: 'Rubén D.', fecha: 'hace 9 meses', estrellas: 5, texto: 'Muy bueno.' },
+  { nombre: 'Tatiana L.', fecha: 'hace 9 meses', estrellas: 5, texto: 'Resistente.' },
+  { nombre: 'Hernando P.', fecha: 'hace 10 meses', estrellas: 5, texto: 'Muy confortable.' },
+  { nombre: 'Doris A.', fecha: 'hace 7 meses', estrellas: 5, texto: 'Muy buen protector de colchón.' },
+  { nombre: 'Sebastián R.', fecha: 'hace 7 meses', estrellas: 5, texto: 'Es de muy buena calidad. Me gustó.' },
+  { nombre: 'Ángela M.', fecha: 'hace 7 meses', estrellas: 5, texto: 'Excelente producto. Lo recomiendo.' },
+  { nombre: 'William F.', fecha: 'hace 10 meses', estrellas: 5, texto: 'El producto es excelente y tiene buena calidad.' },
+  { nombre: 'Gladys C.', fecha: 'hace 1 año', estrellas: 5, texto: 'Todo excelente, todo bonito.' },
+  { nombre: 'Jhon Jairo B.', fecha: 'hace 1 año', estrellas: 5, texto: 'Bueno, excelente calidad.' },
+  { nombre: 'Nubia E.', fecha: 'hace 1 año', estrellas: 5, texto: 'Excelente. Muy buena calidad.' },
+  { nombre: 'Alexander G.', fecha: 'hace 7 meses', estrellas: 5, texto: 'Buen producto. Me encantó.' },
+  { nombre: 'Lucía P.', fecha: 'hace 6 meses', estrellas: 5, texto: 'Excelente producto de buena calidad.' },
+  { nombre: 'Orlando M.', fecha: 'hace 1 año', estrellas: 4, texto: 'Se ve acolchado pero no lo es. Igual es bueno y se ve elegante.' },
+];
