@@ -17,13 +17,14 @@
   --color-on-secondary: #0F172A;
   --color-accent: #EA580C;
   --color-on-accent: #000000;
-  --color-background: #ECFDF5;
-  --color-foreground: #064E3B;
-  --color-card: #FFFFFF;
-  --color-card-foreground: #064E3B;
-  --color-muted: #E8F1F3;
-  --color-muted-foreground: #475569;
-  --color-border: #A7F3D0;
+  /* 09-11 James: "utiliza fondo oscuro" → mismos colores del plano, invertidos (fondo #0F172A, tarjetas #064E3B, letras claras) */
+  --color-background: #0F172A;
+  --color-foreground: #ECFDF5;
+  --color-card: #064E3B;
+  --color-card-foreground: #ECFDF5;
+  --color-muted: #0F172A;
+  --color-muted-foreground: #A7F3D0;
+  --color-border: #059669;
   --color-destructive: #DC2626;
   --color-on-destructive: #FFFFFF;
   --color-ring: #059669;
@@ -32,12 +33,13 @@
   --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
   --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
-  --suave: -5px -5px 15px rgba(255,255,255,.9), 5px 5px 15px rgba(6,78,59,.14);
-  --suave-dentro: inset 2px 2px 5px rgba(6,78,59,.10), inset -2px -2px 5px rgba(255,255,255,.8);
-  --borde-campo: rgba(71,85,105,.4);
+  --suave: -4px -4px 12px rgba(16,185,129,.08), 6px 6px 16px rgba(0,0,0,.55);
+  --suave-dentro: inset 2px 2px 5px rgba(0,0,0,.45), inset -2px -2px 5px rgba(16,185,129,.08);
+  --borde-campo: rgba(167,243,208,.45);
   --sombra-boton: rgba(0,0,0,.35);
-  --f-tit: 'Press Start 2P', monospace;
-  --f-txt: 'VT323', monospace;
+  /* 09-11 James: "no con letras de juego" → eligió la 1: Barlow Condensed / Barlow (par Sports/Fitness del script) */
+  --f-tit: 'Barlow Condensed', sans-serif;
+  --f-txt: 'Barlow', sans-serif;
   background: var(--color-background);
 }
 .pe-cr main, .pe-cr #pedir { color: var(--color-foreground); font-family: var(--f-txt); font-size: 22px; line-height: 1.25; }
@@ -47,7 +49,7 @@
 .cr-in { max-width: 1200px; margin: 0 auto; padding: var(--space-2xl) var(--space-md); }
 .cr-sec { background: var(--color-background); }
 .cr-sec--blanca { background: var(--color-card); }
-.cr-sec--verde { background: var(--color-foreground); color: var(--color-background); }
+.cr-sec--verde { background: var(--color-card); color: var(--color-foreground); }
 .cr-rot { font-family: var(--f-tit); font-size: 10px; line-height: 1.6; letter-spacing: .06em; text-transform: uppercase; color: var(--color-primary); margin: 0 0 var(--space-md); display: flex; align-items: center; gap: 8px; }
 .cr-rot::before { content: ''; flex: none; width: 10px; height: 10px; background: var(--color-accent); box-shadow: 10px 0 0 var(--color-secondary); margin-right: 10px; }
 .cr-sec--verde .cr-rot { color: var(--color-border); }
@@ -135,7 +137,7 @@
 .cr-xp i { display: block; height: 100%; width: var(--xp, 33%); background: repeating-linear-gradient(90deg, var(--color-secondary) 0 10px, var(--color-primary) 10px 12px); border-radius: 4px; transition: width 1200ms cubic-bezier(.16,1,.3,1) 200ms; }
 .cr-anima .cr-nivel:not(.cr-ver) .cr-xp i { width: 0; }
 .cr-nivel__pie { font-size: 19px; color: var(--color-muted-foreground); margin: 0; }
-.cr-pre { border-radius: 16px; padding: var(--space-lg) var(--space-md); background: var(--color-foreground); color: var(--color-background); box-shadow: var(--shadow-xl); margin-bottom: var(--space-lg); }
+.cr-pre { border-radius: 16px; padding: var(--space-lg) var(--space-md); background: var(--color-card); color: var(--color-foreground); border: 1px solid var(--color-border); box-shadow: var(--shadow-xl); margin-bottom: var(--space-lg); }
 .cr-pre__tit { font-family: var(--f-tit); font-size: 12px; line-height: 1.6; margin: 0 0 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .cr-pre__tit span { background: var(--color-accent); color: var(--color-on-accent); padding: 6px 8px; border-radius: 6px; font-size: 10px; }
 .cr-pre ul { margin: 0 0 14px; padding-left: 20px; }
@@ -240,7 +242,7 @@
 @media (min-width: 768px) { .cr-fotos { grid-template-columns: repeat(4, 1fr); } .cr-res { grid-template-columns: repeat(2, 1fr); } }
 
 /* ---------- botón fijo (CTA del héroe que queda pegado al bajar) ---------- */
-.cr-fijo { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 10px 72px 10px 12px; background: rgba(236,253,245,.94); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); box-shadow: 0 -6px 18px rgba(6,78,59,.12); transform: translateY(110%); transition: transform 300ms ease; }
+.cr-fijo { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 10px 72px 10px 12px; background: rgba(15,23,42,.94); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); box-shadow: 0 -6px 18px rgba(6,78,59,.12); transform: translateY(110%); transition: transform 300ms ease; }
 .cr-fijo--ver { transform: none; }
 .cr-fijo .cr-btn { font-size: 10px; min-height: 48px; padding: 12px 10px; max-width: none; box-shadow: 0 4px 0 var(--sombra-boton); }
 .cr-saltar { position: absolute; left: -999px; top: 0; z-index: 99; background: var(--color-foreground); color: #FFFFFF; padding: 10px 14px; }
@@ -272,6 +274,47 @@
   .cr-faq { columns: 2; column-gap: 16px; }
   .cr-faq details { break-inside: avoid; }
 }
+
+/* ---------- 11 · letras Barlow (09-11): tamaños para letra condensada; el fondo oscuro sale de las variables de arriba ---------- */
+.pe-cr main, .pe-cr #pedir { font-size: 17px; line-height: 1.5; }
+.cr-numeros li, .cr-numeros b { color: var(--color-foreground); }
+.cr-rot { font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--color-secondary); }
+.cr-tit { font-size: clamp(30px, 8vw, 46px); font-weight: 700; line-height: 1.05; text-transform: uppercase; }
+.cr-heroe h1 { font-size: clamp(44px, 12vw, 76px); font-weight: 700; line-height: .98; text-transform: uppercase; }
+.cr-heroe h1 b { color: var(--color-secondary); }
+.cr-heroe__frase { font-size: 18px; }
+.cr-btn { font-size: 20px; font-weight: 700; letter-spacing: .04em; }
+.cr-fijo .cr-btn { font-size: 17px; }
+.cr-card b, .cr-foto b, .cr-usos li b, .cr-datos b, .cr-nivel__cab b { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
+.cr-card span, .cr-foto span, .cr-datos span, .cr-nivel__pie, .cr-btn-nota, .pf-nota, .cr-faq p { font-size: 15px; }
+.cr-ficha h2 { font-size: 26px; font-weight: 700; text-transform: uppercase; }
+.cr-precio b { font-size: 40px; font-weight: 700; }
+.cr-precio s { font-size: 20px; }
+.cr-precio em, .cr-chip { font-size: 15px; font-weight: 700; }
+.cr-chip s { font-size: 12px; }
+.cr-faq summary { font-size: 18px; font-weight: 700; }
+.cr-nivel__cab span { font-size: 20px; font-weight: 700; }
+.cr-nivel__cab strong { font-size: 28px; font-weight: 700; }
+.cr-nivel__cinta, .pf-pack__cinta, .pf-pago__cinta { font-size: 13px; font-weight: 700; }
+.cr-numeros b { font-size: 26px; font-weight: 700; }
+.cr-pre__tit { font-size: 20px; font-weight: 700; }
+.cr-res__tot { font-size: 18px; }
+.pf-paso { font-size: 20px; font-weight: 700; text-transform: uppercase; }
+.pf-pack { font-size: 16px; }
+.pf-pack__nivel { font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+.pf-pack__txt { font-size: 20px; font-weight: 700; }
+.pf-pack__pr { font-size: 24px; font-weight: 700; }
+.pf-pack__antes, .pf-pack__ahorro, .pf-pago__sub { font-size: 15px; }
+.pf-pago { font-size: 15px; }
+.pf-pago__tit { font-size: 15px; font-weight: 700; }
+.pf-pago__pr { font-size: 22px; font-weight: 700; }
+.pf-campo label { font-size: 15px; font-weight: 700; }
+.pf-campo label i { font-size: 13px; }
+.pf-campo input, .pf-campo select, .pf-tel span { font-size: 17px; }
+.pf-campo .pf-err, .pf-aviso { font-size: 15px; }
+.pf-resumen .pf-tot { font-size: 18px; font-weight: 700; }
+.pf-listo h3 { font-size: 24px; }
+.pf-listo .pf-total { font-size: 22px; }
 
 @media (prefers-reduced-motion: reduce) {
   .pe-cr *, .pe-cr *::before, .pe-cr *::after { animation: none !important; transition: none !important; }
