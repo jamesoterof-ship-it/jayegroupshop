@@ -116,7 +116,7 @@
     + campo('fDepto', 'Departamento', '<select id="fDepto" autocomplete="address-level1" required><option value="">Elige tu departamento</option>'
         + Object.keys(deptos).map(function (d) { return '<option value="' + esc(d) + '">' + esc(d) + '</option>'; }).join('') + '</select>', 'Elige tu departamento.')
     + campo('fDist', 'Distrito', '<select id="fDist" autocomplete="address-level2" required disabled><option value="">Primero elige tu departamento</option></select>', 'Elige tu distrito.')
-    + campo('fDir', 'Dirección', '<input id="fDir" autocomplete="street-address" placeholder="Av., calle o jirón y número" required>', 'Escribe la calle y el número (sin número el courier no puede entregar).')
+    + campo('fDir', 'Dirección', '<input id="fDir" autocomplete="street-address" placeholder="Av., calle o jirón y número" required>', 'Escribe la calle y el número (sin número no te lo podemos entregar).')
     + campo('fRef', 'Referencia', '<input id="fRef" autocomplete="address-line2" placeholder="Ej: frente al parque, puerta verde, dpto 302">', '', true)
     + campo('fCorreo', 'Correo', '<input id="fCorreo" type="email" autocomplete="email" placeholder="tucorreo@gmail.com">', 'Escribe un correo válido o déjalo vacío.', true)
     + '<div class="pf-aviso" id="fErr" role="alert"></div>'
@@ -202,8 +202,8 @@
     if (bCod) { bCod.disabled = !ok; bCod.style.opacity = ok ? '' : '.45'; }
     if (!ok) {
       if (formaPago === 'cod' && bPre) bPre.click();
-      aviso('En tu distrito el courier todavía no cobra al entregar. Tu pedido sale con pago con tarjeta (' + (pre ? pre.pct + ' % menos y ' : '') + 'entrega prioritaria).', true);
-    } else if ($('fErr').textContent.indexOf('cobra al entregar') >= 0) $('fErr').style.display = 'none';
+      aviso('Para tu distrito todavía no tenemos pago contraentrega. Tu pedido sale con pago con tarjeta (' + (pre ? pre.pct + ' % menos y ' : '') + 'entrega prioritaria).', true);
+    } else if ($('fErr').textContent.indexOf('pago contraentrega') >= 0) $('fErr').style.display = 'none';
   }
   selT.addEventListener('change', revisarCod);
 
