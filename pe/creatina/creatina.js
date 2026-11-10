@@ -106,18 +106,46 @@
     + (P.promoImg ? '<figure class="cr-img" data-cr><img src="' + esc(P.promoImg) + '" alt="Repartidor entregando el pedido; pagas al recibir y el envío es gratis a todo el Perú" loading="lazy" width="900" height="900"></figure>' : '')
     + '<p class="cr-txt">Si te llega dañado o distinto, escríbenos dentro de las 48 horas con una foto y lo solucionamos sin costo para ti.</p></div></section>');
 
-  /* 6b · OPINIONES REALES (resenas.js): resumen de estrellas de todas + las que traen texto */
-  var RS = window.RESENAS || [];
+  /* 6b · OPINIONES: el MISMO molde que las demás páginas (lentes/ficha.js → #mxResFicha de /_mx-pagina.css):
+     título con estrellas, nota grande, barras por estrella, botón "Escribir una reseña", lista de 4 + "Ver más" y carrusel.
+     James 09-11: "las reseñas tienen que ser igual". Las que traen foto van primero. */
+  var RS = (window.RESENAS || []).filter(function (r) { return r.texto && r.texto.length > 15; });
+  RS = RS.filter(function (r) { return r.foto; }).concat(RS.filter(function (r) { return !r.foto; }));
+  window.RESENAS_MIAS = RS;
   if (RS.length) {
+    var ESTRELLA = '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.6.7-4.9 4.5 1.4 6.5L12 16.7 6 20l1.4-6.5L2.5 9l6.6-.7z"/></svg>';
+    var estrellas = function () { var s = ''; for (var i = 0; i < 5; i++) s += ESTRELLA; return '<span class="est">' + s + '</span>'; };
     var prom = RS.reduce(function (a, r) { return a + r.estrellas; }, 0) / RS.length;
-    var paises = { MX: 'México', CO: 'Colombia', CL: 'Chile', PE: 'Perú', AR: 'Argentina', SV: 'El Salvador', PR: 'Puerto Rico', DO: 'Rep. Dominicana', EC: 'Ecuador', BR: 'Brasil', UY: 'Uruguay', BO: 'Bolivia', PY: 'Paraguay', CR: 'Costa Rica', PA: 'Panamá', GT: 'Guatemala', HN: 'Honduras', NI: 'Nicaragua', VE: 'Venezuela' };
-    var est = function (n) { return '<span class="cr-est" aria-label="' + n + ' de 5 estrellas">' + '★★★★★'.slice(0, n) + '<i>' + '★★★★★'.slice(n) + '</i></span>'; };
-    var conT = RS.filter(function (r) { return r.texto && r.texto.length > 25 && r.estrellas >= 4; });
-    html.push('<section class="cr-sec cr-sec--blanca" aria-labelledby="crRes"><div class="cr-in">' + rot('Opiniones reales') + tit('Lo que dicen quienes ya las probaron', 'crRes')
-      + '<p class="cr-res__tot">' + est(Math.round(prom)) + ' <b>' + prom.toFixed(1).replace('.', ',') + ' de 5</b> · ' + RS.length + ' opiniones</p>'
-      + '<p class="cr-btn-nota">' + esc(window.RESENAS_FUENTE || '') + '</p>'
-      + '<ul class="cr-res">' + conT.map(function (r) { return '<li class="cr-card" data-cr>' + est(r.estrellas) + '<span>“' + esc(r.texto) + '”</span><b>' + esc(r.nombre) + ' · ' + esc(paises[r.pais] || r.pais) + ' · ' + esc(r.fecha) + '</b></li>'; }).join('') + '</ul></div></section>');
+    var tarjetaResena = function (r) {
+      return '<article class="rsc"><div class="arriba"><span class="ini">' + esc((r.nombre || '?').charAt(0)) + '</span>'
+        + '<span class="quien">' + esc(r.nombre) + '<i class="verif">' + (r.fuente === 'TikTok' ? 'Video en TikTok' : '✓ Compra verificada') + '</i><small>' + esc(r.fecha) + '</small></span>'
+        + estrellas(r.estrellas) + '</div><p>' + esc(r.texto) + '</p>'
+        + (r.foto ? '<img class="rfoto" src="' + esc(r.foto) + '" alt="" loading="lazy" onerror="this.remove()">' : '') + '</article>';
+    };
+    var barras = [5, 4, 3, 2, 1].map(function (e) {
+      var n = RS.filter(function (r) { return r.estrellas === e; }).length;
+      return '<div class="bar"><span class="lvl">' + e + ' ★</span><div class="track"><i style="--p:' + (n / RS.length) + '"></i></div><b>' + n + '</b></div>';
+    }).join('');
+    html.push('<div id="mxResFicha"><section class="bloque rev-sec" id="resenas">'
+      + '<h2 class="rev-title">Opiniones del producto <span class="stars">★★★★★</span></h2>'
+      + '<div class="rev-score"><span class="big">' + prom.toFixed(1) + '</span><span class="cnt">' + RS.length + ' reseñas</span></div>'
+      + '<div class="rev-bars">' + barras + '</div>'
+      + '<button class="btn-write" id="btnWrite" type="button">Escribir una reseña</button>'
+      + '<div class="rs" id="listaRs"></div>'
+      + (RS.length > 4 ? '<button class="masRs" id="masRs" type="button">Ver más reseñas</button>' : '')
+      + '<p class="rev-auto-label">' + esc(window.RESENAS_FUENTE || 'Más opiniones de compradores de este producto') + '</p>'
+      + '<div class="rev-auto"><div class="rev-auto__track" id="revAuto"></div></div>'
+      + '</section></div>');
+    window.__crRes = { RS: RS, tarjeta: tarjetaResena };
   }
+
+  /* 6c · CON QUIÉN ENVIAMOS (James 09-11: "hay una sección que dice con quién entregamos… mira cómo están las otras páginas").
+     Mismo bloque que lentes/ficha.js (sellos), con las 2 transportadoras activas de Dropi Perú y sus logos originales. */
+  html.push('<section class="cr-sec"><div class="cr-in"><h2 class="cr-tit">Con quién enviamos</h2><div class="sellos">'
+    + [['/pe/img/logos/urbano-dropi.png', 'Urbano', 'Lima y provincias'], ['/pe/img/logos/fenix.png', 'Fenix G Express', 'Entrega a domicilio'], ['', 'Pagas al recibir', 'Al repartidor, cuando lo tienes en la mano']].map(function (s) {
+        return '<div class="sello">' + (s[0] ? '<img class="logoTr" src="' + s[0] + '" alt="' + s[1] + '" loading="lazy">' : '<div class="nom">' + s[1] + '</div>') + '<small>' + s[2] + '</small></div>';
+      }).join('')
+    + '</div></div></section>');
 
   /* 7 · PREGUNTAS */
   html.push('<section class="cr-sec" aria-labelledby="crFaq"><div class="cr-in">' + rot('Preguntas frecuentes') + tit('Lo que nos preguntan', 'crFaq')
@@ -130,6 +158,23 @@
     + cta('Pedir el mío ahora', 'Desde ' + soles(uno.precio) + ' · envío gratis y pagas al recibir') + '</div></section>');
 
   raiz.innerHTML = html.join('');
+
+  /* opiniones: lista de 4 en 4 + "Ver más" + carrusel duplicado (igual que lentes/ficha.js) */
+  if (window.__crRes) {
+    var CR = window.__crRes, vistas = 0;
+    var masResenas = function () {
+      var trozo = CR.RS.slice(vistas, vistas + 4); vistas += trozo.length;
+      $('listaRs').insertAdjacentHTML('beforeend', trozo.map(CR.tarjeta).join(''));
+      if (vistas >= CR.RS.length && $('masRs')) $('masRs').style.display = 'none';
+    };
+    masResenas();
+    if ($('masRs')) $('masRs').addEventListener('click', masResenas);
+    var tira = CR.RS.slice(0, 14).map(function (r) {
+      return '<article class="rsc"><div class="arriba"><span class="ini">' + esc((r.nombre || '?').charAt(0)) + '</span>'
+        + '<span class="quien">' + esc(r.nombre) + '<i class="verif">✓ Verificado</i><small></small></span></div><p>' + esc(r.texto) + '</p></article>';
+    }).join('');
+    if ($('revAuto')) $('revAuto').innerHTML = tira + tira;
+  }
   var salto = document.createElement('a'); salto.className = 'cr-saltar'; salto.href = '#pedir'; salto.textContent = 'Saltar al pedido'; document.body.insertBefore(salto, document.body.firstChild);
   var fijo = document.createElement('div'); fijo.className = 'cr-fijo'; fijo.innerHTML = '<a class="cr-btn" href="#pedir" data-ir>Lo quiero · ' + soles(uno.precio) + ' al recibir</a>'; document.body.appendChild(fijo);
 

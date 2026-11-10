@@ -1,6 +1,6 @@
 /* OPINIONES REALES de AliExpress · creatina · SOLO compradores de Latinoamérica (país según AliExpress). 09-11-2026.
    Fuente: _kn_scratch/_creatina_pe_latam*.json (158 fichas de creatina/gomitas). Texto de la plataforma sin tocar, nombre tal como aparece. NO se inventan. */
-window.RESENAS_FUENTE = 'Opiniones reales de compradores de Latinoamérica de creatina en AliExpress';
+window.RESENAS_FUENTE = 'Más opiniones de compradores de creatina en AliExpress';
 window.RESENAS = [
     {
         "pais":  "PR",
@@ -136,3 +136,16 @@ window.RESENAS = [
         "texto":  "suplemento llegó en buen estado a un no las uso espero que tengan buen resultado pará seguir compartiendo"
     }
 ];
+
+
+
+/* 09-11 James: "busca la foto, Mercado Libre, donde sea" → 5 opiniones REALES de compras en Mercado Libre Colombia de Beast Bites
+   sabor frambuesa azul, CON la foto que subió el comprador (texto sin tocar; ML no muestra el nombre, la fecha es la del mes de la opinión).
+   Publicaciones MCOU3832387775, MCOU4460307165, MCOU3894631314, MCOU3928349941, MCOU3939940044. */
+window.RESENAS = [
+ { nombre: 'Cliente', estrellas: 5, fecha: 'AGO 2026', foto: 'img/rev/ml1.webp?v=1', texto: 'El sabor es rico. Las gomitas son agradables de consumir. Muy superiores a la creatina en polvo.' },
+ { nombre: 'Cliente', estrellas: 5, fecha: 'NOV 2026', foto: 'img/rev/ml2.webp?v=1', texto: 'Jajaja muy ricas ya me las acabé, tendré que volver a comprar um.' },
+ { nombre: 'Cliente', estrellas: 5, fecha: 'JUL 2026', foto: 'img/rev/ml4.webp?v=1', texto: 'Son ricas y aportan mucha energia.' },
+ { nombre: 'Cliente', estrellas: 5, fecha: 'SEP 2026', foto: 'img/rev/ml5.webp?v=1', texto: 'Disolución: rico. Efectos: energía. Delicioso gomitas.' },
+ { nombre: 'Cliente', estrellas: 5, fecha: 'AGO 2026', foto: 'img/rev/ml3.webp?v=1', texto: 'Me gusta.' }
+].concat(window.RESENAS);

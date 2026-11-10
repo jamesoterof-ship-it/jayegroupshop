@@ -111,6 +111,12 @@
     + '<div class="pf-aviso" id="fErr" role="alert"></div>'
     + '<button type="submit" class="cr-btn" id="btnPedir">Comprar · pago al recibir</button>'
     + '<p class="pf-nota" id="notaPedir">Pagas en efectivo cuando recibes el paquete. Te confirmamos el pedido por WhatsApp.</p>'
+    /* 09-11 James: los logos de las transportadoras debajo del formulario, como en las demás páginas.
+       Logos ORIGINALES de las 2 transportadoras activas de Dropi Perú (URBANO y FENIX, API distribution_companies 09-11). */
+    + '<div class="carriers"><span class="cl">Enviamos con</span><div class="cbadges">'
+    + '<img src="/pe/img/logos/urbano-dropi.png" alt="Urbano" width="56" height="56" loading="lazy">'
+    + '<img src="/pe/img/logos/fenix.png" alt="Fenix G Express" width="56" height="56" loading="lazy">'
+    + '</div></div>'
     + '</form></div>';
 
   /* ---------- precios en pantalla ---------- */

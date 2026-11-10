@@ -231,6 +231,23 @@
 .cr-saltar { position: absolute; left: -999px; top: 0; z-index: 99; background: var(--color-accent); color: var(--color-on-accent); padding: 10px 14px; }
 .cr-saltar:focus { left: 8px; top: 8px; }
 
+/* pie: James 09-11 "el pie es negro, no marrón oscuro" (al lado del fondo #020617 el negro de la tienda se veía café) */
+footer.pie { background: #000000; }
+
+/* con quién enviamos + logos debajo del formulario (James 09-11, como las demás páginas) */
+.sellos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.sello { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 18px; padding: 14px 8px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.sello .logoTr { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; }
+.sello .nom { height: 64px; display: grid; place-items: center; font-family: var(--f-tit); font-weight: 700; font-size: 17px; color: var(--color-accent); line-height: 1.1; }
+.sello small { font-size: 13px; line-height: 1.3; color: var(--color-muted-foreground); }
+#pedir .carriers { margin-top: 16px; text-align: center; }
+#pedir .carriers .cl { display: block; margin-bottom: 8px; font-size: 13px; color: var(--color-muted-foreground); }
+#pedir .carriers .cbadges { display: flex; justify-content: center; gap: 12px; }
+#pedir .carriers .cbadges img { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; }
+
+/* opiniones: MISMO molde que las demás páginas (#mxResFicha de /_mx-pagina.css), con los colores de este plano */
+#mxResFicha { --mx-fg: #F8FAFC; --mx-card: #0E1223; --mx-a: #22C55E; --mx-p: #22C55E; --mx-muted: #1A1E2F; --mx-muted-fg: #94A3B8; --mx-borde: #334155; --mx-tit: 'Outfit', sans-serif; --mx-txt: 'Rubik', sans-serif; }
+
 /* título del hero: cada letra entra con rebote */
 .cr-le { display: inline-block; animation: crBote 520ms var(--resorte) both; }
 /* James 09-11: "que tenga letras que entren en cascada": cada letra cae desde arriba, una tras otra */
