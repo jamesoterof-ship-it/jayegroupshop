@@ -1,6 +1,6 @@
 /* ============================================================
    COMBO PROTECTOR + COBIJA NAVIDEÑA · Jaye Group Colombia (jayegroupshop.com/co/protector/)
-   Plano del script "protector-navidad-colombia" (Funnel 3 pasos · Aurora UI), aprobado por James 10-11.
+   Plano del script "protector-navidad-co" (corrida 171: Feature-Rich Showcase · Zero Interface), colores autorizados por James 10-11.
    Este archivo solo arma las secciones de la página. El FORMULARIO es el de todas las tiendas: ../ficha.js (en #pedir).
    James 10-11: promocionar el pago anticipado → los botones "pagar ahora" dejan marcado el pago anticipado.
    ============================================================ */
@@ -25,29 +25,6 @@
   var precio = P.packs[0].precio, anticipado = P.anticipado.precios[0];
   document.querySelectorAll('[data-precio="cod"]').forEach(function (e) { e.textContent = cop(precio); });
   document.querySelectorAll('[data-precio="pre"]').forEach(function (e) { e.textContent = cop(anticipado); });
-
-  /* título del héroe en cascada (como Perú): cada letra cae una tras otra y la palabra clave rebota al final */
-  (function () {
-    var t = byId('prTit');
-    if (!t || quieto) return;
-    var k = 0;
-    (function partir(n) {
-      Array.prototype.slice.call(n.childNodes).forEach(function (c) {
-        if (c.nodeType === 1) { partir(c); return; }
-        if (c.nodeType !== 3 || !c.textContent.trim()) return;
-        var frag = document.createDocumentFragment();
-        c.textContent.split(/(\s+)/).forEach(function (pal) {
-          if (!pal) return;
-          if (/^\s+$/.test(pal)) { frag.appendChild(document.createTextNode(pal)); return; }
-          var w = document.createElement('span'); w.style.whiteSpace = 'nowrap';
-          pal.split('').forEach(function (ch) { var s = document.createElement('span'); s.className = 'pr-le'; s.style.animationDelay = (k++ * 40) + 'ms'; s.textContent = ch; w.appendChild(s); });
-          frag.appendChild(w);
-        });
-        n.replaceChild(frag, c);
-      });
-    })(t);
-    setTimeout(function () { var c = byId('prClave'); if (c) c.classList.add('pr-salta'); }, k * 40 + 500);
-  })();
 
   /* tabla de medidas y muestrario de colores */
   if (byId('prMedidas')) byId('prMedidas').innerHTML = P.medidas.map(function (m) {
