@@ -88,6 +88,26 @@
 .pr-est svg{width:16px;height:16px;fill:#E2E8F0}
 .pr-est .si svg{fill:#DC2626}
 
+/* ---------- héroe como Perú (James 10-11): foto entera de borde a borde, píldora de precio, título enorme en cascada ---------- */
+.pr-heroe{padding-top:0}
+.pr-heroe .pr-foto--heroe{position:relative;margin:0 calc(var(--space-md) * -1);border-radius:0;box-shadow:none;overflow:hidden}
+.pr-heroe .pr-foto--heroe::after{content:'';position:absolute;left:0;right:0;bottom:0;height:32%;background:linear-gradient(to top,#1E293B,rgba(30,41,59,0));pointer-events:none}
+.pr-heroe__chip{position:absolute;left:16px;bottom:18px;z-index:2;background:#DC2626;color:#FFFFFF;font:600 15px/1 'Be Vietnam Pro',sans-serif;padding:10px 16px;border-radius:999px;box-shadow:var(--shadow-lg)}
+.pr-heroe__chip b{font-weight:800;font-size:18px}
+.pr-h1--cascada{font-size:clamp(44px,12vw,84px);line-height:.98;letter-spacing:-.03em;margin:var(--space-sm) 0 var(--space-md)}
+.pr-h1--cascada > span{display:block}
+.pr-h1--cascada b{display:inline-block;color:#FFFFFF;background:#DC2626;padding:0 .18em .06em;border-radius:.18em;font-weight:800}
+.pr-le{display:inline-block;animation:prBote 520ms cubic-bezier(.34,1.56,.64,1) both}
+@keyframes prBote{from{transform:translateY(-.9em);opacity:0}to{transform:none;opacity:1}}
+.pr-salta{animation:prGelatina 700ms cubic-bezier(.34,1.56,.64,1) 1}
+@keyframes prGelatina{0%,100%{transform:none}30%{transform:scale(1.12,.88)}60%{transform:scale(.94,1.06)}}
+@media (min-width:900px){
+  .pr-heroe{padding-top:var(--space-xl)}
+  .pr-heroe .pr-foto--heroe{margin:0;border-radius:16px}
+  .pr-heroe .pr-foto--heroe::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){.pr-le,.pr-salta{animation:none}}
+
 /* ---------- fotos (las hace James; mientras, un recuadro dice qué va) ---------- */
 .pr-foto{margin:var(--space-lg) 0;border-radius:12px;overflow:hidden;background:var(--color-muted);box-shadow:var(--shadow-xl)}
 .pr-foto--heroe{margin:0;aspect-ratio:2/3}

@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/tienda.css?v=2">
-<link rel="stylesheet" href="protector.css?v=2">
+<link rel="stylesheet" href="protector.css?v=3">
 <script>
 (function(){var d=document.documentElement;
  var ok=function(){d.classList.add("fuentesListas")};
@@ -94,11 +94,13 @@ window.jayePixel.track('PageView', {});
     <div class="pr-heroe__in">
       <figure class="pr-foto pr-foto--heroe" data-falta="Foto héroe: el combo completo (3 protectores, 6 fundas y la cobija), solo y grande">
         <img src="img/pr-01-heroe.webp?v=2" alt="Cama con el protector de colchón acolchado puesto, almohadas y la cobija navideña con lazo, junto al árbol de Navidad" width="1024" height="1536" fetchpriority="high">
+        <span class="pr-heroe__chip">Desde <b data-precio="pre">$107.900</b></span>
       </figure>
       <div class="pr-heroe__txt">
         <span class="pr-rot pr-rot--claro">Edición Navidad · regalo incluido</span>
-        <h1 class="pr-h1">3 protectores de colchón + 6 fundas, y la <em>cobija navideña</em> de regalo</h1>
-        <p class="pr-lead">Renueva las camas de la casa antes de las fiestas: colchones protegidos de manchas, sudor y accidentes.</p>
+        <!-- James 10-11: el título entra en cascada, letra por letra (como Perú); la palabra clave rebota al final -->
+        <h1 class="pr-h1 pr-h1--cascada" id="prTit"><span>Tu colchón</span><span>protegido</span><span><b id="prClave">esta Navidad</b></span></h1>
+        <p class="pr-lead">3 protectores de colchón + 6 fundas, y la cobija navideña de regalo. Colchones protegidos de manchas, sudor y accidentes.</p>
         <div class="pr-estrellas" id="prEstrellas" hidden></div>
         <div class="pr-precio">
           <span class="pr-precio__n" data-precio="cod">$119.900</span>
@@ -339,6 +341,6 @@ window.jayePixel.track('PageView', {});
 <script src="productos.js?v=2"></script>
 <script src="resenas.js?v=2"></script>
 <script src="../ficha.js?v=1"></script>
-<script src="protector.js?v=2"></script>
+<script src="protector.js?v=3"></script>
 </body>
 </html>
