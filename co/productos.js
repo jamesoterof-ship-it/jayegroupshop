@@ -13,7 +13,7 @@ window.PRODUCTOS = [
     sub: '3 protectores impermeables + 6 fundas + cobija navideña de regalo',
     categoria: 'Hogar',
     etiqueta: 'Edición Navidad',
-    foto: 'co/protector/img/pr-01-heroe.webp?v=2',
+    foto: 'co/protector/img/pr-01-heroe.webp?v=3',
     packs: [
       { cant: 1, precio: 119900, texto: '1 combo' },
     ],
