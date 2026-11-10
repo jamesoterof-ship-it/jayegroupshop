@@ -58,6 +58,12 @@
 
   track('ViewContent', { content_name: p.nombre, content_type: 'product', content_ids: [p.id], value: p.packs[0].precio, currency: 'PEN' });
 
+  /* 10-11: visitas al panel (Postgres, track-visita) con prefijo "pe-", como las demás tiendas; una por sesión */
+  var avisarPanel = function (tipo) {
+    try { fetch(N8N + 'track-visita', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pagina: 'pe-' + p.id, producto: p.nombre + ' · Perú', tipo: tipo }) }).catch(function () {}); } catch (e) {}
+  };
+  try { if (!sessionStorage.getItem('jaye_vis_pe_' + p.id)) { sessionStorage.setItem('jaye_vis_pe_' + p.id, '1'); avisarPanel('visita'); } } catch (e) { avisarPanel('visita'); }
+
   /* ---------- pintar ---------- */
   var n = p.packs.length;
   var packsHTML = p.packs.map(function (k, i) {
@@ -173,7 +179,7 @@
   /* InitiateCheckout: una vez, cuando el formulario aparece en pantalla */
   if ('IntersectionObserver' in window) {
     var oi = new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting) { oi.disconnect(); var k = p.packs[elegido]; track('InitiateCheckout', { content_name: p.nombre, content_ids: [p.id], value: precioAhora(elegido), currency: 'PEN', num_items: k.cant }); }
+      if (es[0].isIntersecting) { oi.disconnect(); avisarPanel('visita_form'); var k = p.packs[elegido]; track('InitiateCheckout', { content_name: p.nombre, content_ids: [p.id], value: precioAhora(elegido), currency: 'PEN', num_items: k.cant }); }
     }, { threshold: 0.3 });
     oi.observe($('fPedido'));
   }
