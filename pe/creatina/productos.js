@@ -37,7 +37,6 @@ window.PRECIOS_APROBADOS = [87, 145, 175, 78, 131, 158];
 window.PAGINA = {
   heroe: {
     img: 'img/cr-01-heroe.webp?v=1', alt: 'Frasco de Beast Bites en el piso del gimnasio junto a una pesa, con gomitas celestes regadas',
-    galeria: [['img/cr-01-heroe.webp?v=1', 'Frasco de Beast Bites junto a una pesa'], ['img/cr-02-heroe-mano.webp?v=1', 'Mano sosteniendo el frasco abierto y sacando una gomita en el gimnasio'], ['img/cr-03-detalle.webp?v=1', 'Tres gomitas celestes en la palma de la mano'], ['img/cr-frasco.webp?v=1', 'Frasco de Beast Bites con gomitas alrededor']],
     rotulo: 'Creatina en gomitas',
     l1: 'Tu creatina,', l2: 'en', clave: 'gomitas.',
     frase: 'Para los que entrenan: la creatina apoya la fuerza y el rendimiento en el entrenamiento. Aquí viene en gomitas sabor frambuesa azul, sin polvo ni shaker.',
