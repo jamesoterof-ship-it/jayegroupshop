@@ -14,5 +14,5 @@ window.codPE = function (dep, dis) {
   var n = function (s) { return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().trim(); };
   if (!dis) return true;
   if ((window.COD_PE[dep] || []).some(function (x) { return n(x) === n(dis); })) return true;
-  return n(dis) > 'SUBTANJALLA';   /* sin dato en la planilla (la lista de Urbano se corta en la S) */
+  return false;   /* 10-11: TACNA (letra T, fuera de la planilla) rebotó en Dropi (#9243): fuera de la lista NO hay contraentrega */
 };
