@@ -17,7 +17,7 @@
   'use strict';
   var N8N = 'https://n8n-production-8a42.up.railway.app/webhook/';
   var URL_PEDIDO = window.URL_PEDIDO || N8N + 'pedido-tienda-co';
-  var WA = window.WA_NUM || '573145021958';
+  var WA = window.WA_NUM || '573226087847';
   var EN_TIENDA = location.hostname === 'jayegroupshop.com' || location.hostname === 'www.jayegroupshop.com';
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
