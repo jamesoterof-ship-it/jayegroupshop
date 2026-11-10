@@ -36,7 +36,8 @@ window.PRECIOS_APROBADOS = [87, 145, 175, 78, 131, 158];
 /* Textos de la página (los pinta creatina.js con el plano del script "creatina-peru"). */
 window.PAGINA = {
   heroe: {
-    img: 'img/cr-frasco.webp?v=1', alt: 'Frasco de Beast Bites, gomitas con creatina sabor frambuesa azul, rodeado de gomitas celestes',
+    img: 'img/cr-01-heroe.webp?v=1', alt: 'Frasco de Beast Bites en el piso del gimnasio junto a una pesa, con gomitas celestes regadas',
+    galeria: [['img/cr-01-heroe.webp?v=1', 'Frasco de Beast Bites junto a una pesa'], ['img/cr-02-heroe-mano.webp?v=1', 'Mano sosteniendo el frasco abierto y sacando una gomita en el gimnasio'], ['img/cr-03-detalle.webp?v=1', 'Tres gomitas celestes en la palma de la mano'], ['img/cr-frasco.webp?v=1', 'Frasco de Beast Bites con gomitas alrededor']],
     rotulo: 'Creatina en gomitas',
     l1: 'Tu creatina,', l2: 'en', clave: 'gomitas.',
     frase: 'Para los que entrenan: la creatina apoya la fuerza y el rendimiento en el entrenamiento. Aquí viene en gomitas sabor frambuesa azul, sin polvo ni shaker.',
@@ -49,13 +50,16 @@ window.PAGINA = {
     ['mochila', 'Va en tu mochila', 'Frasco con tapa de rosca: al gym, a la chamba o a la cancha.'],
     ['frasco', 'Frasco de 150 g', 'Gomitas Beast Bites de DR.USA, con su etiqueta y su sello.'],
     ['caja', 'Pagas al recibir', 'Envío gratis a todo el Perú y pagas cuando lo tienes en la mano.'] ] },
-  usos: { rotulo: 'Para tu rutina', titulo: 'Dónde entra Beast Bites', img: 'img/cr-gomitas.webp?v=1',
-    alt: 'Frasco de Beast Bites con un puñado de gomitas celestes al frente',
-    lista: [
-      ['En el gym', 'Para tus días de pesas, máquinas o crossfit.'],
-      ['En la cancha', 'Fútbol, vóley o lo que juegues con tu gente.'],
-      ['En casa', 'Si entrenas en tu cuarto o en el parque, también va.'],
-      ['Todos los días', 'Toma la porción que indica la etiqueta, siempre igual.'] ] },
+  video: { rotulo: 'Míralo en video', titulo: 'Tu rutina, a tu manera', src: 'img/cr-video.mp4?v=1', poster: 'img/cr-video-poster.webp?v=1' },
+  comoSeToma: { rotulo: 'Cómo se toma', titulo: 'Así de fácil', img: 'img/cr-08-como-se-toma.webp?v=1', alt: 'Tres pasos: abre el frasco, mastica tus gomitas y entrena con todo' },
+  antesAhora: { rotulo: 'Antes y ahora', titulo: 'Adiós al polvo y al shaker', img: 'img/cr-09-antes-despues.webp?v=1', alt: 'Antes: polvo regado y shaker con grumos. Ahora: el frasco de gomitas en la mano, listo para llevar' },
+  usos: { rotulo: 'Para tu rutina', titulo: 'Dónde entra Beast Bites',
+    fotos: [
+      ['img/cr-04-gym-ella.webp?v=1', 'En el gym', 'Entre serie y serie, sin cargar shaker.', 'Mujer sentada en una banca del gimnasio comiendo una gomita con el frasco en la mano'],
+      ['img/cr-05-pesas-el.webp?v=1', 'En las pesas', 'Para tus días de barra, crossfit o máquinas.', 'Hombre con magnesio en las manos junto a la barra tomando una gomita del frasco'],
+      ['img/cr-06-casa-manana.webp?v=1', 'Antes de salir', 'En la cocina, antes de ir a entrenar.', 'Joven en la cocina sacando gomitas del frasco con la mochila del gym al lado'],
+      ['img/cr-07-oficina-mochila.webp?v=1', 'En tu mochila', 'Del trabajo al gym: el frasco va contigo.', 'Mujer en su oficina guardando el frasco en el bolso del gimnasio'] ] },
+  packsImg: 'img/cr-10-packs.webp?v=1', promoImg: 'img/cr-11-promo.webp?v=1',
   garantias: [['S/ 0', 'de envío a todo el Perú'], ['2 a 5', 'días de despacho'], ['Al recibir', 'pagas en efectivo'], ['-10 %', 'si pagas con tarjeta']],
   preguntas: [
     ['¿Qué es?', 'Gomitas Beast Bites con creatina, sabor frambuesa azul. Vienen en un frasco de 150 g.'],

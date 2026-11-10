@@ -217,6 +217,28 @@
 .pf-listo .pf-usd { font-size: 19px; color: var(--color-muted-foreground); margin: 0 0 12px; }
 .pf-listo #ppBotones { min-height: 120px; margin: 6px 0 8px; }
 
+/* ---------- 10 · rediseño 09-11 (James: "Rediseña esa nuevamente y crea las imágenes"): galería, video, imágenes, 4 usos, opiniones ---------- */
+.cr-mini { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; }
+.cr-mini button { flex: none; width: 64px; height: 64px; padding: 0; border: 2px solid var(--color-border); border-radius: 10px; overflow: hidden; background: var(--color-card); cursor: pointer; transition: border-color 150ms ease; }
+.cr-mini button.sel { border-color: var(--color-accent); }
+.cr-mini img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; }
+.cr-video { max-width: 380px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: var(--suave), var(--shadow-xl); background: var(--color-foreground); }
+.cr-video video { display: block; width: 100%; height: auto; }
+.cr-img { margin: 0 auto var(--space-lg); max-width: 640px; border-radius: 16px; overflow: hidden; box-shadow: var(--suave), var(--shadow-lg); background: var(--color-card); }
+.cr-img img { display: block; width: 100%; height: auto; }
+.cr-fotos { list-style: none; margin: 0 0 var(--space-xl); padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cr-foto { background: var(--color-card); border-radius: 12px; overflow: hidden; box-shadow: var(--suave); border: 1px solid var(--color-border); }
+.cr-foto img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.cr-foto b { display: block; font-family: var(--f-tit); font-weight: 400; font-size: 10px; line-height: 1.6; padding: 10px 10px 2px; color: var(--color-foreground); }
+.cr-foto span { display: block; font-size: 19px; line-height: 1.15; padding: 0 10px 12px; color: var(--color-muted-foreground); }
+.cr-res__tot { font-size: 24px; margin: 0 0 4px; }
+.cr-est { color: var(--color-accent); letter-spacing: 2px; font-family: var(--f-txt); }
+.cr-est i { font-style: normal; color: var(--color-border); }
+.cr-res { list-style: none; margin: var(--space-md) 0 0; padding: 0; display: grid; gap: 12px; }
+.cr-res .cr-card span { color: var(--color-foreground); margin: 6px 0 8px; }
+.cr-res .cr-card b { font-family: var(--f-txt); font-size: 18px; color: var(--color-muted-foreground); margin: 0; }
+@media (min-width: 768px) { .cr-fotos { grid-template-columns: repeat(4, 1fr); } .cr-res { grid-template-columns: repeat(2, 1fr); } }
+
 /* ---------- botón fijo (CTA del héroe que queda pegado al bajar) ---------- */
 .cr-fijo { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 10px 72px 10px 12px; background: rgba(236,253,245,.94); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); box-shadow: 0 -6px 18px rgba(6,78,59,.12); transform: translateY(110%); transition: transform 300ms ease; }
 .cr-fijo--ver { transform: none; }

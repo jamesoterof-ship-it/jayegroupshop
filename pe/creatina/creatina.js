@@ -40,8 +40,10 @@
     + '<div class="cr-heroe__txt">' + rot(H.rotulo)
     + '<h1 id="crTit"><span>' + esc(H.l1) + '</span><span>' + esc(H.l2) + ' <b id="crClave">' + esc(H.clave) + '</b></span></h1>'
     + '<p class="cr-heroe__frase">' + esc(H.frase) + '</p></div>'
-    + '<figure class="cr-heroe__foto" style="margin:0"><img src="' + esc(H.img) + '" alt="' + esc(H.alt) + '" width="900" height="1200" fetchpriority="high">'
-    + '<span class="cr-chip">' + (uno.antes ? '<s>' + soles(uno.antes) + '</s>' : '') + 'Desde ' + soles(uno.precio) + '</span></figure>'
+    + '<figure class="cr-heroe__foto" style="margin:0"><img id="crFotoP" src="' + esc(H.img) + '" alt="' + esc(H.alt) + '" width="900" height="1350" fetchpriority="high">'
+    + '<span class="cr-chip">' + (uno.antes ? '<s>' + soles(uno.antes) + '</s>' : '') + 'Desde ' + soles(uno.precio) + '</span>'
+    + (H.galeria ? '<span class="cr-mini">' + H.galeria.map(function (g, i) { return '<button type="button" data-foto="' + esc(g[0]) + '" aria-label="' + esc(g[1]) + '"' + (i ? '' : ' class="sel"') + '><img src="' + esc(g[0]) + '" alt="" loading="lazy" width="80" height="80"></button>'; }).join('') + '</span>' : '')
+    + '</figure>'
     + '<ul class="cr-datos">' + H.datos.map(function (d) { return '<li><b>' + esc(d[0]) + '</b><span>' + esc(d[1]) + '</span></li>'; }).join('') + '</ul>'
     + '<div>' + cta('Lo quiero, pago al recibir', 'Envío gratis a todo el Perú · despacho en 2 a 5 días') + '</div>'
     + '</div></section>');
@@ -53,21 +55,36 @@
     + (pre[0] ? '<p class="cr-ficha__tarj">o <b>' + soles(pre[0]) + '</b> pagando ahora con tarjeta: −' + pct + ' % y entrega prioritaria</p>' : '')
     + cta('Pedir con pago al recibir') + '</div></div></section>');
 
+  /* 2b · VIDEO real del frasco */
+  var V = P.video;
+  if (V && V.src) html.push('<section class="cr-sec cr-sec--blanca" aria-labelledby="crVid"><div class="cr-in">' + rot(V.rotulo) + tit(V.titulo, 'crVid')
+    + '<div class="cr-video" data-cr><video src="' + esc(V.src) + '" poster="' + esc(V.poster) + '" muted loop playsinline autoplay preload="metadata" width="576" height="1024"></video></div></div></section>');
+
+  /* 2c · CÓMO SE TOMA (imagen de 3 pasos) */
+  var T = P.comoSeToma;
+  if (T) html.push('<section class="cr-sec"><div class="cr-in">' + rot(T.rotulo) + tit(T.titulo)
+    + '<figure class="cr-img" data-cr><img src="' + esc(T.img) + '" alt="' + esc(T.alt) + '" loading="lazy" width="900" height="900"></figure></div></section>');
+
   /* 3 · TARJETAS: un mensaje por tarjeta + botón después de las tarjetas */
   var R = P.rasgos;
   html.push('<section class="cr-sec cr-sec--blanca" aria-labelledby="crRas"><div class="cr-in">' + rot(R.rotulo) + tit(R.titulo, 'crRas')
     + '<ul class="cr-rejilla">' + R.lista.map(function (x) { return '<li class="cr-card" data-cr>' + svg(x[0]) + '<b>' + esc(x[1]) + '</b><span>' + esc(x[2]) + '</span></li>'; }).join('') + '</ul>'
     + cta('Quiero mis gomitas') + '</div></section>');
 
-  /* 4 · USOS / BENEFICIOS con la foto real de las gomitas */
+  /* 4 · USOS: 4 fotos con personas usando el frasco */
   var U = P.usos;
   html.push('<section class="cr-sec" aria-labelledby="crUso"><div class="cr-in">' + rot(U.rotulo) + tit(U.titulo, 'crUso')
-    + '<div class="cr-usos"><figure class="cr-usos__foto" style="margin:0" data-cr><img src="' + esc(U.img) + '" alt="' + esc(U.alt) + '" loading="lazy" width="720" height="1280"></figure>'
-    + '<div><ol>' + U.lista.map(function (x) { return '<li data-cr><div><b>' + esc(x[0]) + '</b>' + esc(x[1]) + '</div></li>'; }).join('') + '</ol>'
-    + cta('Lo quiero, pago al recibir') + '</div></div></div></section>');
+    + '<ul class="cr-fotos">' + U.fotos.map(function (x) { return '<li class="cr-foto" data-cr><img src="' + esc(x[0]) + '" alt="' + esc(x[3]) + '" loading="lazy" width="900" height="900"><b>' + esc(x[1]) + '</b><span>' + esc(x[2]) + '</span></li>'; }).join('') + '</ul>'
+    + cta('Lo quiero, pago al recibir') + '</div></section>');
+
+  /* 4b · ANTES Y AHORA */
+  var A = P.antesAhora;
+  if (A) html.push('<section class="cr-sec cr-sec--blanca"><div class="cr-in">' + rot(A.rotulo) + tit(A.titulo)
+    + '<figure class="cr-img" data-cr><img src="' + esc(A.img) + '" alt="' + esc(A.alt) + '" loading="lazy" width="900" height="1350"></figure></div></section>');
 
   /* 5 · NIVELES (gamificación) + pago con tarjeta −10 % */
-  html.push('<section class="cr-sec cr-sec--blanca" aria-labelledby="crNiv"><div class="cr-in">' + rot('Elige tu nivel') + tit('Mientras más llevas, menos pagas', 'crNiv')
+  html.push('<section class="cr-sec" aria-labelledby="crNiv"><div class="cr-in">' + rot('Elige tu nivel') + tit('Mientras más llevas, menos pagas', 'crNiv')
+    + (P.packsImg ? '<figure class="cr-img" data-cr><img src="' + esc(P.packsImg) + '" alt="Paquetes de 1, 2 y 3 frascos de Beast Bites; el de 2 frascos es el más pedido" loading="lazy" width="900" height="900"></figure>' : '')
     + '<div class="cr-niveles">' + packs.map(function (k, i) {
         return '<div class="cr-nivel' + (i === top ? ' cr-nivel--top' : '') + '" data-cr style="--xp:' + Math.round((i + 1) / packs.length * 100) + '%">'
           + (i === top ? '<span class="cr-nivel__cinta">El más pedido</span>' : '')
@@ -86,7 +103,21 @@
   /* 6 · PRUEBA SOCIAL / CONFIANZA: lo que garantizamos (sin opiniones inventadas: el producto es nuevo en Perú) */
   html.push('<section class="cr-sec cr-sec--verde" aria-labelledby="crGar"><div class="cr-in">' + rot('Compra sin riesgo') + tit('Así te lo enviamos', 'crGar')
     + '<ul class="cr-numeros">' + P.garantias.map(function (x) { return '<li data-cr><b>' + esc(x[0]) + '</b>' + esc(x[1]) + '</li>'; }).join('') + '</ul>'
+    + (P.promoImg ? '<figure class="cr-img" data-cr><img src="' + esc(P.promoImg) + '" alt="Repartidor entregando el pedido; pagas al recibir y el envío es gratis a todo el Perú" loading="lazy" width="900" height="900"></figure>' : '')
     + '<p class="cr-txt">Si te llega dañado o distinto, escríbenos dentro de las 48 horas con una foto y lo solucionamos sin costo para ti.</p></div></section>');
+
+  /* 6b · OPINIONES REALES (resenas.js): resumen de estrellas de todas + las que traen texto */
+  var RS = window.RESENAS || [];
+  if (RS.length) {
+    var prom = RS.reduce(function (a, r) { return a + r.estrellas; }, 0) / RS.length;
+    var paises = { MX: 'México', CO: 'Colombia', CL: 'Chile', PE: 'Perú', AR: 'Argentina', SV: 'El Salvador', PR: 'Puerto Rico', DO: 'Rep. Dominicana', EC: 'Ecuador', BR: 'Brasil', UY: 'Uruguay', BO: 'Bolivia', PY: 'Paraguay', CR: 'Costa Rica', PA: 'Panamá', GT: 'Guatemala', HN: 'Honduras', NI: 'Nicaragua', VE: 'Venezuela' };
+    var est = function (n) { return '<span class="cr-est" aria-label="' + n + ' de 5 estrellas">' + '★★★★★'.slice(0, n) + '<i>' + '★★★★★'.slice(n) + '</i></span>'; };
+    var conT = RS.filter(function (r) { return r.texto && r.texto.length > 25 && r.estrellas >= 4; });
+    html.push('<section class="cr-sec cr-sec--blanca" aria-labelledby="crRes"><div class="cr-in">' + rot('Opiniones reales') + tit('Lo que dicen quienes ya las probaron', 'crRes')
+      + '<p class="cr-res__tot">' + est(Math.round(prom)) + ' <b>' + prom.toFixed(1).replace('.', ',') + ' de 5</b> · ' + RS.length + ' opiniones</p>'
+      + '<p class="cr-btn-nota">' + esc(window.RESENAS_FUENTE || '') + '</p>'
+      + '<ul class="cr-res">' + conT.map(function (r) { return '<li class="cr-card" data-cr>' + est(r.estrellas) + '<span>“' + esc(r.texto) + '”</span><b>' + esc(r.nombre) + ' · ' + esc(paises[r.pais] || r.pais) + ' · ' + esc(r.fecha) + '</b></li>'; }).join('') + '</ul></div></section>');
+  }
 
   /* 7 · PREGUNTAS */
   html.push('<section class="cr-sec" aria-labelledby="crFaq"><div class="cr-in">' + rot('Preguntas frecuentes') + tit('Lo que nos preguntan', 'crFaq')
@@ -142,6 +173,13 @@
     fijo.classList.toggle('cr-fijo--ver', heroe.getBoundingClientRect().bottom < 0 && !enF && !enPie);
   };
   addEventListener('scroll', mirar, { passive: true }); addEventListener('resize', mirar); mirar();
+
+  /* galería del héroe: tocar una miniatura cambia la foto grande */
+  raiz.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-foto]'); if (!b) return;
+    var g = $('crFotoP'); if (g) { g.src = b.getAttribute('data-foto'); g.alt = b.getAttribute('aria-label'); }
+    Array.prototype.forEach.call(raiz.querySelectorAll('[data-foto]'), function (x) { x.classList.toggle('sel', x === b); });
+  });
 
   /* botones que llevan al formulario (y eligen el nivel o el pago con tarjeta) */
   document.addEventListener('click', function (e) {
