@@ -72,16 +72,20 @@
       + '</button>';
   }).join('');
 
-  var logos = '<span class="pf-pago__logos"><img src="/img/pago/visa-claro.svg" alt="Visa" width="34" height="20"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard" width="34" height="20"><img src="/img/pago/paypal-texto.svg" alt="PayPal" width="52" height="16"></span>';
+  /* 09-11 James ("MALO… mira cómo están los demás formularios"): igual que México (rodillera): ícono redondo arriba, título,
+     precio grande, texto, y en "Paga ahora" los logos chicos en línea (Visa, Mastercard, Amex, PayPal), sin caja blanca. */
+  var logos = '<span class="pf-pago__logos"><img src="/img/pago/visa-claro.svg" alt="Visa" width="34" height="20"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard" width="34" height="20"><img src="/img/pago/amex.svg" alt="American Express" width="30" height="18"><img src="/img/pago/paypal-texto.svg" alt="PayPal" width="52" height="16"></span>';
+  var icoCod = '<span class="pf-pago__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="12" rx="2.2"></rect><path d="M2.5 11h19"></path><circle cx="17.5" cy="15.5" r="1.3"></circle></svg></span>';
+  var icoPre = '<span class="pf-pago__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M16.5 7.5c-.6-1.4-2.3-2.2-4.5-2.2-2.5 0-4.2 1.1-4.2 2.9 0 1.9 1.8 2.6 4.4 3.2 2.9.6 4.8 1.4 4.8 3.5 0 2-1.9 3.2-4.6 3.2-2.4 0-4.2-.9-4.8-2.4"></path></svg></span>';
   var pagosHTML = !pre ? '' : '<p class="pf-paso"><b>2</b>¿Cómo quieres pagar?</p>'
     + '<div class="pf-pagos" role="radiogroup" aria-label="¿Cómo quieres pagar?">'
-    + '<button type="button" class="pf-pago sel" data-pago="cod" role="radio" aria-checked="true">'
+    + '<button type="button" class="pf-pago sel" data-pago="cod" role="radio" aria-checked="true">' + icoCod
     + '<span class="pf-pago__tit">Pago al recibir</span><span class="pf-pago__pr" id="prCod"></span>'
-    + '<span class="pf-pago__sub">Envío gratis · en efectivo</span></button>'
+    + '<span class="pf-pago__sub">Envío gratis · 2 a 5 días hábiles</span></button>'
     + '<button type="button" class="pf-pago" data-pago="pre" role="radio" aria-checked="false">'
-    + '<span class="pf-pago__cinta">-' + pre.pct + ' %</span>'   /* guion normal: la letra pixel no trae el signo − */
-    + '<span class="pf-pago__tit">' + esc(pre.titulo || 'Paga ahora') + '</span><span class="pf-pago__pr" id="prPre"></span>'
-    + '<span class="pf-pago__sub">' + esc(pre.envio || '') + '</span>' + logos + '</button></div>';
+    + '<span class="pf-pago__cinta">−' + pre.pct + ' %</span>' + icoPre
+    + '<span class="pf-pago__tit">Paga ahora</span><span class="pf-pago__pr" id="prPre"></span>'
+    + '<span class="pf-pago__sub">Entrega prioritaria: sale primero</span>' + logos + '</button></div>';
 
   var deptos = window.DEPARTAMENTOS_PE || {};
   var campo = function (idc, rot, input, err, opc) {
