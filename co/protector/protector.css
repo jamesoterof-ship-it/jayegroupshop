@@ -115,6 +115,13 @@
 @media (prefers-reduced-motion:reduce){
   .pr-heroe__foto::after,.pr-nieve,.pr-luces i,.pr-h1 em,.pr-btn,.pr-btn::after,.pr-pre{animation:none!important}
 }
+/* "Con quién se despacha": las medidas de los sellos de la ficha de Chile (.sellos / .sello), James 10-11 */
+.pr-sellos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pr-sello{border:1px solid rgba(15,23,42,.14);background:var(--blanco);padding:16px 14px;text-align:center}
+.pr-sello img{height:26px;width:auto;max-width:100%;object-fit:contain;margin:0 auto 8px;display:block}
+.pr-sello .nom{font-weight:700}
+.pr-sello small{display:block;font-size:12px;color:var(--muted-fg);margin-top:3px;line-height:1.4}
+@media (min-width:900px){ .pr-sellos{grid-template-columns:repeat(3,1fr)} }
 @media (min-width:900px){
   .pr-heroe{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr}
   .pr-heroe__foto{grid-row:1 / 3}
