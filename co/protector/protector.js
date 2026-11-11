@@ -66,7 +66,7 @@
     var nota = function (r) { return Number(r.estrellas) || 5; };
     var media = Math.round(lista.reduce(function (s, r) { return s + nota(r); }, 0) / lista.length * 10) / 10;
     if (byId('prEstrellas')) {
-      byId('prEstrellas').innerHTML = '<span class="pr-est">' + fila(media) + '</span><a href="#resenas">' + media.toFixed(1) + ' · ' + lista.length + ' reseñas</a>';
+      byId('prEstrellas').innerHTML = '<span class="pr-est">' + fila(media) + '</span><a href="#resenas"><b>' + media.toFixed(1).replace('.', ',') + '</b> de 5 · <u>' + lista.length + ' reseñas</u></a>';
       byId('prEstrellas').hidden = false;
     }
     /* primero las que traen foto */

@@ -54,10 +54,12 @@
 .pr-datos b{display:block;font-weight:900;font-size:30px;line-height:1;color:var(--oro2)}
 .pr-datos span{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .pr-heroe__txt{background:var(--verde-osc);padding:24px 16px 32px}
-.pr-estrellas{display:flex;align-items:center;gap:8px}
-.pr-estrellas a{color:var(--blanco);font-size:15px}
+.pr-estrellas{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 14px;position:relative;z-index:2}
+.pr-estrellas a{color:var(--blanco);font-size:16px;font-weight:700;text-decoration:none}
+.pr-estrellas a b{color:var(--oro2);font-weight:900}
+.pr-estrellas a u{text-decoration:underline;text-underline-offset:3px}
 .pr-est{display:inline-flex;gap:2px}
-.pr-est svg{width:17px;height:17px;fill:var(--borde)}
+.pr-est svg{width:21px;height:21px;fill:rgba(255,255,255,.35)}
 .pr-est .si svg{fill:var(--oro2)}
 .pr-precio{display:flex;flex-direction:column;margin-bottom:14px}
 .pr-precio__n{font-weight:900;font-size:50px;line-height:1;color:var(--blanco)}
