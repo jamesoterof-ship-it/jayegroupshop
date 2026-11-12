@@ -5,6 +5,38 @@
    Las fichas viven en /co/<id>/ (cada una con su propio productos.js; aquí va lo que pinta la portada).
    ============================================================ */
 window.PRODUCTOS = [
+  /* 11/12-11 James: Funda navideña para puerta (Dropi 1979374) y Fundas navideñas para silla (2295051 / 2296349).
+     Precios aprobados: puerta 1 $75.000 · 2 $109.900 · 3 $124.900 · 4 $139.900 · sillas 4 $70.000 · 6 $90.000; anticipado Wompi −10 %. */
+  {
+    id: 'funda', dropiId: 1979374,
+    nombre: 'Funda Navideña para Puerta',
+    sub: '2 m × 1 m, piel de durazno · 34 diseños · se pone sin clavos',
+    categoria: 'Hogar',
+    etiqueta: 'Edición Navidad',
+    foto: 'co/funda/img/fp-heroe.webp?v=1',
+    nota: { n: 55, prom: '4.9' },
+    packs: [
+      { cant: 1, precio: 75000, texto: '1 funda' },
+      { cant: 2, precio: 109900, texto: '2 fundas' },
+      { cant: 3, precio: 124900, texto: '3 fundas' },
+      { cant: 4, precio: 139900, texto: '4 fundas' },
+    ],
+    anticipado: { pct: 10, precios: [67500, 98900, 112400, 125900] },
+  },
+  {
+    id: 'sillas', dropiId: 2295051,
+    nombre: 'Fundas Navideñas para Silla',
+    sub: 'Cubren espaldar y asiento · 8 diseños a juego con la puerta',
+    categoria: 'Hogar',
+    etiqueta: 'Edición Navidad',
+    foto: 'co/sillas/img/si-heroe.webp?v=1',
+    nota: { n: 55, prom: '4.9' },
+    packs: [
+      { cant: 4, precio: 70000, texto: '4 sillas' },
+      { cant: 6, precio: 90000, texto: '6 sillas' },
+    ],
+    anticipado: { pct: 10, precios: [63000, 81000] },
+  },
   /* 10-11 James: Combo Protector de Colchón + Cobija Navideña, Dropi Colombia 2293056 (3 protectores + 6 fundas + cobija).
      Contra entrega $119.900 · pago anticipado con Wompi −10 %: $107.900. Sin precio tachado. */
   {
@@ -29,4 +61,6 @@ window.PREGUNTAS = [
 ];
 
 /* candado: si un precio no está aprobado por James, la portada no lo muestra. Colombia: protector aprobado el 10-11. */
-window.PRECIOS_APROBADOS = [119900, 107900];
+window.PRECIOS_APROBADOS = [119900, 107900,
+  75000, 109900, 124900, 139900, 67500, 98900, 112400, 125900,   /* funda de puerta (James 11-11 / 12-11) */
+  70000, 90000, 63000, 81000];                                   /* fundas de silla (James 12-11) */
