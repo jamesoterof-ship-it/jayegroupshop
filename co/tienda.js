@@ -71,7 +71,7 @@
       + '<span class="im">' + et + img + '</span>'
       + '<div class="cuerpo"><h3>' + nom + '</h3>' + estr
       + (p.sub ? '<p class="sub">' + esc(p.sub) + '</p>' : '')
-      + '<div class="precio"><b>' + soles(barato.precio) + '</b>'
+      + '<div class="precio"><b>' + soles(barato.precio) + '</b>' + (barato.texto ? ' <span style="font-size:13px;font-weight:600;opacity:.75">' + esc(barato.texto) + '</span>' : '')
       + (barato.antes ? '<s>' + soles(barato.antes) + '</s>' : '') + '</div></div>'
       + (p.agotado ? '<span class="btn" style="opacity:.55;cursor:default">Agotado</span>' : '<a class="btn" href="' + dest + '">Lo quiero</a>')
       + '</article>';

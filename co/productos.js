@@ -10,7 +10,7 @@ window.PRODUCTOS = [
   {
     id: 'funda', dropiId: 1979374,
     nombre: 'Funda Navideña para Puerta',
-    sub: '2 m × 1 m, piel de durazno · 34 diseños · se pone sin clavos',
+    sub: '2 m × 1 m, elástica: se ajusta también a puertas de menos de 1 m · 34 diseños',
     categoria: 'Hogar',
     etiqueta: 'Edición Navidad',
     foto: 'co/funda/img/fp-heroe.webp?v=1',
