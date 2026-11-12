@@ -142,6 +142,18 @@
 .pf-pack__ahorro{text-align:right;color:var(--nv-rojo);font-weight:700;font-size:14px}
 .pf-pack__xp{grid-column:1/-1;height:5px;border-radius:999px;background:var(--nv-suave);overflow:hidden;margin-top:6px}
 .pf-pack__xp i{display:block;height:100%;width:var(--xp);background:linear-gradient(90deg,var(--nv-pino2),var(--nv-oro))}
+/* 12-11: "¿Cómo quieres pagar?" (contra entrega / anticipado Wompi), las mismas reglas del protector con los colores de esta página */
+.pf-pagos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.pf-pago{position:relative;display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--nv-blanco);color:var(--nv-noche);font:400 14px/1.3 'Barlow',sans-serif;border:2px solid var(--nv-linea);border-radius:14px;padding:16px 12px 12px;cursor:pointer;transition:border-color 160ms ease,background 160ms ease}
+.pf-pago.sel{border-color:var(--nv-rojo);background:var(--nv-crema)}
+.pf-pago__tit{font-weight:700;font-size:15px}
+.pf-pago__pr{font:800 24px/1 'Barlow Condensed',sans-serif}
+.pf-pago__sub{color:var(--nv-gris)}
+.pf-pago__cinta{position:absolute;top:-11px;right:10px;background:var(--nv-rojo);color:var(--nv-blanco);font:800 12px/1 'Barlow Condensed',sans-serif;padding:5px 10px;border-radius:999px}
+.pf-pago__logos{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:2px;background:var(--nv-pino2);border-radius:8px;padding:5px 8px;align-self:flex-start}
+.pf-pago__logos img{height:14px;width:auto}
+.pf-pago__ico{display:grid;place-items:center;width:34px;height:34px;border-radius:999px;background:var(--nv-suave)}
+.pf-pago__ico svg{width:20px;height:20px;fill:none;stroke:var(--nv-pino2);stroke-width:1.8}
 .pf-dis{display:grid;gap:10px}
 .pf-dsel{display:grid;gap:4px;font-weight:600;font-size:14px}
 .pf-dsel select{width:100%;min-height:50px;border:2px solid var(--nv-linea);border-radius:12px;padding:0 12px;font:500 16px 'Barlow',sans-serif;background:var(--nv-blanco);color:var(--nv-noche)}
