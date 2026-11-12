@@ -28,7 +28,9 @@
 .nv-heroe__foto{margin:0;position:relative}
 .nv-heroe__foto img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
 .nv-heroe__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(transparent,var(--nv-pino))}
-.nv-cinta{position:absolute;top:14px;left:14px;z-index:2;background:var(--nv-rojo);color:var(--nv-blanco);font:800 15px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:9px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.nv-cinta{position:absolute;top:14px;left:14px;z-index:2;background:var(--nv-rojo);color:var(--nv-blanco);font:800 15px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:9px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.35);transform-origin:left center;animation:nvLatido 1.4s ease-in-out infinite}
+/* 12-11 James: que la promoción palpite */
+@keyframes nvLatido{0%,100%{transform:scale(1)}15%{transform:scale(1.09)}30%{transform:scale(1)}45%{transform:scale(1.06)}60%{transform:scale(1)}}
 .nv-heroe__txt{position:relative;padding:4px 16px 34px;max-width:760px;margin:0 auto}
 .nv-estrellas{display:flex;align-items:center;gap:8px;margin:12px 0 4px;font-weight:600}
 .nv-estrellas i{color:var(--nv-oro);font-style:normal;letter-spacing:2px;font-size:19px}
@@ -266,6 +268,6 @@
   .nv-benef{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .nv-nieve{animation:none}
+  .nv-nieve,.nv-cinta{animation:none}
   .nv-btn,.nv-fijo,.pf-pack{transition:none}
 }
