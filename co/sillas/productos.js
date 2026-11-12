@@ -33,6 +33,8 @@ window.PRODUCTOS = [{
     { cant: 6, disenos: 1, precio: 90000, texto: '6 sillas', detalle: 'comedor de 6 puestos', nivel: 'Promoción' },
   ],
   popular: 1,
+  /* 12-11 James "10% anticipado" → "Sí, ponlos": pago con Wompi, 10 % menos sobre el pack (la puerta adicional va a su precio) */
+  anticipado: { pct: 10, precios: [63000, 81000] },
   disenoUnidad: 'juego',
   disenosTitulo: 'Toca el diseño',
   disenos: _SILLA,
@@ -44,4 +46,4 @@ window.PRODUCTOS = [{
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (11-11) */
-window.PRECIOS_APROBADOS = [70000, 90000, 35000]; /* James 12-11 "dale así": el precio que estipula el proveedor, sin pack de 8 */
+window.PRECIOS_APROBADOS = [70000, 90000, 35000, 63000, 81000]; /* James 12-11 "dale así": el precio que estipula el proveedor, sin pack de 8 */

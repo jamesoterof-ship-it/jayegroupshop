@@ -28,6 +28,8 @@ window.PRODUCTOS = [{
     { cant: 4, precio: 139900, antes: 300000, texto: '4 fundas', detalle: 'casa y familia' },
   ],
   popular: 1,
+  /* 12-11 James "10% anticipado" → "Sí, ponlos": pago con Wompi, 10 % menos sobre el pack (el adicional va a su precio) */
+  anticipado: { pct: 10, precios: [67500, 98900, 112400, 125900] },
   disenoUnidad: 'funda',
   disenosTitulo: 'Toca el diseño de cada funda',
   disenos: [
@@ -58,4 +60,4 @@ window.PRODUCTOS = [{
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (11-11) */
-window.PRECIOS_APROBADOS = [75000, 109900, 124900, 139900, 70000, 90000];
+window.PRECIOS_APROBADOS = [75000, 109900, 124900, 139900, 70000, 90000, 67500, 98900, 112400, 125900];

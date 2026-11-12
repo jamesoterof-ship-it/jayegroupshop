@@ -13,7 +13,7 @@
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-ir],[data-pack],[data-adic]');
     if (!b) return;
-    if (b.hasAttribute('data-pack') && window.coElegir) window.coElegir(+b.getAttribute('data-pack'));
+    if (b.hasAttribute('data-pack') && window.coElegir) window.coElegir(+b.getAttribute('data-pack'), b.hasAttribute('data-pago-pre') ? 'pre' : undefined);
     if (b.hasAttribute('data-adic') && window.coAdicional) window.coAdicional(+b.getAttribute('data-adic'));
     bajarA(byId(b.getAttribute('data-ir') || 'pedir'));
   });
