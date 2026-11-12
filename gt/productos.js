@@ -14,6 +14,7 @@ window.PRODUCTOS = [
     sub: 'Extractos de hierbas en gotas',
     categoria: 'Bienestar',
     etiqueta: 'Nuevo en Guatemala',
+    nota: { n: 83, prom: '4.9' },   /* 12-11: las 83 reseñas reales de la ficha (gt/drenaje/resenas-reales.js) */
     foto: 'gt/drenaje/img/prod-drenaje.webp?v=1',
     packs: [
       { cant: 1, precio: 139, antes: 181, texto: '1 frasco' },
