@@ -163,9 +163,6 @@
     + '<div class="pf-aviso" id="fErr" role="alert"></div>'
     + '<button type="submit" class="cr-btn" id="btnPedir">Comprar · pago contra entrega</button>'
     + '<p class="pf-nota" id="notaPedir">Pagas en efectivo cuando recibes el paquete. Te confirmamos el pedido por WhatsApp.</p>'
-    /* 12-11 James: igual que Chile, siempre a la vista: si se le complica, nos escribe y Valentina le toma el pedido */
-    + '<p class="pf-nota pf-ayuda">¿Se te complica llenarlo? <a href="https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola, quiero pedir ' + p.nombre + ' y se me complica el formulario')
-    + '" target="_blank" rel="noopener" style="font-weight:700;text-decoration:underline;text-underline-offset:2px;color:inherit">Escríbenos por WhatsApp</a> y te lo tomamos nosotros.</p>'
     /* debajo del formulario: con quién se paga seguro (Colombia: Wompi de Bancolombia) */
     + '<div class="carriers"><span class="cl">Pagos anticipados seguros con Wompi, de Bancolombia</span><div class="cbadges">'
     + '<img src="/co/img/pago-wompi-oscuro.svg" alt="Wompi" width="72" height="18" loading="lazy">'
@@ -383,7 +380,9 @@
     if (conWa) {
       var a = document.createElement('a'); a.target = '_blank'; a.rel = 'noopener';
       a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola, quiero pedir ' + p.nombre + ' y se me complica el formulario');
-      a.textContent = '¿Se te complica? Te ayudamos por WhatsApp';
+      /* 12-11 James: el mismo mensaje de Chile cuando se le complica el formulario */
+      a.style.cssText = 'display:block;margin-top:6px;color:inherit;text-decoration:underline;font-weight:700';
+      a.textContent = '¿Se te complica? Escríbenos al WhatsApp y te lo tomamos nosotros';
       e.appendChild(a);
     }
     e.style.display = 'block';
