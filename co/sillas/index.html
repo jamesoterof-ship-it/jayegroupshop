@@ -58,7 +58,7 @@ window.jayePixel = (function () {
 window.jayePixel.track('PageView', {});
 </script>
 </head>
-<body class="nv" data-fijo="Pedir 4 sillas por $70.000" data-fijo-pack="0">
+<body class="nv" data-fijo="Escoge 4 o 6 sillas">
 
   <div class="pegado" id="pegado">
   <div class="marq" aria-label="Avisos">
@@ -88,7 +88,7 @@ window.jayePixel.track('PageView', {});
   <!-- 1 · PORTADA -->
   <section class="nv-heroe">
     <figure class="nv-heroe__foto">
-      <span class="nv-cinta">Promoción · 4 sillas $70.000</span>
+      <span class="nv-cinta">4 sillas $70.000 · 6 sillas $90.000</span>
       <img src="img/si-heroe.webp?v=1" alt="Silla de comedor con funda navideña de Papá Noel Bienvenido, en un comedor decorado de Navidad" width="900" height="1200" fetchpriority="high">
     </figure>
     <div class="nv-heroe__txt">
@@ -96,12 +96,14 @@ window.jayePixel.track('PageView', {});
       <h1 class="nv-h1">El comedor listo para la <em>cena de Navidad</em></h1>
       <a class="nv-estrellas" id="nvEstrellas" href="#resenas" hidden></a>
       <p class="nv-lead">Fundas para silla en tela piel de durazno que cubren el respaldo y el asiento. Se ponen en segundos, se lavan y las guardas para el otro año.</p>
+      <!-- 12-11 James: arriba los DOS precios (4 y 6 sillas) y el botón "Escoge 4 o 6 sillas" (no amarrado a uno) -->
       <div class="nv-oferta">
-        <div><b>$70.000</b></div>
-        <div><span>4 fundas de silla · pagas al recibir · envío gratis a toda Colombia</span><span class="nv-ahorro">¿Comedor de 6? 6 sillas por $90.000</span></div>
+        <div><b>$70.000</b><span>4 sillas</span></div>
+        <div><b>$90.000</b><span>6 sillas</span></div>
+        <div><span>Pagas al recibir · envío gratis a toda Colombia</span></div>
       </div>
-      <button type="button" class="nv-btn rebota" data-pack="0" data-ir="pedir">Pedir 4 sillas por $70.000</button>
-      <button type="button" class="nv-btn nv-btn--pino" data-pack="0" data-pago-pre data-ir="pedir">Paga ahora con Wompi: $63.000 · 10 % menos</button>
+      <button type="button" class="nv-btn rebota" data-ir="pedir">Escoge 4 o 6 sillas</button>
+      <button type="button" class="nv-btn nv-btn--pino" data-pago-pre data-ir="pedir">Paga ahora con Wompi y ahorra 10 %</button>
       <button type="button" class="nv-btn nv-btn--pino" data-ir="disenos">Ver los 8 diseños</button>
     </div>
   </section>
@@ -285,7 +287,7 @@ window.jayePixel.track('PageView', {});
 <script src="productos.js?v=8"></script>
 <script src="resenas.js?v=1"></script>
 <script src="../ficha.js?v=7"></script>
-<script src="../funda/funda.js?v=8"></script>
+<script src="../funda/funda.js?v=9"></script>
 <!-- 12-11 James: botón flotante de WhatsApp, el mismo de la tienda de Colombia (+57 322 608 7847); más arriba para no tapar el botón fijo -->
 <style>
 /* WhatsApp COMO EN CHILE (James 12-11): solo la bolita verde en la esquina; cuando sale el botón fijo de pedir (ancho completo), la bolita sube y queda encima de él */
