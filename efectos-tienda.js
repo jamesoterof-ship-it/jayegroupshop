@@ -74,7 +74,8 @@
     });
     var mia = (window.PRODUCTO_ACTUAL && window.PRODUCTO_ACTUAL.categoria) || '';
     cont.innerHTML = cats.map(function (c) {
-      var url = (c === 'Inicio') ? '/' : ('/?cat=' + encodeURIComponent(c));
+      /* 12-11 James: lo usa SOLO la página de gafas de Colombia; la raíz "/" es la tienda de México → se queda en la tienda de Colombia */
+      var url = (c === 'Inicio') ? '/co/' : ('/co/?cat=' + encodeURIComponent(c));
       return '<a href="' + url + '" role="button" aria-pressed="' +
              (c === mia) + '" data-cat="' + c + '">' + c + '</a>';
     }).join('');
