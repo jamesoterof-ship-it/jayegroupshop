@@ -54,8 +54,8 @@ window.PRODUCTOS = [{
   adicTitulo: '¿Le agregas las sillas a juego? (mismo envío)',
   adicNinguno: 'Sin sillas',
   adicionales: [
-    { id: 'SILLAS4', codigo: '4 SILLAS', texto: '+ 4 fundas de silla', detalle: 'Toca aquí y escoge el diseño', precio: 70000, foto: 'img/si-chimenea.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 4 sillas' },
-    { id: 'SILLAS6', codigo: '6 SILLAS', texto: '+ 6 fundas de silla', detalle: 'Toca aquí y escoge el diseño', precio: 90000, foto: 'img/si-bienvenido.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 6 sillas' },
+    { id: 'SILLAS4', codigo: '4 SILLAS', texto: '+ 4 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 70000, foto: 'img/si-chimenea.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 4 sillas' },
+    { id: 'SILLAS6', codigo: '6 SILLAS', texto: '+ 6 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 90000, foto: 'img/si-bienvenido.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 6 sillas' },
   ],
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];

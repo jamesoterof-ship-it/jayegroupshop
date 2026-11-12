@@ -41,7 +41,7 @@ window.PRODUCTOS = [{
   adicTitulo: '¿Le agregas la puerta a juego? (mismo envío)',
   adicNinguno: 'Sin puerta',
   adicionales: [
-    { id: 'PUERTA1', codigo: '1 PUERTA', texto: '+ 1 funda para tu puerta', detalle: 'Toca aquí y escoge el diseño', precio: 35000, foto: '../funda/img/fp-10.webp', disenos: _PUERTA, rotuloDiseno: 'Diseño de la puerta' },
+    { id: 'PUERTA1', codigo: '1 PUERTA', texto: '+ 1 funda para tu puerta', detalle: 'Solo con tus sillas · toca aquí y escoge el diseño', precio: 35000, foto: '../funda/img/fp-10.webp', disenos: _PUERTA, rotuloDiseno: 'Diseño de la puerta' },
   ],
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];

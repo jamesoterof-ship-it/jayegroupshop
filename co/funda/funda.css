@@ -50,12 +50,12 @@
 .nv-btn:focus-visible,.pf-pack:focus-visible,.pf-ad:focus-visible,.nv-esc:focus-visible{outline:3px solid var(--nv-oro);outline-offset:3px}
 .nv-btn--pino{background:var(--nv-pino2);box-shadow:0 8px 20px rgba(20,83,45,.28)}
 .nv-btn + .nv-btn{margin-top:14px}
-/* 12-11 James: estrellas de Navidad que titilan en los botones */
+/* 12-11 James: efecto de Navidad en los botones: un brillo dorado que los cruza cada pocos segundos (las estrellas no le gustaron) */
 .nv-btn{position:relative;overflow:hidden}
-.nv-btn::before,.nv-btn::after{content:'✦';position:absolute;pointer-events:none;color:#FFFFFF;font-size:15px;line-height:1;animation:nvBrillo 1.8s ease-in-out infinite}
-.nv-btn::before{top:7px;left:9%}
-.nv-btn::after{content:'✧';bottom:7px;right:8%;color:#D4A017;font-size:18px;animation-delay:.9s}
-@keyframes nvBrillo{0%,100%{opacity:0;transform:scale(.4) rotate(0deg)}50%{opacity:1;transform:scale(1.25) rotate(45deg)}}
+.nv-btn::before{content:'';position:absolute;top:0;bottom:0;left:-60%;width:45%;pointer-events:none;
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.55) 45%,rgba(212,160,23,.45) 55%,rgba(255,255,255,0) 100%);
+  transform:skewX(-20deg);animation:nvBrillo 3.2s ease-in-out infinite}
+@keyframes nvBrillo{0%,55%{left:-60%}100%{left:130%}}
 
 /* --- franja de beneficios --- */
 .nv-datos{display:grid;grid-template-columns:repeat(3,1fr);background:var(--nv-rojo);color:var(--nv-blanco);text-align:center}
@@ -139,6 +139,13 @@
 .rev-auto__track:hover{animation-play-state:paused}
 .rev-auto .rsc{flex:0 0 216px;padding:11px 12px;border-radius:12px}
 .rev-auto .rsc .ini{width:26px;height:26px}
+/* tarjetas del carrusel chicas y recortadas, como en la ficha de Chile (ficha.css) */
+.rev-auto__track{align-items:flex-start}
+.rev-auto .rsc .quien{font-size:12.5px;line-height:1.2}
+.rev-auto .rsc small{font-size:12px}
+.rev-auto .rsc p{font-size:12.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rev-auto .rsc .rfoto{display:none}
+.rev-auto .rsc:hover{transform:none;box-shadow:none}
 @keyframes corre{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.rev-auto__track{animation:none}}
 .nv h3,.nv section,#pedir{scroll-margin-top:96px}
@@ -274,6 +281,6 @@
   .nv-benef{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .nv-nieve,.nv-cinta,.nv-btn::before,.nv-btn::after{animation:none}
+  .nv-nieve,.nv-cinta,.nv-btn::before{animation:none}
   .nv-btn,.nv-fijo,.pf-pack{transition:none}
 }
