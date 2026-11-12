@@ -191,6 +191,21 @@ window.jayePixel.track('PageView', {});
   <!-- 8 · PASO 3 · la acción: comedor, puerta a juego y formulario (motor ../ficha.js) -->
   <section class="nv-sec" id="paso3">
     <!-- 12-11 James: la escalera de precios va SOLO en el formulario (estaba repetida aquí) -->
+    <!-- 12-11 James: sección de PAGO ANTICIPADO, antes de ofrecer el otro producto (como el paso 3 del protector) -->
+    <div class="nv-combo" style="margin-bottom:28px">
+      <p class="nv-txt" style="margin:0 0 4px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:13px">Pago anticipado con Wompi</p>
+      <h2 class="nv-h2">Paga ahora y ahorra 10 %</h2>
+      <p class="nv-txt">4 sillas a <b>$63.000</b> en vez de <s>$70.000</s> · 6 sillas a <b>$81.000</b> en vez de <s>$90.000</s> · tu pedido sale primero · tarjeta, PSE, Nequi o Bancolombia.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;background:#FFFFFF;border-radius:12px;padding:10px 12px;margin:12px 0 16px">
+        <img src="/co/img/pago-wompi-oscuro.svg" alt="Wompi" width="71" height="18" loading="lazy">
+        <img src="/img/pagos/visa.svg" alt="Visa" height="20" loading="lazy">
+        <img src="/img/pagos/mastercard.svg" alt="Mastercard" height="20" loading="lazy">
+        <img src="/img/pagos/pse.svg" alt="PSE" height="20" loading="lazy">
+        <img src="/img/pagos/nequi.svg" alt="Nequi" height="20" loading="lazy">
+        <img src="/img/pagos/bancolombia.svg" alt="Bancolombia" height="20" loading="lazy">
+      </div>
+      <button type="button" class="nv-btn" data-pago-pre data-ir="pedir">Quiero pagar con Wompi</button>
+    </div>
     <!-- 12-11 James: la puerta como sección OPCIONAL antes del formulario (no adentro). ../ficha.js muda aquí el selector y lo suma al mismo pedido. -->
     <h3 class="nv-h3">Combina tus sillas con la puerta <small>(opcional)</small></h3>
     <p class="nv-txt">Funda navideña para la puerta (2 m × 1 m), con los mismos diseños de las sillas. Llega en el mismo envío. <b>La puerta a $35.000 es solo comprándola junto con tus fundas de silla (sola vale $75.000).</b> Si no la quieres, deja marcado "Sin puerta".</p>
