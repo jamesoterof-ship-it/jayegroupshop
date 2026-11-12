@@ -95,16 +95,7 @@
   var fijo = document.createElement('div');
   fijo.className = 'nv-fijo';
   fijo.innerHTML = '<button type="button" class="nv-btn rebota"></button>';
-  /* 12-11 James: WhatsApp como en todas las páginas: botón verde "WhatsApp" al lado del de pedir (la bolita de la esquina se esconde mientras está la barra) */
-  /* la bolita a.wa está después de este script: el enlace se toma de ella al terminar de cargar */
-  {
-    var wb = document.createElement('a');
-    wb.className = 'waBoton waFlota'; wb.href = 'https://wa.me/573226087847'; wb.target = '_blank'; wb.rel = 'noopener';
-    var tomarWa = function () { var b = document.querySelector('a.wa'); if (b) wb.href = b.href; };
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tomarWa); else tomarWa();
-    wb.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z"/></svg><span>WhatsApp</span>';
-    fijo.appendChild(wb);
-  }
+  /* 12-11 James: WhatsApp COMO EN CHILE: solo la bolita verde de la esquina, que sube encima del botón fijo (nada de botón "WhatsApp" al lado) */
   fijo.querySelector('button').textContent = txt;
   fijo.querySelector('button').addEventListener('click', function () {
     var p = document.body.getAttribute('data-fijo-pack');
