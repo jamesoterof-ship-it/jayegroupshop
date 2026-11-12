@@ -51,7 +51,15 @@
 .nv-btn--pino{background:var(--nv-pino2);box-shadow:0 8px 20px rgba(20,83,45,.28)}
 .nv-btn + .nv-btn{margin-top:14px}
 /* 12-11 James: estrellas de Navidad "más elegantes": polvo de estrellitas doradas y blancas, muy pequeñas, que titilan suave en el fondo del botón */
-.nv-btn{position:relative;overflow:hidden;isolation:isolate}
+.nv-btn,.nv .cr-btn{position:relative;overflow:hidden;isolation:isolate}
+.nv .cr-btn::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;border-radius:inherit;background:
+  radial-gradient(1.6px 1.6px at 8% 28%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(2px 2px at 22% 74%,#D4A017 50%,rgba(212,160,23,0) 100%),
+  radial-gradient(1.4px 1.4px at 39% 18%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(1.8px 1.8px at 61% 82%,#D4A017 50%,rgba(212,160,23,0) 100%),
+  radial-gradient(1.5px 1.5px at 78% 22%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(2px 2px at 93% 64%,#D4A017 50%,rgba(212,160,23,0) 100%);
+  animation:nvTitila 2.4s ease-in-out infinite}
 .nv-btn::before,.nv-btn::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;border-radius:inherit}
 .nv-btn::before{background:
   radial-gradient(1.6px 1.6px at 8% 28%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
@@ -271,7 +279,7 @@
 .pf-tel input{border:0!important;min-height:48px}
 .pf-aviso{display:none;background:var(--nv-crema);border:2px solid var(--nv-rojo);color:var(--nv-rojo2);border-radius:12px;padding:12px;margin-bottom:12px}
 .pf-aviso a{display:block;margin-top:6px;color:var(--nv-pino2);font-weight:700}
-.nv .cr-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border:0;border-radius:14px;background:var(--nv-rojo);color:var(--nv-blanco);font:800 22px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:0 7px 0 var(--nv-rojo2);text-decoration:none}
+.nv .cr-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border:0;border-radius:14px;background:var(--nv-rojo);color:var(--nv-blanco);font:800 22px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:0 8px 20px rgba(220,38,38,.28);text-decoration:none}
 .nv .cr-btn:disabled{opacity:.6}
 .pf-nota{text-align:center;color:var(--nv-gris);font-size:14px;margin:12px 0 0}
 .carriers{margin-top:16px;text-align:center}
@@ -298,6 +306,6 @@
   .nv-benef{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .nv-nieve,.nv-cinta,.nv-btn::before,.nv-btn::after,.nv-btn.rebota{animation:none}
+  .nv-nieve,.nv-cinta,.nv-btn::before,.nv-btn::after,.nv-btn.rebota,.nv .cr-btn::before{animation:none}
   .nv-btn,.nv-fijo,.pf-pack{transition:none}
 }
