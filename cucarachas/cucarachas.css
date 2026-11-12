@@ -60,6 +60,8 @@ body.p-cuc main.cuc *, body.p-cuc main.cuc *::before, body.p-cuc main.cuc *::aft
 .cuc .heroe__arriba { position: absolute; left: 0; right: 0; top: 0; z-index: 2; padding: var(--s-xl) var(--s-md) var(--s-3xl);
   background: linear-gradient(180deg, rgba(248,250,252,.95) 0%, rgba(248,250,252,.8) 55%, rgba(248,250,252,0) 100%); }
 .cuc .heroe__arriba .rotulo { border: 1px solid var(--c-border); background: var(--c-card); padding: 7px 12px; border-radius: 999px; color: var(--c-pri); }
+/* 11-11 James: estrellas de las opiniones arriba del título */
+.cuc #cucNotaTop .estrellas { color: var(--c-pri); font-weight: 600; text-decoration: none; }
 .cuc .heroe h1 { font-size: clamp(54px, 16vw, 104px); line-height: .92; margin-top: var(--s-sm); }
 .cuc .heroe h1 b { display: block; color: var(--c-cta); font-weight: 700; }
 .cuc .heroe__frase { margin-top: var(--s-md); font-size: 16px; line-height: 1.5; color: var(--c-pri); max-width: 22em; }

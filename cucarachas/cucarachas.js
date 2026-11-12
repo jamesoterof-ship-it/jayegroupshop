@@ -111,6 +111,8 @@
     $('cucProm').textContent = String(prom).replace('.', ',');
     $('cucCuenta').textContent = R.length + ' opiniones con comentario';
     var nota = $('cucNota'); if (nota) nota.textContent = String(prom).replace('.', ',') + ' · ' + R.length + ' opiniones';
+    /* 11-11 James: las mismas estrellas arriba del título (promedio real) */
+    var nt = $('cucNotaTop'); if (nt) { nt.querySelector('span').textContent = prom.toFixed(1).replace('.', ',') + ' · ' + R.length + ' opiniones'; nt.hidden = false; }
     var est = function (n) { return '⭐⭐⭐⭐⭐'.slice(0, n * 2); };
     var fecha = function (f) { try { return new Date(f + 'T12:00:00').toLocaleDateString('es-MX', { month: 'short', year: 'numeric' }); } catch (e) { return ''; } };
     var tarjeta = function (r) {

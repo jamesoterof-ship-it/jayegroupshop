@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../brain/tienda.css?v=103">
-<link rel="stylesheet" href="cucarachas.css?v=5">
+<link rel="stylesheet" href="cucarachas.css?v=6">
 <link rel="preload" as="image" href="img/cuc-heroe-dia.webp?v=1">
 <script>
 (function(){var d=document.documentElement;
@@ -218,6 +218,8 @@ window._cargarPixel();
         <img src="img/cuc-heroe-dia.webp?v=1" alt="Caja del cebo MoonSpry con 12 cebos verdes en la cocina" width="780" height="1170" fetchpriority="high">
         <div class="heroe__arriba">
           <span class="rotulo">Cocina · baño · rincones</span>
+          <!-- 11-11 James: las mismas estrellas de las opiniones, arriba del título -->
+          <div id="cucNotaTop" hidden><a class="estrellas" href="#cucOpis"><i>⭐⭐⭐⭐⭐</i><span></span></a></div>
           <h1 id="cucTit">Adiós a las <b>cucarachas</b></h1>
           <p class="heroe__frase">Abres la tapa y lo dejas en el rincón. Sin rociar nada.</p>
         </div>
@@ -563,7 +565,7 @@ window._cargarPixel();
 <script src="../lentes/efectos.js?v=4"></script>
 <script>window.URL_PEDIDO = "https://n8n-production-8a42.up.railway.app/webhook/pedido-tienda-mx";</script>
 <script src="../lentes/ficha.js?v=14"></script>
-<script src="cucarachas.js?v=4"></script>
+<script src="cucarachas.js?v=5"></script>
 
 <!-- Boton flotante de WhatsApp: el molde de Chile (shilajit/producto.html) con
      el numero español que dio James el 26-09-2026. Antes iba apagado a proposito:

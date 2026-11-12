@@ -19,13 +19,16 @@
   var mini = function (t) { return '<a class="bq-mini" href="#pedir" data-ir>' + esc(t) + '<i aria-hidden="true">→</i></a>'; };
   var paso = function (n, rot, tit) { return '<header class="bq-paso__cab"><span class="bq-num" aria-hidden="true">0' + n + '</span><p class="bq-rot">Paso ' + n + ' · ' + esc(rot) + '</p><h2 class="bq-kin" data-kin>' + esc(tit) + '</h2></header>'; };
   var H = P.heroe, html = [];
+  /* 11-11 James: las mismas estrellas de las opiniones, arriba del título (promedio real) */
+  var RS = window.RESENAS || [];
+  var notaTop = RS.length ? '<p class="bq-nota"><span class="stars" aria-hidden="true">★★★★★</span> ' + (RS.reduce(function (a, r) { return a + (+r.estrellas || 5); }, 0) / RS.length).toFixed(1).replace('.', ',') + ' · ' + RS.length + ' opiniones</p>' : '';
 
   /* HÉROE · tipografía en movimiento sobre el producto solo y grande */
   /* 06-11 James: "el héroe, ponle efecto de agua, caen gotas" */
   var gotas = ''; for (var g = 0; g < 18; g++) gotas += '<i style="left:' + (3 + Math.round(Math.random() * 94)) + '%;animation-delay:' + (Math.random() * 3.2).toFixed(2) + 's;animation-duration:' + (1.6 + Math.random() * 1.6).toFixed(2) + 's;--t:' + (0.6 + Math.random() * 0.8).toFixed(2) + '"></i>';
   html.push('<section class="bq-heroe"><img class="bq-heroe__img" src="' + esc(H.img) + '" alt="' + esc(H.alt) + '" width="780" height="1170" fetchpriority="high">'
     + (calma ? '' : '<div class="bq-gotas" aria-hidden="true">' + gotas + '</div>')
-    + '<div class="bq-heroe__txt"><p class="bq-rot bq-rot--claro">' + esc(H.rotulo) + '</p>'
+    + '<div class="bq-heroe__txt">' + notaTop + '<p class="bq-rot bq-rot--claro">' + esc(H.rotulo) + '</p>'
     + '<h1 id="bqTit"><span class="bq-l1">Tu manguera</span><span class="bq-l2">con <b>fuerza</b></span></h1>'
     + '<p class="bq-escribe" aria-live="off"><span id="bqEscribe">lava tu auto</span><i class="bq-cursor" aria-hidden="true"></i></p></div>'
     + '<div class="bq-heroe__pie"><p class="bq-pastilla">Desde <b>' + mx(uno.precio) + '</b> · pagas al recibir</p><a class="bq-btn" href="#pedir" data-ir>Lo quiero</a></div></section>');
