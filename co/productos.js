@@ -30,7 +30,7 @@ window.PRODUCTOS = [
     categoria: 'Hogar',
     etiqueta: 'Edición Navidad',
     foto: 'co/sillas/img/si-heroe.webp?v=1',
-    nota: { n: 55, prom: '4.9' },
+    nota: { n: 74, prom: '4.9' },
     packs: [
       { cant: 4, precio: 70000, texto: '4 sillas' },
       { cant: 6, precio: 90000, texto: '6 sillas' },

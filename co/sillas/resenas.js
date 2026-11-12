@@ -1,35 +1,151 @@
-/* Reseñas de las Fundas para Silla (Colombia) · 11-11-2026 · 55 opiniones de 4 y 5 estrellas, promedio 4,93, 4 con foto.
-   OPINIONES REALES de compradores en AliExpress de fundas ELÁSTICAS para silla de comedor (productos 1005001865414712, 1005007511755926 y
-   1005005201698371): mismo tipo y tela, sin estampado navideño (las navideñas iguales tienen 0-5 reseñas). James 11-11: "Sí, úsalas".
-   Texto tal cual lo tradujo la plataforma; fotos de los compradores. El nombre (latino) lo pone la tienda. Nunca opiniones escritas por nosotros. */
+/* Reseñas de las Fundas para Silla (Colombia) · 12-11-2026 · 74 opiniones de 4 y 5 estrellas, promedio 4,92, 5 con foto.
+   James 12-11: "fotos de reseñas busca de navidad, esas no sirven". Primero: OPINIONES REALES de compradores en AliExpress de fundas
+   elásticas NAVIDEÑAS para silla (espaldar y asiento, Papá Noel), producto 1005009667232175, con sus fotos (funda puesta en sillas de comedor).
+   Después, las 55 que ya estaban (fundas elásticas de comedor 1005001865414712, 1005007511755926, 1005005201698371) SIN sus fotos (no eran navideñas): James "agrégalas" + "borra las fotos de las viejas".
+   Texto tal cual lo tradujo la plataforma. El nombre (latino) lo pone la tienda. Nunca opiniones escritas por nosotros. */
 window.RESENAS_CO = [
+ {
+  "nombre": "Diana Marcela R.",
+  "fecha": "hace 10 meses",
+  "estrellas": 5,
+  "texto": "¡Me encantan! Se ven y se sienten increíbles. Se ajustan perfectamente a nuestras sillas y añaden un toque festivo."
+ },
+ {
+  "nombre": "Jorge Iván P.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "Las fundas son espectaculares, muy bonitas, la tela es delgada pero se ajusta bien, son elásticas. Me encantaron."
+ },
+ {
+  "nombre": "Luz Dary M.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "Muy hermosos, hicieron que mis sillas se vieran más alegres.",
+  "foto": "img/rev/sn1.webp"
+ },
+ {
+  "nombre": "Sandra Patricia G.",
+  "fecha": "hace 10 meses",
+  "estrellas": 5,
+  "texto": "Es un 10, me gusta mucho y lo recomiendo. Lo volveré a comprar.",
+  "foto": "img/rev/sn2.webp"
+ },
+ {
+  "nombre": "Carlos Arturo V.",
+  "fecha": "hace 1 año",
+  "estrellas": 5,
+  "texto": "Fundas elásticas para sillas de buena calidad, satisfecho con el producto. ¡Luce festivo!"
+ },
+ {
+  "nombre": "Yolanda C.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "Fundas de silla coloridas y lindas con un toque festivo."
+ },
+ {
+  "nombre": "Paola Andrea T.",
+  "fecha": "hace 1 año",
+  "estrellas": 5,
+  "texto": "muy rápido y de buena calidad de tela..."
+ },
+ {
+  "nombre": "Hernán D.",
+  "fecha": "hace 1 año",
+  "estrellas": 5,
+  "texto": "Estoy muy contento con esta compra; se ajustan perfectamente a la silla y son muy bonitas. Llegaron en perfectas condiciones y rápidamente.",
+  "foto": "img/rev/sn3.webp"
+ },
+ {
+  "nombre": "Gloria Inés A.",
+  "fecha": "hace 1 año",
+  "estrellas": 5,
+  "texto": "¡Magnífico, me encanta! Es tal como aparece en el sitio web, es un producto muy hermoso que genera muchos efectos.",
+  "foto": "img/rev/sn4.webp"
+ },
+ {
+  "nombre": "Natalia S.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "entrega instantánea. la calidad es excelente. gracias. recomendaciones."
+ },
+ {
+  "nombre": "Wilson F.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "muy bueno 🤣👍",
+  "foto": "img/rev/sn5.webp"
+ },
+ {
+  "nombre": "Claudia Milena O.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "Estoy satisfecho con este material."
+ },
+ {
+  "nombre": "Andrés Felipe L.",
+  "fecha": "hace 1 año",
+  "estrellas": 5,
+  "texto": "los forros me encantaron la tela es espectacular"
+ },
+ {
+  "nombre": "Beatriz E.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "Satisfecho"
+ },
+ {
+  "nombre": "Liliana R.",
+  "fecha": "hace 10 meses",
+  "estrellas": 5,
+  "texto": "muy buena calidad"
+ },
+ {
+  "nombre": "Óscar Javier M.",
+  "fecha": "hace 10 meses",
+  "estrellas": 5,
+  "texto": "Perfecto"
+ },
+ {
+  "nombre": "Marleny B.",
+  "fecha": "hace 11 meses",
+  "estrellas": 4,
+  "texto": "Muy bueno, recomendado."
+ },
+ {
+  "nombre": "Ruby Esperanza Q.",
+  "fecha": "hace 1 año",
+  "estrellas": 4,
+  "texto": "Perfecto"
+ },
+ {
+  "nombre": "Fabio N.",
+  "fecha": "hace 11 meses",
+  "estrellas": 5,
+  "texto": "gracias"
+ },
  {
   "nombre": "Martha Lucía Z.",
   "fecha": "hace 7 meses",
   "estrellas": 5,
-  "texto": "Llegaron muy rápido y se ajustaron perfectamente a las sillas. El tiempo lo dirá.",
-  "foto": "img/rev/s05.webp"
+  "texto": "Llegaron muy rápido y se ajustaron perfectamente a las sillas. El tiempo lo dirá."
  },
  {
   "nombre": "Hernán Q.",
   "fecha": "hace 6 meses",
   "estrellas": 5,
-  "texto": "¡Qué lindo! 😍",
-  "foto": "img/rev/s07.webp"
+  "texto": "¡Qué lindo! 😍"
  },
  {
   "nombre": "Gloria Patricia H.",
   "fecha": "hace 10 meses",
   "estrellas": 5,
-  "texto": "cómo se describe",
-  "foto": "img/rev/s10.webp"
+  "texto": "cómo se describe"
  },
  {
   "nombre": "Óscar Eduardo R.",
   "fecha": "hace 11 meses",
   "estrellas": 5,
-  "texto": "Hacemos el trabajo a la perfección con una excelente relación calidad-precio. Pude renovar mis viejos sillones desgastados que medían L40 cm x An45 cm x Al50 cm. Entrega rápida en aproximadamente una semana. Gracias sinceramente",
-  "foto": "img/rev/s01.webp"
+  "texto": "Hacemos el trabajo a la perfección con una excelente relación calidad-precio. Pude renovar mis viejos sillones desgastados que medían L40 cm x An45 cm x Al50 cm. Entrega rápida en aproximadamente una semana. Gracias sinceramente"
  },
  {
   "nombre": "Yaneth P.",
