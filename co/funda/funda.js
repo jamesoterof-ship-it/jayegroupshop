@@ -43,25 +43,51 @@
     g.parentNode.insertBefore(btn, g.nextSibling);
   });
 
-  /* reseñas reales (window.RESENAS_CO): resumen, estrellas en la portada, 6 a la vista y "Ver más" */
+  /* reseñas reales (window.RESENAS_CO) con el MOLDE DE TODOS LOS PAÍSES (igual que co/protector y la ficha de Chile):
+     nota grande, barras, tarjetas, "Ver más reseñas" y carrusel. James 12-11: este estilo NO se cambia. */
   (function () {
-    var L = (window.RESENAS_CO || []).filter(function (r) { return r && r.texto; });
-    var sec = byId('resenas'); if (!L.length || !sec) return;
+    var lista = (window.RESENAS_CO || []).filter(function (r) { return r && r.texto; });
+    var sec = byId('resenas'); if (!lista.length || !sec) return;
     var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
-    var media = L.reduce(function (a, r) { return a + (+r.estrellas || 5); }, 0) / L.length, mt = media.toFixed(1).replace('.', ',');
-    var est = function (n) { var s = ''; for (var i = 1; i <= 5; i++) s += i <= Math.round(n) ? '★' : '☆'; return s; };
-    var e = byId('nvEstrellas'); if (e) { e.innerHTML = '<i>' + est(media) + '</i> ' + mt + ' · ' + L.length + ' reseñas'; e.hidden = false; }
-    L.sort(function (a, b) { return (b.foto ? 1 : 0) - (a.foto ? 1 : 0); });
-    var VER = 6;
-    var tarjeta = function (r, i) {
-      return '<article class="nv-rs"' + (i >= VER ? ' data-oculto' : '') + '>' + (r.foto ? '<img src="' + esc(r.foto) + '" alt="Foto de ' + esc(r.nombre) + ' con la funda puesta" loading="lazy">' : '')
-        + '<div><i>' + est(r.estrellas) + '</i><b>' + esc(r.nombre) + '</b><small>' + esc(r.fecha) + '</small><p>' + esc(r.texto) + '</p></div></article>';
+    var ESTRELLA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6 6.5.7-4.8 4.4 1.3 6.4L12 16.8 6.2 20l1.3-6.4L2.7 9.2l6.5-.7z"/></svg>';
+    var fila = function (n) { var s = ''; for (var i = 1; i <= 5; i++) s += '<span class="' + (i <= Math.round(n) ? 'si' : '') + '">' + ESTRELLA + '</span>'; return s; };
+    var nota = function (r) { return Number(r.estrellas) || 5; };
+    var media = Math.round(lista.reduce(function (s, r) { return s + nota(r); }, 0) / lista.length * 10) / 10;
+    var e = byId('nvEstrellas'); if (e) { e.innerHTML = '<i>★★★★★</i> ' + media.toFixed(1).replace('.', ',') + ' · ' + lista.length + ' reseñas'; e.hidden = false; }
+    lista = lista.filter(function (r) { return r.foto; }).concat(lista.filter(function (r) { return !r.foto; }));
+    var tarjeta = function (r) {
+      return '<article class="rsc"><div class="arriba"><span class="ini">' + esc((r.nombre || '?').charAt(0)) + '</span>'
+        + '<span class="quien">' + esc(r.nombre) + '<small>' + esc([r.ciudad, r.fecha].filter(Boolean).join(' · ')) + '</small></span>'
+        + '<span class="est">' + fila(nota(r)) + '</span></div>'
+        + '<p>' + esc(r.texto) + '</p>'
+        + (r.foto ? '<img class="rfoto" src="' + esc(r.foto) + '" alt="" loading="lazy" onerror="this.remove()">' : '')
+        + '</article>';
     };
-    sec.innerHTML = '<h2 class="nv-h2">Lo que dicen los <em>clientes</em></h2>'
-      + '<div class="nv-rs-res"><b>' + mt + '</b><div><i>' + est(media) + '</i><span>' + L.length + ' reseñas</span></div></div>'
-      + '<div class="nv-rs-lista">' + L.map(tarjeta).join('') + '</div>'
-      + (L.length > VER ? '<button type="button" class="nv-mas" id="nvMasRs">Ver más reseñas</button>' : '');
-    var b = byId('nvMasRs'); if (b) b.addEventListener('click', function () { sec.querySelectorAll('.nv-rs[data-oculto]').forEach(function (x, k) { if (k < 10) x.removeAttribute('data-oculto'); }); if (!sec.querySelector('.nv-rs[data-oculto]')) b.remove(); });
+    var barras = [5, 4, 3, 2, 1].map(function (n5) {
+      var n = lista.filter(function (r) { return nota(r) === n5; }).length;
+      return '<div class="bar"><span class="lvl">' + n5 + ' ★</span><div class="track"><i style="--p:' + (n / lista.length).toFixed(3) + '"></i></div><b>' + n + '</b></div>';
+    }).join('');
+    var VER = 4;
+    sec.innerHTML = '<h2 class="rev-title">Opiniones del producto <span class="stars">★★★★★</span></h2>'
+      + '<p class="rev-fuente">' + esc(sec.getAttribute('data-fuente') || '') + '</p>'
+      + '<div class="rev-score"><span class="big">' + media.toFixed(1) + '</span><span class="cnt">' + lista.length + ' reseñas</span></div>'
+      + '<div class="rev-bars">' + barras + '</div>'
+      + '<button type="button" class="btn-write" id="btnWrite">Escribir una reseña</button>'
+      + '<div class="rs" id="listaRs"></div>'
+      + (lista.length > VER ? '<button type="button" class="masRs" id="masRs">Ver más reseñas</button>' : '')
+      + '<p class="rev-auto-label">Más opiniones de quienes ya lo tienen</p>'
+      + '<div class="rev-auto"><div class="rev-auto__track" id="revAuto"></div></div>';
+    var mostradas = 0;
+    var mas = function () {
+      byId('listaRs').insertAdjacentHTML('beforeend', lista.slice(mostradas, mostradas + VER).map(tarjeta).join(''));
+      mostradas += VER;
+      if (mostradas >= lista.length && byId('masRs')) byId('masRs').hidden = true;
+    };
+    mas();
+    if (byId('masRs')) byId('masRs').addEventListener('click', mas);
+    var resto = lista.slice(VER, VER + 12);
+    if (resto.length) byId('revAuto').innerHTML = resto.concat(resto).map(tarjeta).join('');
+    else byId('revAuto').parentNode.hidden = true;
   })();
 
   /* botón fijo */

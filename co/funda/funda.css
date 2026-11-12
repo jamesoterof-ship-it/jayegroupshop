@@ -92,6 +92,47 @@
 .nv-gal figcaption{font-size:12.5px;color:var(--nv-blanco);padding:6px 6px 8px;text-align:center;line-height:1.2}
 .nv-mas{display:block;margin:14px auto 0;background:none;border:2px solid var(--nv-pino2);border-radius:999px;padding:10px 20px;font:700 15px/1 'Barlow',sans-serif;cursor:pointer;color:var(--nv-pino2)}
 .nv-gal [data-oculto]{display:none}
+/* ---------- RESEÑAS: el molde de TODOS los países (igual a co/protector y la ficha de Chile; mismas medidas y orden).
+   James 12-11: NO se cambia. Colores de la paleta de esta página (el candado no deja otros): #D4A017 y #FED7AA. ---------- */
+.rev-sec{max-width:760px;margin:0 auto;padding:44px 16px;background:#FFFFFF;color:#0F172A}
+.rev-title{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-weight:900;font-size:clamp(22px,6vw,32px);line-height:1.1;text-transform:uppercase;margin:0 0 8px}
+.rev-title::before{content:"";width:22px;height:2px;background:#DC2626}
+.rev-title .stars{color:#D4A017;letter-spacing:.06em}
+.rev-fuente{font-size:14px;color:#475569;margin:0 0 14px}
+.rev-score{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.rev-score .big{font-weight:900;font-size:56px;line-height:1}
+.rev-score .cnt{font-size:15px;color:#475569}
+.rev-bars{display:grid;gap:7px;margin-bottom:18px}
+.rev-bars .bar{display:flex;align-items:center;gap:10px;font-size:13px;color:#475569}
+.rev-bars .lvl{width:34px;flex:none;font-weight:700;color:#0F172A}
+.rev-bars .track{flex:1;height:8px;border-radius:999px;background:#FED7AA;overflow:hidden}
+.rev-bars .track i{display:block;height:100%;background:#D4A017;border-radius:999px;transform-origin:left;transform:scaleX(var(--p,0));transition:transform 600ms ease}
+.rev-bars b{width:34px;text-align:right;font-weight:700;color:#0F172A}
+.btn-write{width:100%;min-height:46px;margin:0 0 14px;padding:13px;border:1.5px solid rgba(15,23,42,.18);border-radius:999px;background:#FFFFFF;color:#0F172A;font:600 15px/1 'Barlow',sans-serif;cursor:pointer;transition:all 200ms ease}
+.btn-write:hover{border-color:#0F172A;transform:translateY(-2px)}
+.rs{display:grid;gap:10px}
+@media (min-width:760px){.rs{grid-template-columns:1fr 1fr}}
+.rsc{background:#FFFFFF;border:1px solid rgba(15,23,42,.18);border-radius:14px;padding:12px 13px;transition:transform 200ms ease,box-shadow 200ms ease}
+.rsc:hover{transform:translateY(-3px);box-shadow:0 10px 15px rgba(0,0,0,.1)}
+.rsc .arriba{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rsc .ini{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(15,23,42,.1);color:#475569;font-weight:600;font-size:12px}
+.rsc .quien{flex:1;display:flex;flex-direction:column;font-weight:700;font-size:13px;line-height:1.2;color:#0F172A}
+.rsc .quien small{font-weight:400;font-size:12px;color:#475569}
+.rsc .est{display:inline-flex;gap:1px}
+.rsc .est svg{width:12px;height:12px;fill:#FED7AA}
+.rsc .est .si svg{fill:#D4A017}
+.rsc p{margin:0;font-size:13.5px;line-height:1.55;color:#475569}
+.rsc .rfoto{display:block;margin-top:10px;width:110px;height:110px;object-fit:cover;border-radius:10px}
+.masRs{display:block;width:100%;margin:12px 0 0;padding:12px;border:1px solid rgba(15,23,42,.18);border-radius:0;background:#FFFFFF;color:#0F172A;font:700 13.5px/1 'Barlow',sans-serif;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;transition:all 200ms ease}
+.masRs:hover{border-color:#0F172A}
+.rev-auto-label{font-size:13px;color:#475569;margin:24px 0 10px;text-align:center}
+.rev-auto{overflow:hidden;padding:4px 0 10px;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,1) 8%,rgba(0,0,0,1) 92%,rgba(0,0,0,0))}
+.rev-auto__track{display:flex;gap:12px;width:max-content;animation:corre 60s linear infinite}
+.rev-auto__track:hover{animation-play-state:paused}
+.rev-auto .rsc{flex:0 0 216px;padding:11px 12px;border-radius:12px}
+.rev-auto .rsc .ini{width:26px;height:26px}
+@keyframes corre{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.rev-auto__track{animation:none}}
 .nv h3,.nv section,#pedir{scroll-margin-top:96px}
 .nv-gal figure{position:relative;cursor:pointer}
 .nv-gal figure.elegido{outline:4px solid var(--nv-rojo);outline-offset:-4px}
