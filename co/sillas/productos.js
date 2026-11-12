@@ -30,12 +30,12 @@ window.PRODUCTOS = [{
   corto: 'Fundas Navideñas Silla',
   unidad: 'pack',
   packs: [
-    { cant: 4, disenos: 1, precio: 104900, texto: '4 sillas', detalle: 'comedor de 4 puestos', nivel: 'Promoción' },
+    { cant: 4, disenos: 1, precio: 94900, texto: '4 sillas', detalle: 'comedor de 4 puestos', nivel: 'Promoción' },
     { cant: 6, disenos: 1, precio: 107900, texto: '6 sillas', detalle: 'comedor de 6 puestos' },
   ],
   popular: 0,   /* 12-11 James: se arranca con 4 sillas ("no todo el mundo tiene seis sillas"), después 6 */
   /* 12-11 James "10% anticipado" → "Sí, ponlos": pago con Wompi, 10 % menos sobre el pack (la puerta adicional va a su precio) */
-  anticipado: { pct: 10, precios: [94400, 97100] },
+  anticipado: { pct: 10, precios: [85400, 97100] },
   disenoUnidad: 'juego',
   disenosTitulo: 'Toca el diseño',
   disenos: _SILLA,
@@ -48,4 +48,5 @@ window.PRODUCTOS = [{
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (11-11) */
 /* 12-11 James "Si": 6 sillas $107.900 · +puerta $38.000 (combo $145.900) · anticipado 6 sillas $97.100 */
-window.PRECIOS_APROBADOS = [104900, 107900, 38000, 94400, 97100]; /* sillas solas 104.900 / 124.900 (James 11-11 y 12-11); Wompi −10 %; puerta agregada 35.000 */
+/* 12-11 James "94.900": 4 sillas $94.900 (Wompi $85.400) · 6 sillas $107.900 (Wompi $97.100) · +puerta $38.000. Costo Dropi comprobado 12-11: x4 $38.000, x6 $57.000 */
+window.PRECIOS_APROBADOS = [94900, 107900, 38000, 85400, 97100]; /* sillas solas 104.900 / 124.900 (James 11-11 y 12-11); Wompi −10 %; puerta agregada 35.000 */

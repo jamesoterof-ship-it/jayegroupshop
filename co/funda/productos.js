@@ -54,11 +54,12 @@ window.PRODUCTOS = [{
   adicTitulo: '¿Le agregas las sillas a juego? (mismo envío)',
   adicNinguno: 'Sin sillas',
   adicionales: [
-    { id: 'SILLAS4', codigo: '4 SILLAS', texto: '+ 4 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 70000, foto: 'img/si-chimenea.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 4 sillas' },
+    { id: 'SILLAS4', codigo: '4 SILLAS', texto: '+ 4 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 65000, foto: 'img/si-chimenea.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 4 sillas' },
     { id: 'SILLAS6', codigo: '6 SILLAS', texto: '+ 6 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 78000, foto: 'img/si-bienvenido.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 6 sillas' },
   ],
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (11-11) */
 /* 12-11 James "Si": 1 funda $67.900 · +6 sillas $78.000 (combo puerta + 6 sillas $145.900) · anticipado 1 funda $61.100 */
-window.PRECIOS_APROBADOS = [67900, 109900, 124900, 139900, 70000, 78000, 61100, 98900, 112400, 125900];
+/* 12-11 James "94.900": +4 sillas $65.000 (puerta + 4 sillas = $132.900, igual que en la página de sillas) */
+window.PRECIOS_APROBADOS = [67900, 109900, 124900, 139900, 65000, 78000, 61100, 98900, 112400, 125900];

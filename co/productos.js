@@ -32,10 +32,10 @@ window.PRODUCTOS = [
     foto: 'co/sillas/img/si-heroe.webp?v=1',
     nota: { n: 74, prom: '4.9' },
     packs: [
-      { cant: 4, precio: 104900, texto: '4 sillas' },
+      { cant: 4, precio: 94900, texto: '4 sillas' },
       { cant: 6, precio: 107900, texto: '6 sillas' },
     ],
-    anticipado: { pct: 10, precios: [94400, 97100] },
+    anticipado: { pct: 10, precios: [85400, 97100] },
   },
   /* 12-11 James: Gafas de Aumento TR90 (Dropi 2229646). La ficha vive en /gafas/ (no en /co/gafas/).
      Precios aprobados: 1 par $59.900 · 2 pares $79.900; anticipado Wompi $53.900 · $71.900. */
@@ -80,5 +80,5 @@ window.PREGUNTAS = [
 /* candado: si un precio no está aprobado por James, la portada no lo muestra. Colombia: protector aprobado el 10-11. */
 window.PRECIOS_APROBADOS = [119900, 107900,
   67900, 109900, 124900, 139900, 61100, 98900, 112400, 125900,   /* funda de puerta (James 11-11; 1 funda $67.900 el 12-11) */
-  104900, 107900, 94400, 97100,                                  /* fundas de silla SOLAS (James 11-11; 6 sillas $107.900 el 12-11) */
+  94900, 107900, 85400, 97100,                             /* fundas de silla SOLAS (James 11-11; 6 sillas $107.900 el 12-11) */
   59900, 79900, 53900, 71900];                                   /* gafas de aumento TR90 (James 12-11) */
