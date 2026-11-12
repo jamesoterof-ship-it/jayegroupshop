@@ -18,6 +18,20 @@
     bajarA(byId(b.getAttribute('data-ir') || 'pedir'));
   });
 
+  /* 12-11 James: tocar una foto de la galería deja ese diseño escogido en el formulario y baja a la sección
+     opcional (sillas / puerta), que está justo antes del formulario: así no se salta esa oferta */
+  document.addEventListener('click', function (e) {
+    var f = e.target.closest('#disenos figure'); if (!f || !window.coDiseno) return;
+    var img = f.querySelector('img'); if (!img) return;
+    var archivo = (img.getAttribute('src') || '').split('?')[0].split('/').pop();
+    var P = (window.PRODUCTOS || [])[0] || {}, d = (P.disenos || []).filter(function (x) { return String(x[2] || '').split('/').pop() === archivo; })[0];
+    if (!d || !window.coDiseno(d[0])) return;
+    document.querySelectorAll('#disenos figure.elegido').forEach(function (x) { x.classList.remove('elegido'); });
+    f.classList.add('elegido');
+    var opc = byId('coAdicional');
+    bajarA(opc ? (opc.parentNode.querySelector('h3') || opc) : caja);
+  });
+
   /* galería: 9 a la vista, el resto con un botón */
   document.querySelectorAll('[data-galeria]').forEach(function (g) {
     var figs = g.querySelectorAll('figure'), max = +g.getAttribute('data-galeria') || 9;

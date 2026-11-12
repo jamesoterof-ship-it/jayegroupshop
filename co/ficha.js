@@ -226,9 +226,19 @@
       + lista.map(function (d) { return '<option value="' + esc(d[0]) + '"' + (d[0] === valor ? ' selected' : '') + '>' + esc(d[1]) + '</option>'; }).join('')
       + '</select></label>';
   }
+  /* 12-11 James: tocar una foto de la galería de la página deja ese diseño en TODAS las fundas del formulario
+     (si quiere mezclar, cambia cada una en el formulario). Las fundas que se suman al cambiar de pack salen con ese mismo. */
+  var disGal = '';
+  window.coDiseno = function (v) {
+    if (!disenos.some(function (d) { return d[0] === v; })) return false;
+    disGal = v; for (var s = 0; s < cupos(elegido); s++) elDis[s] = v;
+    pintarDis(); if ($('errDis')) $('errDis').style.display = 'none';
+    return true;
+  };
   function pintarDis() {
     var c = $('fDis'); if (!c) return;
     var n2 = cupos(elegido), html = '';
+    if (disGal) for (var z = 0; z < n2; z++) if (!elDis[z]) elDis[z] = disGal;
     for (var s = 0; s < n2; s++) html += selectorDis(disenos, elDis[s] || '', (p.disenoUnidad ? p.disenoUnidad.charAt(0).toUpperCase() + p.disenoUnidad.slice(1) : 'Funda') + ' ' + (n2 > 1 ? s + 1 : ''), 'data-s="' + s + '"');
     c.innerHTML = html;
   }

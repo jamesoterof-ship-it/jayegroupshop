@@ -92,6 +92,10 @@
 .nv-gal figcaption{font-size:12.5px;color:var(--nv-blanco);padding:6px 6px 8px;text-align:center;line-height:1.2}
 .nv-mas{display:block;margin:14px auto 0;background:none;border:2px solid var(--nv-pino2);border-radius:999px;padding:10px 20px;font:700 15px/1 'Barlow',sans-serif;cursor:pointer;color:var(--nv-pino2)}
 .nv-gal [data-oculto]{display:none}
+.nv h3,.nv section,#pedir{scroll-margin-top:96px}
+.nv-gal figure{position:relative;cursor:pointer}
+.nv-gal figure.elegido{outline:4px solid var(--nv-rojo);outline-offset:-4px}
+.nv-gal figure.elegido::after{content:'Elegido ✓';position:absolute;top:8px;left:8px;background:var(--nv-rojo);color:var(--nv-blanco);font:800 13px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;padding:5px 8px;border-radius:999px}
 
 /* --- combo puerta + sillas --- */
 .nv-combo{background:var(--nv-pino);color:var(--nv-blanco);border-radius:20px;padding:22px 16px;text-align:center;border:3px solid var(--nv-oro)}
