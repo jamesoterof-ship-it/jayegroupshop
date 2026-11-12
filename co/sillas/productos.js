@@ -31,20 +31,21 @@ window.PRODUCTOS = [{
   unidad: 'pack',
   packs: [
     { cant: 4, disenos: 1, precio: 104900, texto: '4 sillas', detalle: 'comedor de 4 puestos', nivel: 'Promoción' },
-    { cant: 6, disenos: 1, precio: 124900, texto: '6 sillas', detalle: 'comedor de 6 puestos' },
+    { cant: 6, disenos: 1, precio: 107900, texto: '6 sillas', detalle: 'comedor de 6 puestos' },
   ],
   popular: 0,   /* 12-11 James: se arranca con 4 sillas ("no todo el mundo tiene seis sillas"), después 6 */
   /* 12-11 James "10% anticipado" → "Sí, ponlos": pago con Wompi, 10 % menos sobre el pack (la puerta adicional va a su precio) */
-  anticipado: { pct: 10, precios: [94400, 112400] },
+  anticipado: { pct: 10, precios: [94400, 97100] },
   disenoUnidad: 'juego',
   disenosTitulo: 'Toca el diseño',
   disenos: _SILLA,
   adicTitulo: '¿Le agregas la puerta a juego? (mismo envío)',
   adicNinguno: 'Sin puerta',
   adicionales: [
-    { id: 'PUERTA1', codigo: '1 PUERTA', texto: '+ 1 funda para tu puerta', detalle: 'Solo con tus sillas · toca aquí y escoge el diseño', precio: 35000, foto: '../funda/img/fp-10.webp', disenos: _PUERTA, rotuloDiseno: 'Diseño de la puerta' },
+    { id: 'PUERTA1', codigo: '1 PUERTA', texto: '+ 1 funda para tu puerta', detalle: 'Solo con tus sillas · toca aquí y escoge el diseño', precio: 38000, foto: '../funda/img/fp-10.webp', disenos: _PUERTA, rotuloDiseno: 'Diseño de la puerta' },
   ],
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (11-11) */
-window.PRECIOS_APROBADOS = [104900, 124900, 35000, 94400, 112400]; /* sillas solas 104.900 / 124.900 (James 11-11 y 12-11); Wompi −10 %; puerta agregada 35.000 */
+/* 12-11 James "Si": 6 sillas $107.900 · +puerta $38.000 (combo $145.900) · anticipado 6 sillas $97.100 */
+window.PRECIOS_APROBADOS = [104900, 107900, 38000, 94400, 97100]; /* sillas solas 104.900 / 124.900 (James 11-11 y 12-11); Wompi −10 %; puerta agregada 35.000 */

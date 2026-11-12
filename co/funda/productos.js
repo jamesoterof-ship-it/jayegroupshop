@@ -22,14 +22,14 @@ window.PRODUCTOS = [{
   corto: 'Funda Navideña Puerta',
   unidad: 'pack',
   packs: [
-    { cant: 1, precio: 75000, texto: '1 funda', detalle: 'para tu puerta' },
-    { cant: 2, precio: 109900, antes: 150000, texto: '2 fundas', detalle: 'puerta principal + cuarto', nivel: 'Promoción' },
-    { cant: 3, precio: 124900, antes: 225000, texto: '3 fundas', detalle: 'para toda la casa' },
-    { cant: 4, precio: 139900, antes: 300000, texto: '4 fundas', detalle: 'casa y familia' },
+    { cant: 1, precio: 67900, texto: '1 funda', detalle: 'para tu puerta' },
+    { cant: 2, precio: 109900, antes: 135800, texto: '2 fundas', detalle: 'puerta principal + cuarto', nivel: 'Promoción' },
+    { cant: 3, precio: 124900, antes: 203700, texto: '3 fundas', detalle: 'para toda la casa' },
+    { cant: 4, precio: 139900, antes: 271600, texto: '4 fundas', detalle: 'casa y familia' },
   ],
   popular: 1,
   /* 12-11 James "10% anticipado" → "Sí, ponlos": pago con Wompi, 10 % menos sobre el pack (el adicional va a su precio) */
-  anticipado: { pct: 10, precios: [67500, 98900, 112400, 125900] },
+  anticipado: { pct: 10, precios: [61100, 98900, 112400, 125900] },
   disenoUnidad: 'funda',
   disenosTitulo: 'Toca el diseño de cada funda',
   disenos: [
@@ -55,9 +55,10 @@ window.PRODUCTOS = [{
   adicNinguno: 'Sin sillas',
   adicionales: [
     { id: 'SILLAS4', codigo: '4 SILLAS', texto: '+ 4 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 70000, foto: 'img/si-chimenea.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 4 sillas' },
-    { id: 'SILLAS6', codigo: '6 SILLAS', texto: '+ 6 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 90000, foto: 'img/si-bienvenido.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 6 sillas' },
+    { id: 'SILLAS6', codigo: '6 SILLAS', texto: '+ 6 fundas de silla', detalle: 'Solo con tu puerta · toca aquí y escoge el diseño', precio: 78000, foto: 'img/si-bienvenido.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 6 sillas' },
   ],
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (11-11) */
-window.PRECIOS_APROBADOS = [75000, 109900, 124900, 139900, 70000, 90000, 67500, 98900, 112400, 125900];
+/* 12-11 James "Si": 1 funda $67.900 · +6 sillas $78.000 (combo puerta + 6 sillas $145.900) · anticipado 1 funda $61.100 */
+window.PRECIOS_APROBADOS = [67900, 109900, 124900, 139900, 70000, 78000, 61100, 98900, 112400, 125900];
