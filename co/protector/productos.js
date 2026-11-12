@@ -21,6 +21,8 @@ window.PRODUCTOS = [{
   ],
   popular: 0,
   anticipado: { pct: 10, precios: [107900] },
+  /* 12-11 James: "ponlo como agotado y no puedan hacer pedido" (el proveedor cobra $42.000 POR protector: a $119.900 se pierde plata) */
+  agotado: true,
   /* las 5 medidas de Dropi; el ancho es el estándar en Colombia (para orientar al cliente) */
   medidas: [
     ['SENCILLO', 'Sencillo', '100 × 190 cm'],

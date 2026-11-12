@@ -73,7 +73,7 @@
       + (p.sub ? '<p class="sub">' + esc(p.sub) + '</p>' : '')
       + '<div class="precio"><b>' + soles(barato.precio) + '</b>'
       + (barato.antes ? '<s>' + soles(barato.antes) + '</s>' : '') + '</div></div>'
-      + '<a class="btn" href="' + dest + '">Lo quiero</a>'
+      + (p.agotado ? '<span class="btn" style="opacity:.55;cursor:default">Agotado</span>' : '<a class="btn" href="' + dest + '">Lo quiero</a>')
       + '</article>';
   }
 

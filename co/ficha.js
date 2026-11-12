@@ -45,6 +45,18 @@
     if (window.console) console.warn('Precio fuera de la lista aprobada: el formulario no se pinta.');
     return;
   }
+  /* 12-11 James: producto AGOTADO (p.agotado en su productos.js): la página queda, pero no se puede pedir */
+  if (p.agotado) {
+    caja.innerHTML = '<div class="pf"><p class="pf-nota"><b>AGOTADO</b><br>Este producto se agotó por ahora. Escríbenos por WhatsApp y te avisamos cuando vuelva.</p></div>';
+    document.querySelectorAll('[data-ir="pedir"], [data-pago-pre]').forEach(function (b) {
+      b.textContent = 'Agotado'; b.disabled = true; b.setAttribute('aria-disabled', 'true'); b.style.opacity = '.55'; b.style.pointerEvents = 'none';
+    });
+    /* el botón fijo de pedir lo crea el código de la página después de este: se esconde cuando termina de cargar */
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.pr-fijo, .nv-fijo').forEach(function (f) { f.style.display = 'none'; });
+    });
+    return;
+  }
 
   var pre = p.anticipado || null;
   var elegido = typeof p.popular === 'number' ? p.popular : 0;

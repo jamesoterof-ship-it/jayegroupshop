@@ -44,12 +44,14 @@ window.PRODUCTOS = [
     nombre: 'Combo Protector de Colchón + Cobija Navideña',
     sub: '3 protectores impermeables + 6 fundas + cobija navideña de regalo',
     categoria: 'Hogar',
-    etiqueta: 'Edición Navidad',
+    etiqueta: 'Agotado',
     foto: 'co/protector/img/pr-01-heroe.webp?v=3',
     packs: [
       { cant: 1, precio: 119900, texto: '1 combo' },
     ],
     anticipado: { pct: 10, precios: [107900] },
+    /* 12-11 James: "ponlo como agotado y no puedan hacer pedido" */
+    agotado: true,
   },
 ];
 
