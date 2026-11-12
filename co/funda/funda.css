@@ -50,12 +50,29 @@
 .nv-btn:focus-visible,.pf-pack:focus-visible,.pf-ad:focus-visible,.nv-esc:focus-visible{outline:3px solid var(--nv-oro);outline-offset:3px}
 .nv-btn--pino{background:var(--nv-pino2);box-shadow:0 8px 20px rgba(20,83,45,.28)}
 .nv-btn + .nv-btn{margin-top:14px}
-/* 12-11 James: efecto de Navidad en los botones: un brillo dorado que los cruza cada pocos segundos (las estrellas no le gustaron) */
-.nv-btn{position:relative;overflow:hidden}
-.nv-btn::before{content:'';position:absolute;top:0;bottom:0;left:-60%;width:45%;pointer-events:none;
-  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.55) 45%,rgba(212,160,23,.45) 55%,rgba(255,255,255,0) 100%);
-  transform:skewX(-20deg);animation:nvBrillo 3.2s ease-in-out infinite}
-@keyframes nvBrillo{0%,55%{left:-60%}100%{left:130%}}
+/* 12-11 James: estrellas de Navidad "más elegantes": polvo de estrellitas doradas y blancas, muy pequeñas, que titilan suave en el fondo del botón */
+.nv-btn{position:relative;overflow:hidden;isolation:isolate}
+.nv-btn::before,.nv-btn::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;border-radius:inherit}
+.nv-btn::before{background:
+  radial-gradient(1.6px 1.6px at 8% 28%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(2px 2px at 22% 74%,#D4A017 50%,rgba(212,160,23,0) 100%),
+  radial-gradient(1.4px 1.4px at 39% 18%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(1.8px 1.8px at 61% 82%,#D4A017 50%,rgba(212,160,23,0) 100%),
+  radial-gradient(1.5px 1.5px at 78% 22%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(2px 2px at 93% 64%,#D4A017 50%,rgba(212,160,23,0) 100%);
+  animation:nvTitila 2.4s ease-in-out infinite}
+.nv-btn::after{background:
+  radial-gradient(1.8px 1.8px at 14% 58%,#D4A017 50%,rgba(212,160,23,0) 100%),
+  radial-gradient(1.4px 1.4px at 31% 40%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(2px 2px at 52% 26%,#D4A017 50%,rgba(212,160,23,0) 100%),
+  radial-gradient(1.5px 1.5px at 70% 60%,#FFFFFF 50%,rgba(255,255,255,0) 100%),
+  radial-gradient(1.8px 1.8px at 87% 34%,#D4A017 50%,rgba(212,160,23,0) 100%);
+  animation:nvTitila 2.4s ease-in-out 1.2s infinite}
+@keyframes nvTitila{0%,100%{opacity:.15}50%{opacity:1}}
+/* rebote (como las páginas de Chile, ficha.css "botones con rebote"): solo en el botón principal y el fijo */
+.nv-btn.rebota{animation:rebote 2.6s cubic-bezier(.28,.84,.42,1) infinite}
+@keyframes rebote{0%,58%,72%,86%,100%{transform:translateY(0)}64%{transform:translateY(-7px)}78%{transform:translateY(-3px)}}
+.nv-btn.rebota:hover{animation-play-state:paused}
 
 /* --- franja de beneficios --- */
 .nv-datos{display:grid;grid-template-columns:repeat(3,1fr);background:var(--nv-rojo);color:var(--nv-blanco);text-align:center}
@@ -281,6 +298,6 @@
   .nv-benef{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .nv-nieve,.nv-cinta,.nv-btn::before{animation:none}
+  .nv-nieve,.nv-cinta,.nv-btn::before,.nv-btn::after,.nv-btn.rebota{animation:none}
   .nv-btn,.nv-fijo,.pf-pack{transition:none}
 }

@@ -94,7 +94,7 @@
   var txt = document.body.getAttribute('data-fijo') || 'Pedir ahora · pago contra entrega';
   var fijo = document.createElement('div');
   fijo.className = 'nv-fijo';
-  fijo.innerHTML = '<button type="button" class="nv-btn"></button>';
+  fijo.innerHTML = '<button type="button" class="nv-btn rebota"></button>';
   /* 12-11 James: WhatsApp como en todas las páginas: botón verde "WhatsApp" al lado del de pedir (la bolita de la esquina se esconde mientras está la barra) */
   /* la bolita a.wa está después de este script: el enlace se toma de ella al terminar de cargar */
   {
