@@ -29,10 +29,10 @@ window.PRODUCTOS = [{
   corto: 'Fundas Navideñas Silla',
   unidad: 'pack',
   packs: [
-    { cant: 4, disenos: 1, precio: 70000, texto: '4 sillas', detalle: 'comedor de 4 puestos' },
-    { cant: 6, disenos: 1, precio: 90000, texto: '6 sillas', detalle: 'comedor de 6 puestos', nivel: 'Promoción' },
+    { cant: 4, disenos: 1, precio: 70000, texto: '4 sillas', detalle: 'comedor de 4 puestos', nivel: 'Promoción' },
+    { cant: 6, disenos: 1, precio: 90000, texto: '6 sillas', detalle: 'comedor de 6 puestos' },
   ],
-  popular: 1,
+  popular: 0,   /* 12-11 James: se arranca con 4 sillas ("no todo el mundo tiene seis sillas"), después 6 */
   /* 12-11 James "10% anticipado" → "Sí, ponlos": pago con Wompi, 10 % menos sobre el pack (la puerta adicional va a su precio) */
   anticipado: { pct: 10, precios: [63000, 81000] },
   disenoUnidad: 'juego',
