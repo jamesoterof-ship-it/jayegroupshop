@@ -9,14 +9,19 @@
       («linfático tradicional · extracto 100 % natural») y hechos de la compra.
    Escalera APROBADA por James 11-11: contra entrega 1 frasco Q139 · 2 frascos Q172 · 4 frascos Q295;
    con tarjeta −10 %: Q125 · Q155 · Q265. Tachado con el criterio de Chile: el 1 frasco +30 %, los packs = frascos sueltos.
-   Reseñas: ninguna hasta tener reales de Guatemala (sinResenas, James 11-11).
+   Reseñas: 83 reales de compradores de gotas de drenaje en otras tiendas (resenas-reales.js, James 12-11).
    ============================================================ */
 window.PRODUCTOS = [
   {
     id: 'drenaje', unidad: 'frasco', promo: 2,
     dropiId: 19504,
     /* sin video: el de Chile muestra el frasco Lymphoria */
-    sinResenas: true,
+    /* 12-11 James ("búscalas donde sea"): 83 reseñas REALES de compradores de gotas de drenaje linfático en otras
+       tiendas (3 con foto de tiendas de Colombia + 80 de AliExpress), tal cual y con su origen (resenas-reales.js). */
+    resenasReales: window.RESENAS_REALES_DRENAJE || [],
+    resenasRotulo: 'Opiniones de compradores',
+    resenasFuente: 'Opiniones reales de compradores de gotas de drenaje linfático, tal como las escribieron.',
+    resenasMas: 'Más opiniones de quienes usan gotas de drenaje linfático',
     /* «El cambio»: compara la RUTINA (polvos y cápsulas contra unas gotas), nunca el cuerpo */
     antesDespues: 'img/gt-dren-cambio.webp?v=1',
     antesDespuesSub: 'Cómo era la rutina con polvos y cápsulas, y cómo es con unas gotas en el vaso.',

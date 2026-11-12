@@ -132,7 +132,7 @@
           '<p class="ly-bajada ly-sube2">Extractos de plantas en gotas. Pagas cuando te llega.</p>' +
         '</div>' +
       '</div>' +
-      '<div class="ly-chips">' + chip(ICO.miel, 'En gotas') + chip(ICO.hoja, 'Extractos de plantas') + chip(ICO.pago, 'Pago al recibir') + '</div>';
+      '<div class="ly-chips">' + chip(ICO.miel, 'En gotas') + chip(ICO.hoja, 'Natural') + chip(ICO.pago, 'Pago al recibir') + '</div>';
 
     /* la GALERIA se va (arriba queda el hero); la cabecera con estrellas,
        nombre, precio y boton se queda, justo debajo de los chips */

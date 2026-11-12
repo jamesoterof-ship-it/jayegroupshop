@@ -1,0 +1,367 @@
+/* ============================================================
+   HERO DE LA FICHA · JAYE GROUP España y Portugal
+
+   🔴 REGLA DE JAMES (25-09): de la marca se respetan SOLO el encabezado y el
+   pie. Dentro de la página los colores los manda el PRODUCTO.
+   El negro quedaba horrible contra el rosa del bálsamo, así que fuera: la
+   paleta sale de la propia foto (crema, rosa empolvado, marrón cálido) y el
+   dorado de JAYE GROUP se queda como acento del botón.
+
+   🔴 MÓVIL PRIMERO. Casi todo el tráfico entra por el teléfono: lo de
+   escritorio va después y solo estira lo que ya funciona en pequeño.
+
+   Reglas del manual que se siguen:
+   - La foto no se recorta y su hueco queda reservado (sin saltos al cargar).
+   - Texto marrón oscuro sobre crema: muy por encima del 4.5:1 que pide WCAG.
+   - Jerarquía por tamaño y espacio, no por color.
+   - Botón de 56 px (mínimo 44) y foco visible.
+   - Entrada de 260 ms, apagada entera con prefers-reduced-motion.
+   ============================================================ */
+
+.heroP {
+  --crema:  #FBF4F0;   /* fondo */
+  --rosa:   #F3DFE0;   /* rosa empolvado del envase */
+  --rosaF:  #C9808B;   /* rosa fuerte, para acentuar una palabra */
+  --tinta:  #3B2B2A;   /* marrón cálido: el texto */
+  --tinta2: #6E5A56;   /* secundario */
+  /* 🔴 ESTE ORO SALE DEL PROPIO ENVASE, no de la marca. Se midió sobre la foto
+     del hero: la banda dorada está al 73 % de la altura y sus tonos van de
+     #E0B058 a #F8C860. La media es #E8BE62: un oro claro y brillante.
+     El #D8A52E de JAYE GROUP es un mostaza apagado y al lado del crema y el
+     rosa se ve sucio — James: "se ve feo". El de la marca se queda en el
+     encabezado y el pie, que es donde manda. */
+  --oro:    #E8BE62;
+  --oroOsc: #DCB055;   /* el mismo, un punto más bajo, para el hover */
+
+  position: relative;
+  background: var(--crema);
+  padding-bottom: 30px;
+  overflow: hidden;
+}
+
+/* ---------- la foto ---------- */
+.heroP__marco {
+  position: relative;
+  margin: 0 0 -46px;          /* el texto sube y se monta sobre la foto */
+  background: var(--rosa);
+}
+.heroP__img {
+  display: block;
+  width: 100%;
+  /* 🔴 height:auto OBLIGATORIO. El <img> lleva los atributos width="1024"
+     height="1536" (que son los que reservan el hueco y evitan el salto al
+     cargar), pero sin esto el navegador aplica esos 1536 px como altura real y
+     la foto sale midiendo metro y medio. */
+  height: auto;
+  /* 1024x1536: se respeta la proporción exacta, así no se recorta NADA y el
+     hueco está reservado antes de que la imagen baje.
+     🔴 SIN max-height. Con 62vh la caja quedaba más ancha que alta en
+     proporción y el `cover` recortaba justo el bálsamo: se veía un rosa plano
+     y la foto parecía no haber cargado. */
+  aspect-ratio: 1024 / 1536;
+  object-fit: cover;
+  object-position: 50% 50%;
+  background: var(--rosa);
+}
+/* la foto se disuelve en el crema, sin corte duro ni caja negra */
+.heroP__fundido {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 34%;
+  background: linear-gradient(to top, var(--crema) 14%, rgba(251,244,240,.72) 48%, rgba(251,244,240,0) 100%);
+  pointer-events: none;
+}
+.heroP__velo { display: none; }   /* ya no hace falta: no hay texto sobre la foto */
+
+/* ---------- el texto ---------- */
+.heroP__txt {
+  position: relative;
+  padding: 0 22px;
+  color: var(--tinta);
+  text-align: center;
+}
+
+.heroP__kicker {
+  display: inline-flex; align-items: center; gap: 7px;
+  font: 700 11.5px/1 Inter, system-ui, sans-serif;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--rosaF);
+  background: #fff;
+  border: 1px solid var(--rosa);
+  padding: 9px 15px; border-radius: 999px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 18px rgba(201,128,139,.14);
+}
+.heroP__kicker i { width: 6px; height: 6px; border-radius: 50%; background: var(--rosaF); flex: 0 0 auto; }
+
+/* La nota del producto, arriba del titular: es el primer golpe de confianza.
+   Sustituye al rótulo "Nuevo en España" en cuanto hay opiniones. */
+.heroP__nota {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: #fff;
+  border: 1px solid var(--rosa);
+  padding: 8px 15px; border-radius: 999px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 18px rgba(201,128,139,.14);
+}
+.heroP__nota .est { display: inline-flex; gap: 2px; }
+.heroP__nota .est svg { width: 15px; height: 15px; fill: var(--oro); }
+.heroP__nota b {
+  font: 800 15px/1 Inter, system-ui, sans-serif;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+.heroP__nota a {
+  font: 500 13px/1 Inter, system-ui, sans-serif;
+  color: var(--tinta2); text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.heroP__nota a:hover { color: var(--rosaF); }
+
+/* 🔴 MÁS GRANDE. James, 25-09: "estas letras se ven muy pequeñas, deberían ser
+   más grandes para que llamen más la atención". De 11,5vw a 14vw: en un móvil
+   de 390 px pasa de 45 a 55 px. */
+/* 🔴 OJO CON LA ESPECIFICIDAD. El titular vive dentro de <main class="prod">,
+   y el HTML trae en un <style> propio la regla .prod h1 { font-size:
+   clamp(28px,7vw,40px) }. Al ir en el documento, esa gana a .heroP__h1 por
+   mucho clamp que le pongamos aqui: el titular se quedaba en 28 px pasara lo
+   que pasara. Por eso las reglas del titular llevan .heroP delante. */
+/* La misma letra que el titular de la máscara: Bodoni Moda en cursiva, del
+   cuerpo 500 y en minúsculas. Antes iba en Barlow Condensed a 800 y TODO EN
+   MAYÚSCULA, que es la letra de la ficha de tienda, no la de la máscara: era
+   lo primero que se veía y lo que hacía que la página no se le pareciera.
+   Los valores salen de `.p-mascara #prod .ma-h1`, medidos, no inventados.
+   El tamaño baja de 14vw a 9.6vw porque la cursiva con minúsculas ocupa más
+   ancho por letra que la condensada en caja alta. */
+.heroP .heroP__h1 {
+  font-family: 'Bodoni Moda', Didot, Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(36px, 10.4vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -.012em;
+  text-transform: none;
+  color: var(--tinta);
+  margin: 0 0 15px;
+  text-wrap: balance;
+}
+/* En la máscara el trozo destacado va en oro y en negrita; aquí en el rosa
+   fuerte del envase, que sobre la crema sí se lee (el oro claro daba 1,49:1). */
+.heroP .heroP__h1 b { color: var(--rosaF); font-weight: 700; font-style: italic; }
+
+/* ============================================================
+   CASCADA DEL TITULAR, letra por letra
+   Cada palabra va en su caja para que el navegador no la parta al saltar de
+   línea; dentro, las letras con su índice --k, que corre por TODO el titular
+   para que la cascada no se reinicie en cada renglón.
+   Arranca a los 40 ms y cada letra entra 28 ms después de la anterior: un
+   titular de 30 letras termina en menos de un segundo.
+   ============================================================ */
+.hCas__w { display: inline-block; white-space: nowrap; }
+.hCas__w.es-oro .hCas__l { color: var(--rosaF); }
+.hCas__salto { display: block; height: 0; }
+.hCas__l {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.22em) rotate(2deg);
+  animation: hCasCae .34s cubic-bezier(.2,.85,.3,1.1) forwards;
+  animation-delay: calc(.04s + var(--k) * .028s);
+}
+@keyframes hCasCae {
+  from { opacity: 0; transform: translateY(.22em) rotate(2deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   LLUVIA DE DESTELLOS sobre la foto
+   Adorno, nada más: va con aria-hidden y pointer-events:none, así que no
+   estorba al tocar la pantalla. Son puntos de luz del mismo oro del envase.
+   ============================================================ */
+.heroP__luces {
+  position: absolute; inset: 0;
+  overflow: hidden; pointer-events: none;
+  z-index: 2;
+}
+.heroP__luces i {
+  position: absolute;
+  left: var(--x); top: -12px;
+  width: var(--s); height: var(--s);
+  border-radius: 50%;
+  background: var(--oro);
+  box-shadow: 0 0 10px 2px rgba(232,190,98,.75);
+  opacity: 0;
+  animation: hLuz var(--t) linear infinite;
+  animation-delay: var(--d);
+}
+@keyframes hLuz {
+  0%   { opacity: 0;   transform: translateY(0)     scale(.5); }
+  12%  { opacity: .95; }
+  70%  { opacity: .75; }
+  100% { opacity: 0;   transform: translateY(105vh) scale(1.1); }
+}
+
+/* ---- la descripción, junto al precio ---- */
+.dscTop {
+  font: 400 15.5px/1.6 Inter, system-ui, sans-serif;
+  color: #514543;
+  margin: 14px 0 12px;
+  max-width: 60ch;
+}
+.dscTop__ul { list-style: none; padding: 0; margin: 0 0 4px; }
+.dscTop__ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 9px;
+  font: 500 15px/1.5 Inter, system-ui, sans-serif;
+  color: #3B2B2A;
+}
+.dscTop__ul li::before {
+  content: "";
+  position: absolute; left: 2px; top: .42em;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #E8BE62;
+  box-shadow: 0 0 0 4px rgba(232,190,98,.22);
+}
+
+.heroP__sub {
+  font: 400 15.5px/1.55 Inter, system-ui, sans-serif;
+  color: var(--tinta2);
+  margin: 0 auto 20px;
+  max-width: 32ch;            /* largo de línea legible */
+}
+
+/* ---------- los tres datos ---------- */
+.heroP__datos {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-bottom: 22px;
+}
+.heroP__dato {
+  display: inline-flex; align-items: center; gap: 7px;
+  font: 600 12.5px/1 Inter, system-ui, sans-serif;
+  color: var(--tinta);
+  background: #fff;
+  border: 1px solid #F0E2DE;
+  padding: 10px 13px; border-radius: 999px;
+  white-space: nowrap;
+}
+.heroP__dato svg { width: 15px; height: 15px; flex: 0 0 auto; color: var(--rosaF); }
+.heroP__dato--oro { background: var(--rosa); border-color: var(--rosa); }
+.heroP__dato--oro svg { color: var(--tinta); }
+
+/* ---------- precio y botón ---------- */
+.heroP__pie {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.heroP__precio { line-height: 1; }
+.heroP__precio span {
+  display: block;
+  font: 600 10.5px/1 Inter, sans-serif;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tinta2);
+  margin-bottom: 6px;
+}
+.heroP__precio b {
+  font-family: "Barlow Condensed", Inter, sans-serif;
+  font-weight: 800; font-size: 40px; color: var(--tinta);
+  font-variant-numeric: tabular-nums;   /* el precio no baila al cambiar */
+}
+/* EL BOTÓN VA EN EL ORO DEL ENVASE (--oro), no en el mostaza de la marca.
+   Letra en marrón oscuro: contraste 7,5:1, muy por encima del 4,5:1 de WCAG.
+   Un oro claro con letra blanca NO pasaría: se quedaría en 2:1. */
+.heroP__cta {
+  width: 100%; max-width: 420px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 56px; padding: 0 22px;
+  border: 0; border-radius: 16px; cursor: pointer;
+  background: var(--oro); color: var(--tinta);
+  font: 800 16px/1 Inter, system-ui, sans-serif;
+  letter-spacing: .01em;
+  box-shadow: 0 10px 26px rgba(232,190,98,.42);
+  transition: transform .16s ease-out, box-shadow .16s ease-out, background .16s ease-out;
+}
+.heroP__cta:hover { background: var(--oroOsc); box-shadow: 0 13px 30px rgba(232,190,98,.5); }
+.heroP__cta:active { transform: scale(.975); }   /* no mueve nada alrededor */
+.heroP__cta:focus-visible { outline: 3px solid var(--rosaF); outline-offset: 3px; }
+
+/* ---------- entrada ----------
+   Solo el texto, escalonado. La foto no se anima: mover una imagen grande
+   cuesta cuadros y no aporta nada. */
+@keyframes heroSube { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.heroP__txt > * { animation: heroSube .26s cubic-bezier(.22,.9,.3,1) both; }
+.heroP__txt > *:nth-child(1) { animation-delay: .04s; }
+.heroP__txt > *:nth-child(2) { animation-delay: .10s; }
+.heroP__txt > *:nth-child(3) { animation-delay: .16s; }
+.heroP__txt > *:nth-child(4) { animation-delay: .22s; }
+.heroP__txt > *:nth-child(5) { animation-delay: .28s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .heroP__txt > * { animation: none; }
+  .heroP__cta { transition: none; }
+  /* las letras aparecen puestas, sin caer, y los destellos se apagan del todo */
+  .hCas__l { animation: none; opacity: 1; transform: none; }
+  .heroP__luces { display: none; }
+}
+
+/* ============================================================
+   LA LÍNEA DE LA FUENTE DE LAS OPINIONES
+   Va justo bajo el título de la sección. 13 px y gris medio: discreta, pero
+   perfectamente legible. NO se achica ni se aclara más: información poco
+   clara es omisión engañosa (art. 7 de la Directiva 2005/29).
+   Gris #6E6A66 sobre blanco = 5,4:1, por encima del 4,5:1 de WCAG.
+   ============================================================ */
+.rev-fuente {
+  font: 400 13px/1.5 Inter, system-ui, sans-serif;
+  color: #6E6A66;
+  margin: -4px 0 16px;
+  max-width: 46ch;
+}
+
+/* ---------- pantallas grandes ----------
+   Solo a partir de aquí se parte en dos. Todo lo de arriba es el móvil. */
+@media (min-width: 900px) {
+  .heroP {
+    display: grid; grid-template-columns: 1.02fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 0 46px 0 0;
+    min-height: 620px;
+  }
+  .heroP__marco { margin: 0; height: 100%; }
+  .heroP__img { aspect-ratio: auto; height: 100%; max-height: none; object-position: 50% 36%; }
+  .heroP__fundido {
+    inset: 0 0 0 auto; height: auto; width: 32%;
+    background: linear-gradient(to left, var(--crema) 10%, rgba(251,244,240,0) 100%);
+  }
+  .heroP__txt { padding: 54px 0; text-align: left; }
+  .heroP .heroP__h1 { font-size: clamp(48px, 4.6vw, 74px); }
+  .heroP__sub { margin-left: 0; }
+  .heroP__datos { justify-content: flex-start; }
+  .heroP__pie { flex-direction: row; align-items: center; gap: 20px; }
+  .heroP__cta { width: auto; flex: 1; max-width: 340px; }
+}
+
+/* ============================================================
+   CANDADO: EL HERO SE VE AUNQUE LA ANIMACION NO ARRANQUE
+   ------------------------------------------------------------
+   El titular y las letras de la cascada parten de opacity:0 con fill-mode
+   both/forwards. Si la animacion no llega a correr -pestaña abierta en
+   segundo plano, movil ahorrando bateria, navegador que la pospone- el
+   visitante se encuentra el hero VACIO. Y es la primera pantalla de una
+   pagina que va a recibir trafico pagado.
+   Comprobado el 26-09: tras recorrer la pagina, .heroP__h1 y las .hCas__l
+   median opacity 0.
+
+   El arreglo: las animaciones solo se aplican cuando el JS ha puesto
+   .ba-lista en el <html>. Si el JS no corre, no hay animacion pero SE VE
+   TODO, que es lo que importa. El JS pone la clase en la primera linea, asi
+   que en un caso normal la animacion se ve igual que antes.
+   ============================================================ */
+html:not(.ba-lista) .heroP__txt > *,
+html:not(.ba-lista) .hCas__l {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Y si algo deja la animacion a medias, el JS pone .ba-visto a los 3 s y
+   esto lo descubre pase lo que pase. */
+html.ba-visto .heroP__txt > *,
+html.ba-visto .hCas__l { opacity: 1 !important; transform: none !important; }
