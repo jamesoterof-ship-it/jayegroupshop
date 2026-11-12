@@ -50,6 +50,7 @@ window.PRODUCTOS = [{
     ['RENO BEBE', 'Reno bebé', 'img/fp-22.webp'], ['RENOS', 'Renos', 'img/fp-28.webp'],
   ],
   adicTitulo: '¿Le agregas las sillas a juego? (mismo envío)',
+  adicNinguno: 'Sin sillas',
   adicionales: [
     { id: 'SILLAS4', codigo: '4 SILLAS', texto: '+ 4 fundas de silla', detalle: 'respaldo y asiento · comedor de 4', precio: 70000, foto: 'img/si-chimenea.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 4 sillas' },
     { id: 'SILLAS6', codigo: '6 SILLAS', texto: '+ 6 fundas de silla', detalle: 'respaldo y asiento · comedor de 6', precio: 90000, foto: 'img/si-bienvenido.webp', disenos: window.DISENOS_SILLA, rotuloDiseno: 'Diseño de las 6 sillas' },

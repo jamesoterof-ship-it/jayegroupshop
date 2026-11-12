@@ -37,6 +37,7 @@ window.PRODUCTOS = [{
   disenosTitulo: 'Toca el diseño',
   disenos: _SILLA,
   adicTitulo: '¿Le agregas la puerta a juego? (mismo envío)',
+  adicNinguno: 'Sin puerta',
   adicionales: [
     { id: 'PUERTA1', codigo: '1 PUERTA', texto: '+ 1 funda para tu puerta', detalle: '2 m × 1 m, a juego con las sillas', precio: 35000, foto: '../funda/img/fp-10.webp', disenos: _PUERTA, rotuloDiseno: 'Diseño de la puerta' },
   ],

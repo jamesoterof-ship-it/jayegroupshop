@@ -192,11 +192,10 @@ window.jayePixel.track('PageView', {});
       <button type="button" class="nv-esc" data-pack="0" data-ir="pedir"><b>4 sillas</b><strong>$70.000</strong><small>Comedor de 4 puestos · $17.500 por silla</small></button>
       <button type="button" class="nv-esc nv-esc--top" data-cinta="La más pedida" data-pack="1" data-ir="pedir"><b>6 sillas</b><strong>$90.000</strong><small>Comedor de 6 puestos · $15.000 por silla</small></button>    </div>
     <p class="nv-txt">Envío gratis y pago contra entrega en todas.</p>
-    <div class="nv-combo">
-      <h2 class="nv-h2">La puerta a juego por $35.000</h2>
-      <p class="nv-txt">Agrega la funda navideña para tu puerta (2 m × 1 m) en el mismo diseño de las sillas. Va en el mismo envío.</p>
-      <button type="button" class="nv-btn" data-pack="1" data-adic="0" data-ir="pedir">6 sillas + puerta · $125.000</button>
-    </div>
+    <!-- 12-11 James: la puerta como sección OPCIONAL antes del formulario (no adentro). ../ficha.js muda aquí el selector y lo suma al mismo pedido. -->
+    <h3 class="nv-h3">¿La puerta a juego? <small>(opcional)</small></h3>
+    <p class="nv-txt">Funda navideña para tu puerta (2 m × 1 m) en el mismo diseño de las sillas. Va en el mismo envío.</p>
+    <div id="coAdicional"></div>
     <h2 class="nv-h2">Pide tus <em>fundas</em></h2>
     <div class="nv-pedir" id="pedir"></div>
   </section>
@@ -286,9 +285,9 @@ window.jayePixel.track('PageView', {});
     </div>
   </footer>
 
-<script src="productos.js?v=3"></script>
+<script src="productos.js?v=4"></script>
 <script src="resenas.js?v=1"></script>
-<script src="../ficha.js?v=4"></script>
+<script src="../ficha.js?v=5"></script>
 <script src="../funda/funda.js?v=2"></script>
 </body>
 </html>

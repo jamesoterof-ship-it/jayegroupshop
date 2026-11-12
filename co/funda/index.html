@@ -222,16 +222,10 @@ window.jayePixel.track('PageView', {});
       <button type="button" class="nv-esc" data-pack="3" data-ir="pedir"><b>4 fundas</b><strong>$139.900</strong><small>$34.975 c/u · casa y familia</small></button>
     </div>
     <p class="nv-txt">Envío gratis y pago contra entrega en todas.</p>
-    <div class="nv-combo">
-      <h2 class="nv-h2">Combina el comedor</h2>
-      <p class="nv-txt">Fundas de silla en los mismos diseños de la puerta. Cubren respaldo y asiento. Van en el mismo envío.</p>
-      <div class="nv-combo__fotos">
-        <img src="img/si-chimenea.webp?v=1" alt="Silla de comedor con funda navideña de Papá Noel en la chimenea" loading="lazy">
-        <img src="img/si-bienvenido.webp?v=1" alt="Silla de comedor con funda navideña Bienvenido" loading="lazy">
-      </div>
-      <button type="button" class="nv-btn" data-pack="1" data-adic="0" data-ir="pedir">+ 4 sillas por $70.000</button>
-      <button type="button" class="nv-btn nv-btn--pino" data-pack="1" data-adic="1" data-ir="pedir">+ 6 sillas por $90.000</button>
-    </div>
+    <!-- 12-11 James: las sillas como sección OPCIONAL antes del formulario (no adentro). ../ficha.js muda aquí el selector y lo suma al mismo pedido. -->
+    <h3 class="nv-h3">¿Sillas a juego para tu comedor? <small>(opcional)</small></h3>
+    <p class="nv-txt">Fundas de silla en los mismos diseños de la puerta. Cubren respaldo y asiento. Van en el mismo envío.</p>
+    <div id="coAdicional"></div>
     <h2 class="nv-h2">Pide tus <em>fundas</em></h2>
     <div class="nv-pedir" id="pedir"></div>
   </section>
@@ -321,9 +315,9 @@ window.jayePixel.track('PageView', {});
     </div>
   </footer>
 
-<script src="productos.js?v=2"></script>
+<script src="productos.js?v=3"></script>
 <script src="resenas.js?v=1"></script>
-<script src="../ficha.js?v=4"></script>
+<script src="../ficha.js?v=5"></script>
 <script src="funda.js?v=2"></script>
 </body>
 </html>

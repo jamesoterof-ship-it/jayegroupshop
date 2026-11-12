@@ -249,11 +249,19 @@
     });
     caja.querySelectorAll('.pf-pack').forEach(function (b) { b.addEventListener('click', pintarDis); });
   }
+  /* 12-11 James: el adicional va como SECCIÓN OPCIONAL antes del formulario, no adentro.
+     Si la página trae <div id="coAdicional">, el bloque se muda ahí (sigue sumando al mismo pedido). */
+  if ($('fAd') && $('coAdicional')) {
+    var dest = $('coAdicional'), tit = caja.querySelector('.pf-sub--ad');
+    if (tit) tit.parentNode.removeChild(tit);
+    ['fAd', 'fAdDis', 'errAd'].forEach(function (id) { dest.appendChild($(id)); });
+    if (p.adicNinguno) $('fAd').querySelector('[data-a="-1"] b').textContent = p.adicNinguno;
+  }
   if ($('fAd')) {
     $('fAd').addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
       adic = +b.getAttribute('data-a'); elAd = '';
-      caja.querySelectorAll('#fAd button').forEach(function (x) { var s = x === b; x.classList.toggle('sel', s); x.setAttribute('aria-checked', String(s)); });
+      document.querySelectorAll('#fAd button').forEach(function (x) { var s = x === b; x.classList.toggle('sel', s); x.setAttribute('aria-checked', String(s)); });
       $('errAd').style.display = 'none'; pintarAdDis(); refrescar(); if (adic >= 0) carrito();
     });
     $('fAdDis').addEventListener('change', function (e) { var sel = e.target.closest('select'); if (!sel) return; elAd = sel.value; $('errAd').style.display = 'none'; });
@@ -265,7 +273,7 @@
       $('errAd').style.display = 'none';
     });
   }
-  window.coAdicional = function (i) { var b = caja.querySelector('.pf-ad[data-a="' + i + '"]'); if (b) b.click(); };
+  window.coAdicional = function (i) { var b = document.querySelector('.pf-ad[data-a="' + i + '"]'); if (b) b.click(); };
 
   /* otros botones de la página pueden elegir pack/pago: coElegir(0, 'pre') */
   window.coElegir = function (i, pago) {
