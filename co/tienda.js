@@ -55,7 +55,7 @@
   function tarjeta(p) {
     var barato = p.packs.reduce(function (a, b) { return b.precio < a.precio ? b : a; });
     var nota = notaDe(p);
-    var dest = '/co/' + encodeURIComponent(p.id) + '/';
+    var dest = p.url || ('/co/' + encodeURIComponent(p.id) + '/');   /* 12-11: las gafas viven en /gafas/ */
     var nom = esc(p.nombre);
     var estr = nota
       ? '<div class="nota"><div class="linea1"><span class="est">' + estrellitas(nota.prom) + '</span>'

@@ -37,6 +37,21 @@ window.PRODUCTOS = [
     ],
     anticipado: { pct: 10, precios: [94400, 112400] },
   },
+  /* 12-11 James: Gafas de Aumento TR90 (Dropi 2229646). La ficha vive en /gafas/ (no en /co/gafas/).
+     Precios aprobados: 1 par $59.900 · 2 pares $79.900; anticipado Wompi $53.900 · $71.900. */
+  {
+    id: 'gafas', dropiId: 2229646, url: '/gafas/',
+    nombre: 'Gafas de Aumento TR90',
+    sub: 'Sin marco · de +1.00 a +4.00 · con estuche y paño',
+    categoria: 'Salud',
+    etiqueta: 'Nuevo',
+    foto: 'img/card3.webp?v=1',
+    packs: [
+      { cant: 1, precio: 59900, texto: '1 par' },
+      { cant: 2, precio: 79900, texto: '2 pares' },
+    ],
+    anticipado: { pct: 10, precios: [53900, 71900] },
+  },
   /* 10-11 James: Combo Protector de Colchón + Cobija Navideña, Dropi Colombia 2293056 (3 protectores + 6 fundas + cobija).
      Contra entrega $119.900 · pago anticipado con Wompi −10 %: $107.900. Sin precio tachado. */
   {
@@ -65,4 +80,5 @@ window.PREGUNTAS = [
 /* candado: si un precio no está aprobado por James, la portada no lo muestra. Colombia: protector aprobado el 10-11. */
 window.PRECIOS_APROBADOS = [119900, 107900,
   75000, 109900, 124900, 139900, 67500, 98900, 112400, 125900,   /* funda de puerta (James 11-11 / 12-11) */
-  104900, 124900, 94400, 112400];                                /* fundas de silla SOLAS (James 11-11 / 12-11) */
+  104900, 124900, 94400, 112400,                                 /* fundas de silla SOLAS (James 11-11 / 12-11) */
+  59900, 79900, 53900, 71900];                                   /* gafas de aumento TR90 (James 12-11) */
