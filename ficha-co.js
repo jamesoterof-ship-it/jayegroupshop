@@ -175,6 +175,35 @@
       + '</div></div></section>';
   }
 
+  /* 12-11 James: "todas las páginas llevan video" → video real (AliExpress, sin voz, en bucle) como el de la funda de Colombia */
+  function seccionVideo() {
+    return '<section class="bloque" data-rv><span class="eyebrow">Míralas de cerca</span><h2 class="tit2">Así son en la mano</h2>'
+      + '<video src="gafas/img/gafas-video.mp4?v=1" poster="gafas/img/gafas-video-poster.webp?v=1" muted loop playsinline autoplay preload="metadata"'
+      + ' style="display:block;width:100%;max-width:420px;margin:14px auto 0;border-radius:16px" aria-label="Video: gafas de aumento TR90 sin marco, con patas flexibles"></video></section>';
+  }
+
+  /* 12-11 James: sección de PAGO ANTICIPADO justo debajo de la promoción, con la misma tarjeta de la promoción */
+  function seccionAnticipado() {
+    var filas = p.packs.map(function (k, i) {
+      return '<p class="promo-uni" style="margin:6px 0"><b>' + esc(k.texto) + ':</b> <span class="promo-antes">' + pesos(k.precio) + '</span> '
+        + '<b>' + pesos(precioPre(i)) + '</b> <span class="promo-off">-' + pesos(k.precio - precioPre(i)) + '</span></p>';
+    }).join('');
+    return '<section class="bloque promo-sec" data-rv>'
+      + '<div class="promo-card">'
+      + '<div class="promo-banner"><span class="chispa">★</span>Pago anticipado<span class="promo-banner-sub">ahorra más</span></div>'
+      + '<div class="promo-cuerpo">'
+      + '<b class="promo-qt">Paga antes con Wompi y te sale más barato</b>'
+      + filas
+      + '<p class="promo-uni">Tarjeta, PSE, Nequi o Bancolombia · despacho prioritario</p>'
+      + '<div class="cbadges pagos-logos" style="justify-content:center;margin:10px 0">'
+      + '<img src="https://wompi.com/assets/downloadble/logos_wompi/Wompi_LogoPrincipal.svg" alt="Wompi" class="lg-wompi" loading="lazy" onerror="this.remove()">'
+      + '<img src="img/pagos/bancolombia.svg" alt="Bancolombia" class="lg-banco" loading="lazy">'
+      + '<img src="img/pagos/pse.svg" alt="PSE" class="lg-pse" loading="lazy">'
+      + '<img src="img/pagos/nequi.svg" alt="Nequi" class="lg-nequi" loading="lazy"></div>'
+      + '<button class="cta rojo" id="btnAnticipado" type="button">Quiero pagar anticipado</button>'
+      + '</div></div></section>';
+  }
+
   /* ---------- LA FÓRMULA · círculos con íconos (Chile) ---------- */
   var ICONOS = {
     ojo: '<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.6"/>',
@@ -406,7 +435,9 @@
     + promo
     + gigante
     + desc
+    + seccionVideo()
     + seccionPromo()
+    + seccionAnticipado()
     + seccionFormula()
     + seccionCompara()
     + resenas
@@ -510,6 +541,8 @@
   });
   $('btnArriba').addEventListener('click', function () { $('pedir').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   if ($('btnPromo')) $('btnPromo').addEventListener('click', function () { elegirPack(Number(this.dataset.i)); $('pedir').scrollIntoView({ behavior: 'smooth' }); });
+  /* 12-11: el botón de la sección de pago anticipado deja marcada la ficha "Pago anticipado" y baja al formulario */
+  if ($('btnAnticipado')) $('btnAnticipado').addEventListener('click', function () { var b = document.querySelector('.pagoOp[data-pago="pre"]'); if (b) b.click(); $('pedir').scrollIntoView({ behavior: 'smooth' }); });
   pintarPrecio();
 
   /* InitiateCheckout al llegar al formulario (Chile: dos puertas, sale una vez) */
