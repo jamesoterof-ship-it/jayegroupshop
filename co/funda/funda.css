@@ -1,0 +1,213 @@
+/* ============================================================
+   FUNDA NAVIDEÑA PARA PUERTA + FUNDAS PARA SILLA · Colombia · 11-11-2026
+   Una sola hoja para /co/funda/ y /co/sillas/ (no es copia de otra página).
+   Diseño = opción 180 del script ui-ux-pro-max (James: "Sí, ármala"): Hero + Features + CTA, Barlow Condensed / Barlow,
+   fondo #FFF7ED, títulos #9A3412, luz #F97316, rojo #DC2626, noche #0F172A, borde #FED7AA.
+   Colores de Navidad pedidos por James ("verde, rojo, dorado"): rojo #DC2626 / #B91C1C, verde pino #14532D / #166534, dorado #D4A017.
+   Encabezado y pie = los de la tienda (/tienda.css), no se tocan.
+   ============================================================ */
+:root{
+  --nv-rojo:#DC2626; --nv-rojo2:#B91C1C; --nv-vino:#9A3412; --nv-noche:#0F172A; --nv-blanco:#FFFFFF;
+  --nv-pino:#14532D; --nv-pino2:#166534; --nv-oro:#D4A017; --nv-luz:#F97316; --nv-crema:#FFF7ED; --nv-gris:#475569;
+  --nv-linea:#FED7AA; --nv-suave:#F1F0F0;
+}
+.nv{background:var(--nv-crema);color:var(--nv-noche);font:400 16px/1.55 'Barlow',sans-serif;overflow-x:hidden}
+.nv *{box-sizing:border-box}
+.nv img{max-width:100%;display:block}
+.nv-h1,.nv-h2,.nv-h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.01em;margin:0;line-height:1.02}
+.nv-h1{font-weight:800;font-size:clamp(40px,11vw,68px);color:var(--nv-blanco)}
+.nv-h1 em{font-style:normal;color:var(--nv-oro)}
+.nv-h2{font-weight:800;font-size:clamp(30px,8vw,44px);color:var(--nv-pino2);text-align:center;margin-bottom:18px}
+.nv-h2 em{font-style:normal;color:var(--nv-rojo)}
+.nv-h3{font-weight:700;font-size:24px;margin:22px 0 10px;color:var(--nv-vino)}
+.nv-sec{padding:44px 16px;max-width:760px;margin:0 auto}
+.nv-txt{font-size:17px;color:var(--nv-gris);text-align:center;max-width:560px;margin:0 auto 18px}
+
+/* --- portada --- */
+.nv-heroe{position:relative;background:var(--nv-pino);color:var(--nv-blanco);overflow:hidden}
+.nv-heroe__foto{margin:0;position:relative}
+.nv-heroe__foto img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.nv-heroe__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(transparent,var(--nv-pino))}
+.nv-cinta{position:absolute;top:14px;left:14px;z-index:2;background:var(--nv-rojo);color:var(--nv-blanco);font:800 15px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:9px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.nv-heroe__txt{position:relative;padding:4px 16px 34px;max-width:760px;margin:0 auto}
+.nv-estrellas{display:flex;align-items:center;gap:8px;margin:12px 0 4px;font-weight:600}
+.nv-estrellas i{color:var(--nv-oro);font-style:normal;letter-spacing:2px;font-size:19px}
+.nv-lead{font-size:18px;margin:12px 0 18px;color:rgba(255,255,255,.9)}
+.nv-oferta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:rgba(255,255,255,.08);border:2px dashed var(--nv-oro);border-radius:16px;padding:14px 16px;margin-bottom:16px}
+.nv-oferta b{font:800 46px/1 'Barlow Condensed',sans-serif;color:var(--nv-oro)}
+.nv-oferta s{color:rgba(255,255,255,.6);font-size:18px}
+.nv-oferta span{display:block;font-size:15px;color:rgba(255,255,255,.9)}
+.nv-oferta .nv-ahorro{background:var(--nv-rojo);color:var(--nv-blanco);font-weight:700;border-radius:999px;padding:4px 10px;font-size:14px;display:inline-block}
+
+/* --- botones --- */
+.nv-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;border:0;border-radius:14px;cursor:pointer;
+  background:var(--nv-rojo);color:var(--nv-blanco);font:800 21px/1.1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em;text-align:center;padding:12px 18px;
+  box-shadow:0 8px 0 var(--nv-rojo2),0 14px 26px rgba(220,38,38,.35);transition:transform 160ms ease,box-shadow 160ms ease}
+.nv-btn:hover{transform:translateY(-2px)}
+.nv-btn:active{transform:translateY(4px);box-shadow:0 3px 0 var(--nv-rojo2)}
+.nv-btn:focus-visible,.pf-pack:focus-visible,.pf-ad:focus-visible,.nv-esc:focus-visible{outline:3px solid var(--nv-oro);outline-offset:3px}
+.nv-btn--pino{background:var(--nv-pino2);box-shadow:0 8px 0 var(--nv-pino),0 14px 26px rgba(20,83,45,.3)}
+.nv-btn + .nv-btn{margin-top:14px}
+
+/* --- franja de beneficios --- */
+.nv-datos{display:grid;grid-template-columns:repeat(3,1fr);background:var(--nv-rojo);color:var(--nv-blanco);text-align:center}
+.nv-datos div{padding:16px 6px;border-right:1px solid rgba(255,255,255,.2)}
+.nv-datos div:last-child{border-right:0}
+.nv-datos b{display:block;font:800 30px/1 'Barlow Condensed',sans-serif;color:var(--nv-blanco)}
+.nv-datos span{font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+
+/* --- sellos (con quién se despacha) --- */
+.nv-sellos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.nv-sello{background:var(--nv-blanco);border:2px solid var(--nv-linea);border-radius:14px;padding:14px;text-align:center}
+.nv-sello img{height:30px;width:auto;margin:0 auto 8px;object-fit:contain}
+.nv-sello .nom{font-weight:700}
+.nv-sello small{display:block;color:var(--nv-gris);font-size:13px}
+
+/* --- beneficios con foto --- */
+.nv-benef{display:grid;gap:18px}
+.nv-benef figure{margin:0;border-radius:18px;overflow:hidden;background:var(--nv-blanco);border:2px solid var(--nv-linea)}
+.nv-benef figcaption{padding:14px 16px}
+.nv-benef figcaption b{display:block;font:800 22px/1.1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--nv-rojo)}
+.nv-lista{list-style:none;padding:0;margin:0 auto;max-width:520px;display:grid;gap:10px}
+.nv-lista li{background:var(--nv-blanco);border-left:5px solid var(--nv-pino2);border-radius:10px;padding:12px 14px;font-weight:600}
+.nv-medida{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 auto 18px;max-width:520px}
+.nv-medida div{background:var(--nv-pino);color:var(--nv-blanco);border-radius:14px;padding:16px;text-align:center}
+.nv-medida b{display:block;font:800 34px/1 'Barlow Condensed',sans-serif;color:var(--nv-oro)}
+
+/* --- escalera de precios de la página --- */
+.nv-escalera{display:grid;gap:14px;margin-bottom:22px}
+.nv-esc{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 12px;background:var(--nv-blanco);border:2px solid var(--nv-linea);border-radius:16px;padding:16px;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.nv-esc b{font:800 26px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.nv-esc strong{font:800 30px/1 'Barlow Condensed',sans-serif;color:var(--nv-rojo)}
+.nv-esc small{color:var(--nv-gris)}
+.nv-esc--top{border:3px solid var(--nv-rojo);background:var(--nv-crema);transform:scale(1.02);box-shadow:0 12px 28px rgba(220,38,38,.18)}
+.nv-esc--top::before{content:attr(data-cinta);position:absolute;top:-13px;left:16px;background:var(--nv-rojo);color:var(--nv-blanco);font:800 13px/1 'Barlow Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+
+/* --- galería de diseños --- */
+.nv-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.nv-gal figure{margin:0;border-radius:12px;overflow:hidden;background:var(--nv-pino)}
+.nv-gal img{width:100%;aspect-ratio:2/3;object-fit:cover}
+.nv-gal--sillas img{aspect-ratio:3/4}
+.nv-gal figcaption{font-size:12.5px;color:var(--nv-blanco);padding:6px 6px 8px;text-align:center;line-height:1.2}
+.nv-mas{display:block;margin:14px auto 0;background:none;border:2px solid var(--nv-pino2);border-radius:999px;padding:10px 20px;font:700 15px/1 'Barlow',sans-serif;cursor:pointer;color:var(--nv-pino2)}
+.nv-gal [data-oculto]{display:none}
+
+/* --- combo puerta + sillas --- */
+.nv-combo{background:var(--nv-pino);color:var(--nv-blanco);border-radius:20px;padding:22px 16px;text-align:center;border:3px solid var(--nv-oro)}
+.nv-combo .nv-h2{color:var(--nv-oro)}
+.nv-combo .nv-txt{color:rgba(255,255,255,.9)}
+.nv-combo__fotos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.nv-combo__fotos img{border-radius:14px;aspect-ratio:3/4;object-fit:cover;width:100%}
+
+/* --- video --- */
+.nv-video video{display:block;width:100%;max-width:420px;margin:0 auto;aspect-ratio:9/16;object-fit:cover;border-radius:20px;border:3px solid var(--nv-oro);background:var(--nv-pino)}
+
+/* --- reseñas --- */
+.nv-estrellas{color:var(--nv-blanco);text-decoration:none}
+.nv-rs-res{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px}
+.nv-rs-res b{font:800 56px/1 'Barlow Condensed',sans-serif;color:var(--nv-pino2)}
+.nv-rs-res i,.nv-rs i{font-style:normal;color:var(--nv-oro);letter-spacing:2px;display:block}
+.nv-rs-res span{color:var(--nv-gris)}
+.nv-rs-lista{display:grid;gap:12px}
+.nv-rs{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--nv-blanco);border:2px solid var(--nv-linea);border-radius:14px;padding:12px}
+.nv-rs:not(:has(img)){grid-template-columns:1fr}
+.nv-rs img{width:96px;height:128px;object-fit:cover;border-radius:10px}
+.nv-rs b{display:block}
+.nv-rs small{color:var(--nv-gris)}
+.nv-rs p{margin:6px 0 0}
+.nv-rs[data-oculto]{display:none}
+
+/* --- preguntas --- */
+.nv-faq details{background:var(--nv-blanco);border:2px solid var(--nv-linea);border-radius:14px;margin-bottom:10px;padding:0 16px}
+.nv-faq summary{cursor:pointer;font-weight:700;padding:15px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.nv-faq summary::after{content:"+";color:var(--nv-rojo);font-weight:800;font-size:22px;line-height:1}
+.nv-faq details[open] summary::after{content:"–"}
+.nv-faq p{margin:0 0 15px;color:var(--nv-gris)}
+
+/* --- formulario (motor ../ficha.js) --- */
+.nv-pedir{background:var(--nv-blanco);border-radius:22px;border:3px solid var(--nv-rojo);padding:20px 14px;box-shadow:0 18px 40px rgba(15,23,42,.12)}
+.pf-paso{font:800 24px/1.1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:0 0 14px;display:flex;align-items:center;gap:10px;color:var(--nv-pino2)}
+.pf-paso b{width:34px;height:34px;display:grid;place-items:center;background:var(--nv-rojo);color:var(--nv-blanco);border-radius:999px;font-size:17px;flex:none}
+.pf-sub{font-weight:700;margin:20px 0 10px;font-size:16px}
+.pf-sub--ad{color:var(--nv-pino2)}
+.pf-packs{display:grid;gap:14px;margin-bottom:8px}
+.pf-pack{position:relative;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;text-align:left;width:100%;background:var(--nv-blanco);color:var(--nv-noche);font:400 15px/1.35 'Barlow',sans-serif;border:2px solid var(--nv-linea);border-radius:14px;padding:14px;cursor:pointer;transition:border-color 160ms ease,background 160ms ease}
+.pf-pack.sel{border-color:var(--nv-rojo);background:var(--nv-crema)}
+.pf-pack__cinta{position:absolute;top:-11px;right:12px;background:var(--nv-rojo);color:var(--nv-blanco);font:800 12px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:5px 10px;border-radius:999px}
+.pf-pack__nivel{grid-column:1/-1;font:800 12px/1 'Barlow Condensed',sans-serif;color:var(--nv-pino2);text-transform:uppercase;letter-spacing:.08em}
+.pf-pack__txt{font:800 22px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.pf-pack__pr{font:800 24px/1 'Barlow Condensed',sans-serif;text-align:right}
+.pf-pack__antes{color:var(--nv-gris);font-size:13.5px}
+.pf-pack__ahorro{text-align:right;color:var(--nv-rojo);font-weight:700;font-size:14px}
+.pf-pack__xp{grid-column:1/-1;height:5px;border-radius:999px;background:var(--nv-suave);overflow:hidden;margin-top:6px}
+.pf-pack__xp i{display:block;height:100%;width:var(--xp);background:linear-gradient(90deg,var(--nv-pino2),var(--nv-oro))}
+.pf-dis{display:grid;gap:10px}
+.pf-dsel{display:grid;gap:4px;font-weight:600;font-size:14px}
+.pf-dsel select{width:100%;min-height:50px;border:2px solid var(--nv-linea);border-radius:12px;padding:0 12px;font:500 16px 'Barlow',sans-serif;background:var(--nv-blanco);color:var(--nv-noche)}
+.pf-dsel select:focus{border-color:var(--nv-pino2);outline:0}
+/* diseños con foto (James 11-11: "que aparezcan los diseños para que la persona escoja") */
+.pf-dsel--fotos{gap:8px}
+.pf-dsel--fotos .pf-dnom{color:var(--nv-pino2)}
+.pf-dfotos{display:grid;grid-auto-flow:column;grid-auto-columns:96px;gap:8px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.pf-dfoto{scroll-snap-align:start;display:grid;gap:4px;background:var(--nv-blanco);border:3px solid var(--nv-linea);border-radius:12px;padding:3px;cursor:pointer;font:600 11.5px/1.15 'Barlow',sans-serif;color:var(--nv-noche);text-align:center}
+.pf-dfoto img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px}
+.pf-dfoto.sel{border-color:var(--nv-rojo);box-shadow:0 0 0 2px var(--nv-oro)}
+.pf-ad.pf-ad--foto{grid-template-columns:64px minmax(0,1fr) auto;grid-template-areas:"f t p" "f d p";align-items:center;column-gap:12px}
+.pf-ad--foto img{grid-area:f;width:64px;min-width:64px;max-width:none;height:80px;object-fit:cover;border-radius:10px}
+.pf-ad.pf-ad--foto b{grid-area:t;align-self:end}
+.pf-ad.pf-ad--foto small{grid-area:d;align-self:start}
+.pf-ad.pf-ad--foto span{grid-area:p}
+.pf-ads{display:grid;gap:10px;margin-bottom:10px}
+.pf-ad{display:grid;grid-template-columns:1fr auto;gap:2px 10px;text-align:left;width:100%;background:var(--nv-blanco);border:2px dashed var(--nv-linea);border-radius:14px;padding:13px 14px;cursor:pointer;font:400 15px/1.3 'Barlow',sans-serif;color:var(--nv-noche)}
+.pf-ad b{font-weight:700}
+.pf-ad small{grid-column:1;color:var(--nv-gris)}
+.pf-ad span{grid-row:1;grid-column:2;font:800 20px/1 'Barlow Condensed',sans-serif;color:var(--nv-pino2)}
+.pf-ad.sel{border:2px solid var(--nv-pino2);background:rgba(22,101,52,.08)}
+.pf-err{display:none;color:var(--nv-rojo);font-size:14px;margin-top:6px}
+.pf-campo.mal .pf-err{display:block}
+.pf-campo.mal input,.pf-campo.mal select{border-color:var(--nv-rojo)}
+.pf-resumen{background:var(--nv-suave);border-radius:14px;padding:14px;margin:18px 0}
+.pf-resumen div{display:flex;justify-content:space-between;padding:4px 0}
+.pf-desc span:last-child{color:var(--nv-rojo)}
+.pf-gratis{color:var(--nv-pino2);font-weight:700}
+.pf-tot{border-top:2px solid var(--nv-linea);margin-top:6px;padding-top:10px!important;font:800 22px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.pf-campo{margin-bottom:14px}
+.pf-campo label{display:block;font-weight:700;margin-bottom:6px}
+.pf-campo label i{font-weight:400;color:var(--nv-gris)}
+.pf-campo input,.pf-campo select{width:100%;min-height:52px;border:2px solid var(--nv-linea);border-radius:12px;padding:0 14px;font:500 16px 'Barlow',sans-serif;background:var(--nv-blanco);color:var(--nv-noche)}
+.pf-campo input:focus,.pf-campo select:focus{border-color:var(--nv-pino2);outline:0}
+.pf-tel{display:flex;align-items:center;border:2px solid var(--nv-linea);border-radius:12px;overflow:hidden;background:var(--nv-blanco)}
+.pf-tel span{padding:0 12px;font-weight:700;color:var(--nv-gris)}
+.pf-tel input{border:0!important;min-height:48px}
+.pf-aviso{display:none;background:var(--nv-crema);border:2px solid var(--nv-rojo);color:var(--nv-rojo2);border-radius:12px;padding:12px;margin-bottom:12px}
+.pf-aviso a{display:block;margin-top:6px;color:var(--nv-pino2);font-weight:700}
+.nv .cr-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border:0;border-radius:14px;background:var(--nv-rojo);color:var(--nv-blanco);font:800 22px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:0 7px 0 var(--nv-rojo2);text-decoration:none}
+.nv .cr-btn:disabled{opacity:.6}
+.pf-nota{text-align:center;color:var(--nv-gris);font-size:14px;margin:12px 0 0}
+.carriers{margin-top:16px;text-align:center}
+.carriers .cl{display:block;font-size:12.5px;color:var(--nv-gris);margin-bottom:8px}
+.cbadges{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+.pf-listo{text-align:center}
+.pf-listo h3{font:800 30px/1.05 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--nv-pino2);margin:0 0 10px}
+.pf-total{font:800 32px/1 'Barlow Condensed',sans-serif;color:var(--nv-rojo)}
+
+/* --- botón fijo: sin fondo blanco, se esconde en el formulario y en el pie (reglas de James 10-11) --- */
+.nv-fijo{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:transparent;pointer-events:none;transform:translateY(120%);transition:transform 220ms ease}
+.nv-fijo.ver{transform:none}
+.nv-fijo .nv-btn{pointer-events:auto;max-width:560px;margin:0 auto;min-height:54px;font-size:19px}
+
+/* --- nieve suave en la portada --- */
+.nv-nieve{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(2px 2px at 20% 30%,#FFFFFF,transparent),radial-gradient(2px 2px at 70% 10%,#FFFFFF,transparent),radial-gradient(1.5px 1.5px at 40% 70%,#FFFFFF,transparent),radial-gradient(2px 2px at 85% 55%,#FFFFFF,transparent),radial-gradient(1.5px 1.5px at 10% 85%,#FFFFFF,transparent);background-size:260px 260px;animation:nvNieve 14s linear infinite;opacity:.55}
+@keyframes nvNieve{to{background-position:0 260px}}
+
+@media (min-width:760px){
+  .nv-heroe{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+  .nv-heroe__txt{padding:36px 28px}
+  .nv-sellos{grid-template-columns:repeat(3,1fr)}
+  .nv-gal{grid-template-columns:repeat(5,1fr)}
+  .nv-benef{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .nv-nieve{animation:none}
+  .nv-btn,.nv-fijo,.pf-pack{transition:none}
+}

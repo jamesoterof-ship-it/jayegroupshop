@@ -38,7 +38,8 @@
 
   /* candado de precios */
   var lista = window.PRECIOS_APROBADOS || [];
-  var precios = (p.packs || []).map(function (k) { return k.precio; }).concat((p.anticipado || {}).precios || []);
+  var precios = (p.packs || []).map(function (k) { return k.precio; }).concat((p.anticipado || {}).precios || [])
+    .concat((p.adicionales || []).map(function (a) { return a.precio; }));
   if (!precios.length || !precios.every(function (x) { return lista.indexOf(x) >= 0; })) {
     caja.innerHTML = '<div class="pf"><p class="pf-nota">Este producto todavía no está disponible.</p></div>';
     if (window.console) console.warn('Precio fuera de la lista aprobada: el formulario no se pinta.');
@@ -53,7 +54,13 @@
     try { if (window.jayePixel) return window.jayePixel.track(ev, datos, eid); if (window.fbq) window.fbq('track', ev, datos); } catch (e) {}
     return eid || '';
   };
-  var precioAhora = function (i) { return formaPago === 'pre' && pre ? pre.precios[i] : p.packs[i].precio; };
+  /* 11-11 (funda de puerta / fundas de silla): diseño por unidad y un ADICIONAL opcional que se suma al total.
+     Productos sin p.disenos ni p.adicionales (protector, gafas, chao) funcionan igual que antes. */
+  var disenos = p.disenos || [], adics = p.adicionales || [], adic = -1, elDis = [], elAd = '';
+  var extra = function () { return adic >= 0 ? adics[adic].precio : 0; };
+  var precioBase = function (i) { return formaPago === 'pre' && pre ? pre.precios[i] : p.packs[i].precio; };
+  var precioAhora = function (i) { return precioBase(i) + extra(); };
+  var cupos = function (i) { var k = p.packs[i]; return disenos.length ? (k.disenos || k.cant) : 0; };
 
   track('ViewContent', { content_name: p.nombre, content_type: 'product', content_ids: [p.id], value: p.packs[0].precio, currency: 'COP' });
 
@@ -85,7 +92,16 @@
       + '</div><div class="pf-err pf-err--op" id="errMedida">Elige la medida.</div>' : '')
     + (colores.length ? '<p class="pf-sub">Color <span id="colorElegido">sin elegir</span></p><div class="pf-cols" id="fColor" role="radiogroup" aria-label="Color">'
       + colores.map(function (c) { return '<button type="button" class="pf-col" data-v="' + esc(c[0]) + '" role="radio" aria-checked="false" title="' + esc(c[1]) + '" aria-label="' + esc(c[1]) + '"><i style="background:' + esc(c[2]) + '"></i></button>'; }).join('')
-      + '</div><div class="pf-err pf-err--op" id="errColor">Elige el color.</div>' : '');
+      + '</div><div class="pf-err pf-err--op" id="errColor">Elige el color.</div>' : '')
+    /* diseño de cada unidad (un selector por funda) */
+    + (disenos.length ? '<p class="pf-sub">' + esc(p.disenosTitulo || 'Escoge el diseño') + '</p><div class="pf-dis" id="fDis"></div>'
+      + '<div class="pf-err pf-err--op" id="errDis">Escoge el diseño de cada ' + esc(p.disenoUnidad || 'funda') + '.</div>' : '')
+    /* adicional opcional (se suma al total, mismo envío) */
+    + (adics.length ? '<p class="pf-sub pf-sub--ad">' + esc(p.adicTitulo || 'Agrega a tu pedido') + '</p><div class="pf-ads" id="fAd" role="radiogroup" aria-label="Adicional">'
+      + '<button type="button" class="pf-ad sel" data-a="-1" role="radio" aria-checked="true"><b>Sin adicional</b><span>$0</span></button>'
+      + adics.map(function (a, i) { return '<button type="button" class="pf-ad' + (a.foto ? ' pf-ad--foto' : '') + '" data-a="' + i + '" role="radio" aria-checked="false">' + (a.foto ? '<img src="' + esc(a.foto) + '" alt="">' : '') + '<b>' + esc(a.texto) + '</b>'
+        + (a.detalle ? '<small>' + esc(a.detalle) + '</small>' : '') + '<span>+' + pesos(a.precio) + '</span></button>'; }).join('')
+      + '</div><div class="pf-dis" id="fAdDis"></div><div class="pf-err pf-err--op" id="errAd">Escoge el diseño del adicional.</div>' : '');
 
   /* como los demás formularios: ícono redondo arriba, título, precio grande, texto, y en "Paga ahora" los logos chicos en línea.
      Colombia: Wompi en lugar de PayPal (logos para fondo oscuro, como en el pie). */
@@ -145,7 +161,7 @@
 
   /* ---------- precios en pantalla ---------- */
   function refrescar() {
-    var k = p.packs[elegido], ahora = precioAhora(elegido), lista2 = k.antes || k.precio;
+    var k = p.packs[elegido], ahora = precioAhora(elegido), lista2 = (k.antes || k.precio) + extra();
     $('sumSub').textContent = pesos(lista2);
     $('sumDesc').textContent = lista2 > ahora ? '-' + pesos(lista2 - ahora) : pesos(0);
     $('sumTot').textContent = pesos(ahora);
@@ -153,7 +169,7 @@
     if ($('prCod')) $('prCod').textContent = pesos(k.precio);
     if ($('prPre')) $('prPre').textContent = pesos(pre.precios[elegido]);
     p.packs.forEach(function (kk, i) {
-      var v = precioAhora(i), base = kk.antes || kk.precio, off = base > v ? Math.round((1 - v / base) * 100) : 0;
+      var v = precioBase(i), base = kk.antes || kk.precio, off = base > v ? Math.round((1 - v / base) * 100) : 0;
       var pr = caja.querySelector('[data-pr="' + i + '"]'), cu = caja.querySelector('[data-cu="' + i + '"]'), of = caja.querySelector('[data-off="' + i + '"]');
       if (pr) pr.textContent = pesos(v);
       if (cu) cu.textContent = kk.cant > 1 ? pesos(v / kk.cant) + ' c/u' : '';
@@ -197,6 +213,60 @@
     color = b.getAttribute('data-v'); marcarOp('fColor', b); $('errColor').style.display = 'none';
     $('colorElegido').textContent = b.getAttribute('aria-label'); carrito();
   });
+  /* ---------- diseños por unidad + adicional ---------- */
+  function selectorDis(lista, valor, rotulo, attr) {
+    /* 11-11 James: "que aparezcan los diseños para que la persona escoja", con su foto (no una lista) */
+    if (lista.length && lista[0][2]) {
+      var nomSel = ''; lista.forEach(function (d) { if (d[0] === valor) nomSel = d[1]; });
+      return '<div class="pf-dsel pf-dsel--fotos" ' + attr + '><span>' + esc(rotulo) + ' · <b class="pf-dnom">' + (nomSel ? esc(nomSel) : 'toca un diseño') + '</b></span><div class="pf-dfotos">'
+        + lista.map(function (d) { return '<button type="button" class="pf-dfoto' + (d[0] === valor ? ' sel' : '') + '" data-v="' + esc(d[0]) + '" data-n="' + esc(d[1]) + '" aria-pressed="' + (d[0] === valor) + '"><img src="' + esc(d[2]) + '" alt="' + esc(d[1]) + '" loading="lazy"><small>' + esc(d[1]) + '</small></button>'; }).join('')
+        + '</div></div>';
+    }
+    return '<label class="pf-dsel"><span>' + esc(rotulo) + '</span><select ' + attr + '><option value="">Escoge el diseño</option>'
+      + lista.map(function (d) { return '<option value="' + esc(d[0]) + '"' + (d[0] === valor ? ' selected' : '') + '>' + esc(d[1]) + '</option>'; }).join('')
+      + '</select></label>';
+  }
+  function pintarDis() {
+    var c = $('fDis'); if (!c) return;
+    var n2 = cupos(elegido), html = '';
+    for (var s = 0; s < n2; s++) html += selectorDis(disenos, elDis[s] || '', (p.disenoUnidad ? p.disenoUnidad.charAt(0).toUpperCase() + p.disenoUnidad.slice(1) : 'Funda') + ' ' + (n2 > 1 ? s + 1 : ''), 'data-s="' + s + '"');
+    c.innerHTML = html;
+  }
+  function pintarAdDis() {
+    var c = $('fAdDis'); if (!c) return;
+    c.innerHTML = adic >= 0 ? selectorDis(adics[adic].disenos || [], elAd, adics[adic].rotuloDiseno || 'Diseño del adicional', 'data-ad="1"') : '';
+  }
+  if ($('fDis')) {
+    pintarDis();
+    $('fDis').addEventListener('change', function (e) { var sel = e.target.closest('select'); if (!sel) return; elDis[+sel.getAttribute('data-s')] = sel.value; $('errDis').style.display = 'none'; carrito(); });
+    $('fDis').addEventListener('click', function (e) {
+      var b = e.target.closest('.pf-dfoto'); if (!b) return;
+      var caj = b.closest('[data-s]'); var s = +caj.getAttribute('data-s');
+      elDis[s] = b.getAttribute('data-v');
+      caj.querySelectorAll('.pf-dfoto').forEach(function (x) { var on = x === b; x.classList.toggle('sel', on); x.setAttribute('aria-pressed', String(on)); });
+      caj.querySelector('.pf-dnom').textContent = b.getAttribute('data-n');
+      $('errDis').style.display = 'none'; carrito();
+    });
+    caja.querySelectorAll('.pf-pack').forEach(function (b) { b.addEventListener('click', pintarDis); });
+  }
+  if ($('fAd')) {
+    $('fAd').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      adic = +b.getAttribute('data-a'); elAd = '';
+      caja.querySelectorAll('#fAd button').forEach(function (x) { var s = x === b; x.classList.toggle('sel', s); x.setAttribute('aria-checked', String(s)); });
+      $('errAd').style.display = 'none'; pintarAdDis(); refrescar(); if (adic >= 0) carrito();
+    });
+    $('fAdDis').addEventListener('change', function (e) { var sel = e.target.closest('select'); if (!sel) return; elAd = sel.value; $('errAd').style.display = 'none'; });
+    $('fAdDis').addEventListener('click', function (e) {
+      var b = e.target.closest('.pf-dfoto'); if (!b) return;
+      var caj = b.closest('.pf-dsel--fotos'); elAd = b.getAttribute('data-v');
+      caj.querySelectorAll('.pf-dfoto').forEach(function (x) { var on = x === b; x.classList.toggle('sel', on); x.setAttribute('aria-pressed', String(on)); });
+      caj.querySelector('.pf-dnom').textContent = b.getAttribute('data-n');
+      $('errAd').style.display = 'none';
+    });
+  }
+  window.coAdicional = function (i) { var b = caja.querySelector('.pf-ad[data-a="' + i + '"]'); if (b) b.click(); };
+
   /* otros botones de la página pueden elegir pack/pago: coElegir(0, 'pre') */
   window.coElegir = function (i, pago) {
     var b = caja.querySelector('.pf-pack[data-i="' + i + '"]'); if (b) b.click();
@@ -226,6 +296,12 @@
   };
   var nombreDe = function (arr, v) { for (var i = 0; i < arr.length; i++) if (arr[i][0] === v) return arr[i][1]; return ''; };
   var variante = function () {
+    /* 11-11: "BIENVENIDO / CHIMENEA + 4 SILLAS: ANGEL" (lo lee el montador; sin "·" porque la nota lo usa de separador) */
+    if (disenos.length) {
+      var t = elDis.slice(0, cupos(elegido)).map(function (v) { return v || 'POR DEFINIR'; }).join(' / ');
+      if (adic >= 0) t += ' + ' + (adics[adic].codigo || adics[adic].id) + ': ' + (elAd || 'POR DEFINIR');
+      return t;
+    }
     if (!medidas.length && !colores.length) return '';
     return 'MEDIDA ' + (nombreDe(medidas, medida) || 'POR DEFINIR').toUpperCase() + ' · ' + (color || 'POR DEFINIR');
   };
@@ -264,6 +340,8 @@
     ['fNombre', 'fTel', 'fDepto', 'fCiudad', 'fDir', 'fCorreo'].forEach(function (k) { $('c' + k).classList.toggle('mal', mal.indexOf(k) >= 0); });
     if (medidas.length && !medida) { mal.unshift('fMedida'); $('errMedida').style.display = 'block'; }
     if (colores.length && !color) { mal.unshift('fColor'); $('errColor').style.display = 'block'; }
+    if (disenos.length) { for (var s = 0; s < cupos(elegido); s++) if (!elDis[s]) { mal.unshift('fDis'); $('errDis').style.display = 'block'; break; } }
+    if (adic >= 0 && (adics[adic].disenos || []).length && !elAd) { mal.unshift('fAdDis'); $('errAd').style.display = 'block'; }
     return mal;
   }
   function aviso(txt, conWa) {
@@ -293,7 +371,7 @@
     var k = p.packs[elegido], total = precioAhora(elegido);
     var pedido = {
       pagina: 'co-' + p.id, producto: p.corto || p.nombre, producto_id: p.dropiId || '', pais: 'CO',
-      cantidad: k.cant, total: total, pago: formaPago, tonos: variante(), graduaciones: '',
+      cantidad: k.cant, total: total, pago: formaPago, tonos: variante(), graduaciones: '', adicional: adic >= 0 ? (adics[adic].id || '') : '',
       nombre: g('fNombre'), telefono: '57' + celular(), departamento: g('fDepto'), ciudad: g('fCiudad'),
       direccion: g('fDir'), referencia: g('fRef'), correo: g('fCorreo').toLowerCase(), cmp: window._CMP || '',
       event_id: window.jayePixel ? window.jayePixel.id() : '', fbp: window.jayePixel ? window.jayePixel.fbp() : '', fbc: window.jayePixel ? window.jayePixel.fbc() : '',
