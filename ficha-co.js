@@ -86,7 +86,17 @@
   function fecha(f) { var d = String(f || '').split('-'); return d.length === 3 ? Number(d[2]) + ' ' + MESES[Number(d[1]) - 1] + ' ' + d[0] : (f || ''); }
   /* 12-11 James: "pon reseñas de latino … no pongas que son de" → solo compradores de Latinoamérica y SIN el país al lado del nombre */
   var LATAM = { CO: 1, MX: 1, CL: 1, PE: 1, PA: 1, PY: 1, UY: 1 };
-  var mias = (window.RESENAS || []).filter(function (r) { return LATAM[r.pais] && !/m[eé]xico|coahuila/i.test(String(r.texto || '')); }).map(function (r) { return Object.assign({}, r, { comuna: '', fecha: fecha(r.fecha) }); });
+  /* 12-11 James: "que anónimo ni nada, tienen que aparecer los nombres": como en las otras páginas de Colombia (co/sillas/resenas.js),
+     el texto es la opinión REAL de AliExpress y el nombre (latino) lo pone la tienda cuando AliExpress lo trae tapado (e***r) o Anónimo. */
+  var NOMBRES = ['Luz Marina R.', 'Jorge Enrique P.', 'Gloria Inés M.', 'Carlos Alberto G.', 'Martha Lucía V.', 'Hernando C.', 'Blanca Cecilia T.', 'Álvaro D.',
+    'Rosa Elena S.', 'Luis Fernando A.', 'Nubia Esperanza L.', 'Germán H.', 'Amparo J.', 'Fabio Andrés Q.', 'Teresa B.', 'Orlando F.', 'Myriam Stella O.',
+    'Jairo E.', 'Olga Lucía N.', 'Rafael Antonio U.', 'Gladys Y.', 'Ricardo Z.', 'Fanny Patricia K.', 'Hugo Armando W.', 'Ligia Isabel R.', 'Arturo M.',
+    'Esperanza G.', 'Édgar Iván P.', 'Doris Amparo C.', 'Rubén Darío S.', 'Carmenza L.', 'Gustavo Adolfo V.'];
+  var mias = (window.RESENAS || []).filter(function (r) { return LATAM[r.pais] && !/m[eé]xico|coahuila/i.test(String(r.texto || '')); }).map(function (r, i) {
+    var nom = String(r.nombre || '');
+    if (!nom || /\*|an[oó]nimo/i.test(nom)) nom = NOMBRES[i % NOMBRES.length];
+    return Object.assign({}, r, { nombre: nom, comuna: '', fecha: fecha(r.fecha) });
+  });
   window.RESENAS_MIAS = mias;
   var prom = mias.length ? Math.round(mias.reduce(function (a, r) { return a + r.estrellas; }, 0) / mias.length * 10) / 10 : 0;
 

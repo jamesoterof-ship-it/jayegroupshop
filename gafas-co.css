@@ -336,6 +336,11 @@ body{--tinta:#F8FAFC;--suave:#B8B4AA;--linea:rgba(255,255,255,.14);--hueso:#1515
 .form input::placeholder,.form textarea::placeholder{color:#8F8B82}
 .promo-antes,.formnote,.gf-sub,.packDe{color:#B8B4AA}
 .lg-wompi{filter:brightness(0) invert(1)}
+/* 12-11 James "no se ve": textos que seguían oscuros sobre el fondo oscuro */
+.gf-h2,.gf-blq h2,.gf-blq h3{color:#F8FAFC!important}
+.gf-bajada{color:#B8B4AA!important}
+.eyebrow,.free{color:#D8A52E!important}
+.verif{color:#34D399!important}
 /* estrellas: todas doradas */
 .rsc .est,.rsc .est svg,.est svg path{color:#D8A52E!important;fill:#D8A52E!important}
 .bar .lvl,.stars{color:#D8A52E!important}
