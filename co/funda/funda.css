@@ -44,12 +44,18 @@
 /* --- botones --- */
 .nv-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;border:0;border-radius:14px;cursor:pointer;
   background:var(--nv-rojo);color:var(--nv-blanco);font:800 21px/1.1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em;text-align:center;padding:12px 18px;
-  box-shadow:0 8px 0 var(--nv-rojo2),0 14px 26px rgba(220,38,38,.35);transition:transform 160ms ease,box-shadow 160ms ease}
+  box-shadow:0 8px 20px rgba(220,38,38,.28);transition:transform 160ms ease,box-shadow 160ms ease}
 .nv-btn:hover{transform:translateY(-2px)}
-.nv-btn:active{transform:translateY(4px);box-shadow:0 3px 0 var(--nv-rojo2)}
+.nv-btn:active{transform:translateY(1px)}
 .nv-btn:focus-visible,.pf-pack:focus-visible,.pf-ad:focus-visible,.nv-esc:focus-visible{outline:3px solid var(--nv-oro);outline-offset:3px}
-.nv-btn--pino{background:var(--nv-pino2);box-shadow:0 8px 0 var(--nv-pino),0 14px 26px rgba(20,83,45,.3)}
+.nv-btn--pino{background:var(--nv-pino2);box-shadow:0 8px 20px rgba(20,83,45,.28)}
 .nv-btn + .nv-btn{margin-top:14px}
+/* 12-11 James: estrellas de Navidad que titilan en los botones */
+.nv-btn{position:relative;overflow:hidden}
+.nv-btn::before,.nv-btn::after{content:'✦';position:absolute;pointer-events:none;color:#FFFFFF;font-size:15px;line-height:1;animation:nvBrillo 1.8s ease-in-out infinite}
+.nv-btn::before{top:7px;left:9%}
+.nv-btn::after{content:'✧';bottom:7px;right:8%;color:#D4A017;font-size:18px;animation-delay:.9s}
+@keyframes nvBrillo{0%,100%{opacity:0;transform:scale(.4) rotate(0deg)}50%{opacity:1;transform:scale(1.25) rotate(45deg)}}
 
 /* --- franja de beneficios --- */
 .nv-datos{display:grid;grid-template-columns:repeat(3,1fr);background:var(--nv-rojo);color:var(--nv-blanco);text-align:center}
@@ -268,6 +274,6 @@
   .nv-benef{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .nv-nieve,.nv-cinta{animation:none}
+  .nv-nieve,.nv-cinta,.nv-btn::before,.nv-btn::after{animation:none}
   .nv-btn,.nv-fijo,.pf-pack{transition:none}
 }
