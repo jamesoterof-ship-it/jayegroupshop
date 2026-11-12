@@ -97,11 +97,11 @@ window.jayePixel.track('PageView', {});
       <a class="nv-estrellas" id="nvEstrellas" href="#resenas" hidden></a>
       <p class="nv-lead">Fundas para silla en tela piel de durazno que cubren el respaldo y el asiento. Se ponen en segundos, se lavan y las guardas para el otro año.</p>
       <!-- 12-11 James: arriba los DOS precios (4 y 6 sillas) y el botón "Escoge 4 o 6 sillas" (no amarrado a uno) -->
-      <div class="nv-oferta">
-        <div><b>$70.000</b><span>4 sillas</span></div>
-        <div><b>$90.000</b><span>6 sillas</span></div>
-        <div><span>Pagas al recibir · envío gratis a toda Colombia</span></div>
+      <div class="nv-ofertas">
+        <button type="button" class="nv-oferta" data-pack="0" data-ir="pedir"><b>$70.000</b><span>4 sillas</span></button>
+        <button type="button" class="nv-oferta" data-pack="1" data-ir="pedir"><b>$90.000</b><span>6 sillas</span></button>
       </div>
+      <p class="nv-lead" style="font-size:15px;margin:-4px 0 16px">Pagas al recibir · envío gratis a toda Colombia</p>
       <button type="button" class="nv-btn rebota" data-ir="pedir">Escoge 4 o 6 sillas</button>
       <button type="button" class="nv-btn nv-btn--pino" data-pago-pre data-ir="pedir">Paga ahora con Wompi y ahorra 10 %</button>
       <button type="button" class="nv-btn nv-btn--pino" data-ir="disenos">Ver los 8 diseños</button>
@@ -290,6 +290,10 @@ window.jayePixel.track('PageView', {});
 <script src="../funda/funda.js?v=9"></script>
 <!-- 12-11 James: botón flotante de WhatsApp, el mismo de la tienda de Colombia (+57 322 608 7847); más arriba para no tapar el botón fijo -->
 <style>
+/* 12-11 James: dos tarjetas de precio en la portada (4 sillas / 6 sillas); cada una elige su pack en el formulario */
+.nv-ofertas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.nv-ofertas .nv-oferta{margin:0;flex-direction:column;align-items:flex-start;gap:4px;cursor:pointer;color:inherit;font:inherit;text-align:left}
+.nv-ofertas .nv-oferta:hover{background:rgba(255,255,255,.14)}
 /* WhatsApp COMO EN CHILE (James 12-11): solo la bolita verde en la esquina; cuando sale el botón fijo de pedir (ancho completo), la bolita sube y queda encima de él */
 .wa{position:fixed;right:14px;bottom:16px;z-index:61;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s ease,bottom .25s ease}
 .wa svg{width:25px;height:25px;fill:#fff}.wa:hover{transform:scale(1.07)}
