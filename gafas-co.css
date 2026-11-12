@@ -322,5 +322,22 @@ html,body{overflow-x:clip}
 .stickycta{gap:8px;align-items:stretch}
 .stickycta .btn-flota{flex:1 1 auto;min-width:0;width:auto !important}
 .stickycta .waFlota{pointer-events:auto;flex:0 0 auto;min-height:56px;padding:0 14px;border-radius:14px}
-/* con la barra a la vista, el círculo verde suelto sobra: se esconde para que no se monten */
-body:has(.stickycta.show) .wa{opacity:0;pointer-events:none}
+/* 12-11 James: como las páginas de Colombia: con la barra a la vista, el círculo verde sube encima de ella */
+body:has(.stickycta.show) .wa{bottom:86px}
+
+/* 12-11 James: "que la página tenga fondo oscuro como la de México" (lentes MX: fondo #0B0B10, letra #F8FAFC).
+   Se cambian tinta y fondos; los dorados de la página se quedan. "Las estrellas todas doradas, que sobresalgan". */
+body{--tinta:#F8FAFC;--suave:#B8B4AA;--linea:rgba(255,255,255,.14);--hueso:#15151C;--surface:#15151C;background:#0B0B10;color:#F8FAFC}
+.bloque,section.form,.form,.desc,.promo-sec,.rev-sec,.ba-sec,.cmp-sec,.form-sec,#faq{background:#0B0B10;color:#F8FAFC}
+.formcard,#pedir .pack,#pedir .pagoOp,#pedir .pagoOp.sel,#pedir .cc-btn,.promo-card,.rsc,table.cmp,.cmp th,.cmp td,.summary,.gop,.cod-badge,.masRs,.btn-write,details{background:#15151C!important;color:#F8FAFC!important;border-color:rgba(255,255,255,.16)!important}
+#pedir .pagoOp.sel,#pedir .pack.sel{border-color:#D8A52E!important;box-shadow:0 0 0 1px #D8A52E inset}
+#pedir .pasoRot,#pedir label,#pedir .gguia{color:#F8FAFC!important}
+.form input,.form select,.form textarea{background:#15151C;color:#F8FAFC;border-color:rgba(255,255,255,.22)}
+.form input::placeholder,.form textarea::placeholder{color:#8F8B82}
+.promo-antes,.formnote,.gf-sub,.packDe{color:#B8B4AA}
+.lg-wompi{filter:brightness(0) invert(1)}
+/* estrellas: todas doradas */
+.rsc .est,.rsc .est svg,.est svg path{color:#D8A52E!important;fill:#D8A52E!important}
+.bar .lvl,.stars{color:#D8A52E!important}
+.bar .track{background:rgba(255,255,255,.12)!important}
+.bar .track i,.bar .track i::before,.bar .track i::after{background:#D8A52E!important}

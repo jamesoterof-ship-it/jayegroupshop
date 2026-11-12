@@ -460,7 +460,7 @@
   wb.className = 'waBoton waFlota'; wb.href = waPedir(); wb.target = '_blank'; wb.rel = 'noopener';
   wb.innerHTML = ICO_WA + '<span>WhatsApp</span>';
   wb.addEventListener('click', function () { px('Contact', { content_name: p.nombre }); });
-  sb.appendChild(wb);
+  /* 12-11 James: "igual que los de Colombia": Lo quiero a todo lo largo y el WhatsApp es el círculo verde (no va en la barra) */
   document.body.appendChild(sb);
 
   /* ---------- comportamiento de la galería (Chile) ---------- */
