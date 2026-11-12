@@ -84,7 +84,9 @@
     UY: 'Uruguay', IL: 'Israel', LV: 'Letonia', SG: 'Singapur', GP: 'Guadalupe', SC: 'Seychelles' };
   var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
   function fecha(f) { var d = String(f || '').split('-'); return d.length === 3 ? Number(d[2]) + ' ' + MESES[Number(d[1]) - 1] + ' ' + d[0] : (f || ''); }
-  var mias = (window.RESENAS || []).map(function (r) { return Object.assign({}, r, { comuna: PAISES[r.pais] || r.pais || '', fecha: fecha(r.fecha) }); });
+  /* 12-11 James: "pon reseñas de latino … no pongas que son de" → solo compradores de Latinoamérica y SIN el país al lado del nombre */
+  var LATAM = { CO: 1, MX: 1, CL: 1, PE: 1, PA: 1, PY: 1, UY: 1 };
+  var mias = (window.RESENAS || []).filter(function (r) { return LATAM[r.pais] && !/m[eé]xico|coahuila/i.test(String(r.texto || '')); }).map(function (r) { return Object.assign({}, r, { comuna: '', fecha: fecha(r.fecha) }); });
   window.RESENAS_MIAS = mias;
   var prom = mias.length ? Math.round(mias.reduce(function (a, r) { return a + r.estrellas; }, 0) / mias.length * 10) / 10 : 0;
 
