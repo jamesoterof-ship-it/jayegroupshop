@@ -1,0 +1,291 @@
+/* ============================================================
+   Diseño propio de la LYMPHORIA. Se carga siempre, pero TODO cuelga
+   de body.p-lymphoria, que solo se pone cuando el producto es este:
+   los demas productos quedan intactos.
+
+   Efectos DISTINTOS a los de la clorofila, a proposito (James, 11-sep:
+   «que no se parezca a la clorofila»):
+     Clorofila -> marea verde · gotas cayendo por arriba · texto en
+                  cascada · numero que cuenta · onda en el boton
+     Lymphoria -> el hero respira · UNA gota dorada cae del gotero de la
+                  foto y hace onda en la boca del frasco · el titulo sube
+                  desde una mascara · brillo de miel en la palabra clave ·
+                  la linea de los pasos se dibuja · destello en el boton
+
+   Regla que no se rompe: ningun efecto puede dejar texto invisible. Los
+   estados escondidos los pone el js, y el js tiene su red de seguridad.
+   ============================================================ */
+body.p-lymphoria { --ly-bosque: #1E4D3B; --ly-miel: #C8942E; --ly-crema: #F6EEDC; --ly-tinta: #1b2a22; }
+
+/* ---------- HERO: recto y de borde a borde, como pidio para la clorofila ---------- */
+.p-lymphoria .ly-hero {
+  position: relative; overflow: hidden; border-radius: 0; background: var(--ly-crema);
+  width: 100vw; margin: 0 0 12px; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+}
+/* respira: un acercamiento lentisimo. El centro esta en la punta del gotero,
+   asi la gota y la onda (que van encima, fijas) no se despegan de la foto */
+.p-lymphoria .ly-hero > img {
+  display: block; width: 100%; height: auto;
+  transform-origin: 61.6% 48%; animation: ly-respira 16s ease-in-out infinite alternate;
+}
+@keyframes ly-respira { from { transform: scale(1) } to { transform: scale(1.05) } }
+
+/* velo crema arriba: la foto ya trae ese tercio despejado, el velo solo
+   asegura que el titulo verde se lea sobre la pared iluminada */
+.p-lymphoria .ly-velo {
+  position: absolute; left: 0; right: 0; top: 0; height: 46%; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(246,238,220,.94) 0%, rgba(246,238,220,.72) 48%, rgba(246,238,220,0) 100%);
+}
+.p-lymphoria .ly-sobre { position: absolute; left: 0; right: 0; top: 0; padding: 20px 18px 0; z-index: 2; }
+.p-lymphoria .ly-rot {
+  display: inline-block; margin: 0 0 10px; padding: 6px 11px; border-radius: 999px;
+  font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ly-bosque); background: rgba(255,255,255,.72); border: 1px solid rgba(30,77,59,.18);
+}
+.p-lymphoria .ly-h1 {
+  margin: 0; max-width: 72%; font-size: clamp(32px, 9vw, 46px); line-height: 1.02;
+  font-weight: 900; letter-spacing: -.02em; color: var(--ly-bosque);
+}
+/* cada linea es una mascara: el texto SUBE desde abajo, no aparece por opacidad */
+.p-lymphoria .ly-linea { display: block; overflow: hidden; padding-bottom: .06em; }
+.p-lymphoria .ly-linea > span { display: inline-block; }
+.p-lymphoria .ly-sube { animation: ly-sube .85s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(.2s + var(--i) * .14s); }
+@keyframes ly-sube { from { transform: translateY(110%) } to { transform: none } }
+
+/* la palabra de miel: en reposo es dorado oscuro y se lee; al entrar, un
+   brillo la cruza dos veces */
+.p-lymphoria .ly-oro {
+  background: linear-gradient(100deg, #9a6612 0%, #d99a2b 30%, #fff0bf 50%, #d99a2b 70%, #9a6612 100%);
+  background-size: 260% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: ly-brillo 2.6s ease-in-out 1.3s 2;
+}
+@keyframes ly-brillo { from { background-position: 100% 0 } to { background-position: 0 0 } }
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .p-lymphoria .ly-oro { background: none; color: var(--ly-miel); }
+}
+/* 78%: en dos lineas termina arriba de la caja; con 62% bajaba a tres y la tapaba */
+.p-lymphoria .ly-bajada { margin: 10px 0 0; max-width: 78%; font-size: 15px; line-height: 1.45; font-weight: 600; color: var(--ly-tinta); }
+.p-lymphoria .ly-sube2 { animation: ly-aparece .7s ease .75s both; }
+@keyframes ly-aparece { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+
+/* ---------- LA GOTA: cae desde la punta del gotero hasta la boca del frasco ---------- */
+.p-lymphoria .ly-caida { position: absolute; left: 61.6%; top: 47.8%; height: 2.9%; width: 0; pointer-events: none; }
+.p-lymphoria .ly-gota {
+  position: absolute; left: -5px; top: 0; width: 10px; height: 14px;
+  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  background: radial-gradient(circle at 35% 30%, #fff4cc, #e2a53a 55%, #a86d10);
+  box-shadow: 0 0 10px rgba(226,165,58,.55);
+  opacity: 0; animation: ly-cae 3.6s cubic-bezier(.5,0,.85,.4) 1.8s infinite;
+}
+@keyframes ly-cae {
+  0%   { top: 0; opacity: 0; transform: scale(.5) }
+  14%  { top: 0; opacity: 1; transform: scale(1) }
+  52%  { top: 100%; opacity: 1; transform: scale(1) }
+  58%  { top: 100%; opacity: 0; transform: scale(1.3, .5) }
+  100% { top: 100%; opacity: 0 }
+}
+/* la onda en la boca del frasco, justo cuando llega la gota */
+.p-lymphoria .ly-onda {
+  position: absolute; left: 61.6%; top: 50.8%; width: 30px; height: 9px; margin: -4px 0 0 -15px;
+  border-radius: 50%; border: 1.5px solid rgba(230,176,74,.9); pointer-events: none;
+  opacity: 0; animation: ly-onda 3.6s ease-out 1.8s infinite;
+}
+@keyframes ly-onda {
+  0%, 52% { opacity: 0; transform: scale(.2) }
+  56%     { opacity: .9; transform: scale(.45) }
+  100%    { opacity: 0; transform: scale(1.7) }
+}
+
+/* ---------- chips bajo el hero ---------- */
+.p-lymphoria .ly-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 16px; }
+.p-lymphoria .ly-chip {
+  display: inline-flex; align-items: center; gap: 7px; padding: 9px 13px; border-radius: 999px;
+  background: #fff; border: 1px solid rgba(30,77,59,.16);
+  font-size: 13px; font-weight: 800; color: var(--ly-bosque);
+}
+.p-lymphoria .ly-chip svg { width: 18px; height: 18px; color: var(--ly-miel); flex: none; }
+
+/* ---------- PASOS: la linea se dibuja de arriba hacia abajo ---------- */
+.p-lymphoria .ly-pasos { margin: 0 0 24px; padding: 0 16px; }
+.p-lymphoria .ly-rot2 { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--ly-miel); }
+.p-lymphoria .ly-h2 {
+  margin: 6px 0 14px; font-size: clamp(22px, 6.2vw, 30px); line-height: 1.12;
+  font-weight: 900; letter-spacing: -.015em; color: var(--ly-tinta);
+}
+.p-lymphoria .ly-lista { position: relative; list-style: none; margin: 0; padding: 0 0 0 48px; }
+/* un tramo de linea por paso, del circulo al circulo siguiente: la linea
+   continua de antes sobresalia por debajo del 3 */
+.p-lymphoria .ly-lista li:not(:last-child)::after {
+  content: ''; position: absolute; left: -31px; top: 40px; bottom: -16px; width: 2px; border-radius: 2px;
+  background: linear-gradient(var(--ly-miel), var(--ly-bosque));
+  transform-origin: top; transition: transform .7s cubic-bezier(.3,.8,.3,1); transition-delay: calc(.35s + var(--i) * .28s);
+}
+.p-lymphoria .ly-lista li { position: relative; margin: 0 0 18px; transition: opacity .5s ease, transform .5s ease; transition-delay: calc(.25s + var(--i) * .28s); }
+.p-lymphoria .ly-lista li::before {
+  content: attr(data-n); position: absolute; left: -48px; top: 0; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 15px; font-weight: 900; color: #fff;
+  background: var(--ly-bosque); box-shadow: 0 0 0 4px var(--bg, #fff);
+}
+.p-lymphoria .ly-lista b { display: block; padding-top: 6px; font-size: 17px; font-weight: 900; color: var(--ly-tinta); }
+.p-lymphoria .ly-lista p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2, #5b6573); }
+/* estado previo: lo pone el js SOLO si hay observador, y lo quita siempre */
+.p-lymphoria .ly-lista.ly-antes li::after { transform: scaleY(0); }
+.p-lymphoria .ly-lista.ly-antes li { opacity: 0; transform: translateY(12px); }
+
+/* ---------- el DESTELLO del boton: una luz de miel que lo cruza ---------- */
+.p-lymphoria .btn-comprar, .p-lymphoria .cta, .p-lymphoria button[type="submit"] { position: relative; overflow: hidden; }
+.p-lymphoria .btn-comprar::before, .p-lymphoria .cta::before, .p-lymphoria button[type="submit"]::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: -40%; width: 32%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,244,204,.55), transparent);
+  transform: skewX(-18deg) translateX(-120%); animation: ly-destello 3.8s ease-in-out 2s infinite;
+}
+@keyframes ly-destello { 0%, 70% { transform: skewX(-18deg) translateX(-120%) } 100% { transform: skewX(-18deg) translateX(520%) } }
+
+/* ============================================================
+   SEGUNDA TANDA (James, 11-sep: «ponle efectos diferentes»).
+   Todo en miel, nada que tenga la clorofila:
+     polvo de miel flotando en la luz del hero · chips que entran con
+     rebote · destello en las estrellas · la etiqueta del descuento se
+     mece · el precio de antes se TACHA solo · trazo de miel bajo cada
+     titulo · los circulos de los pasos se LLENAN · las fotos reales se
+     destapan como cortina · barra de miel arriba que se llena al bajar
+   ============================================================ */
+
+/* polvo de miel: motas que suben despacio por la luz de la ventana */
+.p-lymphoria .ly-mota {
+  position: absolute; bottom: 24%; width: var(--s); height: var(--s); border-radius: 50%; z-index: 1;
+  /* sobre la luz calida de la foto se perdian: nucleo blanco y halo ambar marcado */
+  background: radial-gradient(circle, #fff 0%, #ffe39a 35%, rgba(214,150,40,.9) 60%, rgba(214,150,40,0) 75%);
+  box-shadow: 0 0 10px 2px rgba(230,160,50,.65); pointer-events: none;
+  opacity: 0; animation: ly-mota var(--t) linear var(--d) infinite;
+}
+@keyframes ly-mota {
+  0%   { transform: translate(0, 0); opacity: 0 }
+  15%  { opacity: .95 }
+  80%  { opacity: .6 }
+  100% { transform: translate(var(--x), -58vw); opacity: 0 }
+}
+
+/* chips: entran de a uno con un rebote corto */
+.p-lymphoria .ly-pop { animation: ly-pop .55s cubic-bezier(.34,1.56,.64,1) both; animation-delay: calc(1s + var(--i) * .13s); }
+@keyframes ly-pop { from { opacity: 0; transform: scale(.6) translateY(6px) } to { opacity: 1; transform: none } }
+
+/* estrellas: un destello dorado las cruza cada tanto */
+.p-lymphoria .estrellas .est { position: relative; overflow: hidden; }
+.p-lymphoria .ly-glint {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 40%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,250,225,.9), transparent);
+  transform: translateX(-120%); animation: ly-glint 5s ease-in-out 2.4s infinite;
+}
+@keyframes ly-glint { 0%, 78% { transform: translateX(-120%) } 100% { transform: translateX(300%) } }
+
+/* la etiqueta -23% cuelga de un clavo y se mece */
+.p-lymphoria .precioTop .off { display: inline-block; transform-origin: 50% -5px; animation: ly-cuelga 4.2s ease-in-out 2.2s infinite; }
+@keyframes ly-cuelga {
+  0%, 62% { transform: rotate(0) }
+  68% { transform: rotate(-10deg) } 76% { transform: rotate(7deg) }
+  84% { transform: rotate(-4deg) } 92% { transform: rotate(2deg) } 100% { transform: rotate(0) }
+}
+
+/* el precio de antes: la raya se dibuja sola de izquierda a derecha */
+.p-lymphoria .precioTop .antes { position: relative; text-decoration: none; }
+.p-lymphoria .precioTop .antes::after {
+  content: ''; position: absolute; left: -2px; right: -2px; top: 52%; height: 2px; border-radius: 2px;
+  background: currentColor; transform-origin: left; animation: ly-tacha .6s cubic-bezier(.6,0,.3,1) 1.2s both;
+}
+@keyframes ly-tacha { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+
+/* trazo de miel bajo los titulos: se pinta cuando el cliente llega */
+.p-lymphoria .ly-trazo { display: block; width: 92px; height: 10px; margin: 6px 0 0; overflow: visible; }
+.p-lymphoria .ly-centro .ly-trazo { margin-left: auto; margin-right: auto; }
+.p-lymphoria .ly-trazo path {
+  fill: none; stroke: var(--ly-miel); stroke-width: 4; stroke-linecap: round;
+  stroke-dasharray: 130; stroke-dashoffset: 0; transition: stroke-dashoffset .9s cubic-bezier(.5,0,.2,1) .15s;
+}
+.p-lymphoria .ly-espera .ly-trazo path { stroke-dashoffset: 130; }
+
+/* los circulos de los pasos se LLENAN de abajo hacia arriba */
+.p-lymphoria .ly-lista li::before {
+  background: linear-gradient(to top, var(--ly-bosque) 50%, var(--ly-crema) 50%) 0 100% / 100% 200%;
+  box-shadow: 0 0 0 4px var(--bg, #fff), inset 0 0 0 2px var(--ly-bosque);
+  transition: background-position 1s cubic-bezier(.45,0,.2,1); transition-delay: calc(.55s + var(--i) * .28s);
+}
+.p-lymphoria .ly-lista.ly-antes li::before { background-position: 0 0; }
+
+/* ---------- «QUE ES Y PARA QUE SIRVE»: que no quede plana ----------
+   (James, 11-sep: «esa seccion esta muy simple, hazle algun efecto»)
+   El frasco flota sobre un halo de miel, el texto va en una tarjeta crema
+   y los puntos entran de a uno con su palomita. */
+.p-lymphoria .ly-frasco {
+  position: relative; margin: 4px auto 14px; width: 62%; max-width: 260px;
+  animation: ly-flota 5s ease-in-out infinite alternate;
+}
+.p-lymphoria .ly-frasco::before {
+  content: ''; position: absolute; left: 50%; top: 52%; width: 108%; padding-top: 108%;
+  transform: translate(-50%, -50%); border-radius: 50%; z-index: 0;
+  background: radial-gradient(circle, rgba(232,180,80,.32), rgba(232,180,80,0) 68%);
+}
+.p-lymphoria .ly-frasco img { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
+@keyframes ly-flota { from { transform: translateY(-5px) } to { transform: translateY(7px) } }
+@media (min-width: 720px) {
+  .p-lymphoria .ly-frasco { float: right; width: 34%; margin: 0 0 12px 20px; }
+}
+
+/* el parrafo, en tarjeta crema con el filo de miel */
+.p-lymphoria section.desc > p {
+  background: var(--surface-2, #f7f3e9); border-left: 3px solid var(--ly-miel);
+  border-radius: 0 12px 12px 0; padding: 14px 15px;
+}
+
+/* los puntos NO llevan efecto mio: la tienda ya los entra de a uno con su
+   clase «vino». Poner otro encima era duplicar y arriesgar dejarlos ocultos. */
+
+/* las tres tarjetas de «Que es y para que sirve»: mismas medidas que las de
+   la clorofila (James: «ponla asi igual»), solo con los colores de la Lymphoria */
+.p-lymphoria .ly-fichas { display: grid; gap: 14px; margin-top: 14px; }
+.p-lymphoria .ly-fi {
+  margin: 0; border-radius: 16px; overflow: hidden;
+  background: var(--surface-2, #f7f3e9); border: 1px solid rgba(30,77,59,.14);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+/* al tocarla o pasar el mouse, la tarjeta se levanta y la foto se acerca */
+.p-lymphoria .ly-fi:hover, .p-lymphoria .ly-fi:active {
+  transform: translateY(-3px); box-shadow: 0 12px 26px rgba(30,77,59,.16);
+}
+.p-lymphoria .ly-fi img {
+  display: block; width: 100%; height: auto;
+  clip-path: inset(0 0 0 0); transition: clip-path .9s cubic-bezier(.6,0,.2,1), transform .6s ease;
+}
+.p-lymphoria .ly-fi:hover img, .p-lymphoria .ly-fi:active img { transform: scale(1.05); }
+.p-lymphoria .ly-fi.ly-espera img { clip-path: inset(100% 0 0 0); transform: scale(1.08); }
+.p-lymphoria .ly-fi figcaption { padding: 14px 15px 16px; }
+.p-lymphoria .ly-fi .ly-rot2 { display: block; margin-bottom: 5px; }
+.p-lymphoria .ly-fi b { display: block; font-size: 18px; font-weight: 900; color: var(--ly-tinta); }
+.p-lymphoria .ly-fi p { margin: 7px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-2, #5b6573); }
+
+/* el video de la pagina va en 4:5 (James, 11-sep: el difuminado se veia mal).
+   El metraje trae el texto de otros vendedores ARRIBA: en vez de borrarlo, el
+   encuadre arranca justo debajo. La ficha le pone 9:16 en linea, por eso el !important */
+.p-lymphoria .vid-prod { aspect-ratio: 4 / 5 !important; }
+
+/* barra de miel arriba: se llena a medida que el cliente baja */
+.p-lymphoria .ly-barra {
+  position: fixed; left: 0; top: 0; width: 100%; height: 3px; z-index: 1000; pointer-events: none;
+  background: linear-gradient(90deg, #a86d10, #e2a53a 60%, #fff0bf);
+  transform-origin: left; transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-lymphoria .ly-mota, .p-lymphoria .ly-glint, .p-lymphoria .ly-barra { display: none; }
+  .p-lymphoria .ly-pop, .p-lymphoria .precioTop .off, .p-lymphoria .precioTop .antes::after { animation: none; }
+  .p-lymphoria .ly-espera .ly-trazo path { stroke-dashoffset: 0; }
+  .p-lymphoria .ly-fi.ly-espera img { clip-path: none; transform: none; }
+  .p-lymphoria .ly-frasco { animation: none; }
+  .p-lymphoria .ly-lista.ly-antes li::before { background-position: 0 100%; }
+  .p-lymphoria .ly-hero > img, .p-lymphoria .ly-oro, .p-lymphoria .ly-sube, .p-lymphoria .ly-sube2 { animation: none; }
+  .p-lymphoria .ly-gota, .p-lymphoria .ly-onda { display: none; }
+  .p-lymphoria .ly-lista.ly-antes li::after { transform: none; }
+  .p-lymphoria .ly-lista.ly-antes li { opacity: 1; transform: none; }
+  .p-lymphoria .btn-comprar::before, .p-lymphoria .cta::before, .p-lymphoria button[type="submit"]::before { animation: none; opacity: 0; }
+}
