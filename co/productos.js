@@ -6,7 +6,7 @@
    ============================================================ */
 window.PRODUCTOS = [
   /* 11/12-11 James: Funda navideña para puerta (Dropi 1979374) y Fundas navideñas para silla (2295051 / 2296349).
-     Precios aprobados: puerta 1 $75.000 · 2 $109.900 · 3 $124.900 · 4 $139.900 · sillas 4 $70.000 · 6 $90.000; anticipado Wompi −10 %. */
+     Precios aprobados: puerta 1 $75.000 · 2 $109.900 · 3 $124.900 · 4 $139.900 · sillas solas 4 $104.900 · 6 $124.900 (agregadas a la puerta: 4 $70.000 · 6 $90.000); anticipado Wompi −10 %. */
   {
     id: 'funda', dropiId: 1979374,
     nombre: 'Funda Navideña para Puerta',
@@ -32,10 +32,10 @@ window.PRODUCTOS = [
     foto: 'co/sillas/img/si-heroe.webp?v=1',
     nota: { n: 74, prom: '4.9' },
     packs: [
-      { cant: 4, precio: 70000, texto: '4 sillas' },
-      { cant: 6, precio: 90000, texto: '6 sillas' },
+      { cant: 4, precio: 104900, texto: '4 sillas' },
+      { cant: 6, precio: 124900, texto: '6 sillas' },
     ],
-    anticipado: { pct: 10, precios: [63000, 81000] },
+    anticipado: { pct: 10, precios: [94400, 112400] },
   },
   /* 10-11 James: Combo Protector de Colchón + Cobija Navideña, Dropi Colombia 2293056 (3 protectores + 6 fundas + cobija).
      Contra entrega $119.900 · pago anticipado con Wompi −10 %: $107.900. Sin precio tachado. */
@@ -65,4 +65,4 @@ window.PREGUNTAS = [
 /* candado: si un precio no está aprobado por James, la portada no lo muestra. Colombia: protector aprobado el 10-11. */
 window.PRECIOS_APROBADOS = [119900, 107900,
   75000, 109900, 124900, 139900, 67500, 98900, 112400, 125900,   /* funda de puerta (James 11-11 / 12-11) */
-  70000, 90000, 63000, 81000];                                   /* fundas de silla (James 12-11) */
+  104900, 124900, 94400, 112400];                                /* fundas de silla SOLAS (James 11-11 / 12-11) */

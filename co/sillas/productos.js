@@ -5,7 +5,8 @@
    8 diseños, los mismos de la puerta. Costos = precio de la variante (verificado 11-11); la descripción dice $52.000/$78.000 → confirmar con Julio.
    Competencia 11-11 (Meta CO): NOVA STORE 4×99.900 / 6×119.900 / 8×149.900 · Daily Essentials 4×99.900 · Bum chicabum 6×110.000.
    PRECIOS APROBADOS por James el 11-11 (contra entrega, envío gratis):
-     12-11 James "dale así" (el precio que estipula el proveedor): 4 sillas $70.000 · 6 sillas $90.000. Sin pack de 8.
+     SILLAS SOLAS: 4 sillas $104.900 · 6 sillas $124.900 (James 11-11; 12-11 "en eso habíamos quedado").
+     OJO (error de Claude 12-11): $70.000 / $90.000 es el precio de las sillas AGREGADAS A LA PUERTA (página de la puerta), NUNCA de las sillas solas.
      Adicional, mismo envío: + 1 funda de puerta $35.000 (Dropi 1979374)
    ============================================================ */
 window.__P = 'sillas';
@@ -29,12 +30,12 @@ window.PRODUCTOS = [{
   corto: 'Fundas Navideñas Silla',
   unidad: 'pack',
   packs: [
-    { cant: 4, disenos: 1, precio: 70000, texto: '4 sillas', detalle: 'comedor de 4 puestos', nivel: 'Promoción' },
-    { cant: 6, disenos: 1, precio: 90000, texto: '6 sillas', detalle: 'comedor de 6 puestos' },
+    { cant: 4, disenos: 1, precio: 104900, texto: '4 sillas', detalle: 'comedor de 4 puestos', nivel: 'Promoción' },
+    { cant: 6, disenos: 1, precio: 124900, texto: '6 sillas', detalle: 'comedor de 6 puestos' },
   ],
   popular: 0,   /* 12-11 James: se arranca con 4 sillas ("no todo el mundo tiene seis sillas"), después 6 */
   /* 12-11 James "10% anticipado" → "Sí, ponlos": pago con Wompi, 10 % menos sobre el pack (la puerta adicional va a su precio) */
-  anticipado: { pct: 10, precios: [63000, 81000] },
+  anticipado: { pct: 10, precios: [94400, 112400] },
   disenoUnidad: 'juego',
   disenosTitulo: 'Toca el diseño',
   disenos: _SILLA,
@@ -46,4 +47,4 @@ window.PRODUCTOS = [{
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (11-11) */
-window.PRECIOS_APROBADOS = [70000, 90000, 35000, 63000, 81000]; /* James 12-11 "dale así": el precio que estipula el proveedor, sin pack de 8 */
+window.PRECIOS_APROBADOS = [104900, 124900, 35000, 94400, 112400]; /* sillas solas 104.900 / 124.900 (James 11-11 y 12-11); Wompi −10 %; puerta agregada 35.000 */
