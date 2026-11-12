@@ -111,27 +111,14 @@ window.jayePixel.track('PageView', {});
     <div><b>Espaldar</b><span>y asiento</span></div>
   </div>
 
-  <!-- 2 · CON QUIÉN SE DESPACHA -->
-  <section class="nv-sec">
-    <h2 class="nv-h2">Con quién se <em>despacha</em></h2>
-    <div class="nv-sellos">
-      <div class="nv-sello"><img src="../protector/img/tr-interrapidisimo.svg?v=1" alt="Interrapidísimo" loading="lazy"><div class="nom">Interrapidísimo</div><small>Cobertura nacional</small></div>
-      <div class="nv-sello"><img src="../protector/img/tr-servientrega.svg?v=1" alt="Servientrega" loading="lazy"><div class="nom">Servientrega</div><small>Entrega a domicilio</small></div>
-      <div class="nv-sello"><img src="../protector/img/tr-coordinadora.svg?v=1" alt="Coordinadora" loading="lazy"><div class="nom">Coordinadora</div><small>Cobertura nacional</small></div>
-      <div class="nv-sello"><img src="../protector/img/tr-envia.svg?v=1" alt="Envía" loading="lazy"><div class="nom">Envía</div><small>Entrega a domicilio</small></div>
-      <div class="nv-sello"><div class="nom">Pago al recibir</div><small>Pagas cuando las tienes en tus manos</small></div>
-      <div class="nv-sello"><div class="nom">Envío gratis</div><small>A toda Colombia, de 2 a 5 días hábiles</small></div>
-    </div>
-  </section>
-
-  <!-- VIDEO real (metraje de TikTok de fundas iguales: elásticas, estampadas, respaldo y asiento; sin voz, sin textos ni marcas) -->
+  <!-- 2 · VIDEO real (metraje de TikTok de fundas iguales: elásticas, estampadas, respaldo y asiento; sin voz, sin textos ni marcas) -->
   <section class="nv-sec nv-video">
     <h2 class="nv-h2">Así se <em>ponen</em></h2>
     <video src="img/si-video.mp4?v=1" poster="img/si-video-poster.webp?v=1" muted loop playsinline autoplay preload="metadata" aria-label="Video: se ponen las fundas navideñas elásticas en sillas de comedor"></video>
   </section>
 
-  <!-- 3 · BENEFICIOS -->
-  <section class="nv-sec">
+  <!-- 3 · PASO 1 (orden del molde: protector / ficha de Chile) -->
+  <section class="nv-sec" id="paso1">
     <h2 class="nv-h2">Una mesa que se ve de <em>fiesta</em></h2>
     <div class="nv-benef">
       <figure><img src="img/si-papa-y-mama-noel.webp?v=1" alt="Silla con funda navideña de Papá y Mamá Noel con el reno" width="520" height="693" loading="lazy">
@@ -139,6 +126,10 @@ window.jayePixel.track('PageView', {});
       <figure><img src="img/si-pesebre-estrella-grande.webp?v=1" alt="Silla con funda navideña del pesebre bajo la estrella" width="520" height="693" loading="lazy">
         <figcaption><b>Elástica, se ajusta sola</b>Se pone por encima del respaldo y se baja hasta el asiento.</figcaption></figure>
     </div>
+  </section>
+
+  <!-- 4 · PASO 2 · la solución: medidas y diseños -->
+  <section class="nv-sec" id="paso2">
     <h3 class="nv-h3">Medidas que cubre</h3>
     <div class="nv-medida">
       <div><b>45–65 cm</b>alto del espaldar</div>
@@ -152,18 +143,7 @@ window.jayePixel.track('PageView', {});
     </ul>
   </section>
 
-  <!-- 4 · ESCALERA DE PRECIOS (la de 6 es la que se promociona) -->
-  <section class="nv-sec">
-    <h2 class="nv-h2">Escoge tu <em>comedor</em></h2>
-    <div class="nv-escalera">
-      <button type="button" class="nv-esc" data-pack="0" data-ir="pedir"><b>4 sillas</b><strong>$104.900</strong><small>Comedor de 4 puestos · $26.225 por silla</small></button>
-      <button type="button" class="nv-esc nv-esc--top" data-cinta="La más pedida" data-pack="1" data-ir="pedir"><b>6 sillas</b><strong>$124.900</strong><small>Comedor de 6 puestos · $20.817 por silla</small></button>
-      <button type="button" class="nv-esc" data-pack="2" data-ir="pedir"><b>8 sillas</b><strong>$144.900</strong><small>2 juegos de 4, puedes combinar diseños · $18.113 por silla</small></button>
-    </div>
-    <p class="nv-txt">Envío gratis y pago contra entrega en todas.</p>
-  </section>
-
-  <!-- 5 · DISEÑOS (los mismos de la funda de puerta) -->
+  <!-- 4b · PASO 2 (sigue) · DISEÑOS (los mismos de la funda de puerta) -->
   <section class="nv-sec" id="disenos">
     <h2 class="nv-h2">8 <em>diseños</em></h2>
     <p class="nv-txt">Cada juego viene en un solo diseño. En el de 8 puedes escoger dos diseños distintos.</p>
@@ -179,19 +159,10 @@ window.jayePixel.track('PageView', {});
     </div>
   </section>
 
-  <!-- 6 · ADICIONAL: LA PUERTA A JUEGO -->
-  <section class="nv-sec">
-    <div class="nv-combo">
-      <h2 class="nv-h2">La puerta a juego por $35.000</h2>
-      <p class="nv-txt">Agrega la funda navideña para tu puerta (2 m × 1 m) en el mismo diseño de las sillas. Va en el mismo envío.</p>
-      <button type="button" class="nv-btn" data-pack="1" data-adic="0" data-ir="pedir">6 sillas + puerta · $159.900</button>
-    </div>
-  </section>
-
-  <!-- RESEÑAS reales (AliExpress, fundas elásticas de comedor; autorizadas por James 11-11), las pinta funda.js -->
+  <!-- 5 · RESEÑAS reales (AliExpress, fundas elásticas de comedor; autorizadas por James 11-11), las pinta funda.js -->
   <section class="nv-sec" id="resenas"></section>
 
-  <!-- 7 · PREGUNTAS -->
+  <!-- 6 · PREGUNTAS: debajo de las reseñas, como en el molde -->
   <section class="nv-sec nv-faq">
     <h2 class="nv-h2">Preguntas <em>frecuentes</em></h2>
     <details><summary>¿Cubre toda la silla?</summary><p>Cubre el espaldar y el asiento. Las patas quedan a la vista.</p></details>
@@ -201,8 +172,33 @@ window.jayePixel.track('PageView', {});
     <details><summary>¿Cuánto tarda?</summary><p>De 2 a 5 días hábiles según tu ciudad. Te escribimos por WhatsApp para confirmar el pedido.</p></details>
   </section>
 
-  <!-- 8 · FORMULARIO (motor ../ficha.js) -->
+  <!-- 7 · CON QUIÉN SE DESPACHA: justo antes del formulario, como en el molde -->
   <section class="nv-sec">
+    <h2 class="nv-h2">Con quién se <em>despacha</em></h2>
+    <div class="nv-sellos">
+      <div class="nv-sello"><img src="../protector/img/tr-interrapidisimo.svg?v=1" alt="Interrapidísimo" loading="lazy"><div class="nom">Interrapidísimo</div><small>Cobertura nacional</small></div>
+      <div class="nv-sello"><img src="../protector/img/tr-servientrega.svg?v=1" alt="Servientrega" loading="lazy"><div class="nom">Servientrega</div><small>Entrega a domicilio</small></div>
+      <div class="nv-sello"><img src="../protector/img/tr-coordinadora.svg?v=1" alt="Coordinadora" loading="lazy"><div class="nom">Coordinadora</div><small>Cobertura nacional</small></div>
+      <div class="nv-sello"><img src="../protector/img/tr-envia.svg?v=1" alt="Envía" loading="lazy"><div class="nom">Envía</div><small>Entrega a domicilio</small></div>
+      <div class="nv-sello"><div class="nom">Pago al recibir</div><small>Pagas cuando las tienes en tus manos</small></div>
+      <div class="nv-sello"><div class="nom">Envío gratis</div><small>A toda Colombia, de 2 a 5 días hábiles</small></div>
+    </div>
+  </section>
+
+  <!-- 8 · PASO 3 · la acción: comedor, puerta a juego y formulario (motor ../ficha.js) -->
+  <section class="nv-sec" id="paso3">
+    <h2 class="nv-h2">Escoge tu <em>comedor</em></h2>
+    <div class="nv-escalera">
+      <button type="button" class="nv-esc" data-pack="0" data-ir="pedir"><b>4 sillas</b><strong>$104.900</strong><small>Comedor de 4 puestos · $26.225 por silla</small></button>
+      <button type="button" class="nv-esc nv-esc--top" data-cinta="La más pedida" data-pack="1" data-ir="pedir"><b>6 sillas</b><strong>$124.900</strong><small>Comedor de 6 puestos · $20.817 por silla</small></button>
+      <button type="button" class="nv-esc" data-pack="2" data-ir="pedir"><b>8 sillas</b><strong>$144.900</strong><small>2 juegos de 4, puedes combinar diseños · $18.113 por silla</small></button>
+    </div>
+    <p class="nv-txt">Envío gratis y pago contra entrega en todas.</p>
+    <div class="nv-combo">
+      <h2 class="nv-h2">La puerta a juego por $35.000</h2>
+      <p class="nv-txt">Agrega la funda navideña para tu puerta (2 m × 1 m) en el mismo diseño de las sillas. Va en el mismo envío.</p>
+      <button type="button" class="nv-btn" data-pack="1" data-adic="0" data-ir="pedir">6 sillas + puerta · $159.900</button>
+    </div>
     <h2 class="nv-h2">Pide tus <em>fundas</em></h2>
     <div class="nv-pedir" id="pedir"></div>
   </section>
