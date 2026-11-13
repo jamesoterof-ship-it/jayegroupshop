@@ -117,7 +117,7 @@
     + campo('fNombre', 'Nombre completo', '<input id="fNombre" autocomplete="name" placeholder="Ej: Luis García López" required>', 'Escribe tu nombre y apellido.')
     + campo('fTel', 'Celular / WhatsApp', '<div class="telrow"><span class="cc-btn cc-fijo"><img class="cc-flag" src="https://flagcdn.com/gt.svg" alt=""><span class="cc-code">+502</span></span>'
         + '<input id="fTel" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="11" placeholder="5123 4567" required></div>', 'Revisa tu celular: son 8 dígitos.')
-    + campo('fDir', 'Dirección', '<input id="fDir" autocomplete="street-address" placeholder="Calle o avenida, número y zona" required>', 'Escribe la calle y el número (sin número no te lo podemos entregar).')
+    + campo('fDir', 'Dirección', '<input id="fDir" autocomplete="street-address" placeholder="Calle o avenida, número y zona" required>', 'Escribe la calle y el número. Si tu casa no tiene número, escribe "sin número" y una referencia (una tienda, una iglesia, el color de la casa).')
     + campo('fRef', 'Referencia', '<input id="fRef" autocomplete="address-line2" placeholder="Ej: frente al parque, portón verde, casa 12">', '', true)
     + '<div class="row2">'
     + campo('fDepto', 'Departamento', '<select id="fDepto" autocomplete="address-level1" required><option value="">Selecciona…</option>'
@@ -253,7 +253,9 @@
     if (!/^[345]\d{7}$/.test(celular())) mal.push('fTel');
     if (!deptos[g('fDepto')]) mal.push('fDepto');
     if (!g('fDist') || (deptos[g('fDepto')] || []).indexOf(g('fDist')) < 0) mal.push('fDist');
-    if (g('fDir').length < 6 || !/\d/.test(g('fDir'))) mal.push('fDir');
+    /* 13-11 James: "ninguna venta puede quedar por fuera porque no tenga número" (en Guatemala hay casas sin número):
+       basta con una dirección o referencia; la venta entra marcada para completarla con GPS o pin */
+    if (g('fDir').length < 6) mal.push('fDir');
     if (g('fCorreo') && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(g('fCorreo'))) mal.push('fCorreo');
     ['fNombre', 'fTel', 'fDepto', 'fDist', 'fDir', 'fCorreo'].forEach(function (k) { $('c' + k).classList.toggle('mal', mal.indexOf(k) >= 0); });
     return mal;
@@ -324,7 +326,7 @@
   function soltarBoton() { enviando = false; $('btnPedir').disabled = false; refrescar(); }
   function rechazado() {
     soltarBoton();
-    aviso('No pudimos registrar tu pedido. Revisa tu celular, la dirección con número y el municipio, y vuelve a intentarlo.', true);
+    aviso('No pudimos registrar tu pedido. Revisa tu celular, la dirección y el municipio, y vuelve a intentarlo.', true);
   }
   function noEntro() {
     soltarBoton();
