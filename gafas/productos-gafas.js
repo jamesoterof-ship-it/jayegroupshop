@@ -8,6 +8,7 @@
    Escalera APROBADA por James el 12-11-2026 ("Sí, esos" y "Sí, dale"):
      contra entrega: 1 par $59.900 · 2 pares $79.900
      anticipado (10 % menos):  1 par $53.900 · 2 pares $71.900
+   12-11 James aprobó 3 pares: $110.000 contra entrega · $99.000 anticipado
    ============================================================ */
 window.PRODUCTOS = [
   {
@@ -55,8 +56,9 @@ window.PRODUCTOS = [
     packs: [
       { cant: 1, precio: 59900, antes: 0, texto: '1 par' },
       { cant: 2, precio: 79900, antes: 119800, texto: '2 pares' },
+      { cant: 3, precio: 110000, antes: 179700, texto: '3 pares' },
     ],
-    anticipado: { precios: [53900, 71900], titulo: 'Pago anticipado', envio: 'Despacho prioritario · Tarjeta, PSE o Nequi' },
+    anticipado: { precios: [53900, 71900, 99000], titulo: 'Pago anticipado', envio: 'Despacho prioritario · Tarjeta, PSE o Nequi' },
     popular: 1,
   },
 ];
@@ -69,4 +71,4 @@ window.PREGUNTAS = [
 ];
 
 /* candado: si un precio no está aprobado, la ficha no vende */
-window.PRECIOS_APROBADOS = [59900, 79900, 53900, 71900];
+window.PRECIOS_APROBADOS = [59900, 79900, 110000, 53900, 71900, 99000];
