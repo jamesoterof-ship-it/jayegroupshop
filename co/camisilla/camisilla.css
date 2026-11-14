@@ -214,11 +214,56 @@
   .cm-sellos{grid-template-columns:repeat(3,1fr)}
   .cm-dos{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
 }
+/* --- VIDEO real (James 14-11 "Ajá") --- */
+.cm-video video{width:100%;max-width:420px;margin:0 auto;aspect-ratio:9/16;object-fit:cover;border-radius:20px;border:1px solid var(--cm-vidrio-borde);box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 50px rgba(220,38,38,.18);background:var(--cm-grafito)}
+
+/* --- RESEÑAS reales: el molde de todas las tiendas (tarjeta blanca, nota grande, barras, carrusel), en los colores de la página --- */
+.rev-sec{max-width:760px;margin:0 auto;padding:44px 16px;background:#FFFFFF;color:#18181B;border-radius:22px}
+.rev-title{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font:400 clamp(30px,8vw,42px)/1 'Bebas Neue',sans-serif;letter-spacing:.02em;text-transform:uppercase;margin:0 0 8px}
+.rev-title::before{content:"";width:22px;height:2px;background:#DC2626}
+.rev-title .stars{color:#D8A52E;letter-spacing:.06em}
+.rev-fuente{font-size:14px;color:#475569;margin:0 0 14px}
+.rev-score{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.rev-score .big{font:400 64px/1 'Bebas Neue',sans-serif}
+.rev-score .cnt{font-size:15px;color:#475569}
+.rev-bars{display:grid;gap:7px;margin-bottom:18px}
+.rev-bars .bar{display:flex;align-items:center;gap:10px;font-size:13px;color:#475569}
+.rev-bars .lvl{width:34px;flex:none;font-weight:700;color:#18181B}
+.rev-bars .track{flex:1;height:8px;border-radius:999px;background:#E2E8F0;overflow:hidden}
+.rev-bars .track i{display:block;height:100%;background:#DC2626;border-radius:999px;transform-origin:left;transform:scaleX(var(--p,0));transition:transform 600ms ease}
+.rev-bars b{width:34px;text-align:right;font-weight:700;color:#18181B}
+.btn-write{width:100%;min-height:46px;margin:0 0 14px;padding:13px;border:1.5px solid rgba(24,24,27,.18);border-radius:999px;background:#FFFFFF;color:#18181B;font:600 15px/1 'Source Sans 3',sans-serif;cursor:pointer;transition:all 200ms ease}
+.btn-write:hover{border-color:#DC2626;transform:translateY(-2px)}
+.rs{display:grid;gap:10px}
+.rsc{background:#FFFFFF;border:1px solid rgba(24,24,27,.16);border-radius:14px;padding:12px 13px;transition:transform 200ms ease,box-shadow 200ms ease}
+.rsc:hover{transform:translateY(-3px);box-shadow:0 10px 15px rgba(0,0,0,.1)}
+.rsc .arriba{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rsc .ini{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#DC2626;color:#FFFFFF;font-weight:700;font-size:12px}
+.rsc .quien{flex:1;display:flex;flex-direction:column;font-weight:700;font-size:13px;line-height:1.2;color:#18181B}
+.rsc .quien small{font-weight:400;font-size:12px;color:#475569}
+.rsc .est{display:inline-flex;gap:1px}
+.rsc .est svg{width:12px;height:12px;fill:#E2E8F0}
+.rsc .est .si svg{fill:#D8A52E}
+.rsc p{margin:0;font-size:14px;line-height:1.55;color:#475569}
+.rsc .rfoto{display:block;margin-top:10px;width:120px;height:120px;object-fit:cover;border-radius:10px}
+.masRs{display:block;width:100%;margin:12px 0 0;padding:12px;border:1px solid rgba(24,24,27,.18);background:#FFFFFF;color:#18181B;font:700 13.5px/1 'Source Sans 3',sans-serif;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;transition:all 200ms ease}
+.masRs:hover{border-color:#DC2626}
+.rev-auto-label{font-size:13px;color:#475569;margin:24px 0 10px;text-align:center}
+.rev-auto{overflow:hidden;padding:4px 0 10px;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,1) 8%,rgba(0,0,0,1) 92%,rgba(0,0,0,0))}
+.rev-auto__track{display:flex;align-items:flex-start;gap:12px;width:max-content;animation:cmCorre 60s linear infinite}
+.rev-auto__track:hover{animation-play-state:paused}
+.rev-auto .rsc{flex:0 0 216px;padding:11px 12px;border-radius:12px}
+.rev-auto .rsc p{font-size:12.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rev-auto .rsc .rfoto{display:none}
+.rev-auto .rsc:hover{transform:none;box-shadow:none}
+.cm-estrellas{display:inline-flex;align-items:center;gap:8px;margin:2px 0 10px;color:#FAFAFA;font-weight:600;text-decoration:none}
+.cm-estrellas i{color:#D8A52E;font-style:normal;letter-spacing:2px;font-size:18px}
+
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .cm-vidrio{background:var(--cm-grafito)}
 }
 @media (prefers-reduced-motion:reduce){
-  .cm-heroe__foto img,.cm-heroe::after,.cm-cinta,.cm-btn::before,.cm .cr-btn::before,.cm-btn.late,.cm-cinta-corre div,.cm-foto.visto::after{animation:none}
+  .cm-heroe__foto img,.cm-heroe::after,.cm-cinta,.cm-btn::before,.cm .cr-btn::before,.cm-btn.late,.cm-cinta-corre div,.cm-foto.visto::after,.rev-auto__track{animation:none}
   .cm-h1 .cm-palabra,.cm-lead,.cm-oferta{animation:none;opacity:1;transform:none}
   .cm .rev{opacity:1;transform:none;transition:none}
 }
