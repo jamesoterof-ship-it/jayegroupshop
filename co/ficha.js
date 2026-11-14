@@ -107,7 +107,7 @@
       + '</div><div class="pf-err pf-err--op" id="errColor">Elige el color.</div>' : '')
     /* diseño de cada unidad (un selector por funda) */
     + (disenos.length ? '<p class="pf-sub">' + esc(p.disenosTitulo || 'Escoge el diseño') + '</p><div class="pf-dis" id="fDis"></div>'
-      + '<div class="pf-err pf-err--op" id="errDis">Escoge el diseño de cada ' + esc(p.disenoUnidad || 'funda') + '.</div>' : '')
+      + '<div class="pf-err pf-err--op" id="errDis">' + esc(p.disenoError || ('Escoge el diseño de cada ' + (p.disenoUnidad || 'funda'))) + '.</div>' : '')
     /* adicional opcional (se suma al total, mismo envío) */
     + (adics.length ? '<p class="pf-sub pf-sub--ad">' + esc(p.adicTitulo || 'Agrega a tu pedido') + '</p><div class="pf-ads" id="fAd" role="radiogroup" aria-label="Adicional">'
       + '<button type="button" class="pf-ad sel" data-a="-1" role="radio" aria-checked="true"><b>Sin adicional</b><span>$0</span></button>'
@@ -234,7 +234,8 @@
         + lista.map(function (d) { return '<button type="button" class="pf-dfoto' + (d[0] === valor ? ' sel' : '') + '" data-v="' + esc(d[0]) + '" data-n="' + esc(d[1]) + '" aria-pressed="' + (d[0] === valor) + '"><img src="' + esc(d[2]) + '" alt="' + esc(d[1]) + '" loading="lazy"><small>' + esc(d[1]) + '</small></button>'; }).join('')
         + '</div></div>';
     }
-    return '<label class="pf-dsel"><span>' + esc(rotulo) + '</span><select ' + attr + '><option value="">Escoge el diseño</option>'
+    /* 14-11 camisilla: p.disenoVacio cambia el texto de la lista ("Escoge color y talla"); sin él, igual que antes */
+    return '<label class="pf-dsel"><span>' + esc(rotulo) + '</span><select ' + attr + '><option value="">' + esc(p.disenoVacio || 'Escoge el diseño') + '</option>'
       + lista.map(function (d) { return '<option value="' + esc(d[0]) + '"' + (d[0] === valor ? ' selected' : '') + '>' + esc(d[1]) + '</option>'; }).join('')
       + '</select></label>';
   }

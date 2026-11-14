@@ -1,0 +1,216 @@
+/* ============================================================
+   CAMISILLA DE COMPRESIÓN IONFIT PRO · Colombia · 14-11-2026
+   Plano del script ui-ux-pro-max aprobado por James 14-11 ("Sí, apruebo el plano"):
+     design-system/camisilla-ionfit-co (Hero-Centric Design + Glassmorphism: vidrio esmerilado, desenfoque, borde fino claro,
+     reflejo de luz, profundidad por capas; botón principal dominante + botón fijo).
+   Colores y letras (James 14-11 "Autorizo negro y rojo" + "pero con el diseño del skill"), todos dados por el script:
+     rojo "Sports Team/Club" #DC2626 / #EF4444 + negro "Photography Studio" #000000 / #0C0C0C / #181818 (--domain color),
+     Bebas Neue / Source Sans 3 ("Bold Statement", --domain typography).
+   Encabezado y pie = los de la tienda (/tienda.css), no se tocan.
+   ============================================================ */
+:root{
+  --cm-negro:#000000; --cm-carbon:#0C0C0C; --cm-grafito:#181818; --cm-gris:#27272A; --cm-linea:#3F3F46;
+  --cm-rojo:#DC2626; --cm-rojo2:#EF4444; --cm-blanco:#FAFAFA; --cm-puro:#FFFFFF; --cm-tenue:#94A3B8;
+  --cm-vidrio:rgba(24,24,24,.55); --cm-vidrio-borde:rgba(255,255,255,.16); --cm-reflejo:rgba(255,255,255,.07);
+}
+.cm{background:var(--cm-negro);color:var(--cm-blanco);font:400 17px/1.55 'Source Sans 3',sans-serif;overflow-x:hidden}
+.cm *{box-sizing:border-box}
+.cm img,.cm video{max-width:100%;display:block}
+.cm main{position:relative;isolation:isolate}
+/* capas de luz roja detrás del vidrio (dan la profundidad del plano) */
+.cm main::before,.cm main::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none;filter:blur(40px)}
+.cm main::before{width:120vw;height:120vw;max-width:900px;max-height:900px;left:-50vw;top:120vh;background:radial-gradient(closest-side,rgba(220,38,38,.28),rgba(220,38,38,0))}
+.cm main::after{width:110vw;height:110vw;max-width:800px;max-height:800px;right:-45vw;top:260vh;background:radial-gradient(closest-side,rgba(239,68,68,.22),rgba(239,68,68,0))}
+.cm-vidrio{background:linear-gradient(145deg,var(--cm-reflejo),rgba(255,255,255,0) 45%),var(--cm-vidrio);border:1px solid var(--cm-vidrio-borde);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 18px 50px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)}
+.cm-h1,.cm-h2,.cm-h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.02em;margin:0;line-height:.95;text-transform:uppercase}
+.cm-h1{font-size:clamp(58px,17vw,120px);color:var(--cm-puro);text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.cm-h1 em,.cm-h2 em{font-style:normal;color:var(--cm-rojo2)}
+.cm-h2{font-size:clamp(44px,12vw,76px);text-align:center;margin-bottom:18px;color:var(--cm-puro)}
+.cm-h3{font-size:32px;margin:26px 0 10px;color:var(--cm-puro)}
+.cm-sec{padding:56px 16px;max-width:760px;margin:0 auto;position:relative}
+.cm-txt{font-size:18px;color:var(--cm-tenue);text-align:center;max-width:580px;margin:0 auto 22px}
+.cm-txt b{color:var(--cm-blanco)}
+.cm-rot{display:block;text-align:center;font:600 13px/1 'Source Sans 3',sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--cm-rojo2);margin-bottom:12px}
+
+/* --- 1 · portada a pantalla completa --- */
+/* celular: la foto completa arriba (sin texto sobre la cara) y el texto entra encima solo de la parte baja */
+.cm-heroe{position:relative;overflow:hidden;background:var(--cm-negro);isolation:isolate}
+.cm-heroe__foto{position:relative;margin:0;z-index:-2;overflow:hidden;max-height:92svh}
+.cm-heroe__foto img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:50% 20%;transform-origin:50% 35%;animation:cmAcerca 14s ease-out both}
+@keyframes cmAcerca{from{transform:scale(1.14)}to{transform:scale(1)}}
+.cm-heroe__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 86%,var(--cm-negro) 100%)}
+.cm-heroe::before{content:none}
+.cm-heroe::after{content:"";position:absolute;right:-30%;top:18%;width:90%;aspect-ratio:1;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(220,38,38,.45),rgba(220,38,38,0));animation:cmLatidoLuz 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes cmLatidoLuz{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+/* James 14-11: "que no tape el hombre ni el producto" → el texto va DEBAJO de la foto, nunca encima */
+.cm-heroe__txt{position:relative;width:100%;max-width:760px;margin:0 auto;padding:6px 16px 34px}
+.cm-cinta{display:inline-flex;align-items:center;gap:8px;background:var(--cm-rojo);color:var(--cm-puro);font:400 20px/1 'Bebas Neue',sans-serif;letter-spacing:.08em;padding:9px 16px 7px;border-radius:999px;box-shadow:0 0 0 0 rgba(220,38,38,.7);animation:cmOnda 1.8s ease-out infinite;margin-bottom:16px}
+@keyframes cmOnda{0%{box-shadow:0 0 0 0 rgba(220,38,38,.7)}80%,100%{box-shadow:0 0 0 16px rgba(220,38,38,0)}}
+.cm-h1 .cm-palabra{display:inline-block;opacity:0;transform:translateY(.45em) skewY(6deg);animation:cmSube .7s cubic-bezier(.2,.8,.2,1) forwards}
+.cm-h1 .cm-palabra:nth-child(2){animation-delay:.12s}.cm-h1 .cm-palabra:nth-child(3){animation-delay:.24s}.cm-h1 .cm-palabra:nth-child(4){animation-delay:.36s}.cm-h1 .cm-palabra:nth-child(5){animation-delay:.48s}
+@keyframes cmSube{to{opacity:1;transform:none}}
+.cm-lead{font-size:19px;margin:14px 0 18px;color:var(--cm-blanco);max-width:520px;opacity:0;animation:cmSube .7s .55s ease-out forwards;transform:translateY(12px);text-shadow:0 2px 14px rgba(0,0,0,.7)}
+/* panel de vidrio con el precio, sobre la foto */
+.cm-oferta{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;margin-bottom:16px;padding:14px 16px;border-radius:18px;opacity:0;animation:cmSube .7s .7s ease-out forwards;transform:translateY(12px)}
+.cm-oferta b{font:400 60px/1 'Bebas Neue',sans-serif;color:var(--cm-puro)}
+.cm-oferta s{color:var(--cm-tenue);font-size:20px}
+.cm-oferta span{flex-basis:100%;font-size:15px;color:var(--cm-blanco);letter-spacing:.03em}
+.cm-oferta .cm-ahorro{flex-basis:auto;background:var(--cm-rojo);color:var(--cm-puro);font-weight:700;padding:4px 10px;border-radius:6px;font-size:14px}
+
+/* --- botones con efecto: brillo que cruza + latido + resplandor rojo --- */
+.cm-btn,.cm .cr-btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;padding:14px 20px;border:0;border-radius:14px;cursor:pointer;
+  background:linear-gradient(180deg,var(--cm-rojo2),var(--cm-rojo));color:var(--cm-puro);font:400 27px/1 'Bebas Neue',sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  box-shadow:0 10px 30px rgba(220,38,38,.45),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .18s ease,box-shadow .18s ease}
+.cm-btn::before,.cm .cr-btn::before{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:skewX(-20deg);animation:cmBrillo 2.8s ease-in-out infinite}
+@keyframes cmBrillo{0%,55%{left:-60%}100%{left:130%}}
+.cm-btn:hover,.cm .cr-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(220,38,38,.6),inset 0 1px 0 rgba(255,255,255,.25)}
+.cm-btn:active,.cm .cr-btn:active{transform:translateY(1px) scale(.99)}
+.cm-btn.late{animation:cmLate 2.2s ease-in-out infinite}
+@keyframes cmLate{0%,100%{transform:scale(1)}8%{transform:scale(1.04)}16%{transform:scale(1)}24%{transform:scale(1.025)}32%{transform:scale(1)}}
+.cm-btn--vidrio{background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid var(--cm-vidrio-borde);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 8px 24px rgba(0,0,0,.4);font-size:23px;min-height:54px;margin-top:10px}
+.cm-btn--vidrio::before{animation-duration:4.5s;opacity:.5}
+.cm-btn--vidrio:hover{box-shadow:0 0 0 1px var(--cm-rojo),0 0 26px rgba(220,38,38,.4)}
+.cm-btn:focus-visible,.cm .cr-btn:focus-visible,.pf-pack:focus-visible{outline:3px solid var(--cm-puro);outline-offset:3px}
+
+/* --- 2 · franja con el beneficio (vidrio) --- */
+.cm-datos{display:grid;grid-template-columns:repeat(3,1fr);margin:0 12px;border-radius:18px;overflow:hidden;position:relative;z-index:2;transform:translateY(-8px)}
+.cm-datos div{text-align:center;padding:16px 6px;border-right:1px solid var(--cm-vidrio-borde)}
+.cm-datos div:last-child{border-right:0}
+.cm-datos b{display:block;font:400 40px/1 'Bebas Neue',sans-serif;color:var(--cm-rojo2)}
+.cm-datos span{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--cm-blanco)}
+
+/* --- cinta roja que corre --- */
+.cm-cinta-corre{background:var(--cm-rojo);overflow:hidden;white-space:nowrap;transform:rotate(-2deg);margin:30px -10px;box-shadow:0 10px 30px rgba(220,38,38,.35)}
+.cm-cinta-corre div{display:inline-block;animation:cmCorre 22s linear infinite;padding:12px 0}
+.cm-cinta-corre span{font:400 26px/1 'Bebas Neue',sans-serif;letter-spacing:.06em;color:var(--cm-puro);margin:0 18px}
+@keyframes cmCorre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* --- fotos de sección: marco de vidrio con reflejo que pasa --- */
+.cm-foto{margin:0;border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--cm-vidrio-borde);background:var(--cm-grafito);box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.cm-foto img{width:100%;height:auto;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.cm-foto:hover img{transform:scale(1.04)}
+.cm-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.16) 50%,rgba(255,255,255,0) 65%);background-size:250% 100%;background-position:120% 0;pointer-events:none}
+.cm-foto.visto::after{animation:cmReflejo 1.6s .3s ease-out forwards}
+@keyframes cmReflejo{to{background-position:-60% 0}}
+
+/* --- 3 · beneficios en tarjetas de vidrio --- */
+.cm-benef{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.cm-ben{border-radius:18px;padding:18px 14px;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.cm-ben:hover{transform:translateY(-4px);box-shadow:0 0 0 1px var(--cm-rojo),0 18px 50px rgba(220,38,38,.25)}
+.cm-ben::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--cm-rojo);transition:width .7s ease .2s}
+.cm-ben.visto::before{width:100%}
+.cm-ben svg{width:34px;height:34px;fill:none;stroke:var(--cm-rojo2);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}
+.cm-ben b{display:block;font:400 25px/1 'Bebas Neue',sans-serif;letter-spacing:.03em;color:var(--cm-puro);margin-bottom:6px}
+.cm-ben span{font-size:15px;color:var(--cm-tenue);line-height:1.4}
+
+/* --- lista con chulos rojos --- */
+.cm-lista{list-style:none;padding:0;margin:0 auto;max-width:560px}
+.cm-lista li{position:relative;padding:12px 0 12px 38px;border-bottom:1px solid var(--cm-gris);font-size:17px}
+.cm-lista li::before{content:"";position:absolute;left:0;top:13px;width:24px;height:24px;border-radius:50%;background:var(--cm-rojo) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/15px no-repeat}
+
+/* --- colores --- */
+.cm-colores{display:flex;justify-content:center;gap:18px;margin:18px 0 6px}
+.cm-colores span{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:14px;color:var(--cm-tenue);text-transform:uppercase;letter-spacing:.08em}
+.cm-colores i{width:44px;height:44px;border-radius:50%;border:2px solid var(--cm-linea)}
+
+/* --- preguntas (vidrio) --- */
+.cm-faq details{border-radius:16px;margin-bottom:10px;transition:box-shadow .2s ease}
+.cm-faq details[open]{box-shadow:0 0 0 1px var(--cm-rojo),0 18px 50px rgba(0,0,0,.55)}
+.cm-faq summary{cursor:pointer;list-style:none;padding:16px 46px 16px 16px;font-weight:700;font-size:17px;position:relative}
+.cm-faq summary::-webkit-details-marker{display:none}
+.cm-faq summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);font:400 32px/1 'Bebas Neue',sans-serif;color:var(--cm-rojo2);transition:transform .25s ease}
+.cm-faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.cm-faq p{margin:0;padding:0 16px 16px;color:var(--cm-tenue)}
+
+/* --- sellos de despacho --- */
+.cm-sellos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cm-sello{background:var(--cm-puro);color:var(--cm-negro);border-radius:14px;padding:14px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.cm-sello img{height:26px;width:auto}
+.cm-sello .nom{font-weight:700}
+.cm-sello small{color:var(--cm-gris)}
+.cm-sello--rojo{background:var(--cm-rojo);color:var(--cm-puro)}
+.cm-sello--rojo small{color:var(--cm-puro);opacity:.85}
+
+/* --- aparecer al bajar --- */
+.cm .rev{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.cm .rev.visto{opacity:1;transform:none}
+
+/* ============ 4 · FORMULARIO (../ficha.js) en vidrio negro y rojo ============ */
+.cm-pedir{border-radius:22px;padding:20px 14px}
+.pf-paso{display:flex;align-items:center;gap:10px;font:400 26px/1.1 'Bebas Neue',sans-serif;letter-spacing:.04em;margin:22px 0 12px;color:var(--cm-puro)}
+.pf-paso:first-child{margin-top:0}
+.pf-paso b{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--cm-rojo);color:var(--cm-puro);font-size:20px;flex:none}
+.pf-sub{font-weight:700;margin:18px 0 8px;color:var(--cm-blanco)}
+.pf-packs{display:grid;gap:12px}
+.pf-pack{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px;width:100%;text-align:left;padding:16px;border-radius:14px;cursor:pointer;
+  background:rgba(39,39,42,.6);border:1px solid var(--cm-vidrio-borde);color:var(--cm-blanco);font:inherit;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.pf-pack:hover{transform:translateY(-2px)}
+.pf-pack.sel{border-color:var(--cm-rojo);box-shadow:0 0 0 1px var(--cm-rojo),0 10px 30px rgba(220,38,38,.3);background:rgba(220,38,38,.12)}
+.pf-pack__cinta{position:absolute;top:-11px;right:12px;background:var(--cm-rojo);color:var(--cm-puro);font:400 15px/1 'Bebas Neue',sans-serif;letter-spacing:.08em;padding:5px 10px 4px;border-radius:999px}
+.pf-pack__nivel{grid-column:1/-1;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cm-rojo2);font-weight:700}
+.pf-pack__txt{font:400 28px/1 'Bebas Neue',sans-serif;letter-spacing:.03em}
+.pf-pack__pr{font:400 30px/1 'Bebas Neue',sans-serif;color:var(--cm-puro);text-align:right}
+.pf-pack__antes{font-size:14px;color:var(--cm-tenue)}
+.pf-pack__antes span{margin-left:6px;color:var(--cm-blanco)}
+.pf-pack__ahorro{justify-self:end;background:var(--cm-puro);color:var(--cm-negro);font-weight:700;font-size:13px;border-radius:6px;padding:2px 7px}
+.pf-pack__ahorro:empty{display:none}
+.pf-pack__xp{grid-column:1/-1;height:5px;border-radius:9px;background:var(--cm-gris);margin-top:8px;overflow:hidden}
+.pf-pack__xp i{display:block;height:100%;width:var(--xp);background:linear-gradient(90deg,var(--cm-rojo),var(--cm-rojo2))}
+.pf-dis{display:grid;gap:10px}
+.pf-dsel{display:flex;flex-direction:column;gap:6px;font-weight:600}
+.pf-dsel select{width:100%;padding:14px;border-radius:12px;border:1px solid var(--cm-linea);background:var(--cm-grafito);color:var(--cm-blanco);font:600 16px 'Source Sans 3',sans-serif}
+.pf-dsel select:focus{outline:none;border-color:var(--cm-rojo)}
+.pf-err{display:none;color:var(--cm-rojo2);font-size:14px;margin-top:6px}
+.pf-campo.mal .pf-err{display:block}
+.pf-campo.mal input,.pf-campo.mal select{border-color:var(--cm-rojo2)}
+.pf-resumen{margin:18px 0;border-radius:14px;background:rgba(0,0,0,.35);padding:12px 14px;border:1px solid var(--cm-vidrio-borde)}
+.pf-resumen div{display:flex;justify-content:space-between;padding:6px 0;color:var(--cm-tenue)}
+.pf-desc span:last-child{color:var(--cm-rojo2);font-weight:700}
+.pf-gratis{color:var(--cm-puro);font-weight:700}
+.pf-tot{border-top:1px solid var(--cm-linea);margin-top:4px;padding-top:10px!important;color:var(--cm-puro)!important;font:400 26px/1 'Bebas Neue',sans-serif;letter-spacing:.03em}
+.pf-campo{margin-bottom:12px}
+.pf-campo label{display:block;font-weight:600;margin-bottom:6px}
+.pf-campo label i{font-weight:400;color:var(--cm-tenue)}
+.pf-campo input,.pf-campo select{width:100%;padding:14px;border-radius:12px;border:1px solid var(--cm-linea);background:var(--cm-grafito);color:var(--cm-blanco);font:16px 'Source Sans 3',sans-serif}
+.pf-campo input::placeholder{color:var(--cm-tenue)}
+.pf-campo input:focus,.pf-campo select:focus{outline:none;border-color:var(--cm-rojo);box-shadow:0 0 0 4px rgba(220,38,38,.18)}
+.pf-tel{display:flex}
+.pf-tel span{display:flex;align-items:center;padding:0 12px;border:1px solid var(--cm-linea);border-right:0;border-radius:12px 0 0 12px;background:var(--cm-gris);font-weight:700}
+.pf-tel input{border-radius:0 12px 12px 0}
+.pf-aviso{display:none;color:var(--cm-rojo2);font-weight:600;margin:8px 0}
+.pf-aviso:not(:empty){display:block}
+.pf-aviso a{color:var(--cm-puro)}
+.cm .cr-btn{margin-top:8px}
+.cm .cr-btn:disabled{opacity:.6;cursor:wait}
+.pf-nota{font-size:14px;color:var(--cm-tenue);text-align:center;margin:10px 0 0}
+.carriers{margin-top:16px;text-align:center}
+.carriers .cl{display:block;font-size:13px;color:var(--cm-tenue);margin-bottom:8px}
+.cbadges{display:flex;gap:10px;justify-content:center;align-items:center;background:var(--cm-puro);border-radius:12px;padding:8px}
+.pf-listo{text-align:center;padding:10px 0}
+.pf-listo h3{font:400 40px/1 'Bebas Neue',sans-serif;color:var(--cm-puro);margin:0 0 10px}
+.pf-total{font:400 34px/1 'Bebas Neue',sans-serif;color:var(--cm-rojo2)}
+
+/* --- botón fijo (vidrio) --- */
+.cm-fijo{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--cm-vidrio-borde);transform:translateY(110%);transition:transform .3s ease}
+.cm-fijo.ver{transform:none}
+.cm-fijo .cm-btn{max-width:560px;margin:0 auto;min-height:54px;font-size:24px}
+
+@media (min-width:900px){
+  /* computador: foto a la derecha, texto a la izquierda, a pantalla completa */
+  .cm-heroe{display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:100svh;max-width:1200px;margin:0 auto}
+  .cm-heroe__foto{order:2;max-height:100svh}
+  .cm-heroe__txt{order:1;margin:0;padding:40px 24px 70px 40px}
+  .cm-datos{max-width:760px;margin:0 auto}
+  .cm-benef{grid-template-columns:repeat(3,1fr)}
+  .cm-sellos{grid-template-columns:repeat(3,1fr)}
+  .cm-dos{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .cm-vidrio{background:var(--cm-grafito)}
+}
+@media (prefers-reduced-motion:reduce){
+  .cm-heroe__foto img,.cm-heroe::after,.cm-cinta,.cm-btn::before,.cm .cr-btn::before,.cm-btn.late,.cm-cinta-corre div,.cm-foto.visto::after{animation:none}
+  .cm-h1 .cm-palabra,.cm-lead,.cm-oferta{animation:none;opacity:1;transform:none}
+  .cm .rev{opacity:1;transform:none;transition:none}
+}
