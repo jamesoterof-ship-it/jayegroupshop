@@ -46,6 +46,8 @@
 /* James 14-11: "que no tape el hombre ni el producto" → el texto va DEBAJO de la foto, nunca encima */
 .cm-heroe__txt{position:relative;width:100%;max-width:760px;margin:0 auto;padding:6px 16px 34px}
 .cm-cinta{display:inline-flex;align-items:center;gap:8px;background:var(--cm-rojo);color:var(--cm-puro);font:400 20px/1 'Bebas Neue',sans-serif;letter-spacing:.08em;padding:9px 16px 7px;border-radius:999px;box-shadow:0 0 0 0 rgba(220,38,38,.7);animation:cmOnda 1.8s ease-out infinite;margin-bottom:16px}
+/* James 14-11: la cinta va arriba, sobre la parte negra vacía de la foto */
+.cm-cinta--arriba{position:absolute;top:18px;left:50%;transform:translateX(-50%);z-index:2;margin:0;white-space:nowrap;font-size:24px;padding:11px 20px 9px}
 @keyframes cmOnda{0%{box-shadow:0 0 0 0 rgba(220,38,38,.7)}80%,100%{box-shadow:0 0 0 16px rgba(220,38,38,0)}}
 .cm-h1 .cm-palabra{display:inline-block;opacity:0;transform:translateY(.45em) skewY(6deg);animation:cmSube .7s cubic-bezier(.2,.8,.2,1) forwards}
 .cm-h1 .cm-palabra:nth-child(2){animation-delay:.12s}.cm-h1 .cm-palabra:nth-child(3){animation-delay:.24s}.cm-h1 .cm-palabra:nth-child(4){animation-delay:.36s}.cm-h1 .cm-palabra:nth-child(5){animation-delay:.48s}
