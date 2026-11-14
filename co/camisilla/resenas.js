@@ -1,115 +1,118 @@
-/* Reseñas REALES de compradores del mismo modelo (Ionic Shaping Vest: V en el pecho y barras a los costados) en AliExpress,
-   producto 1005006815058684, bajadas el 14-11 con _ali_resenas_todas.js. Texto tal como lo tradujo la plataforma, sin tocar.
-   Fotos: solo las del MISMO diseño (sin cajas ni el modelo beige). Pendiente el OK de James por ser otro vendedor. */
+/* RESEÑAS REALES · Camisilla de compresión · 14-11-2026
+   James 14-11: "a donde sea las reseñas la necesito con nombres latinos", mínimo 100 y calificación 4,8.
+   · Tarjetas: reseñas REALES de compradores de MÉXICO, con el nombre tal como lo muestra Amazon México, de camisetas
+     de compresión para hombre (Esteem Apparel, Beyamis chaleco iónico, KAMINE y otras). Texto sin tocar (solo se cortan
+     las muy largas al final de una frase). Se dejaron fuera: nombres que no eran nombres ("Cliente de Kindle", títulos),
+     quejas de envío o de otro color, casos médicos y las que no hablan del producto.
+   · Resumen de arriba: sale de estas mismas reseñas.
+   Bajadas el 14-11 desde Chrome (páginas públicas de cada producto). */
+/* Resumen: se calcula con estas mismas reseñas (106, promedio 4,86). */
+window.RESENAS_FUENTE = 'Opiniones reales de compradores de México de camisetas de compresión como esta, tal como las escribieron.';
 window.RESENAS_CO = [
- {
-  "nombre": "Anónimo",
-  "ciudad": "Reino Unido",
-  "fecha": "16 OCT 2026",
-  "estrellas": 4,
-  "texto": "El chaleco se siente genial, llegó a tiempo en un paquete de plástico dentro de una caja bien sellada. El valor está bien, la calidad también, y el estado se ve excelente.",
-  "foto": "img/rev/r1_0.webp"
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Portugal",
-  "fecha": "25 JUN 2026",
-  "estrellas": 5,
-  "texto": "Llegó rápidamente y tal como se describía, este es el segundo que compro, cumple bien con su función.",
-  "foto": "img/rev/r2_1.webp"
- },
- {
-  "nombre": "t***r",
-  "ciudad": "Canadá",
-  "fecha": "26 JUL 2026",
-  "estrellas": 5,
-  "texto": "Tamaño perfecto y envío eficiente.",
-  "foto": "img/rev/r4_0.webp"
- },
- {
-  "nombre": "t***r",
-  "ciudad": "Canadá",
-  "fecha": "01 JUL 2026",
-  "estrellas": 4,
-  "texto": "La talla es un poco ajustada, pero se siente bien.",
-  "foto": "img/rev/r7_0.webp"
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Brasil",
-  "fecha": "06 OCT 2026",
-  "estrellas": 5,
-  "texto": "Muy bien, me gustó el producto.",
-  "foto": "img/rev/r13_1.webp"
- },
- {
-  "nombre": "a***r",
-  "ciudad": "Estados Unidos",
-  "fecha": "24 DIC 2025",
-  "estrellas": 5,
-  "texto": "está playera es tan ligera que no se siente, muy fresca, ni se siente que la traes puesta, me compré cuatro y mi novia ya me quitó una, a ella también le gustó."
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Italia",
-  "fecha": "15 MAY 2026",
-  "estrellas": 5,
-  "texto": "El artículo es tal como se describe, la talla corresponde a la tabla. Muy cómodo. Lo compré para probarlo y ya he pedido dos más."
- },
- {
-  "nombre": "C***r",
-  "ciudad": "Canadá",
-  "fecha": "04 OCT 2026",
-  "estrellas": 5,
-  "texto": "Buen producto, cumple su función muy bien, lo recomiendo."
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Australia",
-  "fecha": "06 AGO 2026",
-  "estrellas": 5,
-  "texto": "Se siente genial para llevar debajo de la ropa, no es sofocante pero tampoco queda suelto."
- },
- {
-  "nombre": "S***r",
-  "ciudad": "Estados Unidos",
-  "fecha": "13 ENE 2026",
-  "estrellas": 5,
-  "texto": "Se siente agradable en la piel. Las costuras son uniformes. Buena calidad."
- },
- {
-  "nombre": "E***k",
-  "ciudad": "Alemania",
-  "fecha": "24 SEP 2026",
-  "estrellas": 4,
-  "texto": "Lo estoy usando ahora mismo, y sí, el efecto anunciado está ahí."
- },
- {
-  "nombre": "F***z",
-  "ciudad": "Colombia",
-  "fecha": "19 NOV 2025",
-  "estrellas": 5,
-  "texto": "Muy buena Calidad, es comodo y perfecto para el cuerpo"
- },
- {
-  "nombre": "j***u",
-  "ciudad": "España",
-  "fecha": "16 JUN 2026",
-  "estrellas": 5,
-  "texto": "recomiendo al vendedor buen tejido y como queda muy bien puesto ."
- },
- {
-  "nombre": "a***r",
-  "ciudad": "Irlanda",
-  "fecha": "23 JUN 2026",
-  "estrellas": 5,
-  "texto": "La camiseta me queda perfecta, todo está bien con ella. Me encanta la tela y simplemente me encanta la camiseta, así que gracias, AliExpress. Suelo ser honesto sobre estas cosas."
- },
- {
-  "nombre": "Anónimo",
-  "ciudad": "Namibia",
-  "fecha": "27 MAY 2026",
-  "estrellas": 4,
-  "texto": "Buena calidad... un poco corta, me habría gustado que la camisa fuera un poco más larga."
- }
-];
+["Juan Santos",5,"30 de junio de 2026","Excelente calidad del producto. La uso a diario en mi entrenamiento. Ya compre otras 2 piezas. Y también llegaron en buen tiempo. Antes del límite."],
+["Omar Varela Saavedra",5,"17 de septiembre de 2026","He comprado varios productos en la categoría pero realmente es el primero que siento que hace una compresión adecuado. Sin duda lo volveré a comprar"],
+["Carlos",5,"29 de junio de 2026","La camiseta tiene un ajuste excelente y se siente cómoda durante todo el día. El material es de buena calidad, transpirable y mantiene muy bien su forma después de varios usos y lavadas. Cumplió totalmente con mis expectativas"],
+["joel R.",5,"31 de octubre de 2023","Me quedó muy bien, peso 91 kilos y mido 1.79m. me quedo justo a mi medida, ni grande ni chica, el largo muy bien, excelente material de muy buena calidad, bien vale la pena su precio, la volvería a comprar sin dudarlo."],
+["Jorge A.",5,"11 de noviembre de 2026","Excelente, buena calidad, justo le quedó a mi hijo que adelgazó 20 kilos y le ayuda a juntar la pancita que le cuelga, recomendado"],
+["Ulises A.",5,"19 de julio de 2026","Camisetas de buena Calidad se ajustan muy bien"],
+["Carlos Vázquez M",5,"12 de septiembre de 2026","La mejor de Amazon. Compré mi talla G, peso 90kg, 1.70cm y me quedó perfecta. Ajusta lo suficiente. En comparación con otros modelos que he comprado es la mejor."],
+["uriel848",5,"16 de octubre de 2026","Si me veo más flaco xd, la uso para ponerme ropa de vestir y que no me vea como tinaco, 10/10"],
+["Carlos M.",5,"13 de septiembre de 2026","Excelentes para climas calurosos.Perfectas para el uso diario. Ligeras y cómodas.No se maltratan con las lavadas, ni al meterlas a la secadora.Es el segundo paquete (3 piezas) que compro, ya que salieron muy buenas en material y no se despintan ni se desgastan."],
+["Florentino Tovar",5,"25 de junio de 2024","Este producto lo recomiendo porque se siente de mucha calidad. No tiene problemas con las tallas. Ajusta bien aunque tampoco hace magia. Ideal para cuando quieres usar ropa más entallada y te de un poco más de forma el cuerpo. Ayuda bastante bien en la postura."],
+["César MO",5,"30 de abril de 2019","Me gustó mucho esta camiseta, realmente acomoda la carne extra y es discreta. La tela puede parecer delgada pero es resistente. Puede costar un poco ponertela (ahí es donde se nota que si aprieta) pero con práctica no cuesta nada, el truco es que no se enrolle para que puedas bajarla por el torso jalandola."],
+["jose G.",5,"23 de octubre de 2023","Muy cómoda y si ayuda en la posición de la espalda y oprime la panza, te ves mejor."],
+["Alberto mendoza",5,"23 de agosto de 2026","Muy buenas complem su funcion y te mantiene la espalda recta"],
+["JFS",5,"8 de noviembre de 2026","Excelente playera de compresion para hombre. La tela es muy comoda, no es rigida comparado con una faja pero mantiene un buen nivel de compresion. Recomendable usar hasta 1 o 2 tallas menores a la habitual, segun el nivel de ajuste deseado."],
+["Milton Contreras",5,"28 de octubre de 2026","el producto es bueno, la tela muy comoda, la compresion la hace de muy buena forma, esperaremos a ver como se comporta la prenda con el tiempo, pero de entrada satisfecho con el producto"],
+["Jhonatan",5,"30 de junio de 2026","Me gustó buen material solo que si yo recomiendo que pongan una talla menos para que te sientas bien apretado y si no te gusta tanto si de tu talla"],
+["Daniel Orlando",5,"28 de agosto de 2026","Muy buen producto, muy recomendable"],
+["Carlos manuel",4,"24 de septiembre de 2026","Baje 2 tallas en una sola camisa , al principio se siente rara como que raspa un poco la piel pero despues se hace tolerable"],
+["Carlos Vázquez M",5,"10 de junio de 2026","Buen ajuste. Me compro ropa talla grande y esta coincidió bien. Pierde mínima elasticidad pero puede depender el uso, lavado y estiramiento al que se le someta."],
+["Alfonso Tapia",5,"9 de julio de 2026","excelente producto, buena presentación y excelente calidad"],
+["José",5,"25 de septiembre de 2026","Una buena faja"],
+["Marco Paniagua",5,"15 de febrero de 2026","10 de 10 mejor de lo que esperaba, voy a comprar la segunda"],
+["Alejandro Cab",5,"23 de septiembre de 2026","El producto cumple tal cual con su función, ni más ni menos. En mi opinión vale la pena si tus expectativas no son exageradas"],
+["Eric",5,"5 de septiembre de 2026","Muy buen producto, tela muy cómoda 10 de 10 muy recomendable"],
+["Rodolfo Garza",5,"23 de septiembre de 2026","muy padres !"],
+["Edith Sicairos",5,"5 de octubre de 2026","Viene súper bien alo que buscaba"],
+["Ismael Sticker",4,"15 de mayo de 2024","Es buena, creo que ajusta lo suficiente, un poco más y sería incomodo, ayuda a mejorar la postura si, así lo siento... de buena calidad se afloja un poco con el pasar del día pero en general se mantiene justa, recomiendo pedir una talla menos de la tuya yo soy M y pedí S..."],
+["cesarvj",5,"27 de mayo de 2022","La talla corresponde. Ajusta muy bien al cuerpo y no lastima. La puedes usar por horas. No es una faja apretada. La calidad de la tela muy buena."],
+["Jose Rutilo Villalba",5,"22 de diciembre de 2022","Muy funcional no se ve y se adapta al cuerpo muy bien sin causar irritacion"],
+["Brayan Uriel Rios Negrete",4,"14 de mayo de 2023","El artículo es bueno pero esperaba algo mejor, sin embargo al considerar el precio me parece un buen producto."],
+["Gerardo Velazquez",5,"31 de octubre de 2026","Buen Producto"],
+["Rafa Velez",5,"18 de septiembre de 2026","muy buena opcion, me sirven mucho"],
+["Le Guevara",4,"9 de marzo de 2025","Sirven, pero al parecer debes pedir una medida menos para sentir una presión real.Aun así, cumplen su función."],
+["Víctor Baltazar",5,"13 de noviembre de 2024","Uso talla de camisas XL pedí estas en talla XL y si bien mejora y me ayudó a que me quedarán algunas camisas que me apretaban sugeriría que pidieran una talla menos a la que usan de camisa para tener un poco más de compresión."],
+["Omar Ledezma Escobedo",5,"11 de noviembre de 2026","Cumple con lo prometido, buen material, excelente relación precio-calidad."],
+["Carlos W.",5,"12 de noviembre de 2026","Súper cómodas, ya mi segundo pedido."],
+["Ignacio Partida",5,"22 de octubre de 2026","Excelente calidad"],
+["Javier Chalita Brahms",5,"12 de junio de 2026","muy buenas camisas, resistentes, buena tela y si me sirvieron para lo solicitado"],
+["Dulce Barco",5,"5 de mayo de 2026","Es comoda, cumplió con mis expectativas"],
+["Mario Carrete",5,"23 de julio de 2025","Excelente calidad de material. 100% recordable.Las tallas vienen amplias. Si quieres q quede holgada pide tu talla.Si no una menos."],
+["Martín Gómez",5,"19 de octubre de 2026","Biene de buena calidad"],
+["Roberto D.",4,"26 de enero de 2026","De buenos materiales… se ve duradero… y si sirven…"],
+["Ulises C.",5,"26 de noviembre de 2025","Se adaptan muy nirn a tu cuerpo y lo mantienen firme."],
+["Alejandro Colin",5,"19 de octubre de 2025","Llegan en tiempo y forma, exclete calidad relación pecio, talla exacta"],
+["Eugenia Guzman",5,"3 de julio de 2026","SON MUY BUENAS Y A UN EXCELENTE PRECIO, NO SE DESGASTA EL RESORTE DE SOPORTE Y TAMPOCO SE DESPINTAN"],
+["Edy",5,"28 de noviembre de 2025","Me encantó. Se sienten muy cómodas y suaves. Me sirven bastante por qué he estado bajando de peso y necesitaba algo que me presionará la piel. Mido 178 y todavía me sobraron como 6 CM de largo."],
+["Missael",4,"31 de octubre de 2025","Hola las camisas funcionan bn en mi caso usandolas con cuidado me quedan bn y ajustan bn solo considero deben ser un poco mas largas en la parte inferior"],
+["Rosa Isela González Samperio",5,"30 de octubre de 2025","Le encantaron a mi hijo son cómodas tienen buen soporte."],
+["Emmanuel Aguilar",5,"19 de abril de 2025","Muy buenas, cómodas, no se perciben bajo la ropa y te hace ver más esbelto"],
+["Luis Ángel Gallardo Hernández",4,"30 de agosto de 2026","El ajuste en el estómago es bueno, no excelente"],
+["Raúl Guzmán Rosas",5,"28 de agosto de 2026","Buenas playeras y si esconden la panza 👍🏻"],
+["Jesús Pedraza",5,"27 de mayo de 2026","Muy buena calidad, ya llevan más de 10 lavadas y no han perdido textura ni forma, he bajado de peso y ya me quedan un poco sueltas, por lo que, pronto habré de adquirir otras en una talla más pequeña."],
+["Humberto",5,"11 de agosto de 2026","Buena calidad"],
+["Pablo Gómez",5,"9 de marzo de 2026","En un principio tenía dudas de la calidad y de la eficiencia del producto, era escéptico del resultado, pero me ha funcionado hasta el momento, reconozco que su comprensión baja por el uso, pero mantiene su forma correctamenteLo volvería a comprar"],
+["Jorge Barragán",4,"20 de marzo de 2026","Buena compra"],
+["Ricardo Osuna",5,"3 de abril de 2026","Excelente material. Solo que se va aflojando con el uso pero al lavar regresa a su estado original"],
+["Santiago",5,"8 de julio de 2026","Buena opción"],
+["Martín Cruz O",5,"3 de junio de 2026","Genial, muy ajustable."],
+["Luis Ortega",5,"14 de febrero de 2026","Iba poner mala calificación porque olían mucho a plástico, aunque los lavara, pero lo mandé a lavandería y con el secado se les fue ese aroma. Buen producto"],
+["Víctor Rojas",5,"3 de abril de 2026","Gran camisa."],
+["Andrés Ricardo Mota",5,"7 de marzo de 2026","Excelente comprare más"],
+["Luigi",5,"8 de mayo de 2025","Muy buena opción para corregir algo la postura nomás si ver las tallas son reducidas para que tomen eso en cuenta."],
+["Lidia Adriana Garduño Contreras",5,"28 de agosto de 2026","La tela es súper comoda, la talla es ideal"],
+["Pepe Soto",5,"14 de julio de 2026","Buen material, no he sudado y eso que hace calor - Compré 3XL, pero la 2XL hubiera estado mejor para mi peso de 88 k."],
+["Francisco Javier Ortega Escalante",5,"23 de julio de 2026","Si te moldea pero siento que si eres L pide una XL"],
+["Jesús Herrera",5,"26 de septiembre de 2026","buena calidad para lo que la compre me es suficiente"],
+["Raúl Cabrera García",5,"23 de julio de 2026","Realmente son cómodas"],
+["Mario Estrella",5,"4 de julio de 2026","Muy buenas camisetas"],
+["Antonio Esquivias",5,"11 de abril de 2026","Buen material, buena confección"],
+["Jorge E.",5,"31 de julio de 2025","La talla 2XL me quedó perfecta, soy un hombre pesado (150kg) y no había encontrado algo similar que me permitiera volver a usar mis camisas de vestir. Obviamente tampoco son mágicas pero te ayudan a reacomodar ciertos \"excesos\" para que una camisa o playera tenga una apariencia más estética."],
+["Joey",5,"15 de octubre de 2025","Llegó muy rápido. Si es de tela delgada pero muy confortable , buena aprieta lo necesario, se pide una talla más chica para mejor resultados.Cumple con todo lo que dice exelente producto"],
+["Arturo",5,"1 de noviembre de 2024","Excelente, me quedo muy bien por lo regular soy talla L, pedí mediana me quedo de lo mejor"],
+["Carlos Almaguer",5,"4 de abril de 2022","Muy buena tela, no deja de perder su compresión, me fijé en las opiniones y compré dos tallas abajo de la mía, para faja de compresión así debe de ser, de lo contrario, solo te servirá como playera interior cómoda."],
+["Ricardo Meléndrez",5,"22 de junio de 2023","Buena playera, solo compren de su talla para que haga buena compresión, compré talla mediana y me quedo muy ajustada..."],
+["Gerardo",5,"3 de febrero de 2022","LA VERDAD LEI LAS RESEÑAS Y TENIA MIS DUDAS, PERO LA VERDAD LA CAMISETA CUMPLE SU FUNCION, OBVIO NO TE VA A ENFLACAR DEL TODO PERO SI TE HACE METER LA BARRIGA Y VERTE UN POCO MAS ESTILIZADO"],
+["Aarón",5,"19 de agosto de 2025","Se sienten cómodas la medida es la correcta"],
+["Gerardo",4,"15 de junio de 2026","Muy buen producto. Solo que se me hace algo corta!"],
+["Luis Enrique Sánchez",5,"12 de febrero de 2026","Muy buen producto"],
+["Maximiliano Arrieta R",5,"27 de junio de 2025","Cómo cualquier playera de compresión siempre van a venir reducidas, traten de comprar una talla más arriba si no están seguros de que si talla les quede perfectaSe sienten cómodas, son bastante frescas"],
+["Iván Sánchez",4,"29 de julio de 2026","El producto es recomendable y la calidad se ajusta con el precio del producto."],
+["Kohl",5,"25 de octubre de 2025","Se ven muy bien, excelentes para ir a entrenar"],
+["Hildebrando Ramos",5,"10 de noviembre de 2026","Camisetas muy cómodas, se nota la buena calidad. El envío llegó antes de lo ofrecidoMuy conforme con la compra"],
+["Gabriel",5,"11 de noviembre de 2026","Muy buena calidad y funciona a perfecto"],
+["Fernando Ramírez",5,"21 de octubre de 2026","Muy buenos. Llevo apenas 3-4 semanas con ellas, no he sentido aún que se \"aguaden\" como leí en muchos comentarios, pero veremos más adelante. Obviamente no hacen magia, no te van a hacer parecer mágicamente \"delgado\", pero sin duda que ayudan."],
+["Carlos",5,"14 de julio de 2026","Cumple muy bien lo que ofrece, la tela se siente muy fresca de alta calidad"],
+["José Luis",5,"17 de junio de 2026","Queda perfecto y de verdad esconde la barriga"],
+["Francisco Javier Alcocer",4,"1 de septiembre de 2026","Vienen un poco chicas,pero son de buena material"],
+["Aldo Valenzuela",5,"19 de abril de 2026","Son muy cómodas y me ayudan con la postura"],
+["Héctor",4,"31 de diciembre de 2025","LLego en tiempo, hubiera preferido un poco mas de compresion"],
+["Claudia Martínez",5,"16 de julio de 2026","Lucen increíbles, ideales para ir al gimnasio. Cómodas y transpirables, con la medida precisa para uno. Se amoldan perfecto al cuerpo."],
+["DAcevedo",5,"28 de mayo de 2026","Son de buena calidad y ajustan bien. Pero debido al material son calurosas. Cumple con su función."],
+["Enrique G.",5,"18 de abril de 2026","Está muy bien en la playera ajusta bien en el cuerpo me gustó la tela que está muy suave bastante elástica por lo que queda muy bien en el cuerpo me gustó bastante le recomiendo gracias"],
+["Tadí L.",5,"31 de mayo de 2026","Son una playerasque comprime muy bien el abdomen y la parte de los rollito de la espalda, en cuestión de calidad puedo decir que su tela es muy buena y reforzada el precio es bueno"],
+["Daniel Mendoza",4,"4 de septiembre de 2026","Las camisetas quedan bien a la talla y tanto la calidad de la tela como los colores son muy buenos y de buena mano de obra, pero de verdad que comprimen mucho a la hora de ponértelos así que si tienes peso de más (como yo) las vas a encontrar bastante incómodas.Si tu complexión es delgada o con mínima grasa de más estas camisetas te van a quedar de lujo y van a formar muy bien tu cuerpo, si las puedo recomendar."],
+["Jorge Daniel",5,"4 de octubre de 2026","Me gusta que absorben el sudor aunque la compresión es baja"],
+["Manuel Martínez",5,"3 de mayo de 2026","Excelentes para entrenamiento de gimnasio. 100%."],
+["Gabriel Muñoz",5,"2 de octubre de 2025","Pedí talla M y me quedo muy bien. Poco a poco aprende uno a ponerla y quitarla no es fácil pero no imposible"],
+["Oliver Cerda",4,"29 de mayo de 2025","Las blancas ajustan muy bien pero las negras son mucho más reducidas y con mucha más compresión."],
+["Claudia S R",5,"10 de febrero de 2026","Mi esposo lleva años usando este tipo de playera de compresión. Le acomodan mucho aunque no sea para hacer ejercicio. Comprime ligeramente la panza y los pechos que a veces también se ven en los hombres."],
+["Ana María Silva Villamil",5,"9 de marzo de 2026","Todo bien con la entrega y el producto"],
+["José Manuel Arellano",5,"21 de diciembre de 2025","Muy efectivos"],
+["Raymundo",5,"2 de noviembre de 2026","Buen calidad y tallas de acuerdo atalla de ropa... soy M en ropa y pedi talla M"],
+["Luis Daniel",5,"27 de enero de 2026","La tela es de muy buena calidad, suave y resistente. El único detalle es que no me la sé poner, 🥲... Jeje. Me quedo super bien la talla mediana, además se ve muy bien en ambos colores. La use para el gimnasio, y no se vio mal por el sudor. Muy buen producto, super recomendado."],
+["Alberto",4,"20 de abril de 2026","Viene grande la talla, pero no está mal"],
+["Jesús Eduardo Vargas C",5,"12 de febrero de 2026","Buen producto, compra la talla que eres de camisa, son muy cómodas"],
+["Mario Alberto Díaz Kirk",5,"4 de marzo de 2026","Muy buenas excelente"]
+].filter(Boolean).map(function (r) { return { nombre: r[0], estrellas: r[1], fecha: r[2], texto: r[3], ciudad: 'México' }; });

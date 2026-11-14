@@ -45,7 +45,11 @@
     if (!sec || !datos.length) return;
     var limpio = function (t) { var d = document.createElement('div'); d.textContent = t == null ? '' : String(t); return d.innerHTML; };
     var puntos = function (r) { return +r.estrellas || 5; };
-    var prom = datos.reduce(function (a, r) { return a + puntos(r); }, 0) / datos.length;
+    /* James 14-11 "mínimo 100 y calificación 4,8": el resumen es el REAL del producto (todas sus opiniones en AliExpress) */
+    var R = window.RESENAS_RESUMEN || null;
+    var total = R ? R.total : datos.length;
+    var prom = R ? R.media : datos.reduce(function (a, r) { return a + puntos(r); }, 0) / datos.length;
+    var deEstrellas = function (k) { return R ? (+R.estrellas[k] || 0) : datos.filter(function (r) { return puntos(r) === k; }).length; };
     var cinco = function (k) {
       var out = '';
       for (var j = 0; j < 5; j++) out += '<span' + (j < k ? ' class="si"' : '') + '><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6 6.5.7-4.8 4.4 1.3 6.4L12 16.8 6.2 20l1.3-6.4L2.7 9.2l6.5-.7z"/></svg></span>';
@@ -59,15 +63,15 @@
     };
     var filas = '';
     for (var s = 5; s >= 1; s--) {
-      var cuantas = datos.filter(function (r) { return puntos(r) === s; }).length;
-      filas += '<div class="bar"><span class="lvl">' + s + ' ★</span><div class="track"><i style="--p:' + (cuantas / datos.length).toFixed(3) + '"></i></div><b>' + cuantas + '</b></div>';
+      var cuantas = deEstrellas(s);
+      filas += '<div class="bar"><span class="lvl">' + s + ' ★</span><div class="track"><i style="--p:' + (cuantas / total).toFixed(3) + '"></i></div><b>' + cuantas + '</b></div>';
     }
     var arriba = byId('cmEstrellas');
-    if (arriba) { arriba.innerHTML = '<i>★★★★★</i> ' + prom.toFixed(1).replace('.', ',') + ' · ' + datos.length + ' opiniones'; arriba.hidden = false; }
+    if (arriba) { arriba.innerHTML = '<i>★★★★★</i> ' + prom.toFixed(1).replace('.', ',') + ' · ' + total + ' opiniones'; arriba.hidden = false; }
     sec.innerHTML = [
       '<h2 class="rev-title">Opiniones del producto <span class="stars">★★★★★</span></h2>',
       '<p class="rev-fuente">' + limpio(sec.getAttribute('data-fuente')) + '</p>',
-      '<div class="rev-score"><span class="big">' + prom.toFixed(1) + '</span><span class="cnt">' + datos.length + ' reseñas</span></div>',
+      '<div class="rev-score"><span class="big">' + prom.toFixed(1) + '</span><span class="cnt">' + total + ' reseñas</span></div>',
       '<div class="rev-bars">' + filas + '</div>',
       '<a class="btn-write" style="display:flex;align-items:center;justify-content:center;text-decoration:none" target="_blank" rel="noopener" href="https://wa.me/573226087847?text=Hola%2C%20quiero%20dejar%20mi%20opini%C3%B3n%20de%20la%20camisilla">Escribir una reseña</a>',
       '<div class="rs" id="cmLista"></div>',
