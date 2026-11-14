@@ -57,6 +57,12 @@
 .cm-oferta s{color:var(--cm-tenue);font-size:20px}
 .cm-oferta span{flex-basis:100%;font-size:15px;color:var(--cm-blanco);letter-spacing:.03em}
 .cm-oferta .cm-ahorro{flex-basis:auto;background:var(--cm-rojo);color:var(--cm-puro);font-weight:700;padding:4px 10px;border-radius:6px;font-size:14px}
+/* James 14-11: precio por unidad arriba y, abajo, la promoción de 2 resaltada */
+.cm-oferta .cm-unidad{flex-basis:auto;flex:1;font-size:14px;color:var(--cm-tenue)}
+.cm-promo{flex-basis:100%;display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin-top:8px;padding:12px 14px;border-radius:14px;border:1px solid var(--cm-rojo);background:rgba(220,38,38,.16);box-shadow:0 0 30px rgba(220,38,38,.25)}
+.cm-promo .cm-promo__rot{flex-basis:100%;font:600 12px/1 'Source Sans 3',sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--cm-rojo2)}
+.cm-oferta .cm-promo b{font:400 44px/1 'Bebas Neue',sans-serif;color:var(--cm-puro)}
+.cm-oferta .cm-promo s{font-size:17px}
 
 /* --- botones con efecto: brillo que cruza + latido + resplandor rojo --- */
 .cm-btn,.cm .cr-btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;padding:14px 20px;border:0;border-radius:14px;cursor:pointer;

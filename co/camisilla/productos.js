@@ -15,10 +15,10 @@ window.PRODUCTOS = [{
   unidad: 'pack',
   packs: [
     { cant: 1, precio: 84900, texto: '1 camisilla', detalle: 'para probarla' },
-    { cant: 2, precio: 129900, antes: 169800, texto: '2 camisillas', detalle: 'una puesta y otra lavándose' },
-    { cant: 3, precio: 155000, antes: 254700, texto: '3 camisillas', detalle: 'una para cada color', nivel: 'Mejor precio' },
+    { cant: 2, precio: 129900, antes: 169800, texto: '2 camisillas', detalle: 'una puesta y otra lavándose', nivel: 'Promoción' },
+    { cant: 3, precio: 155000, antes: 254700, texto: '3 camisillas', detalle: 'una para cada color' },
   ],
-  popular: 2,
+  popular: 1,   /* James 14-11: se promociona la de 2, la que más deja */
   disenoUnidad: 'camisilla',
   disenosTitulo: 'Elige color y talla de cada camisilla',
   disenoVacio: 'Escoge color y talla',
