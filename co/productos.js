@@ -5,6 +5,24 @@
    Las fichas viven en /co/<id>/ (cada una con su propio productos.js; aquí va lo que pinta la portada).
    ============================================================ */
 window.PRODUCTOS = [
+  /* 14-11 James: Camisilla de Compresión Ionfit Pro (Dropi 2082390), ficha en /co/camisilla/.
+     James 14-11: "todo producto que tú crees tienes que poner en la página principal enseguida".
+     Precios aprobados: 1 $84.900 · 2 $129.900 · 3 $155.000; anticipado Wompi $76.400 · $116.900 · $139.500. */
+  {
+    id: 'camisilla', dropiId: 2082390,
+    nombre: 'Camisilla de Compresión Ionfit',
+    sub: 'Abdomen firme y espalda recta bajo tu ropa · negra, gris o blanca · S a 2XL',
+    categoria: 'Moda',
+    etiqueta: 'Nuevo',
+    foto: 'co/camisilla/img/cm-heroe.webp?v=1',
+    nota: { n: 106, prom: '4.9' },
+    packs: [
+      { cant: 1, precio: 84900, texto: '1 camisilla' },
+      { cant: 2, precio: 129900, texto: '2 camisillas' },
+      { cant: 3, precio: 155000, texto: '3 camisillas' },
+    ],
+    anticipado: { pct: 10, precios: [76400, 116900, 139500] },
+  },
   /* 11/12-11 James: Funda navideña para puerta (Dropi 1979374) y Fundas navideñas para silla (2295051 / 2296349).
      Precios aprobados: puerta 1 $75.000 · 2 $109.900 · 3 $124.900 · 4 $139.900 · sillas solas 4 $104.900 · 6 $124.900 (agregadas a la puerta: 4 $70.000 · 6 $90.000); anticipado Wompi −10 %. */
   {
@@ -81,4 +99,5 @@ window.PREGUNTAS = [
 window.PRECIOS_APROBADOS = [119900, 107900,
   67900, 109900, 124900, 139900, 61100, 98900, 112400, 125900,   /* funda de puerta (James 11-11; 1 funda $67.900 el 12-11) */
   94900, 107900, 85400, 97100,                             /* fundas de silla SOLAS (James 11-11; 6 sillas $107.900 el 12-11) */
-  59900, 79900, 53900, 71900];                                   /* gafas de aumento TR90 (James 12-11) */
+  59900, 79900, 53900, 71900,                                    /* gafas de aumento TR90 (James 12-11) */
+  84900, 129900, 155000, 76400, 116900, 139500];                 /* camisilla de compresión (James 14-11) */
