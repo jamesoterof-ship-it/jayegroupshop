@@ -15,7 +15,8 @@
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-ir],[data-pack]');
     if (!b) return;
-    if (b.hasAttribute('data-pack') && window.coElegir) window.coElegir(+b.getAttribute('data-pack'));
+    /* 14-11: data-pago-pre deja marcado "Pago anticipado" (Wompi) en el formulario */
+    if (b.hasAttribute('data-pack') && window.coElegir) window.coElegir(+b.getAttribute('data-pack'), b.hasAttribute('data-pago-pre') ? 'pre' : undefined);
     bajarA(byId(b.getAttribute('data-ir') || 'pedir'));
   });
 

@@ -214,6 +214,15 @@
   .cm-sellos{grid-template-columns:repeat(3,1fr)}
   .cm-dos{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
 }
+/* --- PAGO ANTICIPADO con Wompi, debajo de la promoción (James 14-11 "Sí, esos") --- */
+.cm-wompi{border-radius:18px;padding:14px 16px 16px;margin:0 0 14px}
+.cm-wompi__tit{font:400 34px/1 'Bebas Neue',sans-serif;letter-spacing:.02em;color:#FFFFFF;margin:6px 0 6px}
+.cm-wompi__tit em{font-style:normal;color:#EF4444}
+.cm-wompi__txt{font-size:15px;color:#FAFAFA;margin:0 0 12px}
+.cm-wompi__txt s{color:#94A3B8}
+.cm-wompi__logos{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;background:#FFFFFF;border-radius:12px;padding:9px 12px;margin:0 0 12px}
+.cm-btn--wompi{min-height:56px;font-size:23px}
+
 /* --- VIDEO real (James 14-11 "Ajá") --- */
 .cm-video video{width:100%;max-width:420px;margin:0 auto;aspect-ratio:9/16;object-fit:cover;border-radius:20px;border:1px solid var(--cm-vidrio-borde);box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 50px rgba(220,38,38,.18);background:var(--cm-grafito)}
 

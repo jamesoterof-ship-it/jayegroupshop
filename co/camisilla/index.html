@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&family=Inter:wght@200;300;400;500;600;700;800&display=swap">
 <link rel="preload" as="image" href="img/cm-heroe.webp?v=1">
 <link rel="stylesheet" href="/tienda.css?v=2">
-<link rel="stylesheet" href="camisilla.css?v=5">
+<link rel="stylesheet" href="camisilla.css?v=6">
 <script>
 (function(){var d=document.documentElement;
  var ok=function(){d.classList.add("fuentesListas")};
@@ -101,6 +101,21 @@ window.jayePixel.track('PageView', {});
       <div class="cm-oferta cm-vidrio">
         <b>$84.900</b> <span class="cm-unidad">1 camisilla · pagas al recibir · envío gratis</span>
         <div class="cm-promo"><span class="cm-promo__rot">Promoción</span><b>2 por $129.900</b><s>$169.800</s><span class="cm-ahorro">Ahorras $39.900</span></div>
+      </div>
+      <!-- 14-11 James: sección de PAGO ANTICIPADO con Wompi debajo de la promoción ("Sí, esos": 76.400 / 116.900 / 139.500) -->
+      <div class="cm-wompi cm-vidrio">
+        <span class="cm-promo__rot">Pago anticipado con Wompi</span>
+        <p class="cm-wompi__tit">Paga ahora y ahorra <em>10 %</em></p>
+        <p class="cm-wompi__txt">2 camisillas a <b>$116.900</b> en vez de <s>$129.900</s> · tu pedido sale primero · tarjeta, PSE, Nequi o Bancolombia.</p>
+        <div class="cm-wompi__logos">
+          <img src="/co/img/pago-wompi-oscuro.svg" alt="Wompi" width="71" height="18" loading="lazy">
+          <img src="/img/pagos/visa.svg" alt="Visa" height="20" loading="lazy">
+          <img src="/img/pagos/mastercard.svg" alt="Mastercard" height="20" loading="lazy">
+          <img src="/img/pagos/pse.svg" alt="PSE" height="20" loading="lazy">
+          <img src="/img/pagos/nequi.svg" alt="Nequi" height="20" loading="lazy">
+          <img src="/img/pagos/bancolombia.svg" alt="Bancolombia" height="20" loading="lazy">
+        </div>
+        <button type="button" class="cm-btn cm-btn--wompi" data-pack="1" data-pago-pre data-ir="pedir">Pagar con Wompi: 2 por $116.900</button>
       </div>
       <button type="button" class="cm-btn late" data-pack="1" data-ir="pedir">Pedir 2 por $129.900</button>
       <button type="button" class="cm-btn cm-btn--vidrio" data-ir="beneficio">Ver cómo funciona</button>
@@ -195,7 +210,7 @@ window.jayePixel.track('PageView', {});
     <details class="cm-vidrio"><summary>¿Sirve para la postura?</summary><p>Te ayuda a mantener la espalda recta mientras la llevas puesta y te da soporte en la espalda y el abdomen. No es un producto médico ni reemplaza un tratamiento.</p></details>
     <details class="cm-vidrio"><summary>¿Se nota debajo de la ropa?</summary><p>No. Es delgada y sin mangas: va debajo de la camisa, el polo o la ropa deportiva.</p></details>
     <details class="cm-vidrio"><summary>¿Puedo escoger un color distinto para cada una?</summary><p>Sí. En el formulario escoges el color y la talla de cada camisilla.</p></details>
-    <details class="cm-vidrio"><summary>¿Cómo pago?</summary><p>En efectivo cuando te llega. El envío es gratis a toda Colombia.</p></details>
+    <details class="cm-vidrio"><summary>¿Cómo pago?</summary><p>En efectivo cuando te llega, o por adelantado con Wompi (tarjeta, PSE, Nequi o Bancolombia) y ahorras 10 %. El envío es gratis a toda Colombia.</p></details>
     <details class="cm-vidrio"><summary>¿Cuánto tarda?</summary><p>De 2 a 5 días hábiles según tu ciudad. Te escribimos por WhatsApp para confirmar el pedido.</p></details>
   </section>
 
@@ -292,10 +307,10 @@ window.jayePixel.track('PageView', {});
     </div>
   </footer>
 
-<script src="productos.js?v=3"></script>
+<script src="productos.js?v=4"></script>
 <script src="resenas.js?v=4"></script>
 <script src="../ficha.js?v=10"></script>
-<script src="camisilla.js?v=3"></script>
+<script src="camisilla.js?v=4"></script>
 <!-- WhatsApp como en Chile: solo la bolita verde en la esquina; sube cuando aparece el botón fijo -->
 <style>
 .wa{position:fixed;right:14px;bottom:16px;z-index:61;width:46px;height:46px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s ease,bottom .25s ease}

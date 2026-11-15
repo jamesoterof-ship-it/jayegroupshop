@@ -19,6 +19,8 @@ window.PRODUCTOS = [{
     { cant: 3, precio: 155000, antes: 254700, texto: '3 camisillas', detalle: 'una para cada color' },
   ],
   popular: 1,   /* James 14-11: se promociona la de 2, la que más deja */
+  /* 14-11 James "Sí, esos" + "con wompi": pago anticipado con Wompi, 10 % menos */
+  anticipado: { pct: 10, precios: [76400, 116900, 139500] },
   disenoUnidad: 'camisilla',
   disenosTitulo: 'Elige color y talla de cada camisilla',
   disenoVacio: 'Escoge color y talla',
@@ -31,4 +33,4 @@ window.PRODUCTOS = [{
 }];
 window.PRODUCTO_CO = window.PRODUCTOS[0];
 /* Candado: la página solo vende con los precios que aprobó James (14-11) */
-window.PRECIOS_APROBADOS = [84900, 129900, 155000];
+window.PRECIOS_APROBADOS = [84900, 129900, 155000, 76400, 116900, 139500];
