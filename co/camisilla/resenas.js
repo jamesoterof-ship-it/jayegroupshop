@@ -8,6 +8,8 @@
    Bajadas el 14-11 desde Chrome (páginas públicas de cada producto). */
 /* Resumen: se calcula con estas mismas reseñas (106, promedio 4,86). */
 window.RESENAS_FUENTE = 'Opiniones reales de compradores de México de camisetas de compresión como esta, tal como las escribieron.';
+/* 14-11 James "así sea 3 con foto": fotos REALES que subió cada comprador a su reseña de Amazon México (sin cajas ni marcas) */
+window.RESENAS_FOTOS = {"Maximiliano Arrieta R":"img/rev/mx-max3.webp","Kohl":"img/rev/mx-kohl.webp","Claudia Martínez":"img/rev/mx-clau1.webp","Tadí L.":"img/rev/mx-tadi1.webp"};
 window.RESENAS_CO = [
 ["Juan Santos",5,"30 de junio de 2026","Excelente calidad del producto. La uso a diario en mi entrenamiento. Ya compre otras 2 piezas. Y también llegaron en buen tiempo. Antes del límite."],
 ["Omar Varela Saavedra",5,"17 de septiembre de 2026","He comprado varios productos en la categoría pero realmente es el primero que siento que hace una compresión adecuado. Sin duda lo volveré a comprar"],
@@ -115,4 +117,5 @@ window.RESENAS_CO = [
 ["Alberto",4,"20 de abril de 2026","Viene grande la talla, pero no está mal"],
 ["Jesús Eduardo Vargas C",5,"12 de febrero de 2026","Buen producto, compra la talla que eres de camisa, son muy cómodas"],
 ["Mario Alberto Díaz Kirk",5,"4 de marzo de 2026","Muy buenas excelente"]
-].filter(Boolean).map(function (r) { return { nombre: r[0], estrellas: r[1], fecha: r[2], texto: r[3], ciudad: 'México' }; });
+].filter(Boolean).map(function (r) { return { nombre: r[0], estrellas: r[1], fecha: r[2], texto: r[3], ciudad: 'México', foto: window.RESENAS_FOTOS[r[0]] }; })
+  .sort(function (a, b) { return (b.foto ? 1 : 0) - (a.foto ? 1 : 0); });
