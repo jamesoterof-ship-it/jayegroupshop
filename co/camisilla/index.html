@@ -102,21 +102,6 @@ window.jayePixel.track('PageView', {});
         <b>$84.900</b> <span class="cm-unidad">1 camisilla · pagas al recibir · envío gratis</span>
         <div class="cm-promo"><span class="cm-promo__rot">Promoción</span><b>2 por $129.900</b><s>$169.800</s><span class="cm-ahorro">Ahorras $39.900</span></div>
       </div>
-      <!-- 14-11 James: sección de PAGO ANTICIPADO con Wompi debajo de la promoción ("Sí, esos": 76.400 / 116.900 / 139.500) -->
-      <div class="cm-wompi cm-vidrio">
-        <span class="cm-promo__rot">Pago anticipado con Wompi</span>
-        <p class="cm-wompi__tit">Paga ahora y ahorra <em>10 %</em></p>
-        <p class="cm-wompi__txt">2 camisillas a <b>$116.900</b> en vez de <s>$129.900</s> · tu pedido sale primero · tarjeta, PSE, Nequi o Bancolombia.</p>
-        <div class="cm-wompi__logos">
-          <img src="/co/img/pago-wompi-oscuro.svg" alt="Wompi" width="71" height="18" loading="lazy">
-          <img src="/img/pagos/visa.svg" alt="Visa" height="20" loading="lazy">
-          <img src="/img/pagos/mastercard.svg" alt="Mastercard" height="20" loading="lazy">
-          <img src="/img/pagos/pse.svg" alt="PSE" height="20" loading="lazy">
-          <img src="/img/pagos/nequi.svg" alt="Nequi" height="20" loading="lazy">
-          <img src="/img/pagos/bancolombia.svg" alt="Bancolombia" height="20" loading="lazy">
-        </div>
-        <button type="button" class="cm-btn cm-btn--wompi" data-pack="1" data-pago-pre data-ir="pedir">Pagar con Wompi: 2 por $116.900</button>
-      </div>
       <button type="button" class="cm-btn late" data-pack="1" data-ir="pedir">Pedir 2 por $129.900</button>
       <button type="button" class="cm-btn cm-btn--vidrio" data-ir="beneficio">Ver cómo funciona</button>
     </div>
@@ -229,6 +214,21 @@ window.jayePixel.track('PageView', {});
   <!-- 4 · BOTÓN PRINCIPAL / FORMULARIO (plano: Primary CTA) · motor ../ficha.js -->
   <section class="cm-sec" id="paso3">
     <figure class="cm-foto" style="margin-bottom:26px"><img src="img/cm-oferta.webp?v=2" alt="Packs: 1 por $84.900, 2 por $129.900 y 3 por $155.000" width="1000" height="1000" loading="lazy"></figure>
+    <!-- 14-11 James: sección de PAGO ANTICIPADO con Wompi entre la imagen de la promoción y el formulario ("Sí, esos": 76.400 / 116.900 / 139.500) -->
+    <div class="cm-wompi cm-vidrio" style="margin-bottom:28px">
+      <span class="cm-promo__rot">Pago anticipado con Wompi</span>
+      <p class="cm-wompi__tit">Paga ahora y ahorra <em>10 %</em></p>
+      <p class="cm-wompi__txt">2 camisillas a <b>$116.900</b> en vez de <s>$129.900</s> · tu pedido sale primero · tarjeta, PSE, Nequi o Bancolombia.</p>
+      <div class="cm-wompi__logos">
+        <img src="/co/img/pago-wompi-oscuro.svg" alt="Wompi" width="71" height="18" loading="lazy">
+        <img src="/img/pagos/visa.svg" alt="Visa" height="20" loading="lazy">
+        <img src="/img/pagos/mastercard.svg" alt="Mastercard" height="20" loading="lazy">
+        <img src="/img/pagos/pse.svg" alt="PSE" height="20" loading="lazy">
+        <img src="/img/pagos/nequi.svg" alt="Nequi" height="20" loading="lazy">
+        <img src="/img/pagos/bancolombia.svg" alt="Bancolombia" height="20" loading="lazy">
+      </div>
+      <button type="button" class="cm-btn cm-btn--wompi" data-pack="1" data-pago-pre data-ir="pedir">Pagar con Wompi: 2 por $116.900</button>
+    </div>
     <h2 class="cm-h2">Pide tus <em>camisillas</em></h2>
     <div class="cm-pedir cm-vidrio" id="pedir"></div>
   </section>
