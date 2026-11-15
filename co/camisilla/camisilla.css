@@ -172,6 +172,18 @@
 .pf-err{display:none;color:var(--cm-rojo2);font-size:14px;margin-top:6px}
 .pf-campo.mal .pf-err{display:block}
 .pf-campo.mal input,.pf-campo.mal select{border-color:var(--cm-rojo2)}
+/* paso "¿Cómo quieres pagar?" (contra entrega / anticipado Wompi) · 14-11 James: salía sin estilo */
+.pf-pagos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.pf-pago{position:relative;display:flex;flex-direction:column;gap:6px;text-align:left;background:rgba(39,39,42,.6);color:#FAFAFA;font:400 14px/1.3 'Source Sans 3',sans-serif;border:1px solid var(--cm-vidrio-borde);border-radius:14px;padding:16px 12px 12px;cursor:pointer;transition:border-color 160ms ease,background 160ms ease,box-shadow 160ms ease}
+.pf-pago.sel{border-color:#DC2626;background:rgba(220,38,38,.12);box-shadow:0 0 0 1px #DC2626,0 10px 30px rgba(220,38,38,.25)}
+.pf-pago__tit{font-weight:700;font-size:15px}
+.pf-pago__pr{font:400 28px/1 'Bebas Neue',sans-serif;color:#FFFFFF}
+.pf-pago__sub{color:#94A3B8;font-size:13px}
+.pf-pago__cinta{position:absolute;top:-11px;right:10px;background:#DC2626;color:#FFFFFF;font:400 15px/1 'Bebas Neue',sans-serif;letter-spacing:.06em;padding:5px 10px 4px;border-radius:999px}
+.pf-pago__logos{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:2px;background:#181818;border:1px solid #3F3F46;border-radius:8px;padding:5px 8px;align-self:flex-start}
+.pf-pago__logos img{height:14px;width:auto}
+.pf-pago__ico{display:grid;place-items:center;width:34px;height:34px;border-radius:999px;background:rgba(220,38,38,.18)}
+.pf-pago__ico svg{width:20px;height:20px;fill:none;stroke:#EF4444;stroke-width:1.8}
 .pf-resumen{margin:18px 0;border-radius:14px;background:rgba(0,0,0,.35);padding:12px 14px;border:1px solid var(--cm-vidrio-borde)}
 .pf-resumen div{display:flex;justify-content:space-between;padding:6px 0;color:var(--cm-tenue)}
 .pf-desc span:last-child{color:var(--cm-rojo2);font-weight:700}
