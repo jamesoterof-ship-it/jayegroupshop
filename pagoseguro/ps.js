@@ -50,6 +50,7 @@
     + '.ppDatos a{display:inline !important;background:none !important;padding:0 !important;color:#2563EB !important;font-weight:700;text-decoration:underline}'
     + '.ppLogos{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:16px 0 4px}'
     + '.ppLogos img{height:24px;width:auto}'
+    + '.psFoto{display:block;width:100%;max-width:560px;aspect-ratio:4/5;object-fit:cover;border-radius:18px;margin:14px auto 18px;box-shadow:0 10px 28px rgba(0,0,0,.18)}'
     /* colágeno: la etiqueta del pago anticipado viene con «−10 %» escrito en su CSS */
     + 'body.pp-modo .pagoAnt__tit::before{display:none !important;content:none !important}body.pp-modo .pagoOp__cinta{display:none !important}'
     /* el precio que se ve YA es el de pago anticipado: fuera el «o $X pagando ahora con tarjeta» */
@@ -229,6 +230,33 @@
       + '<div class="ppLogos"><img src="/img/pago/paypal-texto.svg" alt="PayPal"><img src="/img/pago/visa-claro.svg" alt="Visa"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard"><img src="/img/pago/amex.svg" alt="American Express"></div>';
     return s;
   }
+  /* 19-11 James: «más imágenes en las secciones; después de las reseñas hay puro texto». Fotos reales que ya existen
+     (fichas del producto, fotos de clientes, cuadros del video real del proveedor, sin letras chinas ni otras marcas). */
+  var FOTOS = {
+    lentes: [
+      ['.gm-lectura', null, 'img/gafas-pantalla.webp?v=1', 'Lentes TR90 para leer el celular'],
+      ['.gm-cl', null, 'img/gafas-terraza.webp?v=1', 'Lentes TR90 para ver de cerca y de lejos'],
+      ['.form-sec', null, '/pagoseguro/img/lentes-resiste-26.webp', 'Lentes TR90 resistentes a los golpes'],
+      ['.cmp-sec', null, '/pagoseguro/img/lentes-resiste-22.webp', 'Prueba de resistencia de los lentes TR90'],
+      ['.desc', /EL PRODUCTO/i, 'img/hero-gafas.webp?v=1', 'Lentes TR90 Pro Titanium'],
+      ['.res-sec', null, 'img/res-gafas-6.webp', 'Así llegan los lentes a tu casa'],
+      ['.gar-sec', null, '/pagoseguro/img/lentes-resiste-30.webp', 'Los lentes siguen enteros después del martillo'],
+      ['section.bloque', /Preguntas frecuentes/i, 'img/res-gafas-8.webp', 'Foto de un cliente con sus lentes'],
+      ['.desc', /POR QU[ÉE] LO QUIERES/i, 'img/gafas-letra.webp?v=1', 'Lentes TR90 para leer de cerca']
+    ]
+  };
+  function ponerFotos(prod) {
+    (FOTOS[prod] || []).forEach(function (f) {
+      var sec = Array.prototype.slice.call(document.querySelectorAll(f[0])).find(function (s) {
+        return !s.querySelector('.psFoto') && (!f[1] || f[1].test(s.innerText || ''));
+      });
+      if (!sec) return;
+      var im = document.createElement('img');
+      im.className = 'psFoto'; im.src = f[2]; im.alt = f[3]; im.loading = 'lazy'; im.decoding = 'async';
+      var tit = sec.querySelector('h2, .tit2, h3');
+      if (tit && tit.parentNode) tit.parentNode.insertBefore(im, tit.nextSibling); else sec.insertBefore(im, sec.firstChild);
+    });
+  }
   function soloPayPal(c) {
     document.body.classList.add('pp-modo');
     limpiarTextos(); arreglarEnlaces(document); vigilar();
@@ -239,6 +267,7 @@
     if (baj) baj.textContent = 'Sale con envío prioritario apenas se confirma tu pago. Te mandamos la guía por WhatsApp.';
     var form = document.getElementById('pedir');
     if (form && !document.getElementById('confianza')) form.parentNode.insertBefore(seccionConfianza(), form);
+    ponerFotos(PS.prod);
     /* 19-11 James: solo las transportadoras que de verdad despachan (Veloces, Coordi, Quality-Post) */
     document.querySelectorAll('img').forEach(function (im) { if (/logos\/(ampm|afimex|tiui)\./i.test(im.getAttribute('src') || '')) im.style.display = 'none'; });
     /* candado: nunca sale un pedido contra entrega desde esta tienda */
