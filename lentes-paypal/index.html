@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 19-11-2026 · PÁGINA PAYPAL DE LENTES (James: "página aparte", "solo pago anticipado", mismas secciones, hero de Europa).
+     No copia la página de lentes: carga la MISMA ficha (/lentes/) con <base>, y encima aplica el modo "solo PayPal":
+     precios 399 / 525 / 665 (aprobados por James el 19-11), sin pago al recibir, y una sección de confianza.
+     Diseño de la sección nueva: skill ui-ux-pro-max (19-11, "Lentes PayPal Mexico"): azul #2563EB, verde #059669,
+     fondo #F8FAFC, títulos Be Vietnam Pro. La página de contra entrega (/lentes/) NO se toca. -->
+<base href="/lentes/">
+<meta name="facebook-domain-verification" content="bh17zp72fh5ewf4yle14ommqnjdgcx" />
+<title>Lentes TR90 Pro Titanium · Pago seguro con PayPal · Jaye Group México</title>
+<meta name="description" content="Paga seguro con PayPal o tarjeta y recibe tus lentes con envío prioritario a todo México.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--pp-azul:#2563EB;--pp-azul2:#3B82F6;--pp-verde:#059669;--pp-fondo:#F8FAFC;--pp-tinta:#0F172A;--pp-suave:#475569;--pp-borde:#E4ECFC}
+#ppCarga{min-height:100vh;display:flex;align-items:center;justify-content:center;font:600 15px 'Noto Sans',sans-serif;color:var(--pp-suave);background:var(--pp-fondo)}
+/* ---- sección de confianza (nueva) ---- */
+.ppConf{background:var(--pp-fondo);padding:30px 16px 8px;margin-top:26px}
+.ppConf h2{font-family:'Be Vietnam Pro','Noto Sans',sans-serif;font-weight:800;font-size:clamp(22px,5.4vw,30px);line-height:1.15;color:var(--pp-tinta);text-align:center;margin:0 0 6px}
+.ppConf .ppSub{font-family:'Noto Sans',sans-serif;font-size:15px;color:var(--pp-suave);text-align:center;margin:0 auto 18px;max-width:46ch;line-height:1.55}
+.ppEscudo{max-width:560px;margin:0 auto 16px;background:#fff;border:2px solid var(--pp-azul);border-radius:16px;padding:16px;display:flex;gap:14px;align-items:center;box-shadow:0 10px 26px rgba(37,99,235,.14)}
+.ppEscudo svg{flex:none;width:46px;height:46px}
+.ppEscudo b{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:16.5px;color:var(--pp-tinta);margin-bottom:3px}
+.ppEscudo span{font-family:'Noto Sans',sans-serif;font-size:14px;color:var(--pp-suave);line-height:1.5}
+.ppGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:560px;margin:0 auto}
+.ppItem{background:#fff;border:1px solid var(--pp-borde);border-radius:14px;padding:14px 12px;transition:transform .15s ease,box-shadow .15s ease}
+.ppItem:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,23,42,.08)}
+.ppItem svg{width:26px;height:26px;stroke:var(--pp-verde);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block;margin-bottom:7px}
+.ppItem b{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:14.5px;color:var(--pp-tinta);margin-bottom:3px}
+.ppItem span{font-family:'Noto Sans',sans-serif;font-size:13px;color:var(--pp-suave);line-height:1.45}
+.ppLogos{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:16px 0 4px}
+.ppLogos img{height:24px;width:auto}
+.ppDato{text-align:center;font-family:'Noto Sans',sans-serif;font-size:13px;color:var(--pp-suave);margin:8px 0 0}
+.ppDato b{color:var(--pp-verde)}
+@media (prefers-reduced-motion:reduce){.ppItem{transition:none}.ppItem:hover{transform:none}}
+/* la ficha de lentes es oscura y pisa los colores: aquí se fijan para que se lea */
+body.pp-modo section.ppConf{background:#F8FAFC !important;border-radius:20px;margin:26px 12px 0;padding:28px 14px 18px}
+body.pp-modo .ppConf h2{color:#0F172A !important}
+body.pp-modo .ppConf .ppSub,body.pp-modo .ppConf .ppEscudo span,body.pp-modo .ppConf .ppItem span{color:#475569 !important}
+body.pp-modo .ppConf .ppEscudo b,body.pp-modo .ppConf .ppItem b{color:#0F172A !important}
+body.pp-modo .ppConf .ppEscudo,body.pp-modo .ppConf .ppItem{background:#fff !important}
+/* sin la opción de pagar al recibir */
+body.pp-modo .pagoOp[data-pago="cod"]{display:none !important}
+body.pp-modo .pagoSel{grid-template-columns:1fr !important}
+/* James 19-11: las letras NO pueden tapar el lente. En computadora el título bajaba hasta el cristal:
+   la foto se muestra desde más abajo (el lente baja) y el título es un poco más chico. */
+@media (min-width:700px){
+  body.pp-modo .heroP .heroP__img{object-position:50% 100% !important}
+  body.pp-modo .heroP .heroP__h1{font-size:clamp(30px,3.6vw,46px) !important;line-height:1.02 !important}
+}
+</style>
+<script>window.__P = 'gafas'; window.MODO_PAYPAL = true;</script>
+</head>
+<body>
+<div id="ppCarga">Cargando…</div>
+<script>
+/* Carga la ficha de lentes de México tal cual y le aplica el modo PayPal.
+   Si algo falla, manda a la ficha normal para no dejar al cliente en blanco. */
+(function () {
+  var PRE = [399, 525, 665], COD = [479, 629, 799];
+  function txt(s) {
+    return String(s)
+      .replace(/Pagas cuando lo recibes/g, 'Pago protegido con PayPal')
+      .replace(/Pago contra entrega en todo México/g, 'Pago seguro con PayPal o tarjeta');
+  }
+  /* ---- ajustes al producto, ANTES de que ficha.js lo pinte ---- */
+  function ajustarProducto() {
+    var p = (window.PRODUCTOS || []).find(function (x) { return x.id === 'gafas'; });
+    if (!p) return;
+    p.packs.forEach(function (k, i) { k.antes = COD[i]; k.precio = PRE[i]; });
+    p.anticipado = { pct: 17, precios: PRE.slice(),
+      titulo: 'Paga con PayPal o tarjeta',
+      envio: 'Envío prioritario: tu pedido sale primero',
+      sub: 'Pago protegido por PayPal. Débito, crédito o saldo PayPal.' };
+    if (p.hero && p.hero.datos) p.hero.datos = [['envio', 'Envío gratis prioritario'], ['reloj', 'En 2 a 5 días'], ['pago', 'Pago protegido por PayPal']];
+    if (p.escasez) p.escasez.nota = 'Se despachan desde la bodega en Ciudad de México en cuanto se confirma tu pago. Te mandamos tu número de guía por WhatsApp.';
+    p.preguntas = [
+      { q: '¿Es seguro pagar por adelantado?', a: 'Sí. Pagas con PayPal o con tu tarjeta a través de PayPal: nosotros nunca vemos los datos de tu tarjeta. Si el pedido no te llega, la Protección al Comprador de PayPal te devuelve tu dinero.' },
+      { q: '¿Qué pasa si no me llega?', a: 'Te mandamos el número de guía por WhatsApp para que lo sigas. Si no llega, nos escribes y lo resolvemos; además puedes abrir un reclamo en PayPal con su Protección al Comprador.' },
+      { q: '¿Tengo que tener cuenta de PayPal?', a: 'No. Puedes pagar con tarjeta de débito o crédito sin crear cuenta.' },
+      { q: '¿Cuánto tarda?', a: 'Tu pedido sale con envío prioritario apenas se confirma el pago. Llega entre 2 y 5 días hábiles según tu ciudad, sin costo de envío.' },
+      { q: '¿Tengo que elegir graduación?', a: 'No. Es un solo modelo para lectura: miras por la parte de abajo para leer de cerca y por la de arriba para ver más lejos. Si tienes una graduación alta o algún problema de la vista, consulta con tu óptico.' },
+      { q: '¿Por qué el pack de 2?', a: 'Es el más elegido: unos para la casa y otros para la bolsa o el carro, o un par para ti y otro para tu pareja.' }
+    ];
+    window.PRECIOS_APROBADOS = PRE.slice();
+  }
+  /* ---- después de pintar: solo PayPal + sección de confianza ---- */
+  function seccionConfianza() {
+    var s = document.createElement('section');
+    s.className = 'ppConf'; s.id = 'confianza';
+    s.innerHTML = '<h2>Tu compra está protegida</h2>'
+      + '<p class="ppSub">Pagas con PayPal, la forma más segura de pagar en línea. Si tu pedido no llega, recuperas tu dinero.</p>'
+      + '<div class="ppEscudo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 7 10v12c0 11 7.4 19.6 17 22 9.6-2.4 17-11 17-22V10L24 4z" fill="#2563EB"/><path d="m16 24 6 6 11-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      + '<div><b>Protección al Comprador de PayPal</b><span>Si no recibes tu pedido, PayPal te devuelve el dinero. Nosotros nunca vemos los datos de tu tarjeta.</span></div></div>'
+      + '<div class="ppGrid">'
+      + '<div class="ppItem"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><b>Envío prioritario</b><span>Tu pedido sale primero, sin costo de envío.</span></div>'
+      + '<div class="ppItem"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg><b>Guía por WhatsApp</b><span>Te mandamos tu número de guía para que sigas tu pedido.</span></div>'
+      + '<div class="ppItem"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><b>Tarjeta o PayPal</b><span>Débito o crédito, sin crear cuenta.</span></div>'
+      + '<div class="ppItem"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><b>Clientes reales</b><span>Lee abajo lo que dicen quienes ya los usan.</span></div>'
+      + '</div>'
+      + '<div class="ppLogos"><img src="/img/pago/paypal-texto.svg" alt="PayPal"><img src="/img/pago/visa-claro.svg" alt="Visa"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard"><img src="/img/pago/amex.svg" alt="American Express"></div>';
+    return s;
+  }
+  /* textos de contra entrega que pinta la ficha: aquí se dice la verdad, se paga antes con PayPal */
+  var CAMBIOS = [
+    [/pagas cuando lo recibes en tu casa/gi, 'pagas seguro con PayPal'],
+    [/por adelantado: pagas al recibir/gi, 'tu compra protegida por PayPal'],
+    [/Al repartidor, cuando lo tienes en la mano/gi, 'Con PayPal o tarjeta, antes del envío'],
+    [/pago al recibir/gi, 'pago seguro con PayPal'],
+    [/Pagas al recibir/g, 'Pago protegido por PayPal'],
+    [/pagas al recibir/g, 'pago protegido por PayPal'],
+    [/Pagas cuando lo recibes/g, 'Pago protegido con PayPal'],
+    [/contra entrega/gi, 'con PayPal']
+  ];
+  function limpiarTextos(raiz) {
+    var w = document.createTreeWalker(raiz || document.body, NodeFilter.SHOW_TEXT, null), n;
+    while ((n = w.nextNode())) {
+      if (n.parentNode && /^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) continue;
+      if (n.parentNode && n.parentNode.closest && n.parentNode.closest('#confianza, .pie .acepto')) continue;
+      var v = n.nodeValue, nv = v;
+      CAMBIOS.forEach(function (c) { nv = nv.replace(c[0], c[1]); });
+      if (nv !== v) n.nodeValue = nv;
+    }
+  }
+  function soloPayPal() {
+    document.body.classList.add('pp-modo');
+    limpiarTextos();
+    if (!window._ppObs) {
+      window._ppObs = new MutationObserver(function (ms) { ms.forEach(function (m) { m.addedNodes.forEach(function (x) { if (x.nodeType === 1) limpiarTextos(x); }); }); });
+      window._ppObs.observe(document.body, { childList: true, subtree: true });
+      document.title = 'Lentes TR90 Pro Titanium · Pago seguro con PayPal · Jaye Group México';
+    }
+    var pre = document.querySelector('.pagoOp[data-pago="pre"]');
+    if (pre && pre.getAttribute('aria-checked') !== 'true') pre.click();
+    var badge = document.querySelector('.cod-badge');
+    if (badge) badge.innerHTML = badge.innerHTML.replace(/Pago 100% seguro contra entrega/, 'Pago 100% seguro con PayPal');
+    var baj = document.querySelector('#pedir .baj');
+    if (baj) baj.textContent = 'Sale con envío prioritario apenas se confirma tu pago. Te mandamos la guía por WhatsApp.';
+    var form = document.getElementById('pedir');
+    if (form && !document.getElementById('confianza')) form.parentNode.insertBefore(seccionConfianza(), form);
+    document.querySelectorAll('.pagos span').forEach(function (s) { if (/Pago al recibir/.test(s.textContent)) s.remove(); });
+    /* candado: nunca se manda un pedido contra entrega desde esta página */
+    var f = document.getElementById('fPedido');
+    if (f && !f._ppCandado) {
+      f._ppCandado = true;
+      f.addEventListener('submit', function () {
+        var p2 = document.querySelector('.pagoOp[data-pago="pre"]');
+        if (p2 && p2.getAttribute('aria-checked') !== 'true') p2.click();
+      }, true);
+    }
+  }
+  /* con <base href="/lentes/"> un "#pedir" saltaría a la otra página: se queda en esta */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    e.preventDefault();
+    var el = id && document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, true);
+
+  function cargarScript(s) {
+    return new Promise(function (ok) {
+      var n = document.createElement('script');
+      if (s.src) { n.src = s.getAttribute('src'); n.onload = ok; n.onerror = ok; document.body.appendChild(n); }
+      else { n.textContent = s.textContent; document.body.appendChild(n); ok(); }
+    });
+  }
+  fetch('/lentes/index.html', { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (html) {
+    var d = new DOMParser().parseFromString(html, 'text/html');
+    d.head.querySelectorAll('link[rel="stylesheet"], style').forEach(function (n) { document.head.appendChild(n.cloneNode(true)); });
+    document.documentElement.classList.add('ba-lista');
+    setTimeout(function () { document.documentElement.classList.add('ba-visto'); }, 3000);
+    var scripts = Array.prototype.slice.call(d.body.querySelectorAll('script'));
+    scripts.forEach(function (s) { s.parentNode.removeChild(s); });
+    document.body.className = d.body.className;
+    var carga = document.getElementById('ppCarga');
+    var cont = document.createElement('div');
+    cont.innerHTML = txt(d.body.innerHTML);
+    while (cont.firstChild) document.body.insertBefore(cont.firstChild, carga);
+    carga.remove();
+    var cadena = Promise.resolve();
+    scripts.forEach(function (s) {
+      cadena = cadena.then(function () {
+        if (/ficha\.js/.test(s.getAttribute('src') || '')) ajustarProducto();
+        return cargarScript(s);
+      });
+    });
+    return cadena;
+  }).then(function () {
+    var intentos = 0;
+    (function esperar() {
+      if (document.querySelector('.pagoOp[data-pago="pre"]')) { soloPayPal(); return; }
+      if (++intentos < 60) setTimeout(esperar, 150);
+    })();
+  }).catch(function () { location.replace('/lentes/'); });
+})();
+</script>
+</body>
+</html>
