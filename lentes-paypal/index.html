@@ -118,8 +118,8 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
     if (p.hero && p.hero.datos) p.hero.datos = [['envio', 'Envío gratis prioritario'], ['reloj', 'En 2 a 5 días'], ['pago', 'Pago protegido por PayPal']];
     if (p.escasez) p.escasez.nota = 'Se despachan desde la bodega en Ciudad de México en cuanto se confirma tu pago. Te mandamos tu número de guía por WhatsApp.';
     p.preguntas = [
-      { q: '¿Es seguro pagar por adelantado?', a: 'Sí. Pagas con PayPal o con tu tarjeta a través de PayPal: nosotros nunca vemos los datos de tu tarjeta. Si el pedido no te llega, la Protección al Comprador de PayPal te devuelve tu dinero.' },
-      { q: '¿Qué pasa si no me llega?', a: 'Te mandamos el número de guía por WhatsApp para que lo sigas. Si no llega, nos escribes y lo resolvemos; además puedes abrir un reclamo en PayPal con su Protección al Comprador.' },
+      { q: '¿Es seguro pagar por adelantado?', a: 'Sí. Pagas con PayPal o con tu tarjeta a través de PayPal: nosotros nunca vemos los datos de tu tarjeta. Tu pago queda protegido por PayPal.' },
+      { q: '¿Cómo sigo mi pedido?', a: 'Apenas sale de nuestra bodega en Ciudad de México te mandamos el número de guía por WhatsApp para que lo sigas hasta tu puerta.' },
       { q: '¿Tienen garantía?', a: 'Sí: 15 días de garantía de cambio. Si tus lentes llegan con algún defecto o no son lo que pediste, nos escribes por WhatsApp y te los cambiamos. Además, tu pago está cubierto por la Protección al Comprador de PayPal.' },
       { q: '¿Qué recibo exactamente?', a: 'Los lentes TR90 Pro Titanium sin marco, en la cantidad de tu pack (1, 2 o 3 pares). Es un solo modelo para lectura, no hay que elegir graduación. No incluyen funda.' },
       { q: '¿Tengo que tener cuenta de PayPal?', a: 'No. Puedes pagar con tarjeta de débito o crédito sin crear cuenta.' },
@@ -134,9 +134,9 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
     var s = document.createElement('section');
     s.className = 'ppConf'; s.id = 'confianza';
     s.innerHTML = '<h2>Tu compra está protegida</h2>'
-      + '<p class="ppSub">Pagas con PayPal, la forma más segura de pagar en línea. Si tu pedido no llega, recuperas tu dinero.</p>'
+      + '<p class="ppSub">Pagas con PayPal, la forma más segura de pagar en línea, y tu pedido sale con entrega prioritaria.</p>'
       + '<div class="ppEscudo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 7 10v12c0 11 7.4 19.6 17 22 9.6-2.4 17-11 17-22V10L24 4z" fill="#2563EB"/><path d="m16 24 6 6 11-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-      + '<div><b>Protección al Comprador de PayPal</b><span>Si no recibes tu pedido, PayPal te devuelve el dinero. Nosotros nunca vemos los datos de tu tarjeta.</span></div></div>'
+      + '<div><b>Protección al Comprador de PayPal</b><span>Tu pago queda protegido por PayPal. Nosotros nunca vemos los datos de tu tarjeta.</span></div></div>'
       + '<div class="ppGrid">'
       + '<div class="ppItem"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><b>Envío prioritario</b><span>Tu pedido sale primero, sin costo de envío.</span></div>'
       + '<div class="ppItem"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg><b>Guía por WhatsApp</b><span>Te mandamos tu número de guía para que sigas tu pedido.</span></div>'
