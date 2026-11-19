@@ -80,6 +80,32 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
       .replace(/Pagas cuando lo recibes/g, 'Pago protegido con PayPal')
       .replace(/Pago contra entrega en todo México/g, 'Pago seguro con PayPal o tarjeta');
   }
+  /* ---- 19-11 James: «claro, si no cómo aprende Meta». La COMPRA del píxel sale solo cuando PayPal
+     confirma el pago (paypal-captura-mx responde ok), no al llenar el formulario. Mismo event_id:
+     el servidor (CAPI Ventas México) también la manda recién cuando deja de estar PAGO PENDIENTE. ---- */
+  function guardarCompra() {
+    var jp = window.jayePixel;
+    if (!jp || !jp.track || jp.__pp) return;
+    var orig = jp.track, pend = null;
+    jp.track = function (ev, obj, id) {
+      if (ev === 'Purchase' && !window._ppPagado) { pend = [ev, obj, id]; return id; }
+      return orig.call(jp, ev, obj, id);
+    };
+    jp.__pp = true;
+    var fe = window.fetch;
+    window.fetch = function (u) {
+      var p = fe.apply(this, arguments);
+      if (String(u).indexOf('/webhook/paypal-captura') >= 0) {
+        p.then(function (r) { return r.clone().json(); }).then(function (j) {
+          if (j && j.ok && !window._ppPagado) {
+            window._ppPagado = true;
+            if (pend) { orig.apply(jp, pend); pend = null; }
+          }
+        }).catch(function () {});
+      }
+      return p;
+    };
+  }
   /* ---- ajustes al producto, ANTES de que ficha.js lo pinte ---- */
   function ajustarProducto() {
     var p = (window.PRODUCTOS || []).find(function (x) { return x.id === 'gafas'; });
@@ -210,7 +236,9 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
     d.head.querySelectorAll('link[rel="stylesheet"], style').forEach(function (n) { document.head.appendChild(n.cloneNode(true)); });
     document.documentElement.classList.add('ba-lista');
     setTimeout(function () { document.documentElement.classList.add('ba-visto'); }, 3000);
-    var scripts = Array.prototype.slice.call(d.body.querySelectorAll('script'));
+    /* 19-11: el PÍXEL de México vive en el <head> de /lentes/ y no se copiaba: la página PayPal no le avisaba nada a Meta */
+    var pix = Array.prototype.slice.call(d.head.querySelectorAll('script')).filter(function (s) { return /_cargarPixel|jayePixel/.test(s.textContent); });
+    var scripts = pix.concat(Array.prototype.slice.call(d.body.querySelectorAll('script')));
     scripts.forEach(function (s) { s.parentNode.removeChild(s); });
     document.body.className = d.body.className;
     var carga = document.getElementById('ppCarga');
@@ -221,7 +249,7 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
     var cadena = Promise.resolve();
     scripts.forEach(function (s) {
       cadena = cadena.then(function () {
-        if (/ficha\.js/.test(s.getAttribute('src') || '')) ajustarProducto();
+        if (/ficha\.js/.test(s.getAttribute('src') || '')) { guardarCompra(); ajustarProducto(); }
         return cargarScript(s);
       });
     });
