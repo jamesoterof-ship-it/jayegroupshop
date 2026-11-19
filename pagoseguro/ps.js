@@ -51,7 +51,7 @@
     + '.ppLogos{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:16px 0 4px}'
     + '.ppLogos img{height:24px;width:auto}'
     /* colágeno: la etiqueta del pago anticipado viene con «−10 %» escrito en su CSS */
-    + 'body.ps-colageno .pagoAnt__tit::before{content:"−14 %" !important}'
+    + 'body.pp-modo .pagoAnt__tit::before{display:none !important;content:none !important}body.pp-modo .pagoOp__cinta{display:none !important}'
     /* el precio que se ve YA es el de pago anticipado: fuera el «o $X pagando ahora con tarjeta» */
     + 'body.pp-modo .preTop,body.pp-modo .promo-tarjeta{display:none !important}'
     /* James 19-11 (lentes): las letras NO pueden tapar el lente en computadora */
@@ -81,32 +81,32 @@
     [/garantía de satisfacción/g, 'garantía por defecto de fábrica'],
     [/Sí\. Tienes 30 días desde que lo recibes para pedir la devolución si no quedas conforme\. Revisa la Política de Reembolso\./g, 'Sí: 30 días de garantía por defecto de fábrica. Si llega dañado, en mal estado o distinto a lo que pediste, escríbenos por WhatsApp dentro de los 14 días siguientes a la entrega, con una foto, y lo resolvemos.'],
     [/Pagas en efectivo cuando recibes el producto, en tu propia dirección\. No pagas nada por adelantado ni dejas datos de tarjeta\./g, 'Con PayPal o con tarjeta de débito o crédito a través de PayPal, sin crear cuenta. Nosotros nunca vemos los datos de tu tarjeta.'],
-    [/Paga al recibir o con tarjeta y ahorra 10 %/g, 'Paga con PayPal o tarjeta y ahorra 14 %'],
-    [/^10 % de descuento$/, '14 % de descuento'],
-    [/^−10( | )?%$/, '−14 %'],
+    [/Paga al recibir o con tarjeta y ahorra 10 %/g, 'Pago seguro con PayPal o tarjeta'],
+    [/^10 % de descuento$/, 'Entrega prioritaria'],
+    [/^−10( | )?%$/, 'PayPal'],
     [/^Devolución 100 ?%$/, '30 días de garantía'],
     [/^Sin preguntas$/, 'Cambio sin costo']
   ];
   /* lo que algunas fichas traen escrito a mano en su HTML (precios y textos), por producto */
   var HTMLX = {
     cucarachas: [
-      ['<span class="ya">$449</span><s>$629</s><span class="desc">−29 %</span>', '<span class="ya">$386</span><s>$449</s><span class="desc">−14 %</span>'],
+      ['<span class="ya">$449</span><s>$629</s><span class="desc">−29 %</span>', '<span class="ya">$386</span><s>$629</s><span class="desc">−39 %</span>'],
       ['POR <b>1 CAJA</b> · 2 cajas $599 · 3 cajas $649', 'POR <b>1 CAJA</b> · 2 cajas $515 · 3 cajas $558'],
-      ['<p class="heroe__pre">o $404 pagando ahora con tarjeta · −10 % y entrega prioritaria</p>', '<p class="heroe__pre">Pago seguro con PayPal o tarjeta · −14 % y entrega prioritaria</p>'],
+      ['<p class="heroe__pre">o $404 pagando ahora con tarjeta · −10 % y entrega prioritaria</p>', '<p class="heroe__pre">Pago seguro con PayPal o tarjeta · entrega prioritaria</p>'],
       ['Lo quiero, pago al recibir', 'Lo quiero, pago seguro'],
-      ['Envío gratis · Pagas al recibir o con tarjeta y ahorras 10 %', 'Envío gratis · Pagas con PayPal o tarjeta y ahorras 14 %'],
+      ['Envío gratis · Pagas al recibir o con tarjeta y ahorras 10 %', 'Envío gratis · Pago seguro con PayPal o tarjeta'],
       ['<b>$599</b><span>por 2 cajas</span>', '<b>$515</b><span>por 2 cajas</span>'],
       ['Pagas al recibir, con envío gratis a todo México', 'Pagas seguro con PayPal o tarjeta, con envío gratis a todo México'],
-      ['<s>$839</s><b>$599</b><em>−29 %</em>', '<s>$599</s><b>$515</b><em>−14 %</em>'],
-      ['$299.50 cada caja · ahorras $240', '$257.50 cada caja · ahorras $84'],
+      ['<s>$839</s><b>$599</b><em>−29 %</em>', '<s>$839</s><b>$515</b><em>−39 %</em>'],
+      ['$299.50 cada caja · ahorras $240', '$257.50 cada caja · ahorras $324'],
       ['o $539 pagando ahora con tarjeta · −10 % y entrega prioritaria', 'Pago seguro con PayPal o tarjeta · entrega prioritaria'],
-      ['<span class="chip">−10 %</span>Paga con tarjeta y gana', '<span class="chip">−14 %</span>Paga con tarjeta y gana'],
-      ['<b>10 % de descuento</b> en todos los paquetes', '<b>14 % de descuento</b> en todos los paquetes'],
+      ['<span class="chip">−10 %</span>Paga con tarjeta y gana', '<span class="chip">PayPal</span>Paga seguro y gana'],
+      ['<b>10 % de descuento</b> en todos los paquetes', '<b>Entrega prioritaria</b> en todos los paquetes'],
       ['<b>$0</b><span>por adelantado: pagas al recibir</span>', '<b>100 %</b><span>pago protegido por PayPal</span>'],
       ['<summary>¿Cómo pago?</summary><p>Contra entrega: pagas en efectivo al repartidor cuando recibes el paquete. Si prefieres, pagas ahora con tarjeta con 10 % de descuento y entrega prioritaria.</p>',
        '<summary>¿Cómo pago?</summary><p>Con PayPal o con tarjeta de débito o crédito a través de PayPal, sin crear cuenta. Nosotros nunca vemos los datos de tu tarjeta.</p>'],
       ['Desde $449 · envío gratis y pagas cuando lo recibes', 'Desde $386 · envío gratis y pago seguro con PayPal'],
-      ['Lo despachamos hoy. Pagas al recibir o con tarjeta y ahorras el 10 %.', 'Lo despachamos en cuanto se confirma tu pago. Pagas con PayPal o tarjeta y ahorras el 14 %.'],
+      ['Lo despachamos hoy. Pagas al recibir o con tarjeta y ahorras el 10 %.', 'Lo despachamos en cuanto se confirma tu pago. Pagas seguro con PayPal o tarjeta.'],
       ['Lo quiero · $449 al recibir', 'Lo quiero · $386 pago seguro']
     ]
   };
@@ -184,7 +184,7 @@
     var p = (window.PRODUCTOS || []).find(function (x) { return x.id === c.id; });
     if (!p) return;
     /* colágeno y Brain leen el precio anticipado de cada pack en `pre` */
-    p.packs.forEach(function (k, i) { if (c.PRE[i] != null) { k.antes = c.COD[i]; k.precio = c.PRE[i]; if ('pre' in k) k.pre = c.PRE[i]; } });
+    p.packs.forEach(function (k, i) { if (c.PRE[i] != null) { k.precio = c.PRE[i]; if ('pre' in k) k.pre = c.PRE[i]; } });
     var pct = Math.round((1 - c.PRE[0] / c.COD[0]) * 100);
     p.anticipado = { pct: pct, precios: c.PRE.slice(), titulo: 'Paga con PayPal o tarjeta',
       envio: 'Envío prioritario: tu pedido sale primero', sub: 'Pago protegido por PayPal. Débito, crédito o saldo PayPal.' };
@@ -252,13 +252,13 @@
   /* ---------- PORTADA: textos de la tienda normal → pago seguro ---------- */
   var PORTADA = [
     ['Jaye Group México · Envío gratis y pago contra entrega', 'Jaye Group México · Pago seguro con PayPal y envío gratis'],
-    ['<h1>Pídelo hoy,<br>paga al recibir</h1>', '<h1>Paga seguro<br>y ahorra 14%</h1>'],
+    ['<h1>Pídelo hoy,<br>paga al recibir</h1>', '<h1>Paga seguro,<br>recibe en casa</h1>'],
     ['Envío gratis a todo México. Pagas cuando lo tienes en la mano.', 'Envío gratis y prioritario a todo México. Pagas con PayPal o tarjeta.'],
-    ['Al recibir o con tarjeta −10 %', 'PayPal o tarjeta −14 %'],
-    ['<span>−10 %</span> Nuevo en Jaye Group', '<span>−14 %</span> Tienda de pago seguro'],
-    ['Paga con tarjeta y ahorra 10&nbsp;%', 'Paga con tarjeta y ahorra 14&nbsp;%'],
-    ['<b>10&nbsp;% de descuento</b> en todos los productos', '<b>14&nbsp;% de descuento o más</b> en todos los productos'],
-    ['En el formulario de tu producto elige <b>Paga ahora con tarjeta</b>. Si prefieres, sigues pagando al recibir, como siempre.', 'Todos los productos de esta tienda se pagan con <b>PayPal o tarjeta</b>, ya con el descuento aplicado.'],
+    ['Al recibir o con tarjeta −10 %', '30 días de garantía'],
+    ['<span>−10 %</span> Nuevo en Jaye Group', '<span>PayPal</span> Tienda de pago seguro'],
+    ['Paga con tarjeta y ahorra 10&nbsp;%', 'Tu compra, protegida de principio a fin'],
+    ['<b>10&nbsp;% de descuento</b> en todos los productos', '<b>30 días de garantía</b> en todos los productos'],
+    ['En el formulario de tu producto elige <b>Paga ahora con tarjeta</b>. Si prefieres, sigues pagando al recibir, como siempre.', 'Todos los productos se pagan con <b>PayPal o tarjeta</b>. Nosotros nunca vemos los datos de tu tarjeta.'],
     ['aria-label="Sello Jaye Group México: paga al recibir"', 'aria-label="Sello Jaye Group México: pago protegido"'],
     ['font-weight="800" font-size="40" fill="#17150F">PAGA</text>', 'font-weight="800" font-size="40" fill="#17150F">PAGO</text>'],
     ['letter-spacing="2.4" fill="#17150F" dx="1.2">AL RECIBIR</text>', 'letter-spacing="2.4" fill="#17150F" dx="1.2">PROTEGIDO</text>'],
@@ -270,7 +270,7 @@
     (window.PRODUCTOS || []).forEach(function (p) {
       var c = PRODS[p.id];
       if (!c) return;
-      p.packs.forEach(function (pk, i) { if (c.PRE[i] != null) { pk.antes = c.COD[i]; pk.precio = c.PRE[i]; } });
+      p.packs.forEach(function (pk, i) { if (c.PRE[i] != null) { pk.precio = c.PRE[i]; } });
       p.anticipado = { pct: Math.round((1 - c.PRE[0] / c.COD[0]) * 100), precios: c.PRE.slice() };
     });
     window.PREGUNTAS = [
@@ -322,10 +322,13 @@
       var d = new DOMParser().parseFromString(html, 'text/html');
       d.head.querySelectorAll('link[rel="stylesheet"], style').forEach(function (n) { document.head.appendChild(n.cloneNode(true)); });
       ponerCss();
+      /* la tienda esconde el logo JAYE GROUP hasta que carga la letra (clase fuentesListas, script del <head>) */
+      var listo = function () { document.documentElement.classList.add('fuentesListas'); };
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(listo); setTimeout(listo, 400);
       document.documentElement.classList.add('ba-lista');
       setTimeout(function () { document.documentElement.classList.add('ba-visto'); }, 3000);
       /* el PÍXEL de México vive en el <head> de cada página */
-      var pix = Array.prototype.slice.call(d.head.querySelectorAll('script')).filter(function (s) { return /_cargarPixel|jayePixel/.test(s.textContent); });
+      var pix = Array.prototype.slice.call(d.head.querySelectorAll('script')).filter(function (s) { return /_cargarPixel|jayePixel|PIXEL_MX/.test(s.textContent); });
       var scripts = pix.concat(Array.prototype.slice.call(d.body.querySelectorAll('script')));
       scripts.forEach(function (s) { s.parentNode.removeChild(s); });
       document.body.className = (d.body.className + ' ' + (document.body.className || '')).trim();
