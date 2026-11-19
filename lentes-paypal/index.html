@@ -43,6 +43,19 @@ body.pp-modo .ppConf h2{color:#0F172A !important}
 body.pp-modo .ppConf .ppSub,body.pp-modo .ppConf .ppEscudo span,body.pp-modo .ppConf .ppItem span{color:#475569 !important}
 body.pp-modo .ppConf .ppEscudo b,body.pp-modo .ppConf .ppItem b{color:#0F172A !important}
 body.pp-modo .ppConf .ppEscudo,body.pp-modo .ppConf .ppItem{background:#fff !important}
+body.pp-modo .ppConf .ppGar{border-color:#059669 !important;box-shadow:0 10px 26px rgba(5,150,105,.14) !important;margin-top:14px}
+.ppH3{font-family:'Be Vietnam Pro',sans-serif;font-weight:800;font-size:19px;color:#0F172A !important;text-align:center;margin:22px 0 12px}
+.ppPasos{list-style:none;padding:0;margin:0 auto;max-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ppPasos li{background:#fff;border:1px solid #E4ECFC;border-radius:14px;padding:12px;position:relative}
+.ppPasos i{font-style:normal;display:inline-flex;width:26px;height:26px;border-radius:50%;background:#2563EB;color:#fff !important;font:800 14px 'Be Vietnam Pro',sans-serif;align-items:center;justify-content:center;margin-bottom:6px}
+.ppPasos b{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:14.5px;color:#0F172A !important}
+.ppPasos span{font-family:'Noto Sans',sans-serif;font-size:13px;color:#475569 !important}
+.ppContacto{max-width:560px;margin:14px auto 0;background:#fff;border:1px solid #E4ECFC;border-radius:14px;padding:14px;text-align:center}
+.ppContacto b{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:15px;color:#0F172A !important}
+.ppContacto span{display:block;font-family:'Noto Sans',sans-serif;font-size:13.5px;color:#475569 !important;margin:2px 0 10px}
+.ppDatos{font-family:'Noto Sans',sans-serif;font-size:13.5px;line-height:1.6;color:#475569 !important;margin:12px 0 0}
+.ppDatos a{display:inline !important;background:none !important;padding:0 !important;color:#2563EB !important;font-weight:700;text-decoration:underline}
+.ppContacto > a{display:inline-block;background:#059669;color:#fff !important;font:700 14px 'Noto Sans',sans-serif;padding:11px 18px;border-radius:999px;text-decoration:none}
 /* sin la opción de pagar al recibir */
 body.pp-modo .pagoOp[data-pago="cod"]{display:none !important}
 body.pp-modo .pagoSel{grid-template-columns:1fr !important}
@@ -81,6 +94,8 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
     p.preguntas = [
       { q: '¿Es seguro pagar por adelantado?', a: 'Sí. Pagas con PayPal o con tu tarjeta a través de PayPal: nosotros nunca vemos los datos de tu tarjeta. Si el pedido no te llega, la Protección al Comprador de PayPal te devuelve tu dinero.' },
       { q: '¿Qué pasa si no me llega?', a: 'Te mandamos el número de guía por WhatsApp para que lo sigas. Si no llega, nos escribes y lo resolvemos; además puedes abrir un reclamo en PayPal con su Protección al Comprador.' },
+      { q: '¿Tienen garantía?', a: 'Sí: 15 días de garantía de cambio. Si tus lentes llegan con algún defecto o no son lo que pediste, nos escribes por WhatsApp y te los cambiamos. Además, tu pago está cubierto por la Protección al Comprador de PayPal.' },
+      { q: '¿Qué recibo exactamente?', a: 'Los lentes TR90 Pro Titanium sin marco, en la cantidad de tu pack (1, 2 o 3 pares). Es un solo modelo para lectura, no hay que elegir graduación. No incluyen funda.' },
       { q: '¿Tengo que tener cuenta de PayPal?', a: 'No. Puedes pagar con tarjeta de débito o crédito sin crear cuenta.' },
       { q: '¿Cuánto tarda?', a: 'Tu pedido sale con envío prioritario apenas se confirma el pago. Llega entre 2 y 5 días hábiles según tu ciudad, sin costo de envío.' },
       { q: '¿Tengo que elegir graduación?', a: 'No. Es un solo modelo para lectura: miras por la parte de abajo para leer de cerca y por la de arriba para ver más lejos. Si tienes una graduación alta o algún problema de la vista, consulta con tu óptico.' },
@@ -102,6 +117,22 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
       + '<div class="ppItem"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><b>Tarjeta o PayPal</b><span>Débito o crédito, sin crear cuenta.</span></div>'
       + '<div class="ppItem"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><b>Clientes reales</b><span>Lee abajo lo que dicen quienes ya los usan.</span></div>'
       + '</div>'
+      /* 19-11 James: "15 días y protección PayPal". Garantía propia de cambio: 15 días. */
+      + '<div class="ppEscudo ppGar"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="#059669"/><text x="24" y="30" text-anchor="middle" font-family="Be Vietnam Pro,Arial" font-weight="800" font-size="17" fill="#fff">15</text></svg>'
+      + '<div><b>15 días de garantía de cambio</b><span>Si tus lentes llegan con algún defecto o no son lo que pediste, escríbenos por WhatsApp dentro de los 15 días y te los cambiamos.</span></div></div>'
+      /* AMVO 2026: el seguimiento del pedido pesa más en mayores de 55 → los pasos, claros */
+      + '<h3 class="ppH3">Así llega tu pedido</h3>'
+      + '<ol class="ppPasos">'
+      + '<li><i>1</i><b>Pagas seguro</b><span>Con PayPal o tarjeta.</span></li>'
+      + '<li><i>2</i><b>Te escribimos</b><span>Confirmamos tu pedido por WhatsApp.</span></li>'
+      + '<li><i>3</i><b>Te mandamos la guía</b><span>Para que sigas tu paquete.</span></li>'
+      + '<li><i>4</i><b>Lo recibes</b><span>En 2 a 5 días hábiles.</span></li>'
+      + '</ol>'
+      /* lo que pide Profeco: canal de contacto visible */
+      + '<div class="ppContacto"><b>¿Dudas antes de pagar?</b><span>Escríbenos y te atiende una persona.</span>'
+      + '<a href="https://wa.me/525597219871" target="_blank" rel="noopener">WhatsApp +52 55 9721 9871</a>'
+      /* 19-11 James: WhatsApp, correo y la ciudad desde donde sale todo (bodega del proveedor en Dropi MX: Gustavo A. Madero, CDMX) */
+      + '<p class="ppDatos">Correo: <a href="mailto:gerencia@jayegroup.com.co">gerencia@jayegroup.com.co</a><br>Despachamos desde la bodega en Gustavo A. Madero, Ciudad de México</p></div>'
       + '<div class="ppLogos"><img src="/img/pago/paypal-texto.svg" alt="PayPal"><img src="/img/pago/visa-claro.svg" alt="Visa"><img src="/img/pago/mastercard-claro.svg" alt="Mastercard"><img src="/img/pago/amex.svg" alt="American Express"></div>';
     return s;
   }
@@ -143,6 +174,10 @@ body.pp-modo .pagoSel{grid-template-columns:1fr !important}
     var form = document.getElementById('pedir');
     if (form && !document.getElementById('confianza')) form.parentNode.insertBefore(seccionConfianza(), form);
     document.querySelectorAll('.pagos span').forEach(function (s) { if (/Pago al recibir/.test(s.textContent)) s.remove(); });
+    /* 19-11 James: en "Enviamos con" solo las que de verdad despachan (Veloces, Coordi, Quality-Post); AMPM, Afimex y TIUI fuera */
+    document.querySelectorAll('img').forEach(function (im) {
+      if (/logos\/(ampm|afimex|tiui)\./i.test(im.getAttribute('src') || '')) im.style.display = 'none';
+    });
     /* candado: nunca se manda un pedido contra entrega desde esta página */
     var f = document.getElementById('fPedido');
     if (f && !f._ppCandado) {
