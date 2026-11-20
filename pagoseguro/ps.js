@@ -50,6 +50,10 @@
     + '.ppDatos a{display:inline !important;background:none !important;padding:0 !important;color:#2563EB !important;font-weight:700;text-decoration:underline}'
     + '.ppLogos{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:16px 0 4px}'
     + '.ppLogos img{height:24px;width:auto}'
+    /* James 19-11: «como la de Chile»: abajo un solo botón a lo ancho, y WhatsApp solo el círculo verde flotando encima */
+    + 'body.pp-modo .stickycta .waFlota{display:none !important}'
+    + 'body.pp-modo .stickycta .btn-flota{flex:1 1 100% !important;width:100% !important;max-width:none !important}'
+    + 'body.pp-modo a.wa{bottom:86px !important}'
     + '.psFoto{display:block;width:100%;max-width:560px;aspect-ratio:1/1;object-fit:cover;border-radius:18px;margin:14px auto 18px;box-shadow:0 10px 28px rgba(0,0,0,.18)}'
     /* colágeno: la etiqueta del pago anticipado viene con «−10 %» escrito en su CSS */
     + 'body.pp-modo .pagoAnt__tit::before{display:none !important;content:none !important}body.pp-modo .pagoOp__cinta{display:none !important}'
@@ -72,6 +76,8 @@
     [/pagas al recibir/g, 'pago protegido por PayPal'],
     [/Pagas cuando lo recibes/g, 'Pago protegido con PayPal'],
     [/Pagas cuando lo tienes en la mano\.?/g, 'Pagas seguro con PayPal o tarjeta.'],
+    [/No pagas nada por adelantado\.?/g, 'Pago protegido por PayPal'],
+    [/no pagas nada por adelantado\.?/g, 'pago protegido por PayPal'],
     [/pagas en efectivo a la transportadora cuando recibes el pedido\.?/g, 'pago anticipado con PayPal o con tarjeta de débito o crédito a través de PayPal. El pedido se despacha cuando se confirma el pago.'],
     [/Le pagas al repartidor cuando lo tienes en la mano\.?/g, 'Pagas seguro con PayPal o tarjeta y sale con envío prioritario.'],
     [/contra entrega/gi, 'con PayPal'],
@@ -238,8 +244,8 @@
       ['.gm-lectura', null, '/pagoseguro/img/lentes-lectura.webp', 'Señora leyendo el instructivo de su medicina con los lentes TR90'],
       ['.gm-cl', null, '/pagoseguro/img/lentes-cercalejos.webp', 'Lentes TR90: el menú de cerca y la calle de lejos'],
       ['.form-sec', null, '/pagoseguro/img/lentes-pantalla.webp', 'Lentes TR90 con filtro de luz azul junto al celular'],
-      ['.res-sec', null, 'img/res-gafas-6.webp', 'Así llegan los lentes a tu casa'],
-      ['section.bloque', /Preguntas frecuentes/i, 'img/res-gafas-8.webp', 'Foto de un cliente con sus lentes'],
+      ['.res-sec', null, '/pagoseguro/img/lentes-llegan.webp', 'Así llegan los lentes a tu casa'],
+      ['section.bloque', /Preguntas frecuentes/i, '/pagoseguro/img/lentes-pareja.webp', 'Pareja con sus lentes TR90 leyendo el celular'],
       ['.desc', /POR QU[ÉE] LO QUIERES/i, '/pagoseguro/img/lentes-dospares.webp', 'Dos pares de lentes TR90 en el buró']
     ]
   };
