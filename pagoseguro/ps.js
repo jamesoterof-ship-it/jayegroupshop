@@ -10,7 +10,8 @@
 (function () {
   var PS = window.PS || {};
   var PRODS = {
-    lentes:     { base: '/lentes/',     id: 'gafas',      nombre: 'Lentes TR90 Pro Titanium',        COD: [479, 629, 799],    PRE: [399, 525, 665] },
+    /* 20-11 James: los lentes salen de AliExpress (7 a 12 días hábiles) a 259/349/449 */
+    lentes:     { base: '/lentes/',     id: 'gafas',      nombre: 'Lentes TR90 Pro Titanium',        COD: [479, 629, 799],    PRE: [259, 349, 449] },
     cucarachas: { base: '/cucarachas/', id: 'cucarachas', nombre: 'Cebo MoonSpry contra Cucarachas', COD: [449, 599, 649],    PRE: [386, 515, 558] },
     colageno:   { base: '/colageno/',   id: 'neocell',    nombre: 'Colágeno NeoCell Bio-Peptides',   COD: [779, 1079, 1549],  PRE: [670, 928, 1332] },
     brain:      { base: '/brain/',      id: 'brain',      nombre: 'Brain Memory & Mood',             COD: [799, 1200],        PRE: [687, 1032] }
@@ -125,13 +126,38 @@
   };
   /* en todas las fichas: el logo de texto «Pago al recibir» de los medios de pago sale */
   var HTML_TODAS = [['color:#cfcfcf">Pago al recibir</span>', 'color:#cfcfcf;display:none">Pago al recibir</span>']];
+  /* 20-11 James: los LENTES se mandan desde AliExpress: llegan en 7 a 12 días hábiles, sin «prioritario» ni «bodega en CDMX».
+     Solo para la ficha de lentes; cucarachas, colágeno y Brain siguen saliendo de Dropi como antes. */
+  var ENTREGA = {
+    lentes: { dias: '7 a 12 días hábiles', corto: 'En 7 a 12 días hábiles',
+      sale: 'Llega a tu casa en 7 a 12 días hábiles. Te mandamos el número de seguimiento por WhatsApp.' }
+  };
+  var CAMBIOS_PROD = {
+    lentes: [
+      [/[Ee]nvío gratis y prioritario/g, 'Envío gratis con seguimiento'],
+      [/[Ee]nvío prioritario: tu pedido sale primero/g, 'Envío gratis con número de seguimiento'],
+      [/sale con envío prioritario/g, 'llega en 7 a 12 días hábiles'],
+      [/sale con entrega prioritaria/g, 'llega en 7 a 12 días hábiles'],
+      [/[Ee]nvío (gratis )?prioritario/g, 'Envío gratis con seguimiento'],
+      [/[Ee]ntrega prioritaria/g, 'Llega en 7 a 12 días hábiles'],
+      [/(entre )?2 (a|y) 5 días hábiles/g, function (m, e) { return e ? 'entre 7 y 12 días hábiles' : '7 a 12 días hábiles'; }],
+      [/^2 a 5$/, '7 a 12'],
+      /* sin porcentajes de ahorro contra el precio contra entrega (James 19-11: «nada que 14 %») */
+      [/Paga ahora y ahorra un \d+ ?%/g, 'Pago seguro con PayPal o tarjeta'],
+      [/^−\d+ ?%$/, 'PayPal'],
+      [/Sale de nuestra bodega en Ciudad de México\.? ?/g, ''],
+      [/^Bodega en Ciudad de México$/, 'Envíos con número de seguimiento']
+    ]
+  };
   function limpiarTextos(raiz) {
     var w = document.createTreeWalker(raiz || document.body, NodeFilter.SHOW_TEXT, null), n;
+    var extra = CAMBIOS_PROD[(window.PS || {}).prod] || [];
     while ((n = w.nextNode())) {
       if (n.parentNode && /^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) continue;
       if (n.parentNode && n.parentNode.closest && n.parentNode.closest('#confianza, .pie .acepto')) continue;
       var v = n.nodeValue, nv = v;
       CAMBIOS.forEach(function (c) { nv = nv.replace(c[0], c[1]); });
+      extra.forEach(function (c) { nv = nv.replace(c[0], c[1]); });
       if (nv !== v) n.nodeValue = nv;
     }
   }
@@ -184,12 +210,18 @@
 
   /* ---------- política de la tienda (James 19-11: «vamos con la que te dije y punto») ---------- */
   function preguntasPago() {
+    var E = ENTREGA[(window.PS || {}).prod];
     return [
       { q: '¿Es seguro pagar por adelantado?', a: 'Sí. Pagas con PayPal o con tu tarjeta a través de PayPal: nosotros nunca vemos los datos de tu tarjeta. Tu pago queda protegido por PayPal.' },
-      { q: '¿Tengo que tener cuenta de PayPal?', a: 'No. Puedes pagar con tarjeta de débito o crédito sin crear cuenta.' },
-      { q: '¿Cómo sigo mi pedido?', a: 'Apenas sale de nuestra bodega en Ciudad de México te mandamos el número de guía por WhatsApp para que lo sigas hasta tu puerta.' },
+      { q: '¿Tengo que tener cuenta de PayPal?', a: 'No. Puedes pagar con tarjeta de débito o crédito sin crear cuenta.' }
+    ].concat(E ? [
+      { q: '¿Cuánto tarda en llegar?', a: 'Llega en ' + E.dias + ' a cualquier parte de México, con envío gratis.' },
+      { q: '¿Cómo sigo mi pedido?', a: 'Apenas sale tu pedido te mandamos el número de seguimiento por WhatsApp para que lo sigas hasta tu puerta.' }
+    ] : [
+      { q: '¿Cómo sigo mi pedido?', a: 'Apenas sale de nuestra bodega en Ciudad de México te mandamos el número de guía por WhatsApp para que lo sigas hasta tu puerta.' }
+    ]).concat([
       { q: '¿Tiene garantía?', a: 'Sí: 30 días de garantía por defecto de fábrica. Si llega dañado, en mal estado o distinto a lo que pediste, escríbenos por WhatsApp dentro de los 14 días siguientes a la entrega, con una foto, y lo resolvemos.' }
-    ];
+    ]);
   }
 
   /* ---------- FICHA: ajustes ANTES de que ficha.js la pinte ---------- */
@@ -203,6 +235,17 @@
       envio: 'Envío prioritario: tu pedido sale primero', sub: 'Pago protegido por PayPal. Débito, crédito o saldo PayPal.' };
     if (p.hero && p.hero.datos) p.hero.datos = [['envio', 'Envío gratis prioritario'], ['reloj', 'En 2 a 5 días'], ['pago', 'Pago protegido por PayPal']];
     if (p.escasez) p.escasez.nota = 'Se despacha desde la bodega en Ciudad de México en cuanto se confirma tu pago. Te mandamos tu número de guía por WhatsApp.';
+    var E = ENTREGA[(window.PS || {}).prod];
+    if (E) {
+      p.anticipado.envio = 'Envío gratis con número de seguimiento';
+      if (p.hero && p.hero.datos) p.hero.datos = [['envio', 'Envío gratis a todo México'], ['reloj', E.corto], ['pago', 'Pago protegido por PayPal']];
+      if (p.escasez) p.escasez.nota = 'Se envía en cuanto se confirma tu pago. ' + E.sale;
+      var TX = window.TEXTOS = window.TEXTOS || {};
+      TX.yPrioritaria = 'y recíbelo en ' + E.dias;
+      TX.notaPre = 'Al enviar el pedido te llevamos al pago seguro con tarjeta o PayPal. ' + E.sale;
+      TX.sellos = [['Envío gratis', 'A todo México'], ['Seguimiento', 'Número de guía por WhatsApp'], [E.dias, 'A tu domicilio'], ['PayPal', 'Pago protegido']];
+      if (TX.resDatos && TX.resDatos[0]) TX.resDatos[0] = ['7 a 12', 'días hábiles de entrega'];
+    }
     /* las preguntas del producto se quedan, menos las de pago, entrega al recibir y garantía: van las de esta tienda */
     var propias = (p.preguntas || []).filter(function (x) { return !/contra entrega|al recibir|pagar|pago|garant|devol|reembols/i.test(x.q + ' ' + x.a); });
     p.preguntas = preguntasPago().concat(propias);
@@ -217,6 +260,7 @@
   function seccionConfianza() {
     var s = document.createElement('section');
     s.className = 'ppConf'; s.id = 'confianza';
+    var E = ENTREGA[(window.PS || {}).prod];
     s.innerHTML = '<h2>Tu compra está protegida</h2>'
       + '<p class="ppSub">Pagas con PayPal, la forma más segura de pagar en línea, y tu pedido sale con entrega prioritaria.</p>'
       + '<div class="ppEscudo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 7 10v12c0 11 7.4 19.6 17 22 9.6-2.4 17-11 17-22V10L24 4z" fill="#2563EB"/><path d="m16 24 6 6 11-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -274,9 +318,25 @@
     var pre = document.querySelector('.pagoOp[data-pago="pre"]');
     if (pre && pre.getAttribute('aria-checked') !== 'true') pre.click();
     var baj = document.querySelector('#pedir .baj');
-    if (baj) baj.textContent = 'Sale con envío prioritario apenas se confirma tu pago. Te mandamos la guía por WhatsApp.';
+    var E = ENTREGA[PS.prod];
+    if (baj) baj.textContent = E ? E.sale : 'Sale con envío prioritario apenas se confirma tu pago. Te mandamos la guía por WhatsApp.';
     var form = document.getElementById('pedir');
     if (form && !document.getElementById('confianza')) form.parentNode.insertBefore(seccionConfianza(), form);
+    /* 20-11 lentes (AliExpress): solo cambian los TEXTOS del bloque de confianza */
+    if (E) {
+      var TC = [
+        ['y tu pedido sale con entrega prioritaria.', 'y tu pedido llega a tu casa en ' + E.dias + ', con número de seguimiento.'],
+        ['Envío prioritario', 'Envío gratis'],
+        ['Tu pedido sale primero, sin costo de envío.', 'A todo México, en ' + E.dias + '.'],
+        ['En 2 a 5 días hábiles.', 'En ' + E.dias + '.'],
+        ['Despachamos desde la bodega en Gustavo A. Madero, Ciudad de México', 'Envíos a todo México con número de seguimiento']
+      ];
+      var cf = document.getElementById('confianza');
+      if (cf) { var wk = document.createTreeWalker(cf, NodeFilter.SHOW_TEXT, null), tn;
+        while ((tn = wk.nextNode())) { var tv = tn.nodeValue; TC.forEach(function (r) { tv = tv.split(r[0]).join(r[1]); }); if (tv !== tn.nodeValue) tn.nodeValue = tv; } }
+      /* las transportadoras de Dropi no llevan los lentes: sus logos se quitan */
+      document.querySelectorAll('img').forEach(function (im) { if (/logos\/(veloces|coordi|quality|ampm|afimex|tiui)/i.test(im.getAttribute('src') || '')) im.remove(); });
+    }
     ponerFotos(PS.prod);
     /* 19-11 James: solo las transportadoras que de verdad despachan (Veloces, Coordi, Quality-Post) */
     document.querySelectorAll('img').forEach(function (im) { if (/logos\/(ampm|afimex|tiui)\./i.test(im.getAttribute('src') || '')) im.style.display = 'none'; });
@@ -313,7 +373,7 @@
       p.anticipado = { pct: Math.round((1 - c.PRE[0] / c.COD[0]) * 100), precios: c.PRE.slice() };
     });
     window.PREGUNTAS = [
-      { q: '¿Cuánto tarda en llegar?', a: 'Sale con envío prioritario apenas se confirma tu pago. Normalmente llega entre 2 y 5 días hábiles, según tu ciudad.' },
+      { q: '¿Cuánto tarda en llegar?', a: 'Sale apenas se confirma tu pago. Los lentes TR90 llegan en 7 a 12 días hábiles; los demás productos, normalmente entre 2 y 5 días hábiles, según tu ciudad.' },
       { q: '¿Cómo pago?', a: 'Con PayPal o con tarjeta de débito o crédito, sin crear cuenta. Nosotros nunca vemos los datos de tu tarjeta.' },
       { q: '¿El envío tiene costo?', a: 'No. El envío a todo México ya está incluido en el precio.' }
     ];
@@ -340,7 +400,7 @@
     envio: { titulo: 'Política de Envíos', html: ''
       + '<h2>1. Cobertura</h2><p>Enviamos a todo México. El envío está incluido en el precio.</p>'
       + '<h2>2. Cuándo sale tu pedido</h2><p>Tu pedido se despacha desde nuestra bodega en Gustavo A. Madero, Ciudad de México, en cuanto se confirma tu pago con PayPal o tarjeta. Sale con envío prioritario.</p>'
-      + '<h2>3. Tiempo de entrega</h2><p>Normalmente entre 2 y 5 días hábiles, según tu ciudad.</p>'
+      + '<h2>3. Tiempo de entrega</h2><p>Los lentes TR90 llegan en 7 a 12 días hábiles. Los demás productos, normalmente entre 2 y 5 días hábiles, según tu ciudad.</p>'
       + '<h2>4. Seguimiento</h2><p>Cuando tu pedido sale te mandamos el número de guía por WhatsApp para que lo sigas hasta tu puerta.</p>'
       + '<h2>5. Recepción</h2><p>Tu pedido ya está pagado: solo necesitas que alguien esté en la dirección para recibirlo.</p>'
       + '<h2>Contacto</h2><p>Correo: <a href="mailto:gerencia@jayegroup.com.co">gerencia@jayegroup.com.co</a></p>' }
