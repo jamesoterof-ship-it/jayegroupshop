@@ -50,7 +50,7 @@
     + '.ppDatos a{display:inline !important;background:none !important;padding:0 !important;color:#2563EB !important;font-weight:700;text-decoration:underline}'
     + '.ppLogos{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:16px 0 4px}'
     + '.ppLogos img{height:24px;width:auto}'
-    + '.psFoto{display:block;width:100%;max-width:560px;aspect-ratio:4/5;object-fit:cover;border-radius:18px;margin:14px auto 18px;box-shadow:0 10px 28px rgba(0,0,0,.18)}'
+    + '.psFoto{display:block;width:100%;max-width:560px;aspect-ratio:1/1;object-fit:cover;border-radius:18px;margin:14px auto 18px;box-shadow:0 10px 28px rgba(0,0,0,.18)}'
     /* colágeno: la etiqueta del pago anticipado viene con «−10 %» escrito en su CSS */
     + 'body.pp-modo .pagoAnt__tit::before{display:none !important;content:none !important}body.pp-modo .pagoOp__cinta{display:none !important}'
     /* el precio que se ve YA es el de pago anticipado: fuera el «o $X pagando ahora con tarjeta» */
@@ -233,16 +233,14 @@
   /* 19-11 James: «más imágenes en las secciones; después de las reseñas hay puro texto». Fotos reales que ya existen
      (fichas del producto, fotos de clientes, cuadros del video real del proveedor, sin letras chinas ni otras marcas). */
   var FOTOS = {
+    /* James 19-11: «no me repitas imágenes y no cojas cortes de video para imagen». Solo fotos que NO salen en otra parte de la página. */
     lentes: [
-      ['.gm-lectura', null, 'img/gafas-pantalla.webp?v=1', 'Lentes TR90 para leer el celular'],
-      ['.gm-cl', null, 'img/gafas-terraza.webp?v=1', 'Lentes TR90 para ver de cerca y de lejos'],
-      ['.form-sec', null, '/pagoseguro/img/lentes-resiste-26.webp', 'Lentes TR90 resistentes a los golpes'],
-      ['.cmp-sec', null, '/pagoseguro/img/lentes-resiste-22.webp', 'Prueba de resistencia de los lentes TR90'],
-      ['.desc', /EL PRODUCTO/i, 'img/hero-gafas.webp?v=1', 'Lentes TR90 Pro Titanium'],
+      ['.gm-lectura', null, '/pagoseguro/img/lentes-lectura.webp', 'Señora leyendo el instructivo de su medicina con los lentes TR90'],
+      ['.gm-cl', null, '/pagoseguro/img/lentes-cercalejos.webp', 'Lentes TR90: el menú de cerca y la calle de lejos'],
+      ['.form-sec', null, '/pagoseguro/img/lentes-pantalla.webp', 'Lentes TR90 con filtro de luz azul junto al celular'],
       ['.res-sec', null, 'img/res-gafas-6.webp', 'Así llegan los lentes a tu casa'],
-      ['.gar-sec', null, '/pagoseguro/img/lentes-resiste-30.webp', 'Los lentes siguen enteros después del martillo'],
       ['section.bloque', /Preguntas frecuentes/i, 'img/res-gafas-8.webp', 'Foto de un cliente con sus lentes'],
-      ['.desc', /POR QU[ÉE] LO QUIERES/i, 'img/gafas-letra.webp?v=1', 'Lentes TR90 para leer de cerca']
+      ['.desc', /POR QU[ÉE] LO QUIERES/i, '/pagoseguro/img/lentes-dospares.webp', 'Dos pares de lentes TR90 en el buró']
     ]
   };
   function ponerFotos(prod) {
