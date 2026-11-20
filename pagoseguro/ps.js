@@ -58,6 +58,8 @@
     + 'body.pp-modo.con-barra a.wa{opacity:1 !important;visibility:visible !important;pointer-events:auto !important}'
     /* James 19-11: «estas imágenes se ven cortadas» (Para qué sirven): fotos verticales en recuadro horizontal → cuadradas, sin cortar la cara */
     + 'body.pp-modo .gm-usos img{aspect-ratio:auto !important;height:auto !important;max-height:none !important;object-fit:contain !important}'
+    /* el recuadro de la foto tenía forma 4:3 con overflow hidden y cortaba igual: se adapta a la foto */
+    + 'body.pp-modo .gm-usos .gm-foto__img{aspect-ratio:auto !important;height:auto !important;max-height:none !important}'
     + '.psFoto{display:block;width:100%;max-width:560px;aspect-ratio:1/1;object-fit:cover;border-radius:18px;margin:14px auto 18px;box-shadow:0 10px 28px rgba(0,0,0,.18)}'
     /* colágeno: la etiqueta del pago anticipado viene con «−10 %» escrito en su CSS */
     + 'body.pp-modo .pagoAnt__tit::before{display:none !important;content:none !important}body.pp-modo .pagoOp__cinta{display:none !important}'
