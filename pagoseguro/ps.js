@@ -245,6 +245,11 @@
       TX.notaPre = 'Al enviar el pedido te llevamos al pago seguro con tarjeta o PayPal. ' + E.sale;
       TX.sellos = [['Envío gratis', 'A todo México'], ['Seguimiento', 'Número de guía por WhatsApp'], [E.dias, 'A tu domicilio'], ['PayPal', 'Pago protegido']];
       if (TX.resDatos && TX.resDatos[0]) TX.resDatos[0] = ['7 a 12', 'días hábiles de entrega'];
+      /* 20-11 James: «nos expandimos a todo México». AliExpress entrega en todos los estados: el formulario
+         ya no se limita a los municipios de Dropi ni rechaza direcciones por su cobertura. */
+      TX.phCiudad = 'Ej: Los Cabos';
+      window.MUNICIPIOS_MX = null;
+      window.cobDropiMX = null;
     }
     /* las preguntas del producto se quedan, menos las de pago, entrega al recibir y garantía: van las de esta tienda */
     var propias = (p.preguntas || []).filter(function (x) { return !/contra entrega|al recibir|pagar|pago|garant|devol|reembols/i.test(x.q + ' ' + x.a); });
@@ -334,6 +339,14 @@
       var cf = document.getElementById('confianza');
       if (cf) { var wk = document.createTreeWalker(cf, NodeFilter.SHOW_TEXT, null), tn;
         while ((tn = wk.nextNode())) { var tv = tn.nodeValue; TC.forEach(function (r) { tv = tv.split(r[0]).join(r[1]); }); if (tv !== tn.nodeValue) tn.nodeValue = tv; } }
+      /* todo México: el municipio se escribe a mano (la lista era solo la de Dropi) */
+      var selMun = document.getElementById('fCiudad');
+      if (selMun && selMun.tagName === 'SELECT') {
+        var munTxt = document.createElement('input');
+        munTxt.id = 'fCiudad'; munTxt.required = true;
+        munTxt.setAttribute('autocomplete', 'address-level2'); munTxt.placeholder = 'Ej: Los Cabos';
+        selMun.parentNode.replaceChild(munTxt, selMun);
+      }
       /* las transportadoras de Dropi no llevan los lentes: sus logos se quitan */
       document.querySelectorAll('img').forEach(function (im) { if (/logos\/(veloces|coordi|quality|ampm|afimex|tiui)/i.test(im.getAttribute('src') || '')) im.remove(); });
     }
