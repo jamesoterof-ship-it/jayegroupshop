@@ -481,6 +481,8 @@
       var n = 0;
       (function esperar() {
         if (document.querySelector('.pagoOp[data-pago="pre"]')) { soloPayPal(c); return; }
+        /* 20-11: con el enlace personal (?pagar=) la ficha muestra el cobro y no trae las opciones de pago: igual se aplican los textos de esta tienda */
+        if (/[?&]pagar=/.test(location.search) && document.getElementById('pedir') && n > 6) { soloPayPal(c); return; }
         if (++n < 60) setTimeout(esperar, 150);
       })();
     }).catch(function () { location.replace(c.base); });
